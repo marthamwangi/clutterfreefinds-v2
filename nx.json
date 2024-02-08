@@ -22,6 +22,7 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+<<<<<<< HEAD
     },
     "server": {
       "cache": true
@@ -35,6 +36,8 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+=======
+>>>>>>> b99ee00 (Initial commit)
     }
   },
   "plugins": [
@@ -64,6 +67,7 @@
       "linter": "eslint",
       "style": "scss",
       "unitTestRunner": "jest"
+<<<<<<< HEAD
     },
     "@nx/angular:library": {
       "linter": "eslint",
@@ -74,4 +78,9 @@
     }
   },
   "nxCloudAccessToken": "MDk4OWZkNjUtNWM3YS00ZjU5LWJiZDctYjhhYWMwOGFlYmEwfHJlYWQtd3JpdGU="
+=======
+    }
+  },
+  "nxCloudAccessToken": "NTlkMjFjZjQtMWI2My00OWNlLTkyMDAtNjg1ODdmMGYwZDI4fHJlYWQtd3JpdGU="
+>>>>>>> b99ee00 (Initial commit)
 }
