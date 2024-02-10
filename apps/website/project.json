@@ -2,7 +2,7 @@
   "name": "website",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "clutterfreefinds-v2",
+  "prefix": "cff-v2",
   "sourceRoot": "apps/website/src",
   "tags": [],
   "targets": {
@@ -17,8 +17,12 @@
         "tsConfig": "apps/website/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/website/src/favicon.ico", "apps/website/src/assets"],
-        "styles": ["apps/website/src/styles.scss"],
-        "scripts": [],
+        "styles": [
+          "apps/website/src/styles.scss",
+          "node_modules/bootstrap/dist/css/bootstrap.min.css"],
+        "scripts": [
+          "node_modules/bootstrap/dist/js/bootstrap.min.js"
+        ],
         "server": "apps/website/src/main.server.ts",
         "prerender": true,
         "ssr": {
