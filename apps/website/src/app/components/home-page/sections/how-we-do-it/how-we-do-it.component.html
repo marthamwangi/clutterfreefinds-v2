@@ -1,0 +1,45 @@
+<section class="mx-4 mx-lg-0" style="margin-top: 16px">
+    <div class="container cff-v2-how-we-do-it-section p-3 p-lg-5">
+        <div class="row">
+            <div class="col-12 col-lg-7 d-flex flex-column align-items-center align-items-lg-start">
+                <div class="cff-v2-how-we-do-it-section-title">
+                    <div class="cff-v2-how-we-do-it-section-title-text">
+                        {{ 'HOME_PAGE.HOW_WE_DO_IT.TITLE' | translate }}
+                    </div>
+                </div>
+                <div class="cff-v2-how-we-do-it-section-description">
+                    <span *ngFor="let description of description">
+                        <span [class.bold]="description.bold"> {{ description.title | translate }}</span>
+                    </span>
+                </div>
+                <div class="cff-v2-how-we-do-it-section-list" style="margin-bottom: 24px;">
+                    <ng-container *ngFor="let item of [1, 2, 3, 4,5,6]">
+                        <div class="list-item mb-3">
+                            <img alt="clutter free finds services" src="/assets/icons/check-circle-clear.svg"
+                                width="24" />
+                            <span>
+                                {{ 'HOME_PAGE.HOW_WE_DO_IT.LIST.ITEM' + item | translate }}
+                            </span>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="d-flex flex-column flex-lg-row align-items-center">
+                    <button class="btn primary-btn" type="button">
+                        <a target="_blank" href="">{{
+                            'HOME_PAGE.HOW_WE_DO_IT.BUTTON' | translate
+                            }}</a>
+                    </button>
+                </div>
+            </div>
+            <div class="d-none d-lg-block col-lg-5 align-self-center">
+                <div>
+                    <iframe width="560" height="315" class="iframe img-fluid"
+                        src="https://www.youtube.com/embed/eZClhYwU7Qc?si=Ls2D9vZ8QOB8Jw-h&amp;controls=0"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
