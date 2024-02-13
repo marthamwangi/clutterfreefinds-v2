@@ -1,0 +1,59 @@
+<section class="mx-4 mx-lg-0" style="margin-top: 16px">
+    <div class="container cff-v2-hero-section p-3 p-lg-5">
+        <div class="row">
+            <div class="col-12 col-lg-7 d-flex flex-column align-items-center align-items-lg-start">
+                <div class="cff-v2-hero-section-title">
+                    <div class="cff-v2-hero-section-title-text">
+                        {{ 'HOME_PAGE.HERO_SECTION.TITLE' | translate }}
+                        <div class="title-gradient">{{
+                            'HOME_PAGE.HERO_SECTION.GRADIENT' | translate
+                            }}</div>
+                    </div>
+                </div>
+                <div class="cff-v2-hero-section-description">
+                    {{ 'HOME_PAGE.HERO_SECTION.DESCRIPTION' | translate }} <b>{{ 'HOME_PAGE.HERO_SECTION.EMPHASIS' |
+                        translate }}</b>
+                </div>
+                <div class="cff-v2-hero-section-list">
+                    <ng-container *ngFor="let item of [1, 2, 3, 4]">
+                        <div class="list-item mb-3">
+                            <img alt="clutter free finds services" src="/assets/icons/completed.svg" />
+                            <span>
+                                {{ 'HOME_PAGE.HERO_SECTION.LIST.ITEM' + item | translate }}
+                            </span>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="d-flex flex-column flex-lg-row align-items-center">
+                    <button class="btn primary-btn" type="button">
+                        <a target="_blank" href="">{{
+                            'HOME_PAGE.HERO_SECTION.BUTTON_1' | translate
+                            }}</a>
+                    </button>
+                    <button class="btn link-btn" type="button">
+                        <a href="">{{
+                            'HOME_PAGE.HERO_SECTION.BUTTON_2' | translate
+                            }}</a>
+                    </button>
+                </div>
+            </div>
+            <div class="d-none d-lg-block col-lg-5 align-self-center">
+                <img src="/assets/images/home-hero-clutter-free-finds.png" alt="" class="img-fluid" />
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center"
+        style="column-gap: 16px; row-gap: 6px">
+        <ng-container *ngFor="let statistic of statistics">
+            <div class="cff-v2-hero-section-numbers">
+                <div class="cff-v2-hero-section-number">
+                    <div class="cff-v2-hero-section-count"><span class="cff-v2-hero-section-plus">+</span>{{
+                        statistic.statistic | translate}}
+                    </div>
+                    <div class="cff-v2-hero-section-content">{{ statistic.value | translate }}</div>
+                </div>
+            </div>
+            <div class="divider"></div>
+        </ng-container>
+    </div>
+</section>
