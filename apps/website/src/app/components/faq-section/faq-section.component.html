@@ -1,0 +1,24 @@
+<section class="container-fluid mb-5">
+    <div class="cff-v2-faq-section-title text-center mb-5">
+        {{ 'FAQ.TITLE' | translate }}
+    </div>
+    <div class="accordion d-flex flex-column mx-auto" id="accordionFaq">
+        <ng-container *ngFor="let question of questions; index as index">
+            <div class="accordion-item">
+                <div class="accordion-header" [id]="'faq'+(index + 1)">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#collapse'+(index + 1)" aria-expanded="false"
+                        [attr.aria-controls]="'#collapse'+(index + 1)">
+                        {{question.question | translate}}
+                    </button>
+                </div>
+                <div [id]="'collapse'+(index + 1)" class="accordion-collapse collapse"
+                    [attr.aria-labelledby]="'faq'+(index + 1)" data-bs-parent="#accordionFaq">
+                    <div class="accordion-body">
+                        {{question.answer | translate}}
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</section>
