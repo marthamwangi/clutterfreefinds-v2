@@ -10,6 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './hero.component.scss',
 })
 export class HeroComponent {
+  // TODO: GETSTATS From APIs
   public statistics: Array<{ statistic: string; value: string }> = [
     {
       statistic: 'HOME_PAGE.HERO_SECTION.STATISTICS.STAT1.NUMBER',
