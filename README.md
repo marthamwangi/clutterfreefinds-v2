@@ -56,10 +56,6 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 
 ## Explore the Project Graph
 
-> > > > > > > b99ee00 (Initial commit)
-> > > > > > > Run `nx graph` to show the graph of the workspace.
-> > > > > > > It will show tasks that you can run with Nx.
-
 - [Learn more about Exploring the Project Graph](https://nx.dev/core-features/explore-graph)
 
 ## Connect with us!
@@ -93,7 +89,3 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 |   `release`   | for publishing commit                             |
 |     `wip`     | for work in progress commit                       |
 |    `chore`    | for other operations commit                       |
-
-=======
-
-> > > > > > > b99ee00 (Initial commit)
