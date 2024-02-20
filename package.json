@@ -7,7 +7,6 @@
   },
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@angular/animations": "~16.1.0",
     "@angular/common": "~16.1.0",
     "@angular/compiler": "~16.1.0",
@@ -21,25 +20,7 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "@nx/angular": "18.0.4",
-=======
-    "@angular/animations": "~17.1.0",
-    "@angular/common": "~17.1.0",
-    "@angular/compiler": "~17.1.0",
-    "@angular/core": "~17.1.0",
-    "@angular/forms": "~17.1.0",
-    "@angular/platform-browser": "~17.1.0",
-    "@angular/platform-browser-dynamic": "~17.1.0",
-    "@angular/platform-server": "~17.1.0",
-    "@angular/router": "~17.1.0",
-    "@angular/ssr": "~17.1.0",
-    "@ngx-translate/core": "^15.0.0",
-    "@ngx-translate/http-loader": "^8.0.0",
-    "@nx/angular": "18.0.3",
-<<<<<<< HEAD
->>>>>>> 3379c00 (chore(deps): install popper for dropdown and ngx-translate for translations)
     "@popperjs/core": "^2.11.8",
-=======
->>>>>>> 12a89b4 (chore:(uninstall popper) to use bundle boostrap)
     "bootstrap": "^5.3.2",
     "express": "~4.18.2",
     "rxjs": "~7.8.0",
