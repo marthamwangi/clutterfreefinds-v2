@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import {
   FormControl,
   FormGroup,
@@ -8,17 +8,12 @@ import {
 } from '@angular/forms';
 import { take } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
-// var Tooltip = require('bootstrap');
 import * as bootstrap from 'bootstrap';
-export const CFF_SOCIAL_ACCOUNTS = {
-  FACEBOOK: 'https://www.facebook.com/clutter.free.finds.fb/',
-  INSTAGRAM: 'https://www.instagram.com/clutterfreefinds/',
-  TIKTOK: 'https://www.tiktok.com/@clutterfreefinds',
-};
-export const GOOGLE_BUSINESS_PROFILE =
-  'https://maps.app.goo.gl/K6VBPGG1ghWex2TX9';
-export const CFF_WHATS_APP_LINK = 'wa.me/+254706347399';
-
+import {
+  CFF_SOCIAL_ACCOUNTS,
+  CFF_WHATS_APP_LINK,
+  GOOGLE_BUSINESS_PROFILE,
+} from '@clutterfreefinds-v2/globals';
 @Component({
   selector: 'cff-v2-footer',
   standalone: true,
@@ -35,7 +30,7 @@ export class FooterComponent {
   APP_URL = 'clutterfreefinds';
   newsletterProgress = false;
   newsletterMessage = '';
-  CFF_SOCIAL_ACCOUNTS = CFF_SOCIAL_ACCOUNTS;
+  public CFF_SOCIAL_ACCOUNTS = CFF_SOCIAL_ACCOUNTS;
   public emailTooltip: string = 'FOOTER.EMAIL_TOOLTIP';
   public footerLinks = [
     {
