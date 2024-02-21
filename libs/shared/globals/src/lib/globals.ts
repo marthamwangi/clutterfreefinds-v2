@@ -6,7 +6,5 @@ export const CFF_SOCIAL_ACCOUNTS = {
 export const GOOGLE_BUSINESS_PROFILE =
   'https://maps.app.goo.gl/K6VBPGG1ghWex2TX9';
 export const CFF_WHATS_APP_LINK = 'wa.me/+254706347399';
-export const EMAIL_LIST__DEPLOYMENT_ID =
-  'AKfycbx8TpK6N3kKA671lEc6dNovzE9xSa46a_l0-6MfLj4Gd8UDbIbjCzJY9XDhBFLv6Oh5kA';
-export const WEB_APP_EMAIL =
-  'https://script.google.com/macros/s/AKfycbx8TpK6N3kKA671lEc6dNovzE9xSa46a_l0-6MfLj4Gd8UDbIbjCzJY9XDhBFLv6Oh5kA/exec';
+export const WEB_APP_EMAIL_SUBSCRIBER_LIST =
+  'https://script.google.com/macros/s/AKfycbwkCNVPzWdDeMIKofjCJQ0Bkbgf4-NLHFWjtmePyCiBRfwXDeN_wA0WSEDxFKkwZr7k8g/exec';
