@@ -203,7 +203,17 @@
             "TITLE":"Clutter Free Finds Newsletter",
             "DESCRIPTION":"Subscribe to our newsletter to stay updated with our latest news.",
             "PLACEHOLDER":"Enter your email",
-            "BUTTON":"Sign up"
+            "BUTTON":"Sign up",
+            "TOASTS": {
+                "SUCCESS": {
+                  "DESCRIPTION": "Thank you for subscribing to the Clutter Free Finds newsletter",
+                  "TITLE": "Subscribed successfully"
+                },
+                "FAIL": {
+                    "DESCRIPTION": "Please Check your connection. If Error persists, send us an email",
+                    "TITLE": "Something Happened!"
+                  }
+              }
         },
         "SERVICE_AGREEMENT":"Service Agreement",
         "PRIVACY_POLICY":"Privacy policy",
