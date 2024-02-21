@@ -7,8 +7,7 @@ import { TheProcessComponent } from './sections/the-process/the-process.componen
 import { OurCommunityComponent } from './sections/our-community/our-community.component';
 import { HowWeDoItComponent } from './sections/how-we-do-it/how-we-do-it.component';
 import { FaqSectionComponent } from '../faq-section/faq-section.component';
-import { FooterComponent } from '../footer/footer.component';
-
+import { FooterComponent } from '@clutterfreefinds-v2/footer';
 @Component({
   selector: 'cff-v2-home-page',
   standalone: true,
