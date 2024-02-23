@@ -1,0 +1,221 @@
+{
+  "HEADER": {
+    "BUTTON_1": "Get A Free Quote"
+  },
+  "HOME_PAGE": {
+    "HERO_SECTION": {
+      "TITLE": "Organize in style",
+      "GRADIENT": "mess to yess!",
+      "DESCRIPTION": "Kenyan's Ultimate Organizer for Busy Professionals and Families looking to create organized and functional spaces that",
+      "EMPHASIS": "simplify their daily life.",
+      "BUTTON_1": "Get A Free Quote",
+      "BUTTON_2": "Book a consultation",
+      "LIST": {
+        "ITEM1": "Space Decluttering",
+        "ITEM2": "Large Projects as long as 24 Hours",
+        "ITEM3": "Tailored Organizing",
+        "ITEM4": "Instant price estimation"
+      },
+      "STATISTICS": {
+        "STAT1": {
+          "NUMBER": 3,
+          "VALUE": "Organized Spaces"
+        },
+        "STAT2": {
+          "NUMBER": 79,
+          "VALUE": "Instagram Community"
+        },
+        "STAT3": {
+          "NUMBER": 16,
+          "VALUE": "Facebook Community"
+        },
+        "STAT4": {
+          "NUMBER": 720,
+          "VALUE": "TikTok Community"
+        }
+      }
+    },
+    "WHAT_WE_DO": {
+      "TITLE": "What We",
+      "GRADIENT": "Do?",
+      "DESCRIPTION": "We offer a variety of services, including decluttering, space organizing, and unpacking for each client's needs, helping them create and maintain functional and organized spaces.",
+      "SERVICES": {
+        "ITEM1": {
+          "TITLE": "Decluttering",
+          "DESCRIPTION": "We help you remove unnecessary items from (an untidy or overcrowded space)."
+        },
+        "ITEM2": {
+          "TITLE": "Organizing",
+          "DESCRIPTION": "We arrange or order things so that they can be found or used easily and quickly"
+        },
+        "ITEM3": {
+          "TITLE": "Unpacking",
+          "DESCRIPTION": "We take care of the hard work so you can focus on settling in and making your new house feel like home."
+        }
+      },
+      "LINK": "Learn more"
+    },
+    "WHY_CFF": {
+      "TITLE": "Get your space transformed from mess to",
+      "GRADIENT": "yess!",
+      "DESCRIPTION": "We're your trusted professional organizing service, dedicated to helping professionals and families across Kenya streamline their lives for enhanced productivity. Experience un-mess-erable transformations with us, as we create organized and functional spaces that uplift your daily life.",
+      "BUTTON_1": "Get an instant quote",
+      "BUTTON_2": "Book a call"
+    },
+    "THE_PROCESS": {
+      "TITLE": "Clutter Free Finds In Action",
+      "DESCRIPTION": "CFF is here to help you get your space organized and un-messarable in no time!",
+      "PROCESS": {
+        "ITEM_1": {
+          "TITLE": "Consult",
+          "DESCRIPTION": "We want to grasp your preferences and how you navigate your day."
+        },
+        "ITEM_2": {
+          "TITLE": "Estimate",
+          "DESCRIPTION": "We will provide a quote for the time and product needed to complete the project."
+        },
+        "ITEM_3": {
+          "TITLE": "Schedule",
+          "DESCRIPTION": "We will book for you a day that best suits the organizing date."
+        },
+        "ITEM_4": {
+          "TITLE": "Transform",
+          "DESCRIPTION": "When you're ready get your space organized, sit back and watch as your space transforms"
+        }
+      },
+      "INTAKE_FORM": {
+        "TITLE": "Client Intake Form",
+        "LIST": {
+          "ITEM1": "Your details including location",
+          "ITEM2": "Space you are looking to organize",
+          "ITEM3": "Products to use for the project",
+          "ITEM4": "+ Budget & miscellaneous"
+        }
+      },
+      "BUTTON": "Have us Call You",
+      "SUPPORT_TEXT": "All communications are secure and confidential"
+    },
+    "OUR_COMMUNITY": {
+      "TITLE": "Who knows about us more?",
+      "DESCRIPTION": "Our approach focuses on identifying key bottlenecks and implementing innovative organizing systems tailored to our clients needs.",
+      "BUTTON_1": "Get Organized Now",
+      "BUTTON_2": "Consult Clutter Free Finds"
+    },
+    "HOW_WE_DO_IT": {
+      "TITLE": "Why Clutter Free Finds",
+      "DESCRIPTION": {
+        "TEXT_1": "The",
+        "TEXT_2": "tidiest,",
+        "TEXT_3": "seamless",
+        "TEXT_4": "and",
+        "TEXT_5": "budgetary",
+        "TEXT_6": "way to organize your home, office and gift someone a clutter free space."
+      },
+      "LIST": {
+        "ITEM1": "Our team is made up of actual minimalists",
+        "ITEM2": "Possibility of local dropping to donation centers",
+        "ITEM3": "Different offers for different spaces",
+        "ITEM4": "Cheaper product purchase from our partners from 10% off",
+        "ITEM5": "Strict organizing to guarantee your space tranquility.",
+        "ITEM6": " We make your budget organize for you."
+      },
+      "BUTTON": "Get Organized Now"
+    }
+  },
+  "FAQ": {
+    "TITLE": "Frequently Asked Questions",
+    "QUESTIONS": {
+      "ITEM_1": {
+        "QUESTION": "Which areas do you specialize in organizing?",
+        "ANSWER": "Our expertise lies in organizing residential spaces, we are also equally talented in organizing various spaces such as shops, offices and children’s homes. We are well-equipped to handle any organizational needs you may have- just let us know!"
+      },
+      "ITEM_2": {
+        "QUESTION": "Could you specify the inclusions of the estimates?",
+        "ANSWER": "Our estimate will encompass both minimum and maximum costs for time spent and product used for each space. Our goal is to deliver high-quality"
+      },
+      "ITEM_3": {
+        "QUESTION": "Do you do donations or resell items you have de-cluttered in a space?",
+        "ANSWER": "While we can suggest donation centers around you, please note that our services do not entail the physical transportation or resale of your items."
+      },
+      "ITEM_4": {
+        "QUESTION": "What about organizing a space with sensitive documents?",
+        "ANSWER": "We kindly request that you provide us with a list of your most valuable items or keep them separate from the space we are working in. This will enable us to take special care in handling these possessions."
+      },
+      "ITEM_5": {
+        "QUESTION": "Do the services that you provide include moving and unpacking?",
+        "ANSWER": "We do not provide packing or moving services at the moment. Nevertheless, we'd be happy to assist you with unpacking and organizing your belongings once you've settled into your new location!"
+      }
+    }
+  },
+  "FOOTER": {
+    "DESCRIPTION": "Kenyan's Ultimate Organizer for Busy Professionals and Families looking to create organized and functional spaces that",
+    "PAGES": {
+      "COMPANY": {
+        "TITLE": "Company",
+        "LIST": {
+          "ITEM1": "About Us",
+          "ITEM2": "Become A Partner"
+        }
+      },
+      "PRICING": {
+        "TITLE": "Pricing",
+        "LIST": {
+          "ITEM1": "Rates"
+        }
+      },
+      "FOR_CLIENTS": {
+        "TITLE": "For Clients",
+        "LIST": {
+          "ITEM1": "Request for Quote",
+          "ITEM2": "Organizing Checklist"
+        }
+      },
+      "DATA": {
+        "TITLE": "Data",
+        "LIST": {
+          "ITEM1": "Service Agreement",
+          "ITEM2": "Privay Policy"
+        }
+      }
+    },
+    "CTA_LINKS": {
+      "EMAIL": {
+        "TITLE": "Send us an email",
+        "CONTENT": "clutterfreefinds@gmail.com"
+      },
+      "WHATSAPP": {
+        "TITLE": "WhatsApp",
+        "CONTENT": "+254 06 34 73 99"
+      },
+      "CONTACT_US": {
+        "TITLE": "Send us a message",
+        "CONTENT": "Contact Us"
+      },
+      "LOCATION": {
+        "TITLE": "Ngong Office",
+        "CONTENT": "Leave us a Review"
+      }
+    },
+    "EMAIL_TOOLTIP": "Copy to clipboard",
+    "EMAIL_TOOLTIP_COPIED": "Copied to clipboard",
+    "NEWSLETTER": {
+      "TITLE": "Clutter Free Finds Newsletter",
+      "DESCRIPTION": "Subscribe to our newsletter to stay updated with our latest news.",
+      "PLACEHOLDER": "Enter your email",
+      "BUTTON": "Sign up",
+      "TOASTS": {
+        "SUCCESS": {
+          "DESCRIPTION": "Thank you for subscribing to the Clutter Free Finds newsletter",
+          "TITLE": "Subscribed successfully"
+        },
+        "FAIL": {
+          "DESCRIPTION": "Please Check your connection. If Error persists, send us an email",
+          "TITLE": "Something Happened!"
+        }
+      }
+    },
+    "SERVICE_AGREEMENT": "Service Agreement",
+    "PRIVACY_POLICY": "Privacy policy",
+    "COPYRIGHT": "©2024 - Clutter Free Finds  |   All right reserved"
+  }
+}

@@ -1,0 +1,141 @@
+<section class="container-fluid py-3 pt-lg-5 px-5">
+    <div class="px-lg-5 position-relative">
+        <div class="row">
+            <div class="col-12 col-xl-5 col-lg-5 col-md-6">
+                <div class="d-flex flex-column mt-3 mb-3" style="max-width: 430px">
+                    <img src="assets/images/logo-white.svg" alt="clutter free finds logo" class="mb-4" width="150"
+                        height="50" />
+                    <p class="lh-lg"><span class="footer-bold">Clutter Free Finds: </span>
+                        <span class="footer-description">{{'FOOTER.DESCRIPTION' | translate}}</span>
+                    </p>
+                    <div class="row mt-2">
+                        <div class="col-2">
+                            <a target="_blank" [href]="CFF_SOCIAL_ACCOUNTS.FACEBOOK"><img
+                                    src="assets/icons/social/facebook.svg" alt="" width="24" height="24" /></a>
+                        </div>
+                        <div class="col-2">
+                            <a target="_blank" [href]="CFF_SOCIAL_ACCOUNTS.INSTAGRAM"><img
+                                    src="assets/icons/social/instagram.svg" alt="" width="24" height="24" /></a>
+                        </div>
+                        <div class="col-2">
+                            <a target="_blank" [href]="CFF_SOCIAL_ACCOUNTS.TIKTOK"><img
+                                    src="assets/icons/social/tiktok.svg" alt="" width="24" height="24" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-xl-7 col-lg-7 col-md-6">
+                <div class="row mt-3">
+                    <div class="col-12 col-xl-3 col-lg-3 col-md-6 mb-3"
+                        *ngFor="let link of footerLinks; let index = index">
+                        <div class="mb-3 link-title text-capitalize">{{
+                            link.title | translate
+                            }}</div>
+                        <div class="link-content" *ngFor="let item of link.list"><a [href]="item.link" target="_blank"
+                                class="text-decoration-none">{{
+                                item.text | translate
+                                }}</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 col-xl-7 col-lg-7 d-flex">
+                <form [formGroup]="newsletterForm" (ngSubmit)="subscribeToNewsletter()"
+                    class="w-100 mt-3 align-self-end">
+                    <div class="link-title mb-3">
+                        {{ 'FOOTER.NEWSLETTER.TITLE' | translate }}
+                    </div>
+                    <div class="footer-description mb-3">
+                        {{ 'FOOTER.NEWSLETTER.DESCRIPTION' | translate }}
+                    </div>
+                    <div class="row w-100 m-0" style="column-gap: 25px">
+                        <div class="col-md-6 col-12 mb-2 px-0">
+                            <input type="email" class="form-control" [placeholder]="
+									'FOOTER.NEWSLETTER.PLACEHOLDER' | translate
+								" formControlName="email" />
+                        </div>
+                        <div class="col-md-2 col-6 px-0">
+                            <button type="submit"
+                                class="btn primary-btn d-flex align-items-center justify-content-center px-0 w-100">{{
+                                newsletterProgress
+                                ? ''
+                                : ('FOOTER.NEWSLETTER.BUTTON' | translate)
+                                }}
+                                <div *ngIf="newsletterProgress" class="spinner-border" style="width: 20px; height: 20px"
+                                    role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="toast-container position-absolute p-3 bottom-0 end-0" id="toastPlacement"
+                            data-original-class="toast-container position-absolute p-3">
+                            <div class="toast fade" #toastRef aria-live="polite" aria-atomic="true">
+                                <div class="toast-header">
+                                    <div class="me-auto text-dark">{{newsletterTitle | translate}}
+                                    </div>
+                                </div>
+                                <div class="toast-body text-dark">
+                                    {{ newsletterMessage }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-xl-5 col-lg-5">
+                <div class="row mt-3">
+                    <div *ngFor="let ctaLink of footerCTA; first as isFirst"
+                        class="col-12 col-xl-6 col-lg-6 col-md-6 mb-3">
+                        <div *ngIf="isFirst; else notFirst" class="w-100">
+                            <div (click)="copyToClipboard()" data-bs-toggle="tooltip" data-bs-placement="top"
+                                class="d-inline-flex contact-section align-items-center h-100 w-100 border-0"
+                                #tooltipRef [attr.data-bs-original-title]="(emailTooltip$ | async)| translate"
+                                style="gap: 16px">
+                                <img [src]="'assets/icons/' + ctaLink.image + '.svg'" alt="" width="45" height="45" />
+                                <div class="d-flex flex-column" style="gap: 9px">
+                                    <p class="cta-title text-break">{{ ctaLink.title | translate }}</p>
+                                    <p class="cta-links text-break">{{ ctaLink.content | translate }} </p>
+                                </div>
+                            </div>
+                        </div>
+                        <ng-template #notFirst>
+                            <div class="w-100">
+                                <a *ngIf="!isFirst" class="d-inline-flex contact-section align-items-center h-100 w-100"
+                                    [href]="ctaLink.link" target="_blank" rel="noopener" style="gap: 16px">
+                                    <img [src]="'assets/icons/' + ctaLink.image + '.svg'" alt="" width="45"
+                                        height="45" />
+                                    <div class="d-flex flex-column" style="gap: 9px">
+                                        <p class="cta-title text-break">{{ ctaLink.title | translate }}</p>
+                                        <p class="cta-links text-break">{{ ctaLink.content | translate }} </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="row mt-3">
+            <div class="col-12 col-xl-6 col-lg-6">
+                <div class="row mb-3 privacy-links">
+                    <span><a [href]="APP_URL + '/service-agreement'">
+                            {{ 'FOOTER.SERVICE_AGREEMENT' | translate }}
+                        </a></span>
+                    <span><a [href]="APP_URL + '/privacy-policy'">
+                            {{ 'FOOTER.PRIVACY_POLICY' | translate }}
+                        </a></span>
+                </div>
+            </div>
+
+            <div class="col-12 col-xl-6 col-lg-6 mb-4">
+                <div class="text-lg-end copyright">
+                    <span>
+                        {{ 'FOOTER.COPYRIGHT' | translate }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

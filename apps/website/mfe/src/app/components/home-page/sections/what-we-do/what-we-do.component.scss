@@ -1,0 +1,71 @@
+.cff-v2-what-we-do-title {
+  text-align: center;
+  span {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 16px;
+
+    @media (max-width: 575.98px) {
+      font-size: 36px;
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.cff-v2-what-we-do-description {
+  max-width: 494px;
+  text-align: center;
+  font-weight: 400;
+  opacity: 0.75;
+  font-size: 16px;
+  color: rgba(var(--dark-rgb), 0.8);
+  line-height: 24px;
+  margin-bottom: 36px;
+
+  @media (max-width: 575.98px) {
+    width: 306px;
+    margin-bottom: 24px;
+  }
+}
+
+.cff-v2-what-we-do-card {
+  text-decoration: none;
+  width: 340px;
+  max-width: 340px;
+  padding: 32px 16px;
+  align-items: center;
+  border-radius: 8px !important;
+  background: rgba(var(--accent-rgb), 0.05);
+  gap: 17px;
+
+  .cff-v2-what-we-do-card-header {
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .cff-v2-what-we-do-card-description {
+    color: var(--grey-dark);
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  &:hover {
+    background: rgba(174, 131, 218, 0.2);
+    animation-timing-function: ease-in-out;
+    animation-duration: 450ms;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    .link-btn {
+      animation-timing-function: ease-in-out;
+      animation-duration: 450ms;
+      column-gap: 8px;
+    }
+  }
+}

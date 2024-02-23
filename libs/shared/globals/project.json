@@ -1,0 +1,19 @@
+{
+  "name": "globals",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/globals/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/globals",
+        "main": "libs/shared/globals/src/index.ts",
+        "tsConfig": "libs/shared/globals/tsconfig.lib.json",
+        "assets": ["libs/shared/globals/*.md"]
+      }
+    }
+  },
+  "tags": []
+}
