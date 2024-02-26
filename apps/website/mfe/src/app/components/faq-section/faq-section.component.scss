@@ -6,7 +6,7 @@ section {
   font-weight: 700;
   font-size: 48px;
   line-height: 64px;
-  color: rgba(var(--dark), 0.8);
+  color: rgba(var(--dark-rgb), 0.8);
   text-align: center;
   margin-inline: auto;
   @media (max-width: 992.98px) {
@@ -16,14 +16,12 @@ section {
 }
 .accordion {
   row-gap: 16px;
-  .accordion-button.collapsed::after {
-    background: url(/assets/icons/expand_up.svg);
-  }
+
   .accordion-item {
     background: rgba(var(--accent-rgb), 0.07);
     border: none !important;
     border-radius: 16px;
-    padding: 20px 40px;
+    padding: 20px 10px;
   }
   .accordion-button {
     background: transparent;
@@ -31,12 +29,16 @@ section {
     font-size: 16px;
     line-height: 24px;
     border-radius: 16px;
-    color: rgba(var(--dark), 0.8);
+    color: rgba(var(--dark-rgb), 0.8);
+    --bs-accordion-btn-icon: url(/assets/icons/expand_down.svg);
+    --bs-accordion-btn-active-icon: url(/assets/icons/expand_down.svg);
+    &.collapsed::after {
+      transform: rotate(0deg);
+    }
     &:not(.collapsed) {
       box-shadow: none;
       &::after {
-        transform: none;
-        background: url(/assets/icons/expand_down.svg);
+        transform: rotate(180deg);
       }
     }
     &:focus {
@@ -46,7 +48,7 @@ section {
   }
   .accordion-collapse.collapse.show {
     .accordion-body {
-      color: rgba(var(--dark), 0.05);
+      color: rgba(var(--dark-rgb), 0.75);
     }
   }
 }

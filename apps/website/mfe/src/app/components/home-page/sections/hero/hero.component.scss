@@ -13,21 +13,21 @@
   font-weight: 600;
   font-size: 64px;
   line-height: 130%;
-  text-transform: uppercase;
-  @media (max-width: 992.98px) {
+  @media (max-width: 575px) {
     text-align: center;
     font-size: 36px;
   }
 }
 
 .cff-v2-hero-section-description {
-  color: rgba(var(--dark), 0.9);
+  opacity: 0.9;
+  color: rgba(var(--dark-rgb), 0.8);
   font-size: 18px;
   font-weight: 500;
   line-height: 160%;
   margin-bottom: 24px;
   max-width: 516px;
-  @media (max-width: 992.98px) {
+  @media (max-width: 575px) {
     text-align: center;
     font-size: 16px;
   }
@@ -41,7 +41,7 @@
 }
 
 .list-item {
-  color: rgba(var(--dark), 0.9);
+  color: rgba(var(--dark-rgb), 0.9);
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
@@ -49,7 +49,7 @@
     flex: 0 0 auto;
     width: 50%;
   }
-  @media (max-width: 992.98px) {
+  @media (max-width: 575px) {
     text-align: left;
     font-size: 12px;
   }
@@ -61,7 +61,7 @@
   &:last-child {
     border: none;
   }
-  @media (max-width: 992.98px) {
+  @media (max-width: 768px) {
     width: 118px;
     height: 1px;
     border-right: 0;
@@ -80,7 +80,7 @@
   .cff-v2-hero-section-plus {
     color: var(--accent);
   }
-  @media (max-width: 992.98px) {
+  @media (max-width: 575px) {
     font-size: 40px;
   }
 }

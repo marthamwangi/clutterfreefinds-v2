@@ -5,9 +5,11 @@
   line-height: 60px;
   margin-bottom: 44px;
 
-  @media (max-width: 992.98px) {
-    text-align: center;
+  @media (max-width: 575px) {
+    text-align: left;
     font-size: 36px;
+    line-height: 54px;
+    margin-bottom: 24px;
   }
 }
 
@@ -15,7 +17,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: rgba(var(--dark), 0.85);
+  color: rgba(var(--dark-rgb), 0.85);
   margin-bottom: 44px;
   max-width: 668px;
 }
