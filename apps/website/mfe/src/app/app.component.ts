@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { DEFAULT_APP_LANGUAGE } from '@clutterfreefinds-v2/globals';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  standalone: true,
-  imports: [RouterModule],
   selector: 'cff-v2',
   templateUrl: './app.component.html',
 })
