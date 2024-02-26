@@ -2,7 +2,7 @@
   "name": "footer",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/footer/src",
-  "prefix": "angular-monorepo",
+  "prefix": "cff-v2-footer",
   "tags": [],
   "projectType": "library",
   "targets": {}

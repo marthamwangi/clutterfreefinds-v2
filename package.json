@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start:website": "nx serve website"
+    "start-website": "nx serve website-mfe --serve-path /"
   },
   "private": true,
   "dependencies": {
