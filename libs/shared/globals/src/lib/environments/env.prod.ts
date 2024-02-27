@@ -1,7 +1,7 @@
-export const production = false;
+export const production = true;
+export const APP_URL = 'https://cff-v2.web.app';
 export const BASE_API =
-  'http://127.0.0.1:5001/cff-v2/us-central1/cffv2WebsiteMfessr';
-export const APP_URL = 'http://127.0.0.1:5001';
+  'https://us-central1-cff-v2.cloudfunctions.net/cffv2WebsiteMfessr';
 export const firebaseConfig = {
   apiKey: 'AIzaSyCTYJdqWrGxQz9GJ2pgx2Z21qvnxsuftd0',
   authDomain: 'cff-v2.firebaseapp.com',
