@@ -1,5 +1,5 @@
 <section class="container-fluid py-3 pt-lg-5 px-5">
-    <div class="px-lg-5 position-relative">
+    <div class="px-lg-5 ">
         <div class="row">
             <div class="col-12 col-xl-5 col-lg-5 col-md-6">
                 <div class="d-flex flex-column mt-3 mb-3" style="max-width: 430px">
@@ -68,18 +68,7 @@
                                 </div>
                             </button>
                         </div>
-                        <div class="toast-container position-absolute p-3 bottom-0 end-0" id="toastPlacement"
-                            data-original-class="toast-container position-absolute p-3">
-                            <div class="toast fade" #toastRef aria-live="polite" aria-atomic="true">
-                                <div class="toast-header">
-                                    <div class="me-auto text-dark">{{newsletterTitle | translate}}
-                                    </div>
-                                </div>
-                                <div class="toast-body text-dark">
-                                    {{ newsletterMessage }}
-                                </div>
-                            </div>
-                        </div>
+                        <div class="mt-2"> {{ newsletterMessage }}</div>
                     </div>
                 </form>
             </div>
