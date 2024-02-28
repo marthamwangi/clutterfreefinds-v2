@@ -32,6 +32,10 @@
         "STAT4": {
           "NUMBER": 720,
           "VALUE": "TikTok Community"
+        },
+        "STAT5": {
+          "NUMBER": 18,
+          "VALUE": "YouTube Community"
         }
       }
     },
@@ -147,8 +151,14 @@
       }
     }
   },
+  "HOW_IT_WORKS":{
+    "TITLE":"Transform and enjoy an organized space now",
+    "DESCRIPTION":"Be a part of the largest growing Network of Organized Kenyans, Professionals, families and individuals who have  productive and simplified life",
+    "BUTTON_1":"Get a quote",
+    "BUTTON_2":"How it works"
+  },
   "FOOTER": {
-    "DESCRIPTION": "Kenyan's Ultimate Organizer for Busy Professionals and Families looking to create organized and functional spaces that",
+    "DESCRIPTION": "Kenyan's Ultimate Organizer for Busy Professionals and Families looking to create organized and functional spaces that simplify their daily life.",
     "PAGES": {
       "COMPANY": {
         "TITLE": "Company",

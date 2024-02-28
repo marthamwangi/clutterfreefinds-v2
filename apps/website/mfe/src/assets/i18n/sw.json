@@ -151,6 +151,12 @@
       }
     }
   },
+  "HOW_IT_WORKS":{
+    "TITLE": "Badilisha na ufurahie nafasi iliyopangwa sasa",
+    "DESCRIPTION": "Kuwa sehemu ya Mtandao mkubwa unaokua wa Wakenya Waliopangwa, Wataalamu, familia na watu binafsi ambao wana maisha yenye matokeo na yaliyorahisishwa.",
+    "BUTTON_1": "Pata nukuu",
+    "BUTTON_2": "Inavyofanya kazi"
+  },
   "FOOTER": {
     "DESCRIPTION": "Mratibu Mkuu wa Kenya kwa Wanataaluma na Familia zinaoshughulika kutafuta kuunda nafasi zilizopangwa na za kufanya kazi ambazo hurahisisha maisha yao ya kila siku",
     "PAGES": {
