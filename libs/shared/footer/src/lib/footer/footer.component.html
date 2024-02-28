@@ -74,13 +74,12 @@
             </div>
             <div class="col-12 col-xl-5 col-lg-5">
                 <div class="row mt-3">
-                    <div *ngFor="let ctaLink of footerCTA; first as isFirst"
-                        class="col-12 col-xl-6 col-lg-6 col-md-6 mb-3">
-                        <div *ngIf="isFirst; else notFirst" class="w-100">
-                            <div (click)="copyToClipboard()" data-bs-toggle="tooltip" data-bs-placement="top"
-                                class="d-inline-flex contact-section align-items-center h-100 w-100 border-0"
-                                #tooltipRef [attr.data-bs-original-title]="(emailTooltip$ | async)| translate"
-                                style="gap: 16px">
+                    <ng-container *ngFor="let ctaLink of footerCTA; first as isFirst">
+                        <div *ngIf="isFirst; else notFirst" class="col-12 col-xl-6 col-lg-6 col-md-4 mb-3">
+                            <div (click)="copyToClipboard()"
+                                class="d-inline-flex contact-section align-items-center w-100 h-100  position-relative"
+                                #tooltipRef="matTooltip" [matTooltip]="(emailTooltip$ | async)| translate"
+                                matTooltipPosition="above" style="gap: 16px">
                                 <img [src]="'assets/icons/' + ctaLink.image + '.svg'" alt="" width="45" height="45" />
                                 <div class="d-flex flex-column" style="gap: 9px">
                                     <p class="cta-title text-break">{{ ctaLink.title | translate }}</p>
@@ -89,7 +88,7 @@
                             </div>
                         </div>
                         <ng-template #notFirst>
-                            <div class="w-100">
+                            <div class="col-12 col-xl-6 col-lg-6 col-md-4 mb-3">
                                 <a *ngIf="!isFirst" class="d-inline-flex contact-section align-items-center h-100 w-100"
                                     [href]="ctaLink.link" target="_blank" rel="noopener" style="gap: 16px">
                                     <img [src]="'assets/icons/' + ctaLink.image + '.svg'" alt="" width="45"
@@ -101,7 +100,7 @@
                                 </a>
                             </div>
                         </ng-template>
-                    </div>
+                    </ng-container>
                 </div>
             </div>
         </div>

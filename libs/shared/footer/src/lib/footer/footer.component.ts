@@ -10,15 +10,14 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
   CFF_SOCIAL_ACCOUNTS,
   CFF_WHATS_APP_LINK,
+  EMAIL,
   GOOGLE_BUSINESS_PROFILE,
   WEB_APP_EMAIL_SUBSCRIBER_LIST,
 } from '@clutterfreefinds-v2/globals';
 import { FooterService } from './footer.service';
 import { BehaviorSubject, take } from 'rxjs';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import { ToastrService } from 'ngx-toastr';
-import { HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'clutterfreefinds-v2-footer',
   standalone: true,
@@ -28,7 +27,6 @@ import { HttpHeaders } from '@angular/common/http';
     NgFor,
     NgIf,
     AsyncPipe,
-    MatProgressSpinnerModule,
     MatTooltipModule,
   ],
   templateUrl: './footer.component.html',
@@ -189,24 +187,23 @@ export class FooterComponent {
   }
 
   copyToClipboard(): void {
-    navigator.clipboard.writeText('clutterfreefinds@gmail.com').then(() => {
+    navigator.clipboard.writeText(EMAIL).then(() => {
       this.emailTooltip$.next('FOOTER.EMAIL_TOOLTIP_COPIED');
       this._tooltipRef.show();
-      setTimeout(() => {
-        this._tooltipRef.hide();
-      }, 2000);
+      // setTimeout(() => {
+      //   this._tooltipRef.hide();
+      // }, 2000);
       this._tooltipRef._tooltipInstance
         ?.afterHidden()
         .pipe(take(1))
         .subscribe({
           complete: () => {
-            this.resetCopyToClipboard();
+            this._resetCopyToClipboard();
           },
         });
     });
   }
-
-  resetCopyToClipboard() {
+  private _resetCopyToClipboard() {
     setTimeout(() => {
       this.emailTooltip$.next('FOOTER.EMAIL_TOOLTIP');
     }, 5000);
