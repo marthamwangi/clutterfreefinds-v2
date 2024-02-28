@@ -1,8 +1,231 @@
 {
+  "HEADER": {
+    "BUTTON_1": "Pata Nukuu ya Bure"
+  },
   "HOME_PAGE": {
     "HERO_SECTION": {
       "TITLE": "Panga kwa mtindo",
-      "DESCRIPTION": ""
+      "GRADIENT": "fujo kwa ndiyo!",
+      "DESCRIPTION": "Mratibu Mkuu wa Kenya kwa Wanataaluma na Familia zinaoshughulika kutafuta kuunda nafasi zilizopangwa na za kufanya kazi ambazo",
+      "EMPHASIS": "hurahisisha maisha yao ya kila siku.",
+      "BUTTON_1": "Pata Nukuu ya Bure",
+      "BUTTON_2": "Agiza mashauriano",
+      "LIST": {
+        "ITEM1": "Uondoaji wa Nafasi",
+        "ITEM2": "Miradi mikubwa kwa muda wa Saa 24",
+        "ITEM3": "Upangaji Uliolengwa",
+        "ITEM4": "Makadirio ya bei ya papo hapo"
+      },
+      "STATISTICS": {
+        "STAT1": {
+          "NUMBER": 3,
+          "VALUE": "Nafasi Zilizopangwa"
+        },
+        "STAT2": {
+          "NUMBER": 71,
+          "VALUE": "Jumuiya ya Instagram"
+        },
+        "STAT3": {
+          "NUMBER": 22,
+          "VALUE": "Jumuiya ya Facebook"
+        },
+        "STAT4": {
+          "NUMBER": 720,
+          "VALUE": "Jumuiya ya TikTok"
+        },
+        "STAT5": {
+          "NUMBER": 18,
+          "VALUE": "Jumuiya ya YouTube"
+        }
+      }
+    },
+    "WHAT_WE_DO": {
+      "TITLE": "Nani Sisi",
+      "GRADIENT": "Je?",
+      "DESCRIPTION": "Tunatoa huduma mbalimbali, ikiwa ni pamoja na kutenganisha, kupanga nafasi, na kufungua kwa mahitaji ya kila mteja, kuwasaidia kuunda na kudumisha nafasi za kazi na zilizopangwa.",
+      "SERVICES": {
+        "ITEM1": {
+          "TITLE": "Kutenganizha",
+          "DESCRIPTION": "Tunakusaidia kuondoa vitu visivyo vya lazima kutoka (nafasi isiyo safi au iliyojaa vitu)."
+        },
+        "ITEM2": {
+          "TITLE": "Kupanga",
+          "DESCRIPTION": "Tunapanga au kuagiza vitu ili viweze kupatikana au kutumika kwa urahisi na haraka"
+        },
+        "ITEM3": {
+          "TITLE": "Kufungua",
+          "DESCRIPTION": "Tunashughulikia kazi ngumu ili uweze kuzingatia kutulia na kuifanya nyumba yako mpya ihisi kama nyumbani."
+        }
+      },
+      "LINK": "Jifunze zaidi"
+    },
+    "WHY_CFF": {
+      "TITLE": "Badilisha nafasi yako kutoka kwa fujo hadi",
+      "GRADIENT": "ndio!",
+      "DESCRIPTION": "Sisi ni huduma yako ya kitaalamu ya kupanga, inayojitolea kusaidia wataalamu na familia kote nchini Kenya kuratibu maisha yao kwa tija iliyoboreshwa. ",
+      "BUTTON_1": "Pata nukuu ya papo hapo",
+      "BUTTON_2": "Agiza simu"
+    },
+    "THE_PROCESS": {
+      "TITLE": "Clutter Bure hupata Katika Vitendo",
+      "DESCRIPTION": "CFF iko hapa kukusaidia kupanga nafasi yako na kutoweza kujumlika kwa haraka!",
+      "PROCESS": {
+        "ITEM_1": {
+          "TITLE": "Shauriana",
+          "DESCRIPTION": "Tunataka kufahamu mapendeleo yako na jinsi unavyoendesha siku yako."
+        },
+        "ITEM_2": {
+          "TITLE": "Kadiria",
+          "DESCRIPTION": "Tutatoa bei ya muda na bidhaa inayohitajika ili kukamilisha mradi."
+        },
+        "ITEM_3": {
+          "TITLE": "Ratiba",
+          "DESCRIPTION": "Tutakuwekea siku ambayo inafaa zaidi tarehe ya kupanga."
+        },
+        "ITEM_4": {
+          "TITLE": "Badilisha",
+          "DESCRIPTION": "Ukiwa tayari panga nafasi yako, keti na uangalie jinsi nafasi yako inavyobadilika"
+        }
+      },
+      "INTAKE_FORM": {
+        "TITLE": "Fomu ya Kuingiza Mteja",
+        "LIST": {
+          "ITEM1": "Maelezo yako ikijumuisha eneo",
+          "ITEM2": "Nafasi unayotafuta kupanga",
+          "ITEM3": "Bidhaa za kutumia kwa mradi huo",
+          "ITEM4": "Bajeti"
+        }
+      },
+      "BUTTON": "Hebu Tukuite",
+      "SUPPORT_TEXT": "Mawasiliano yote ni salama na ya siri"
+    },
+    "OUR_COMMUNITY": {
+      "TITLE": "Nani anajua zaidi kuhusu sisi?",
+      "DESCRIPTION": "Mtazamo wetu unalenga katika kutambua vikwazo muhimu na kutekeleza mifumo bunifu ya kupanga iliyolengwa kulingana na mahitaji ya wateja wetu.",
+      "BUTTON_1": "Jipange Sasa",
+      "BUTTON_2": "Consult Clutter Free Finds"
+    },
+    "HOW_WE_DO_IT": {
+      "TITLE": "Kwa nini Clutter Bure hupata",
+      "DESCRIPTION": {
+        "TEXT_1": "The",
+        "TEXT_2": "safi zaidi,",
+        "TEXT_3": "imefumwa",
+        "TEXT_4": "na",
+        "TEXT_5": "ya bajeti",
+        "TEXT_6": "njia ya kupanga nyumba yako, ofisi na zawadi mtu nafasi clutter bure."
+      },
+      "LIST": {
+        "ITEM1": "Timu yetu inaundwa na minimalists halisi",
+        "ITEM2": "Uwezekano wa kushuka kwa eneo kwenye vituo vya michango",
+        "ITEM3": "Matoleo tofauti kwa nafasi tofauti",
+        "ITEM4": "Ununuzi wa bidhaa kwa bei nafuu kutoka kwa washirika wetu kutoka punguzo la 10%.",
+        "ITEM5": "Kupanga madhubuti ili kuhakikisha utulivu wa nafasi yako.",
+        "ITEM6": " Tunapanga bajeti yako kwa ajili yako."
+      },
+      "BUTTON": "Jipange Sasa"
     }
+  },
+  "FAQ": {
+    "TITLE": "maswali yanayoulizwa mara kwa mara",
+    "QUESTIONS": {
+      "ITEM_1": {
+        "QUESTION": "Je, umebobea katika kuandaa maeneo gani?",
+        "ANSWER": "Utaalam wetu upo katika kupanga maeneo ya makazi, pia tuna talanta sawa katika kuandaa nafasi mbalimbali kama vile maduka, ofisi na nyumba za watoto. "
+      },
+      "ITEM_2": {
+        "QUESTION": "Je, unaweza kubainisha majumuisho ya makadirio?",
+        "ANSWER": "Makadirio yetu yatajumuisha gharama za chini na za juu zaidi kwa muda uliotumika na bidhaa inayotumika kwa kila nafasi. "
+      },
+      "ITEM_3": {
+        "QUESTION": "Je, wewe hutoa michango au kuuza tena vitu ulivyotenganisha kwenye nafasi?",
+        "ANSWER": "Ingawa tunaweza kupendekeza vituo vya michango vilivyo karibu nawe, tafadhali kumbuka kuwa huduma zetu hazijumuishi usafiri halisi au uuzaji wa bidhaa zako tena."
+      },
+      "ITEM_4": {
+        "QUESTION": "Vipi kuhusu kupanga nafasi na hati nyeti?",
+        "ANSWER": "Tunakuomba utupe orodha ya vitu vyako vya thamani zaidi au uvitenge na nafasi tunayofanyia kazi. Hili litatuwezesha kuwa waangalifu sana katika kushughulikia mali hizi."
+      },
+      "ITEM_5": {
+        "QUESTION": "Je, huduma unazotoa zinajumuisha kuhamisha na kufungua?",
+        "ANSWER": "Hatutoi huduma za kufunga au kuhamisha kwa sasa. "
+      }
+    }
+  },
+  "HOW_IT_WORKS":{
+    "TITLE": "Badilisha na ufurahie nafasi iliyopangwa sasa",
+    "DESCRIPTION": "Kuwa sehemu ya Mtandao mkubwa unaokua wa Wakenya Waliopangwa, Wataalamu, familia na watu binafsi ambao wana maisha yenye matokeo na yaliyorahisishwa.",
+    "BUTTON_1": "Pata nukuu",
+    "BUTTON_2": "Inavyofanya kazi"
+  },
+  "FOOTER": {
+    "DESCRIPTION": "Mratibu Mkuu wa Kenya kwa Wanataaluma na Familia zinaoshughulika kutafuta kuunda nafasi zilizopangwa na za kufanya kazi ambazo hurahisisha maisha yao ya kila siku",
+    "PAGES": {
+      "COMPANY": {
+        "TITLE": "Kampuni",
+        "LIST": {
+          "ITEM1": "Kuhusu sisi",
+          "ITEM2": "Kuwa Mshirika"
+        }
+      },
+      "PRICING": {
+        "TITLE": "Kuweka bei",
+        "LIST": {
+          "ITEM1": "Viwango"
+        }
+      },
+      "FOR_CLIENTS": {
+        "TITLE": "Kwa Wateja",
+        "LIST": {
+          "ITEM1": "Ombi la Nukuu",
+          "ITEM2": "Kuandaa Orodha"
+        }
+      },
+      "DATA": {
+        "TITLE": "Data",
+        "LIST": {
+          "ITEM1": "Mkataba wa Huduma",
+          "ITEM2": "Sera ya Faragha"
+        }
+      }
+    },
+    "CTA_LINKS": {
+      "EMAIL": {
+        "TITLE": "Tutumie barua pepe",
+        "CONTENT": "clutterfreefinds@gmail.com"
+      },
+      "WHATSAPP": {
+        "TITLE": "WhatsApp",
+        "CONTENT": "254 06 34 73 99"
+      },
+      "CONTACT_US": {
+        "TITLE": "Tutumie ujumbe",
+        "CONTENT": "Wasiliana nasi"
+      },
+      "LOCATION": {
+        "TITLE": "Ofisi ya Ngong",
+        "CONTENT": "Tuachie Uhakiki"
+      }
+    },
+    "EMAIL_TOOLTIP": "Nakili kwenye ubao wa kunakili",
+    "EMAIL_TOOLTIP_COPIED": "Imenakiliwa kwenye ubao wa kunakili",
+    "NEWSLETTER": {
+      "TITLE": "Clutter Free hupata Jarida",
+      "DESCRIPTION": "Jiandikishe kwa jarida letu ili kusasishwa na habari zetu mpya.",
+      "PLACEHOLDER": "Weka barua pepe yako",
+      "BUTTON": "Jisajili",
+      "TOASTS": {
+        "SUCCESS": {
+          "DESCRIPTION": "Asante kwa kujiandikisha kwenye jarida la Clutter Free Finds",
+          "TITLE": "Umejisajili"
+        },
+        "FAIL": {
+          "DESCRIPTION": "Tafadhali Angalia muunganisho wako. ",
+          "TITLE": "Kitu Kimetokea!"
+        }
+      }
+    },
+    "SERVICE_AGREEMENT": "Mkataba wa Huduma",
+    "PRIVACY_POLICY": "Sera ya faragha",
+    "COPYRIGHT": "©2024 - Upataji Usio na Clutter | "
   }
 }

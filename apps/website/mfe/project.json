@@ -2,7 +2,7 @@
   "name": "website-mfe",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "angular-monorepo",
+  "prefix": "wc",
   "sourceRoot": "apps/website/mfe/src",
   "tags": [],
   "targets": {
@@ -10,7 +10,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/website/mfe/browser",
+        "outputPath": "apps/website/public/browser",
         "index": "apps/website/mfe/src/index.html",
         "main": "apps/website/mfe/src/main.ts",
         "polyfills": ["zone.js"],
@@ -20,8 +20,14 @@
           "apps/website/mfe/src/favicon.ico",
           "apps/website/mfe/src/assets"
         ],
-        "styles": ["apps/website/mfe/src/styles.scss"],
-        "scripts": []
+        "styles": [
+        "node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "apps/website/mfe/src/styles.scss"
+      ],
+      "scripts": [
+        "node_modules/@popperjs/core/dist/umd/popper.min.js",
+        "node_modules/bootstrap/dist/js/bootstrap.min.js"
+      ]
       },
       "configurations": {
         "production": {
@@ -69,7 +75,7 @@
       "dependsOn": ["build"],
       "executor": "@angular-devkit/build-angular:server",
       "options": {
-        "outputPath": "dist/apps/website/mfe/server",
+        "outputPath": "apps/website/public/server",
         "main": "apps/website/mfe/server.ts",
         "tsConfig": "apps/website/mfe/tsconfig.server.json",
         "inlineStyleLanguage": "scss"

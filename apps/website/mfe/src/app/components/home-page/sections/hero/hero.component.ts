@@ -28,5 +28,9 @@ export class HeroComponent {
       statistic: 'HOME_PAGE.HERO_SECTION.STATISTICS.STAT4.NUMBER',
       value: 'HOME_PAGE.HERO_SECTION.STATISTICS.STAT4.VALUE',
     },
+    {
+      statistic: 'HOME_PAGE.HERO_SECTION.STATISTICS.STAT5.NUMBER',
+      value: 'HOME_PAGE.HERO_SECTION.STATISTICS.STAT5.VALUE',
+    },
   ];
 }
