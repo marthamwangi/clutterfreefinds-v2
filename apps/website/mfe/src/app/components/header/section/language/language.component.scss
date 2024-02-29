@@ -1,0 +1,6 @@
+select {
+  text-transform: uppercase;
+  &:focus {
+    outline: 0;
+  }
+}

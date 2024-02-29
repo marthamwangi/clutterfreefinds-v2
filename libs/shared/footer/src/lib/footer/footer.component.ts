@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import {
   FormControl,
@@ -6,32 +6,35 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
-import * as bootstrap from 'bootstrap';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
   CFF_SOCIAL_ACCOUNTS,
   CFF_WHATS_APP_LINK,
+  EMAIL,
   GOOGLE_BUSINESS_PROFILE,
   WEB_APP_EMAIL_SUBSCRIBER_LIST,
 } from '@clutterfreefinds-v2/globals';
 import { FooterService } from './footer.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, take } from 'rxjs';
+import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'clutterfreefinds-v2-footer',
   standalone: true,
-  imports: [TranslateModule, ReactiveFormsModule, NgFor, NgIf, AsyncPipe],
+  imports: [
+    TranslateModule,
+    ReactiveFormsModule,
+    NgFor,
+    NgIf,
+    AsyncPipe,
+    MatTooltipModule,
+  ],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })
-export class FooterComponent implements AfterViewInit {
+export class FooterComponent {
   @ViewChild('tooltipRef', { static: false })
-  private tooltipRef!: ElementRef<HTMLDivElement>;
-
-  @ViewChild('toastRef', { static: false })
-  private toastRef!: ElementRef<HTMLDivElement>;
-
-  private _bootstrapTooltipRef: any;
-  private _boostrapToastRef: any;
+  private _tooltipRef!: MatTooltip;
 
   APP_URL = 'clutterfreefinds';
   newsletterProgress = false;
@@ -117,31 +120,18 @@ export class FooterComponent implements AfterViewInit {
     },
   ];
   newsletterForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('mail@mail.com', [
+      Validators.required,
+      Validators.email,
+    ]),
   });
 
-  constructor(private _newsLetterService: FooterService) {}
-  ngAfterViewInit(): void {
-    if (!this._boostrapToastRef) {
-      this._boostrapToastRef = new bootstrap.Toast(
-        this.toastRef.nativeElement,
-        {
-          autohide: true,
-          animation: true,
-        }
-      );
-    }
+  constructor(
+    private _toastrService: ToastrService,
+    private _newsLetterService: FooterService,
+    private readonly _translateService: TranslateService
+  ) {}
 
-    if (!this._bootstrapTooltipRef) {
-      this._bootstrapTooltipRef = new bootstrap.Tooltip(
-        this.tooltipRef.nativeElement,
-        {
-          delay: 500,
-          animation: true,
-        }
-      );
-    }
-  }
   public subscribeToNewsletter() {
     if (!this.newsletterForm.valid) return;
     this.newsletterProgress = true;
@@ -164,41 +154,58 @@ export class FooterComponent implements AfterViewInit {
   }
 
   subscribeSuccess() {
-    this._boostrapToastRef.show();
-    const msgSuccessTitle = 'FOOTER.NEWSLETTER.TOASTS.SUCCESS.TITLE';
-    const msgSuccessDesc = 'FOOTER.NEWSLETTER.TOASTS.SUCCESS.DESCRIPTION';
+    const msgSuccessTitle = this._translateService.instant(
+      'FOOTER.NEWSLETTER.TOASTS.SUCCESS.TITLE'
+    );
+    const msgSuccessDesc = this._translateService.instant(
+      'FOOTER.NEWSLETTER.TOASTS.SUCCESS.DESCRIPTION'
+    );
     this.newsletterTitle = msgSuccessTitle;
     this.newsletterMessage = msgSuccessDesc;
+    this._toastrService.success(msgSuccessDesc, msgSuccessTitle, {
+      closeButton: true,
+    });
     this.resetSubscribeMessage();
   }
 
   subscribeFailed(error: any) {
-    this._boostrapToastRef.show();
-    const msgFailedTitle = 'FOOTER.NEWSLETTER.TOASTS.FAIL.TITLE';
+    const msgFailedTitle = this._translateService.instant(
+      'FOOTER.NEWSLETTER.TOASTS.FAIL.TITLE'
+    );
     this.newsletterTitle = msgFailedTitle;
     this.newsletterMessage = error;
+    this._toastrService.error(error, msgFailedTitle, {
+      closeButton: true,
+    });
     this.resetSubscribeMessage();
   }
 
   resetSubscribeMessage() {
     setTimeout(() => {
       this.newsletterMessage = '';
-      this._boostrapToastRef.hide();
     }, 5000);
   }
 
   copyToClipboard(): void {
-    this._bootstrapTooltipRef.show();
-    navigator.clipboard.writeText('clutterfreefinds@gmail.com').then(() => {
+    navigator.clipboard.writeText(EMAIL).then(() => {
       this.emailTooltip$.next('FOOTER.EMAIL_TOOLTIP_COPIED');
-      this.resetCopyToClipboard();
+      this._tooltipRef.show();
+      // setTimeout(() => {
+      //   this._tooltipRef.hide();
+      // }, 2000);
+      this._tooltipRef._tooltipInstance
+        ?.afterHidden()
+        .pipe(take(1))
+        .subscribe({
+          complete: () => {
+            this._resetCopyToClipboard();
+          },
+        });
     });
   }
-
-  resetCopyToClipboard() {
+  private _resetCopyToClipboard() {
     setTimeout(() => {
       this.emailTooltip$.next('FOOTER.EMAIL_TOOLTIP');
-      this._bootstrapTooltipRef.hide();
     }, 5000);
   }
 }
