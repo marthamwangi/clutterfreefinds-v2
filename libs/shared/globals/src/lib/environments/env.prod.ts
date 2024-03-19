@@ -1,7 +1,6 @@
 export const production = true;
 export const APP_URL = 'https://cff-v2.web.app';
-export const BASE_API =
-  'https://us-central1-cff-v2.cloudfunctions.net/cffv2WebsiteMfessr';
+export const BASE_API = 'http://localhost:3000';
 export const firebaseConfig = {
   apiKey: 'AIzaSyCTYJdqWrGxQz9GJ2pgx2Z21qvnxsuftd0',
   authDomain: 'cff-v2.firebaseapp.com',
