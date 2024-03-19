@@ -8,11 +8,13 @@ import {
 } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
+  APP_URL,
+  BASE_API,
   CFF_SOCIAL_ACCOUNTS,
   CFF_WHATS_APP_LINK,
   EMAIL,
   GOOGLE_BUSINESS_PROFILE,
-  WEB_APP_EMAIL_SUBSCRIBER_LIST,
+  WEB_APP_NEWSLETTER,
 } from '@clutterfreefinds-v2/globals';
 import { FooterService } from './footer.service';
 import { BehaviorSubject, take } from 'rxjs';
@@ -36,7 +38,8 @@ export class FooterComponent {
   @ViewChild('tooltipRef', { static: false })
   private _tooltipRef!: MatTooltip;
 
-  APP_URL = 'clutterfreefinds';
+  APP_URL = APP_URL;
+  BASE_API = BASE_API;
   newsletterProgress = false;
   public newsletterMessage = '';
   public newsletterTitle = '';
@@ -136,9 +139,13 @@ export class FooterComponent {
     if (!this.newsletterForm.valid) return;
     this.newsletterProgress = true;
     this._newsLetterService
-      .newsLetterService(WEB_APP_EMAIL_SUBSCRIBER_LIST, {
-        email: this.newsletterForm.value.email,
-      })
+      .newsLetterService(
+        `${BASE_API}/${WEB_APP_NEWSLETTER}`,
+        {
+          email: this.newsletterForm.value.email,
+        },
+        {}
+      )
       .subscribe({
         next: (response: any) => {
           this.newsletterProgress = false;
