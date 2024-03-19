@@ -10,7 +10,7 @@
   position: relative;
   overflow: hidden;
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.05);
-  background: rgba(var(--purple-rgb), 0.07);
+  background: rgba(var(--accent-rgb), 0.07);
   scroll-behavior: smooth;
   table {
     th {
@@ -58,7 +58,7 @@
       background-color: var(--light);
       &:checked,
       &:focus {
-        background-color: rgba(var(--purple-rgb), 0.5);
+        background-color: rgba(var(--accent-rgb), 0.5);
         border-color: transparent;
         box-shadow: none;
       }
@@ -186,7 +186,7 @@
 
   .table-hover tbody tr:hover td,
   .table-hover tbody tr:hover th {
-    background-color: rgba(var(--purple-rgb), 0.05);
+    background-color: rgba(var(--accent-rgb), 0.05);
   }
 }
 

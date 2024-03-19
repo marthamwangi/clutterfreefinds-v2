@@ -78,12 +78,12 @@ button {
 .form-control:focus {
   border-color: var(--accent);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(var(--purple-rgb), 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(var(--accent-rgb), 0.25);
 }
 
 .toast {
   color: var(--dark);
   border-color: var(--accent);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(var(--purple-rgb), 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(var(--accent-rgb), 0.25);
 }
