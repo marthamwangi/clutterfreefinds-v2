@@ -1,0 +1,78 @@
+<!--
+    The images are repeated code
+    Try to refactor the code
+-->
+<a [href]="APP_URL + '/services'">
+    <div class="columns feature-container position-relative">
+        <div class="column d-flex flex-column">
+            <div class="card border-0 mb-3" *ngFor="
+                    let imgName of [
+                        'slide-1.jpg',
+                        'slide-2.jpg',
+                        'slide-3.jpg',
+                        'slide-4.jpg',
+                        'slide-5.jpg',
+                        'slide-6.jpg',
+                        'slide-7.jpg'
+                    ];
+                    let index = index
+                ">
+                <div class="card-body">
+                    <div class="card-text-title mb-2">
+                        {{
+                        'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
+                        | translate
+                        }}
+                    </div>
+                    <div class="card-text-emphasis">
+                        {{
+                        'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.EMPHASIS'
+                        | translate
+                        }}
+                    </div>
+                    <div class="card-text-description">{{
+                        'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.DESCRIPTION'
+                        | translate
+                        }}</div>
+                    <img [src]="'/assets/images/organizing/slides/' + imgName" [alt]=" 'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
+                    | translate" class="card-img-bottom" />
+                </div>
+            </div>
+        </div>
+        <div class="column d-flex flex-column-reverse">
+            <div class="card border-0 mb-3" *ngFor="
+                    let imgName of [
+                    'slide-1.jpg',
+                    'slide-2.jpg',
+                    'slide-3.jpg',
+                    'slide-4.jpg',
+                    'slide-5.jpg',
+                    'slide-6.jpg',
+                    'slide-7.jpg'
+                    ];
+                    let index = index
+                ">
+                <div class="card-body">
+                    <div class="card-text-title mb-2">
+                        {{
+                        'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
+                        | translate
+                        }}
+                    </div>
+                    <div class="card-text-emphasis">
+                        {{
+                        'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.EMPHASIS'
+                        | translate
+                        }}
+                    </div>
+                    <div class="card-text-description">{{
+                        'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.DESCRIPTION'
+                        | translate
+                        }}</div>
+                    <img [src]="'assets/images/organizing/slides/' + imgName" [alt]=" 'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
+                    | translate" class="card-img-bottom" />
+                </div>
+            </div>
+        </div>
+    </div>
+</a>

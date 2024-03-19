@@ -1,14 +1,14 @@
-<section style="margin-top: 104px">
-  <div class="container cff-v2-hero-section p-3 p-md-5 mb-5">
-    <div class="row">
-      <div class="col-12 col-lg-7 d-flex flex-column align-items-center align-items-md-start">
+<section style="margin-top: 100px">
+  <div class="container-fluid cff-v2-hero-section p-3 p-md-5 mb-5">
+    <div class="row align-items-center" style="row-gap: 24px;">
+      <div class="col-12 col-lg-6 d-flex flex-column align-items-center align-items-md-start">
         <div class="cff-v2-hero-section-title">
-          <div class="cff-v2-hero-section-title-text">
+          <span class="cff-v2-hero-section-title-text">
             {{ 'HOME_PAGE.HERO_SECTION.TITLE' | translate }}
-            <div class="title-gradient">
+            <span class="title-gradient">
               {{ 'HOME_PAGE.HERO_SECTION.GRADIENT' | translate }}
-            </div>
-          </div>
+            </span>
+          </span>
         </div>
         <div class="cff-v2-hero-section-description">
           {{ 'HOME_PAGE.HERO_SECTION.DESCRIPTION' | translate }}
@@ -35,12 +35,12 @@
           </button>
         </div>
       </div>
-      <div class="d-none d-lg-block col-md-5 align-self-center">
-        <img src="/assets/images/home-hero-clutter-free-finds.png" alt="" class="img-fluid" />
+      <div class="col-12 col-lg-6 slider">
+        <wc-hero-slider></wc-hero-slider>
       </div>
     </div>
   </div>
-  <div class="d-flex flex-column flex-md-row align-items-center justify-content-center"
+  <div class="d-flex flex-column flex-wrap flex-md-row align-items-center justify-content-center"
     style="column-gap: 16px; row-gap: 6px">
     <ng-container *ngFor="let statistic of statistics">
       <div class="cff-v2-hero-section-numbers">
