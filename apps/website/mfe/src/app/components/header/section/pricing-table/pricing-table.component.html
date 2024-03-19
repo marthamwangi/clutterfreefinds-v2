@@ -1,0 +1,127 @@
+<section class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="table_scroll">
+				<div #wcPricingTableHead class="table_scrollHead table-responsive" style="width: 100%">
+					<table id="wcPricingTableHead" class="table table-borderless table-sm" cellspacing="0" role="grid">
+						<thead>
+							<ng-container *ngFor="let heading of pricingTableHeader">
+								<tr role="row">
+									<th aria-controls="wsPricingTableBody"
+										attr.aria-label="{{ 'wcPricingTableHead' + (head + 1) }}" rowspan="1"
+										colspan="1" class="fw-semibold lh-base p-2" scope="col"
+										*ngFor="let plan of heading.plan; let head = index; first as isFirst">
+										<div *ngIf="isFirst">{{ plan | translate }}</div>
+										<div *ngIf="!isFirst" class="form-check d-flex" style="column-gap: 9px;">
+											<input class="form-check-input" type="radio" [id]="'flexRadioDefault'+ head"
+												name="flexRadioDefault">
+											<label class="form-check-label w-100" [for]="'flexRadioDefault'+ head">
+												{{ plan | translate }}
+											</label>
+										</div>
+									</th>
+								</tr>
+								<tr>
+									<th rowspan="1" colspan="1" class="fs-4 p-2" scope="col"
+										*ngFor="let description of heading.description" [ngSwitch]="description.type">
+										<ng-template [ngSwitchCase]="'string'">
+											{{
+											description.title! | translate
+											}}</ng-template>
+
+										<ng-template [ngSwitchCase]="'price'">
+											<span>
+												<ng-container *ngIf="isPackage; else hourlyTemplate">
+													{{ description.price?.package }}
+												</ng-container>
+
+												<ng-template #hourlyTemplate>
+													{{ description.price?.hourly }}
+												</ng-template>
+											</span>
+										</ng-template>
+									</th>
+								</tr>
+								<tr>
+									<th rowspan="1" colspan="1" scope="col" class="p-2"
+										*ngFor="let action of heading.action" [ngSwitch]="action.type">
+										<ng-template [ngSwitchCase]="'button'">
+											<div class="d-flex justify-content-center">
+												<button *ngIf="!action.pricingType" type="button"
+													class="btn primary-btn" style="padding:8px 24px;"
+													(click)="redirectToWhatsapp()">
+													{{ action.button! | translate }}
+												</button>
+											</div>
+										</ng-template>
+										<ng-template [ngSwitchCase]="'toggle'">
+											<div class="d-flex gap-2 align-items-center">
+												<span class="text-muted">{{
+													action.content?.hourly! | translate
+													}}</span>
+												<div class="form-check form-switch">
+													<input class="form-check-input" type="checkbox" role="switch"
+														id="flexSwitchCheckDefault" [(ngModel)]="isPackage" />
+												</div>
+												<span class="text-muted">{{
+													action.content?.package! | translate
+													}}</span>
+											</div>
+										</ng-template>
+									</th>
+								</tr>
+							</ng-container>
+						</thead>
+					</table>
+				</div>
+				<div #wsPricingTableBody (scroll)="updateScrollBody()" class="table_scrollBody table-responsive"
+					style="position: relative; width: 100%">
+					<table id="wsPricingTableBody" class="table table-hover table-bordered table-sm" cellspacing="0"
+						width="100%" role="grid">
+						<thead>
+							<ng-container *ngFor="let heading of pricingTableHeader">
+								<tr role="row">
+									<th aria-controls="wsPricingTable"
+										attr.aria-label="{{ 'wcPricingTableHead' + (head + 1) }}" rowspan="1"
+										colspan="1" class="fw-semibold lh-base p-2" scope="col"
+										*ngFor="let plan of heading.plan; let head = index">{{ plan | translate }}</th>
+								</tr>
+							</ng-container>
+						</thead>
+						<tbody class="table-bordered">
+							<ng-container *ngFor="let data of pricingTableBody">
+								<tr role="row">
+									<th class="fw-light text-muted" scope="row" style="padding-left: 1rem">{{
+										data.rowHeader | translate }}</th>
+									<td *ngFor="let td of data.rowData" [ngSwitch]="td">
+										<ng-template [ngSwitchCase]="'check'"><img class="checkmark" alt="" width="24"
+												height="24" /></ng-template>
+										<ng-template [ngSwitchCase]="'grey-badge'"><img class="grey-badge me-2" alt=""
+												width="20" height="20" /></ng-template> <ng-template
+											[ngSwitchCase]="'green-badge'"><img class="green-badge me-2" width="20"
+												height="20" /></ng-template>
+										<ng-template [ngSwitchCase]="'blue-badge'"><img class="blue-badge me-2" alt=""
+												width="20" height="20" /></ng-template>
+										<ng-template [ngSwitchCase]="'gold-badge'"><img class="gold-badge me-2" alt=""
+												width="20" height="20" /></ng-template>
+										<ng-template [ngSwitchCase]="'any-badge'"><img class="any-badge me-2" alt=""
+												width="24" height="24" /></ng-template>
+										<ng-template ngSwitchDefault><span style="color: var(--accent);
+											font-weight: 400;
+											font-size: 14px;
+											line-height: 21px;
+											text-align: center;
+											">
+												{{ td | translate
+												}}
+											</span></ng-template>
+									</td>
+								</tr>
+							</ng-container>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
