@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import 'bootstrap/scss/bootstrap';
 @font-face {
   font-family: 'Didot';
@@ -9,6 +10,12 @@
   src: url(assets/fonts/Didot-Italic.ttf);
 }
 :root {
+  /**Colors
+  */
+  --purple: rgb(122, 35, 211);
+  --purple-rgb: 122, 35, 211;
+  --fade-purple: #f2e4ff;
+  --light-red: #f6f6f6;
   --grey: #f2f5f7;
   --grey-dark: #88939b;
   --primary: #a695b3;
@@ -19,6 +26,7 @@
   --accent: #ae83da;
   --black: #1c1b1f;
   --accent-rgb: 174, 131, 218;
+  /*Fonts*/
   --didot: 'Didot', 'Open Sans', 'Helvetica Neue', sans-serif;
   --didot-italic: 'Didot Italic', 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -63,6 +71,8 @@ a {
   border-radius: 8px;
   background-color: var(--accent) !important;
   cursor: pointer;
+  color: var(--light);
+
   a {
     color: var(--light);
     text-decoration: none;
@@ -73,6 +83,7 @@ a {
   }
 
   &:hover {
+    color: var(--light);
     background-color: var(--dark) !important;
   }
   @media (max-width: 575.98px) {
