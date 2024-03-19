@@ -12,4 +12,12 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class HeroSliderComponent {
   public APP_URL = APP_URL;
+  public organizingElements = new Array(15);
+  public organizingImages: Array<number> = [];
+
+  constructor() {
+    for (let index = 0; index < this.organizingElements.length; index++) {
+      this.organizingImages.push(index);
+    }
+  }
 }
