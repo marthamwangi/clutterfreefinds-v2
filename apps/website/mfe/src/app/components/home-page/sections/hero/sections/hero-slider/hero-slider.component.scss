@@ -39,7 +39,6 @@
   padding: 10px;
   @media (max-width: 575.98px) {
     gap: 0.5rem;
-    // padding: 0.5rem;
   }
 }
 .column {
@@ -48,13 +47,18 @@
 .card {
   padding: 10px;
   border-radius: 24px;
+  @media (max-width: 575.98px) {
+    border-radius: 7px;
+    padding: 7px;
+  }
 }
 .card-body {
   border-radius: 14px;
   padding: 25px 25px;
-  // @media (max-width: 575.98px) {
-  //   padding: 0.5rem !important;
-  // }
+  @media (max-width: 575.98px) {
+    border-radius: 7px;
+    padding: 10px 10px !important;
+  }
 }
 .card-body,
 .card-img-bottom {
@@ -70,6 +74,11 @@
   border-radius: 10px;
   width: 200px;
   height: 150px;
+  @media (max-width: 575.98px) {
+    border-radius: 5px;
+    width: 150px;
+    height: 100px;
+  }
 }
 .card-text-title {
   color: rgba(var(--purple-rgb), 0.8) !important;
@@ -88,6 +97,9 @@
   font-size: 9px;
   line-height: 160%;
   color: rgba(var(--purple-rgb), 0.8) !important;
+  @media (max-width: 575.98px) {
+    font-size: 5px;
+  }
 }
 
 .card-text-description {
@@ -97,4 +109,8 @@
   color: rgba(14, 28, 54, 0.75);
   opacity: 0.75;
   margin-bottom: 16px;
+  @media (max-width: 575.98px) {
+    font-size: 5px;
+    margin-bottom: 8px;
+  }
 }
