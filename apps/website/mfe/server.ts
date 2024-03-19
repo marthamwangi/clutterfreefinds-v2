@@ -2,21 +2,16 @@ import 'zone.js/dist/zone-node';
 
 import { APP_BASE_HREF } from '@angular/common';
 import { ngExpressEngine } from '@nguniversal/express-engine';
-import express from 'express';
+import * as express from 'express';
 import { existsSync } from 'fs';
 import { join } from 'path';
 import { AppServerModule } from './src/main.server';
-import cookieParser from 'cookie-parser';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
-  server.use(cookieParser());
-  const browserFolder = existsSync(join(process.cwd(), '../public/browser'))
-    ? '../public/browser'
-    : 'apps/website/public/browser';
-
-  const indexHtml = existsSync(join(browserFolder, 'index.original.html'))
+  const distFolder = join(process.cwd(), 'dist/apps/website/mfe/browser');
+  const indexHtml = existsSync(join(distFolder, 'index.original.html'))
     ? 'index.original.html'
     : 'index';
 
@@ -29,20 +24,20 @@ export function app(): express.Express {
   );
 
   server.set('view engine', 'html');
-  server.set('views', browserFolder);
+  server.set('views', distFolder);
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
   server.get(
     '*.*',
-    express.static(browserFolder, {
+    express.static(distFolder, {
       maxAge: '1y',
     })
   );
 
   // All regular routes use the Universal engine
-  server.get('*', (req: any, res: any) => {
+  server.get('*', (req, res) => {
     res.render(indexHtml, {
       req,
       providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }],

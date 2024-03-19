@@ -1,12 +1,12 @@
 export const production = false;
-export const BASE_API =
-  'http://127.0.0.1:5001/cff-v2/us-central1/cffv2WebsiteMfessr';
-export const APP_URL = 'http://127.0.0.1:5001';
+export const APP_URL = 'https://clutterfreefinds.com';
 export const firebaseConfig = {
-  apiKey: 'AIzaSyCTYJdqWrGxQz9GJ2pgx2Z21qvnxsuftd0',
-  authDomain: 'cff-v2.firebaseapp.com',
-  projectId: 'cff-v2',
-  storageBucket: 'cff-v2.appspot.com',
-  messagingSenderId: '667889488305',
-  appId: '1:667889488305:web:ced2cab26189eec98fed90',
+  apiKey: 'AIzaSyBBNXNgVRYFpQuw9y45IY4yWGIM7Ib5Xc0',
+  authDomain: 'cff-web.firebaseapp.com',
+  databaseURL: 'https://cff-web-default-rtdb.firebaseio.com',
+  projectId: 'cff-web',
+  storageBucket: 'cff-web.appspot.com',
+  messagingSenderId: '1093876328924',
+  appId: '1:1093876328924:web:313d52d71ec4f95efa4719',
+  measurementId: 'G-T2L5DE1HC8',
 };

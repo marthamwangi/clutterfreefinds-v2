@@ -104,10 +104,9 @@
   line-height: 18px;
   text-align: center;
   color: rgba(var(--dark-rgb), 0.75);
+  max-width: 195px;
   @media (min-width: 576px) {
-    font-size: 12px;
-    line-height: 18px;
-    max-width: 259px;
+    max-width: 178px;
   }
 }
 

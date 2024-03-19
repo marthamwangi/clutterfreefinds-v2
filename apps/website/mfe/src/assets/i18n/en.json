@@ -4,7 +4,7 @@
   },
   "HOME_PAGE": {
     "HERO_SECTION": {
-      "TITLE": "Organize in style from",
+      "TITLE": "Organize in style",
       "GRADIENT": "mess to yess!",
       "DESCRIPTION": "Kenyan's Ultimate Organizer for Busy Professionals and Families looking to create organized and functional spaces that",
       "EMPHASIS": "simplify their daily life.",
@@ -32,47 +32,6 @@
         "STAT4": {
           "NUMBER": 720,
           "VALUE": "TikTok Community"
-        },
-        "STAT5": {
-          "NUMBER": 18,
-          "VALUE": "YouTube Community"
-        }
-      },
-      "SLIDES":{
-        "SLIDE_1":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur"
-        },
-        "SLIDE_2":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur Dolores obcaecati nihil cumque!"
-        },
-        "SLIDE_3":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur Dolores obcaecati nihil cumque!"
-        },
-        "SLIDE_4":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur Dolores obcaecati nihil cumque!"
-        },
-        "SLIDE_5":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur Dolores obcaecati nihil cumque!"
-        },
-        "SLIDE_6":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur Dolores obcaecati nihil cumque!"
-        },
-        "SLIDE_7":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur Dolores obcaecati nihil cumque!"
         }
       }
     },
@@ -188,14 +147,8 @@
       }
     }
   },
-  "HOW_IT_WORKS":{
-    "TITLE":"Transform and enjoy an organized space now",
-    "DESCRIPTION":"Be a part of the largest growing Network of Organized Kenyans, Professionals, families and individuals who have  productive and simplified life",
-    "BUTTON_1":"Get a quote",
-    "BUTTON_2":"How it works"
-  },
   "FOOTER": {
-    "DESCRIPTION": "Kenyan's Ultimate Organizer for Busy Professionals and Families looking to create organized and functional spaces that simplify their daily life.",
+    "DESCRIPTION": "Kenyan's Ultimate Organizer for Busy Professionals and Families looking to create organized and functional spaces that",
     "PAGES": {
       "COMPANY": {
         "TITLE": "Company",
@@ -264,116 +217,5 @@
     "SERVICE_AGREEMENT": "Service Agreement",
     "PRIVACY_POLICY": "Privacy policy",
     "COPYRIGHT": "©2024 - Clutter Free Finds  |   All right reserved"
-  },
-  "MEDIA_RIGHTS":{
-    "TITLE":"Media plays a vital role as an internal repository of the incredible work we perform. We treasure the trust you've placed in us, and when we utilize media for marketing endeavors (Before and After Pictures). Your personal information however remains guarded, never to be revealed without your consent as stipulated in this Agreement. Your privacy is our priority.",
-    "MORE":" Read our",
-    "LINK":"Serice Agreement"
-  },
-  "PRICING_PAGE":{
-     "PRICING_TABLE": {
-      "HEADER": {
-        "PLAN": {
-          "TH_1": "Compare plans",
-          "TH_2": "Cleanse",
-          "TH_3": "Harmony",
-          "TH_4": "Zen",
-          "TH_5": "Elegance",
-          "TH_6": "Megaproject"
-        },
-        "DESCRIPTION": {
-          "TH_1": "Select the ideal plan tailored to your goals."
-        },
-        "ACTION": {
-          "TH_1": {
-            "PACKAGE": "Pay Package",
-            "HOURLY": "Pay Hourly"
-          },
-          "TH_2": "",
-          "TH_3": "",
-          "TH_4": "",
-          "TH_5": "",
-          "TH_6": "Contact us"
-        }
-      },
-      "BODY": {
-        "ROW_1": {
-          "TH_1": "Hours",
-          "TD":{
-            "TEXT_1":"4 Hours (half day)",
-            "TEXT_2":"8 hours (full day)",
-            "TEXT_3":"12 hours (two full days)",
-            "TEXT_4":"16 hours (two full days)",
-            "TEXT_5":"24 Hours +"
-          }
-        },
-        "ROW_2": {
-          "TH_1": "Initial consultation"
-        },
-        "ROW_3": {
-          "TH_1": "Learning Organizing Tactics"
-        },
-        "ROW_4": {
-          "TH_1": "Decluttering strategy"
-        },
-        "ROW_5": {
-          "TH_1": "Labeling and categorizing items"
-        },
-        "ROW_6": {
-          "TH_1": "Storage Solutions",
-          "TH_1_BOLD":"New"
-        },
-        "ROW_7": {
-          "TH_1": "Guidance and maintenance tips"
-        },
-        "ROW_8": {
-          "TH_1": "Post-Session Follow-up Support"
-        },
-        "ROW_9": {
-          "TH_1": "Ongoing Virtual Support for 30 Days"
-        }
-      }
-    }
-  },
-  "ESTIMATES":{
-    "TITLE":"How much a space can cost (estimate)",
-    "SPACES":{
-      "SPACE_1":{
-        "TITLE":"Closet",
-        "HOURS":"3-10 hours"
-      },
-      "SPACE_2":{
-        "TITLE":"Bedroom",
-        "HOURS":"4-6 hours"
-      },
-      "SPACE_3":{
-        "TITLE":"Kitchen",
-        "HOURS":"6-8 hours"
-      },
-      "SPACE_4":{
-        "TITLE":"Garage",
-        "HOURS":"8-12 hours"
-      },
-      "SPACE_5":{
-        "TITLE":"Office",
-        "HOURS":"6+ hours"
-      },
-      "SPACE_6":{
-        "TITLE":"Basement / Attic",
-        "HOURS":"12-20 hours"
-      },
-      "SPACE_7":{
-        "TITLE":"Playroom",
-        "HOURS":"8-12 hours"
-      },
-      "SPACE_8":{
-        "TITLE":"Fridge",
-        "HOURS":"1-3 hours"
-      },
-      "SPACE_9":{
-        "TITLE":"Pantry",
-        "HOURS":"2-6 hours"
-      }
-    }
   }
 }
