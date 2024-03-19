@@ -1,5 +1,5 @@
 * {
-  color: #ffffff;
+  color: var(--light);
 }
 section {
   background-color: var(--black);
@@ -13,7 +13,7 @@ section {
   font-weight: 500;
 }
 .footer-description {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(var(--light-rgb), 0.7);
   font-size: 14px;
   font-weight: 400;
 }
@@ -30,17 +30,17 @@ section {
 .cta-links {
   font-size: 11px;
   margin-bottom: 4px;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(var(--light-rgb), 0.75);
 }
 .link-content a,
 .link-content {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(var(--light-rgb), 0.7);
   margin-bottom: 10px;
 }
 .contact-section {
   padding: 10px 16px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(var(--light-rgb), 0.2);
 }
 input::placeholder {
   color: #a7a7a7 !important;
@@ -61,7 +61,7 @@ button {
 }
 .line {
   width: 100%;
-  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  border: 0.5px solid rgba(var(--light-rgb), 0.2);
 }
 
 .privacy-links {
@@ -76,14 +76,14 @@ button {
 }
 
 .form-control:focus {
-  border-color: var(--accent);
+  border-color: var(--purple);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(var(--accent-rgb), 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(var(--purple-rgb), 0.25);
 }
 
 .toast {
   color: var(--dark);
-  border-color: var(--accent);
+  border-color: var(--purple);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(var(--accent-rgb), 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(var(--purple-rgb), 0.25);
 }
