@@ -4,7 +4,7 @@
   },
   "HOME_PAGE": {
     "HERO_SECTION": {
-      "TITLE": "Organize in style from",
+      "TITLE": "Organize from",
       "GRADIENT": "mess to yess!",
       "DESCRIPTION": "Kenyan's Ultimate Organizer for Busy Professionals and Families looking to create organized and functional spaces that",
       "EMPHASIS": "simplify their daily life.",
@@ -40,41 +40,81 @@
       },
       "SLIDES":{
         "SLIDE_1":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur"
+          "TITLE":"Clothing & Accessories",
+          "EMPHASIS":"Organize by category",
+          "DESCRIPTION":"You can organize clothes into categories based on priority or occasion. For example, you can store your most worn items in an accessible place, while storing occasion and party wear out of the way."
         },
         "SLIDE_2":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur Dolores obcaecati nihil cumque!"
+          "TITLE":"Library & Books",
+          "EMPHASIS":"Sort books into four categories: keep, toss, sell, donate.",
+          "DESCRIPTION":"Pile sorted books on the floor in the middle of the room. Ask yourself, “Am I ever going to read this one again?” If you have not read it yet, do you think you ever will?"
         },
         "SLIDE_3":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur Dolores obcaecati nihil cumque!"
+          "TITLE":"Papers & Office",
+          "DESCRIPTION":"Use a hanging-file system: Store each category of papers in a separate folder and store them in a filing cabinet or upright in a filing box placed on a shelf. This makes it easy to see how many papers you have and looks neat and tidy",
+          "EMPHASIS":"A cluttered workspace costs you time and productivity!"
         },
         "SLIDE_4":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur Dolores obcaecati nihil cumque!"
+          "TITLE":"Crafts & Hobbies",
+          "DESCRIPTION":"Use a combination of drawer dividers and small containers to organize essentials within reach. Store craft supplies in one layer (no stacking) to make it easier to see what you have and what needs replenishing.",
+          "EMPHASIS":"Make your stuff easy to get to with craft organizer storage"
         },
         "SLIDE_5":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur Dolores obcaecati nihil cumque!"
+          "TITLE":"Living + Family Room",
+          "DESCRIPTION":"Choose pieces that will not only be comfortable but also suit the size of the space and add to the room's overall look",
+          "EMPHASIS":"Keeping the family room clear of clutter can be hard"
         },
         "SLIDE_6":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur Dolores obcaecati nihil cumque!"
+          "TITLE":"Kitchen & Pantry",
+          "DESCRIPTION":" Clear containers are inexpensive and can help keep items from falling off the shelf. They can also keep items fresher than their original packaging.",
+          "EMPHASIS":"Use clear containers"
         },
         "SLIDE_7":{
-          "TITLE":"Clothing & Closet Organizing",
-          "DESCRIPTION":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tenetur laudantium libero vitae quo in laborum distinctio nesciunt aliquam",
-          "EMPHASIS":"Lorem ipsum dolor sit amet consectetur Dolores obcaecati nihil cumque!"
-        }
-      }
+          "TITLE":"Bedroom",
+          "DESCRIPTION":"Making your bed every day can create a sense of calm and accomplishment, and give your room a pulled-together look.",
+          "EMPHASIS":"How willing you are to make small decisions?"
+        },
+        "SLIDE_8":{
+          "TITLE":"Bath & Laundry",
+          "DESCRIPTION":"Use a basket, rack, shelf, or countertop space to organize different areas of the laundry room, such as dirty laundry, folding, or drying.",
+          "EMPHASIS":"Create zones"
+        },
+        "SLIDE_9":{
+          "TITLE":"Tech & Electronics",
+          "DESCRIPTION":"Match device with its corresponding charger, cord, or accessory, this will help prevent clutter and ensure you always have the necessary equipment for your devices.",
+          "EMPHASIS":"Organize and store miscellaneous cords, cables, chargers etc."
+        },
+        "SLIDE_10":{
+          "TITLE":"Tools & Garage",
+          "DESCRIPTION":"You can categorize garage items into broad categories, such as tools, sports equipment, and seasonal items. Then, you can further break these down into subcategories.",
+          "EMPHASIS":"Store things in designated spaces or zones"
+        },
+        "SLIDE_11":{
+          "TITLE":"Workout Gear",
+          "DESCRIPTION":"Separate clothes into categories like type, color, or activity. For example, you could have shorts, leggings, tank tops, and sports bras in one category.",
+          "EMPHASIS":"Organize Efficiently"
+        },
+        "SLIDE_12":{
+          "TITLE":"Children & Toys",
+          "DESCRIPTION":"They make cleanups quick and painless and create organized shelves. Look for a set of coordinating containers in various sizes to corral all types of toys.",
+          "EMPHASIS":"Baskets and bins are really the easiest of kids storage ideas"
+        },
+        "SLIDE_13":{
+          "TITLE":"Pets & Animals",
+          "DESCRIPTION":"Store bathtime and grooming items in or near the bathroom, leashes near the door, and food items in a dry place near your pet's dishes.",
+          "EMPHASIS":"Zones! Zones! Zones!"
+        },
+        "SLIDE_14":{
+          "TITLE":"Digital Devices",
+          "DESCRIPTION":"Create a logical file structure with clear folder names and categories. You can use color coding to identify specific subjects.",
+          "EMPHASIS":"Clean up the desktop, laptop, phones etc."
+        },
+        "SLIDE_15":{
+          "TITLE":"Sentimental",
+          "DESCRIPTION":"Keep in mind that you will always have the memories attached to the item even if you don't physically have it in your home",
+          "EMPHASIS":"Toys, souvenirs, gifts, can be a struggle to purge with."
+              }
+    }
     },
     "WHAT_WE_DO": {
       "TITLE": "What We",
@@ -376,4 +416,5 @@
       }
     }
   }
+  
 }

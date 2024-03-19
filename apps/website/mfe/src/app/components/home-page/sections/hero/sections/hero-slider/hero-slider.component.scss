@@ -36,24 +36,28 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   position: relative;
-  padding: 1rem;
+  padding: 10px;
   @media (max-width: 575.98px) {
     gap: 0.5rem;
-    padding: 0.5rem;
   }
 }
 .column {
   overflow-x: hidden;
 }
 .card {
-  padding: 15px;
+  padding: 10px;
   border-radius: 24px;
+  @media (max-width: 575.98px) {
+    border-radius: 7px;
+    padding: 7px;
+  }
 }
 .card-body {
   border-radius: 14px;
-  padding: 25px;
+  padding: 25px 25px;
   @media (max-width: 575.98px) {
-    padding: 0.5rem !important;
+    border-radius: 7px;
+    padding: 10px 10px !important;
   }
 }
 .card-body,
@@ -64,17 +68,22 @@
   max-inline-size: 100%;
   block-size: auto;
   object-fit: cover;
-  object-position: top center;
+  object-position: center;
   /* Picture shadow */
   filter: drop-shadow(4px 4px 30px rgba(14, 28, 54, 0.15));
   border-radius: 10px;
-  width: 300px;
-  height: 200px;
+  width: 200px;
+  height: 150px;
+  @media (max-width: 575.98px) {
+    border-radius: 5px;
+    width: 150px;
+    height: 100px;
+  }
 }
 .card-text-title {
   color: rgba(var(--purple-rgb), 0.8) !important;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 10px;
   line-height: 140%;
   margin-bottom: 16px;
   @media (max-width: 575.98px) {
@@ -85,16 +94,23 @@
 .card-text-emphasis {
   font-style: normal;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 9px;
   line-height: 160%;
-  opacity: 0.75;
+  color: rgba(var(--purple-rgb), 0.8) !important;
+  @media (max-width: 575.98px) {
+    font-size: 5px;
+  }
 }
 
 .card-text-description {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 9px;
   line-height: 160%;
   color: rgba(14, 28, 54, 0.75);
   opacity: 0.75;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+  @media (max-width: 575.98px) {
+    font-size: 5px;
+    margin-bottom: 8px;
+  }
 }

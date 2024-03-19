@@ -8,8 +8,7 @@ export const GOOGLE_BUSINESS_PROFILE =
 export const CFF_WHATS_APP_LINK = 'wa.me/+254706347399';
 export const CFF_WHATS_APP_CONTACT_US =
   'https://api.whatsapp.com/send?phone=254706347399&text=Hi%20Clutter Free Finds%20I%20have%20a%20question%20on%20megaproject';
-export const WEB_APP_EMAIL_SUBSCRIBER_LIST =
-  'https://script.google.com/macros/s/AKfycbxah1DJS8XoUrrpbpkT7HotWt5q0DuM_493OErMe_GR2CwLrCyQwcUmyQHU7D60ttwjEA/exec';
+export const WEB_APP_NEWSLETTER = 'newsletter';
 export const DEFAULT_APP_LANGUAGE = 'en';
 export const SUPPORTED_LANGUAGES: any = {
   en: 'en',

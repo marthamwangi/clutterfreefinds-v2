@@ -6,15 +6,7 @@
     <div class="columns feature-container position-relative">
         <div class="column d-flex flex-column">
             <div class="card border-0 mb-3" *ngFor="
-                    let imgName of [
-                        'slide-1.jpg',
-                        'slide-2.jpg',
-                        'slide-3.jpg',
-                        'slide-4.jpg',
-                        'slide-5.jpg',
-                        'slide-6.jpg',
-                        'slide-7.jpg'
-                    ];
+                    let imgName of organizingImages;
                     let index = index
                 ">
                 <div class="card-body">
@@ -33,25 +25,17 @@
                     <div class="card-text-description">{{
                         'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.DESCRIPTION'
                         | translate
-                        }}</div>
-                    <img [src]="'/assets/images/organizing/slides/' + imgName" [alt]=" 'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
+                        }} </div>
+                    <img [src]="'/assets/images/organizing/slides/slide-' + (imgName+1) + '.jpg'" [alt]=" 'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
                     | translate" class="card-img-bottom" />
                 </div>
             </div>
         </div>
         <div class="column d-flex flex-column-reverse">
             <div class="card border-0 mb-3" *ngFor="
-                    let imgName of [
-                    'slide-1.jpg',
-                    'slide-2.jpg',
-                    'slide-3.jpg',
-                    'slide-4.jpg',
-                    'slide-5.jpg',
-                    'slide-6.jpg',
-                    'slide-7.jpg'
-                    ];
-                    let index = index
-                ">
+            let imgName of organizingImages;
+            let index = index
+        ">
                 <div class="card-body">
                     <div class="card-text-title mb-2">
                         {{
@@ -68,9 +52,9 @@
                     <div class="card-text-description">{{
                         'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.DESCRIPTION'
                         | translate
-                        }}</div>
-                    <img [src]="'assets/images/organizing/slides/' + imgName" [alt]=" 'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
-                    | translate" class="card-img-bottom" />
+                        }} </div>
+                    <img [src]="'/assets/images/organizing/slides/slide-' + (imgName+1) + '.jpg'" [alt]=" 'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
+            | translate" class="card-img-bottom" />
                 </div>
             </div>
         </div>

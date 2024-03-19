@@ -12,20 +12,21 @@
 :root {
   /**Colors
   */
-  --purple: rgb(122, 35, 211);
+  --green: #00b428;
+  --purple: #7a23d3;
   --purple-rgb: 122, 35, 211;
   --fade-purple: #f2e4ff;
   --light-red: #f6f6f6;
   --grey: #f2f5f7;
   --grey-dark: #88939b;
-  --primary: #a695b3;
   --light: #ffffff;
   --light-rgb: 255, 255, 255;
   --dark: #0e1c36;
   --dark-rgb: 14, 28, 54;
-  --accent: #ae83da;
   --black: #1c1b1f;
-  --accent-rgb: 174, 131, 218;
+  --luminous-green: #7bf5c7;
+  --luminous-green-rgb: 123, 245, 199;
+
   /*Fonts*/
   --didot: 'Didot', 'Open Sans', 'Helvetica Neue', sans-serif;
   --didot-italic: 'Didot Italic', 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -53,7 +54,7 @@ a {
   cursor: pointer;
   a,
   span {
-    color: var(--accent);
+    color: var(--purple);
     text-align: center;
     font-size: 14px;
     font-weight: 500;
@@ -69,7 +70,7 @@ a {
   padding: 12px 40px;
   gap: 8px;
   border-radius: 8px;
-  background-color: var(--accent) !important;
+  background-color: var(--purple) !important;
   cursor: pointer;
   color: var(--light);
 
@@ -98,10 +99,10 @@ a {
   padding: 12px 40px;
   gap: 8px;
   border-radius: 8px;
-  border-color: var(--accent) !important;
+  border-color: var(--purple) !important;
 
   a {
-    color: var(--accent);
+    color: var(--purple);
     text-decoration: none;
     font-weight: 500;
     font-size: 16px;
@@ -120,13 +121,18 @@ a {
   }
 }
 .title-gradient {
-  background: linear-gradient(
-    90.52deg,
-    var(--primary) 25.3%,
-    var(--accent) 66.74%
-  );
+  background: linear-gradient(90.52deg, #7a23d3 25.3%, #7bf5c7 66.74%);
   text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.circle-check-green {
+  width: 18px;
+  height: 18px;
+  background-color: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
