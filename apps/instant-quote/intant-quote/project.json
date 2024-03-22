@@ -1,0 +1,78 @@
+{
+  "name": "instant-quote",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "clutterfreefinds-v2",
+  "sourceRoot": "apps/instant-quote/intant-quote/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/instant-quote/intant-quote",
+        "index": "apps/instant-quote/intant-quote/src/index.html",
+        "main": "apps/instant-quote/intant-quote/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/instant-quote/intant-quote/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/instant-quote/intant-quote/src/favicon.ico",
+          "apps/instant-quote/intant-quote/src/assets"
+        ],
+        "styles": ["apps/instant-quote/intant-quote/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "instant-quote:build:production"
+        },
+        "development": {
+          "browserTarget": "instant-quote:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "instant-quote:build"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "instant-quote:build"
+      }
+    }
+  }
+}
