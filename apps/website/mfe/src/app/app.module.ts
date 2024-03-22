@@ -10,16 +10,19 @@ import { APP_ROUTES } from './app.routes';
 import { AppBrowserModuleModule } from './app.browser.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrComponent } from '@clutterfreefinds-v2/toastr';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ToastrComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-top-right',
+      toastComponent: ToastrComponent,
+      disableTimeOut: true,
     }),
+
     RouterModule.forRoot(APP_ROUTES, {
       initialNavigation: 'enabledBlocking',
       scrollPositionRestoration: 'enabled',

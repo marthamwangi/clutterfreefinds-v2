@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import {
   FormControl,
@@ -19,7 +19,7 @@ import {
 import { FooterService } from './footer.service';
 import { BehaviorSubject, take } from 'rxjs';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
-import { ToastrService } from 'ngx-toastr';
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'clutterfreefinds-v2-footer',
   standalone: true,
@@ -139,6 +139,9 @@ export class FooterComponent {
     if (!this.newsletterForm.valid) return;
     this.newsletterProgress = true;
     this._newsLetterService
+      /**
+       * Disable button to prevent overpostings
+       */
       .newsLetterService(
         `${BASE_API}/${WEB_APP_NEWSLETTER}`,
         {
@@ -170,7 +173,7 @@ export class FooterComponent {
     this.newsletterTitle = msgSuccessTitle;
     this.newsletterMessage = msgSuccessDesc;
     this._toastrService.success(msgSuccessDesc, msgSuccessTitle, {
-      closeButton: true,
+      positionClass: 'toast-bottom-right',
     });
     this.resetSubscribeMessage();
   }
@@ -182,7 +185,7 @@ export class FooterComponent {
     this.newsletterTitle = msgFailedTitle;
     this.newsletterMessage = error;
     this._toastrService.error(error, msgFailedTitle, {
-      closeButton: true,
+      positionClass: 'toast-bottom-right',
     });
     this.resetSubscribeMessage();
   }

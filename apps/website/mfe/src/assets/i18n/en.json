@@ -292,7 +292,7 @@
       "BUTTON": "Sign up",
       "TOASTS": {
         "SUCCESS": {
-          "DESCRIPTION": "Thank you for subscribing to the Clutter Free Finds newsletter",
+          "DESCRIPTION": "Yess! your email has been added to our newsletter.",
           "TITLE": "Subscribed successfully"
         },
         "FAIL": {
