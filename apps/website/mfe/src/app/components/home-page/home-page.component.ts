@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
 import { HeroComponent } from './sections/hero/hero.component';
 import { WhyCffComponent } from './sections/why-cff/why-cff.component';
 import { WhatWeDoComponent } from './sections/what-we-do/what-we-do.component';
@@ -13,7 +12,6 @@ import { HowItWorksComponent } from '../how-it-works/how-it-works.component';
   selector: 'cff-v2-home-page',
   standalone: true,
   imports: [
-    HeaderComponent,
     HeroComponent,
     WhatWeDoComponent,
     WhyCffComponent,
