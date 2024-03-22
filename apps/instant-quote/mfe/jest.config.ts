@@ -3,7 +3,7 @@ export default {
   displayName: 'instant-quote',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../../coverage/apps/instant-quote/intant-quote',
+  coverageDirectory: '../../../coverage/apps/instant-quote/mfe',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

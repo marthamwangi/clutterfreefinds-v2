@@ -2,7 +2,7 @@
   "name": "instant-quote-e2e",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/instant-quote/intant-quote-e2e/src",
+  "sourceRoot": "apps/instant-quote/mfe-e2e/src",
   "targets": {},
   "tags": [],
   "implicitDependencies": ["instant-quote"]
