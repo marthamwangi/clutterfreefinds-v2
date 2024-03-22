@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@clutterfreefinds-v2/footer": ["libs/shared/footer/src/index.ts"],
-      "@clutterfreefinds-v2/globals": ["libs/shared/globals/src/index.ts"]
+      "@clutterfreefinds-v2/globals": ["libs/shared/globals/src/index.ts"],
+      "@clutterfreefinds-v2/toastr": ["libs/shared/toastr/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
