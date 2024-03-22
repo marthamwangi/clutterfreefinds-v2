@@ -123,10 +123,7 @@ export class FooterComponent {
     },
   ];
   newsletterForm = new FormGroup({
-    email: new FormControl('mail@mail.com', [
-      Validators.required,
-      Validators.email,
-    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
   });
 
   constructor(

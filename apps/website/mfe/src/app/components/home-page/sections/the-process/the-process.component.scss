@@ -3,11 +3,7 @@
   border-radius: 8px;
   border-bottom: 1px solid var(--purple);
   border-left: 1px solid var(--purple);
-  background: linear-gradient(
-    104.05deg,
-    rgba(166, 149, 179, 0) 0%,
-    rgba(174, 131, 218, 0.3) 57.66%
-  );
+  background: var(--fade-purple);
 }
 .cff-v2-the-process-section-title {
   color: rgba(var(--dark-rgb), 0.8);

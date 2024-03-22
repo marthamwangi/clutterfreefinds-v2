@@ -23,12 +23,7 @@
 
 .feature-container {
   border-radius: 0.5rem;
-  background: linear-gradient(
-    227.26deg,
-    rgba(246, 220, 255, 0.8) 0%,
-    rgba(189, 116, 246, 0.8) 70.47%,
-    rgba(122, 35, 211, 0.8) 100.38%
-  );
+  background: var(--light);
 }
 
 .columns {

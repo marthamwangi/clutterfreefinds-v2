@@ -34,6 +34,12 @@
   /*Fonts*/
   --didot: 'Didot', 'Open Sans', 'Helvetica Neue', sans-serif;
   --didot-italic: 'Didot Italic', 'Open Sans', 'Helvetica Neue', sans-serif;
+  --background-gradient: linear-gradient(
+    227.26deg,
+    rgba(246, 220, 255, 0.8) 0%,
+    rgba(189, 116, 246, 0.8) 70.47%,
+    rgba(122, 35, 211, 0.8) 100.38%
+  );
 }
 * {
   box-sizing: border-box;
