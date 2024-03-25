@@ -375,7 +375,8 @@
       }
     }
   },
-  "ESTIMATES":{
+  "HOURS_ESTIMATES":{
+    "HOURS":"Hours",
     "TITLE":"How much a space can cost (estimate)",
     "SPACES":{
       "SPACE_1":{

@@ -1,0 +1,50 @@
+.accordion-item {
+  background: transparent;
+  border: none !important;
+  border-radius: 8px;
+  padding: 20px 10px;
+  .accordion-button {
+    background: rgba(var(--purple-rgb), 0.07);
+    color: var(--dark);
+    border-radius: 8px;
+
+    &::after {
+      margin-left: 0 !important;
+    }
+    &.isActive {
+      color: var(--purple);
+    }
+    .steps {
+      margin-right: auto;
+      font-size: 16px;
+      line-height: 24px;
+      .step-text-number {
+        font-weight: 600;
+      }
+      .step-text {
+        font-weight: 400;
+      }
+    }
+    --bs-accordion-btn-icon-width: 24px;
+    --bs-accordion-btn-icon: url(~libs/shared/assets/icons/check_circle_incomplete.svg);
+    --bs-accordion-btn-active-icon: url(~libs/shared/assets/icons/check_circle_incomplete.svg);
+    &.collapsed {
+      border-radius: 8px;
+    }
+    &:not(.collapsed) {
+      box-shadow: none;
+      &::after {
+        transform: rotate(0deg);
+      }
+    }
+    &:focus {
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+  .accordion-collapse.collapse.show {
+    .accordion-body {
+      color: rgba(var(--dark-rgb), 0.75);
+    }
+  }
+}

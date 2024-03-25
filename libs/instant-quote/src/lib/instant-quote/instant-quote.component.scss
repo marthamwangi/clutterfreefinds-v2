@@ -30,3 +30,68 @@ main {
   opacity: 0.8;
   margin-bottom: 24px;
 }
+
+.hours-container {
+  max-width: 119px;
+  height: fit-content;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 0;
+  margin-bottom: 32px;
+}
+
+.hours-grp {
+  max-width: 119px;
+  height: 40px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.hours-btn {
+  width: 30%;
+  height: 40px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(14, 28, 54, 0.1);
+  cursor: pointer;
+}
+
+.hours-btn:hover {
+  background-color: rgba(14, 28, 54, 0.301);
+}
+
+input[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 700;
+  box-shadow: none;
+  outline: none;
+  width: 40%;
+  height: 40px;
+  text-align: center;
+  float: right;
+  border: none;
+  background-color: var(--light);
+  color: var(--dark);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
