@@ -19,7 +19,7 @@ import {
 import { FooterService } from './footer.service';
 import { BehaviorSubject, take } from 'rxjs';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
-import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'clutterfreefinds-v2-footer',
   standalone: true,
