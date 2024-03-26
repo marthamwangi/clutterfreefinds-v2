@@ -416,6 +416,73 @@
         "HOURS":"2-6 hours"
       }
     }
+  },
+  "PRIVACY_POLICY_PAGE": {
+    "HERO_SECTION": {
+      "TITLE": "Privacy Policy for Clutter Free Finds",
+      "DESCRIPTION1": "At Clutter Free Finds, we greatly appreciate your trust and are dedicated to safeguarding your privacy. We handle the Personal Information you provide with the utmost care.",
+      "DESCRIPTION2": "If you have any inquiries regarding our privacy policy, please feel free to contact us using the provided information at the end of this policy. "
+    },
+    "CONTENT_SECTION": {
+      "CONTENT_1": {
+        "TITLE":"General Data Protection Regulation (GDPR)",
+        "DESCRIPTION1": "Clutter Free Finds legal basis for collecting and using the personal information described in this Privacy Policy depends on the Personal Information we collect and the specific context in which we collect the information:",
+        "LIST_1":{
+          "BULLET_POINT_1": "When you visit the Site",
+          "BULLET_POINT_2": "When you Book our Services through the website",
+          "BULLET_POINT_3": "When you submit a quotation request through the website",
+          "BULLET_POINT_4": "Incorporated External Content"
+        },
+        "DESCRIPTION2": "Clutter Free Finds will retain your personal information only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your information to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our policies.",
+        "DESCRIPTION3": "By visiting our website, you implicitly consent to our collection, utilization, and disclosure of your Personal Information, as outlined in this Privacy Policy. If you do not concur with the terms of this policy, kindly refrain from using our website. If you participate in any giveaways or consents offered through our site, please be aware that your participation may be subject to additional terms and conditions.",
+        "DESCRIPTION4": "How we use personal information:",
+        "LIST_2":{
+          "BULLET_POINT_1": "Ensuring the Delivery of Requested Products and Services",
+          "BULLET_POINT_2": "Addressing Customer Inquiries and Site Issues",
+          "BULLET_POINT_3": "Enhancing Services through Research and Development",
+          "BULLET_POINT_4": "Keeping You Informed",
+          "BULLET_POINT_5": "Tailoring Services to Your Preferences",
+          "BULLET_POINT_6": "Legal Compliance"
+        }
+      },
+      "CONTENT_2":{
+        "TITLE": "Data Retention Duration",
+        "DESCRIPTION1": "We retain your Personal Information within our active systems for the duration necessary to fulfill the purposes for which it was initially collected or as outlined in this policy. The length of time we keep your Personal Information depends on the specific purpose for which the data is utilized.",
+        "DESCRIPTION2": "Certain features of the website may provide you with the capability to review, update, or delete selected portions of your Personal Information from your profile, or to deactivate your account. If such functionality is unavailable or you require assistance in exercising your legally-granted Personal Information rights, please reach out to us via one of our provided contact email addresses. Kindly be aware that we will need you to confirm your identity before addressing any requests related to the exercise of your rights. Verification will be carried out by sharing details known exclusively to the account holder."
+      },
+      "CONTENT_3":{
+      "TITLE": "Third Party Advertising Networks",
+      "DESCRIPTION1": "Advertisers may employ technologies such as cookies and web beacons to identify your computer each time they send you an advertisement, even when you're visiting other websites. This allows advertisers to deliver targeted ads they believe will be of interest to you. Please be aware that we do not have control over the cookies that third-party advertisers may place on your computer. You have the option to opt out of numerous third-party advertising networks. This website may utilize the ad management services of Google Adsense in future, for placing advertisements, and Google will collect and use specific data for advertising purposes",
+      "DESCRIPTION2": "We may provide links to third-party websites from our site, such as links to third-party retailers or advertisements for third-party products or services. Since we do not govern the information policies or practices of these third-party websites, we urge you to review their privacy policies to understand how they collect and utilize your Personal Information. This Privacy Policy is exclusively applicable to information gathered by our website. We do not guarantee the accuracy, currency, content, or quality of information provided by such third-party websites, and we assume no responsibility for any unintended, objectionable, inaccurate, misleading, or unlawful content that may be present on those sites"
+      },
+      "CONTENT_4":{
+      "TITLE": "International Data Transfers",
+      "DESCRIPTION1": "Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Clutterfreefinds.com, which are sent directly to users' browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.",
+      "DESCRIPTION2": "Our website is hosted on Firebase and uses a Domain from Go Daddy, and our services are provided from the Republic of Kenya. Consequently, if you browse our site, your personal information will be transferred to, stored, and processed in the Republic of Kenya. Additionally, we may engage service providers or business partners located in other countries who may receive your information in accordance with this Privacy Policy and applicable law. Please be aware that some of these countries may offer less privacy protection than your country of residence, and in certain cases, your personal information may be accessible by foreign courts, law enforcement authorities, and national security agencies in those countries."
+      },
+      "CONTENT_5":{
+        "TITLE": "Security",
+        "DESCRIPTION1": "We have implemented measures to safeguard your Personal Information against loss, misuse, unauthorized access, disclosure, alteration, and destruction. Nevertheless, it's important to note that no data security measures can offer 100% security, and we cannot be held responsible for any lost, stolen, or compromised passwords or any unauthorized activity on your account.",
+        "DESCRIPTION2": "Data is instrumental in protecting our products and services from fraudulent activities and aiding in dispute resolution and enforcement."
+      },
+      "CONTENT_6":{
+      "TITLE": "Children's Information",
+      "DESCRIPTION1": "Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.",
+      "DESCRIPTION2": "Our website is not intended for individuals under the age of 18, and we do not knowingly collect Personal Information from children under 18. If a parent or guardian becomes aware that their child under the age of 18 has provided us with personal information without their consent, they should contact us, and we will promptly delete such information from our records."
+      },
+      "CONTENT_7":{
+      "TITLE": "Changes to This Privacy Policy",
+      "DESCRIPTION1": "This Privacy Policy is a part of our Terms of Use. We retain the right to modify this Privacy Policy periodically in accordance with applicable law. In the event of substantial changes to this Privacy Policy, we will notify you by posting an announcement on the website. Such changes, whether they involve modifications, additions, or deletions, will be effective as specified in the relevant announcement or, if the change is deemed immaterial, immediately upon appearing on the website. Your use of the website following such changes will be considered your acceptance of these revisions. We recommend periodically reviewing this Privacy Policy to stay informed of any such changes."
+      },
+      "CONTENT_8":{
+      "TITLE": "Contact Us",
+      "DESCRIPTION1": "If you have any inquiries about this privacy policy or the practices described here, please do not hesitate to reach out to us through any of our contact email addresses."
+      },
+      "CONTENT_9":{
+      "TITLE": "Consent",
+      "DESCRIPTION1": "By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions."
+    }
+    }
   }
   
 }

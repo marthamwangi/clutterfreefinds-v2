@@ -18,6 +18,13 @@ export const APP_ROUTES: Route[] = [
     pathMatch: 'full',
   },
   {
+    path: 'privacy-policy',
+    loadComponent: () =>
+      import('./components/privacy-policy/privacy-policy.component').then(
+        (c) => c.PrivacyPolicyComponent
+      ),
+  },
+  {
     path: '**',
     redirectTo: '',
   },

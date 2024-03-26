@@ -23,6 +23,5 @@ import { HowItWorksComponent } from '../how-it-works/how-it-works.component';
     HowItWorksComponent,
   ],
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent {}
