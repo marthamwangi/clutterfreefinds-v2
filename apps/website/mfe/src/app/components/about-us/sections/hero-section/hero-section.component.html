@@ -1,0 +1,23 @@
+<section>
+    <div class="row align-items-center">
+        <div class="col-12 col-lg-6">
+            <div class="about-hero-section-title">{{'ABOUT_US_PAGE.HERO_SECTION.TITLE' | translate}}</div>
+            <div class="about-hero-section-description">{{'ABOUT_US_PAGE.HERO_SECTION.DESCRIPTION'| translate}}</div>
+            <div
+                class="about-hero-section-btns justify-content-md-start justify-content-center d-flex align-items-center">
+                <button class="btn primary-btn" type="button">
+                    <a target="_blank" href="">{{
+                        'ABOUT_US_PAGE.HERO_SECTION.BUTTON_1' | translate
+                        }}</a>
+                </button>
+                <button class="btn link-btn" type="button">
+                    <a (click)="bookACall()">{{ 'ABOUT_US_PAGE.HERO_SECTION.BUTTON_2' | translate }}</a>
+                </button>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <img src="/assets/images/bg/about-us.png" class="img-fluid"
+                [alt]="'ABOUT_US_PAGE.HERO_SECTION.TITLE' | translate" width="813" height="813">
+        </div>
+    </div>
+</section>

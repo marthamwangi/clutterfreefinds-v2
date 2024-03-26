@@ -1,0 +1,30 @@
+.about-hero-section {
+  &-title {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 130%;
+    background: linear-gradient(90deg, #7a23d3 -1%, #7a23d3 71.72%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    margin-bottom: 20px;
+    @media (max-width: 768px) {
+      font-size: 24px;
+      text-align: center;
+    }
+  }
+  &-description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: rgba(var(--dark-rgb), 0.8);
+    opacity: 0.9;
+    margin-bottom: 20px;
+    @media (max-width: 768px) {
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+}

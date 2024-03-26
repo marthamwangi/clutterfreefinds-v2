@@ -546,6 +546,55 @@
       "TITLE": "Termination of Agreement",
       "DESCRIPTION1": "This Agreement may gracefully conclude with written notice from either party. We truly value the commitment and partnership we've shared with our esteemed Client. However, in the event of termination, the Client is kindly requested to honor their financial obligations. This includes the settlement of all outstanding service fees, any applicable cancellation fees, and any other fees that may be due. It's also important to acknowledge that, should the need arise, the Company may need to incur legal or collection fees in the process of securing the payments owed."
     }
-    }}
+    }},
+    "ABOUT_US_PAGE": {
+      "HERO_SECTION": {
+        "TITLE": "Navigating Seamless Organizing With Clutter Free Finds",
+        "DESCRIPTION": "Life's demands can quickly lead to clutter and disarray, impacting your productivity, peace of mind, and overall well-being. That's where we come in.",
+        "BUTTON_1": "Get a free quote",
+        "BUTTON_2": "Book a call"
+      },
+      "WHO_IS_SECTION": {
+        "TITLE": "Who is Clutter Free Finds?",
+        "DESCRIPTION_1": "At Clutter Free Finds, we understand the challenges that come with maintaining an organized and efficient living or working space.",
+        "DESCRIPTION_2":"Life's demands can quickly lead to clutter and disarray, impacting your productivity, peace of mind, and overall well-being. That's where we come in.",
+        "BUTTON": "How it works"
+      },
+      "ourVision": {
+        "TITLE": "Our Vision",
+        "CITATION": "SeekMake envisions a future where consumers produce their own items through on-demand digital and decentralized manufacturing. From sneakers to accessories to spare parts.",
+        "DESCRIPTION": "Embracing innovation and decentralized approaches, our goal is to simplify local product production for consumers with the best quality and price. We streamline manufacturing, enhance efficiency, and leverage digitalization for a more dynamic and sustainable ecosystem"
+      },
+      "ourMission": {
+        "TITLE": "Our Mission",
+        "CITATION_1": "Revolutionize the manufacturing industry by making it more accessible,\n\t\t\t\t\t\tefficient",
+        "CITATION_2": "Environmentally friendly through innovative technology",
+        "DESCRIPTION": "Our mission centers around revolutionizing the manufacturing sector through cutting-edge technologies. We are committed to ensuring broad access to advanced manufacturing capabilities, empowering individuals and businesses to benefit from the potential of the factory of the future. Our commitment to accessibility, operational efficiency, and environmental sustainability motivates us to challenge and reshape industry standards"
+      },
+      "Milestone": {
+        "TITLE": "Milestones",
+        "DESCRIPTION": "From ideation to creation, our manufacturing services accelerates the journey, turning concepts into tangible reality. With each milestone, we celebrate not only the products brought to life but also the partnerships forged and the industries transformed.",
+        "2016": {
+          "TITLE": "Inception of SeekMake",
+          "DESCRIPTION": "Founding Vision: Mechanical engineering student Adel Ayari launched SeekMake—a home-garage venture—manufacturing affordable and easily upgradable laser cutting and 3D printing machines."
+        },
+        "2018": {
+          "TITLE": "Strategic Pivot",
+          "DESCRIPTION": "The introduction of SeekMake.com's SaaS platform V1 transforms trajectory, connecting machines into a cohesive platform. The global response is remarkable as machine owners quickly join, propelling SeekMake into international recognition."
+        },
+        "2019": {
+          "TITLE": "Strategic Transition",
+          "DESCRIPTION": "Recognizing the platform's potential, SeekMake transitions exclusively to concentrate on providing an innovative platform. The primary goal becomes assisting manufacturing businesses in 3D printing, laser cutting, and CNC machining with cutting-edge automation tools."
+        },
+        "2022": {
+          "TITLE": "Technological Leap",
+          "DESCRIPTION": "SeekMake unveils a highly advanced AI-based version of its platform, attracting manufacturers worldwide. This milestone solidifies SeekMake as an industry leader, providing powerful tools and streamlined processes."
+        },
+        "2023": {
+          "TITLE": "Global Recognition",
+          "DESCRIPTION": "As of 2023, SeekMake is the world's largest manufacturing services network, specializing in 3D printing, laser cutting, and CNC machining. We provide cutting-edge automation, powerful tools, and a user-friendly experience, setting new standards in the industry."
+        }
+      }
+    }
   
 }

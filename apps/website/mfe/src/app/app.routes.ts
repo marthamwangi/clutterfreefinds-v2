@@ -10,6 +10,13 @@ export const APP_ROUTES: Route[] = [
     pathMatch: 'full',
   },
   {
+    path: 'about-us',
+    loadComponent: () =>
+      import('./components/about-us/about-us.component').then(
+        (c) => c.AboutUsComponent
+      ),
+  },
+  {
     path: 'instant-quote',
     loadComponent: () =>
       import('@clutterfreefinds-v2/instant-quote').then(

@@ -1,0 +1,28 @@
+.about-who-is-section {
+  margin-bottom: 24px;
+  &-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 56px;
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+  &-description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: rgba(var(--dark-rgb), 0.8);
+    opacity: 0.9;
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+  }
+  &-divider {
+    width: 5px;
+    height: 240px;
+    background-color: var(--purple);
+  }
+}
