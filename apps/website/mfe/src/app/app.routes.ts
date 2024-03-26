@@ -25,6 +25,13 @@ export const APP_ROUTES: Route[] = [
       ),
   },
   {
+    path: 'service-agreement',
+    loadComponent: () =>
+      import('./components/service-agreement/service-agreement.component').then(
+        (c) => c.ServiceAgreementComponent
+      ),
+  },
+  {
     path: '**',
     redirectTo: '',
   },
