@@ -483,6 +483,69 @@
       "DESCRIPTION1": "By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions."
     }
     }
-  }
+  },
+  "SERVICE_AGREEMENT_PAGE": {
+    "HERO_SECTION": {
+      "TITLE": "Service Agreement for Clutter Free Finds",
+      "DESCRIPTION1": "Organized By Clutter Free Finds",
+      "DESCRIPTION2": "P.O. Box 1092 | Ngong Hills, Kajiado 00208",
+      "DESCRIPTION3": "+254 (706) 347399 | clutterfreefinds@gmail.com"
+    },
+    "CONTENT_SECTION": {
+      "CONTENT_1":{
+        "TITLE": "The Agreement",
+        "DESCRIPTION1": "This Service Agreement (the “Agreement”) is between Clutter Free Finds (the “Company”) and the undersigned (the “Client”) about the Company’s service(s) to be performed at the Client’s stated location (the “Service Location”)."
+      },
+        "CONTENT_2":{
+        "TITLE": "Rates & Services",
+        "DESCRIPTION1": "The Client agrees to the rates and services provided in the (the “Services”) section of this website – clutterfreefinds.com – and understands that they are subject to change without notice."
+      },
+      "CONTENT_3":{
+      "TITLE": "Service Area",
+      "DESCRIPTION1": "The Company proudly extends its services across every corner of Kenya, from the vibrant urban landscapes to the serene rural communities. We're here to serve you, whether you're in the heart of the city or the tranquil countryside. Our commitment to your satisfaction knows no boundaries, and we're always ready to go the extra mile to meet your unique needs. Your convenience is our priority, and we're honored to serve you wherever you are in this beautiful country."
+      },
+      "CONTENT_4":{
+      "TITLE": "Right To Refuse Service",
+      "DESCRIPTION1": "The Company maintains the authority to decline service at any location that, under our careful judgment, poses safety risks or proves to be unsuitable for our operations. Your well-being and satisfaction are our top priorities."
+      },
+      "CONTENT_5":{
+        "TITLE": "Payment Transactions",
+        "DESCRIPTION1": "Full payment is due at the end of each appointment unless it was paid in advance. Mobile Money is to be made payable to +254 (706) 347399. We believe in empowering you to choose payment options that suit your needs. Whether it's credit cards, digital wallets, or traditional bank transfers, please let us know."
+      },
+      "CONTENT_6":{
+      "TITLE": "Our Cancellation & No Show Policy",
+      "DESCRIPTION1": "We kindly request that if you need to cancel or reschedule your appointment, please provide us with at least 24 hours' notice. We appreciate your efforts to communicate as early as possible."
+      },
+      "CONTENT_7":{
+      "TITLE": "Refund Policy",
+      "DESCRIPTION1": "Please note that payments for our services are non-refundable. We stand by the quality and value of our work, and we take pride in every aspect of what we provide. Once we've completed a service, all the included components will be billed in alignment with our transparent pricing structure."
+      },
+      "CONTENT_8":{
+      "TITLE": "Leveraging the Power of Media",
+      "DESCRIPTION1": "Media plays a vital role as an internal repository of the incredible work we perform. We treasure the trust you've placed in us, and when we utilize media for marketing endeavors, your personal information remains guarded, never to be revealed without your consent as stipulated in this Agreement. Your privacy is our priority."
+      },
+      "CONTENT_9":{
+      "TITLE": "Customer Satisfaction Policy",
+      "DESCRIPTION1": "We are committed to nothing short of 100% customer satisfaction. If you find yourself less than delighted with the service(s) you've received, we kindly ask that you share your concerns with us in writing. We genuinely believe in resolving any issues to your complete satisfaction. To initiate this process, please mail a written statement outlining the concerns to our registered mail. Ensure that you write to us within two (2) days of the date of the service in question. By following this procedure promptly, you allow us to address your concerns effectively."
+    },
+    "CONTENT_10": {
+      "TITLE":"Approach to Limitations",
+      "DESCRIPTION1": "Please be aware that The Company shall not be held accountable for any of the following:",
+      "LIST_1":{
+        "BULLET_POINT_1": "Any form of damage, be it compensatory, direct, indirect, actual, special, punitive, incidental, consequential, or otherwise.",
+        "BULLET_POINT_2": "Any form of damage, be it compensatory, direct, indirect, actual, special, punitive, incidental, consequential, or otherwise.",
+        "BULLET_POINT_3": "Personal injury, claims made by third parties, or any other form of claim or liability, including the disposal or destruction of personal items or records, whether they are physical or digital."
+      },
+      "DESCRIPTION2": "We kindly request that you provide us with a list of your most valuable items or keep them separate from the space we are working in. This will enable us to take special care in handling these possessions. Your cooperation in this matter ensures that we can serve you to the best of our ability and safeguard your most cherished belongings."
+    },
+    "CONTENT_11":{
+      "TITLE": "Duration of Agreement",
+      "DESCRIPTION1": "This Agreement begins upon the date of booking (first excecution), and it encompasses all the exceptional services we provide at the designated Service Location. This commitment doesn't fade over time; it endures until it's time to gracefully part ways."
+    },
+    "CONTENT_12":{
+      "TITLE": "Termination of Agreement",
+      "DESCRIPTION1": "This Agreement may gracefully conclude with written notice from either party. We truly value the commitment and partnership we've shared with our esteemed Client. However, in the event of termination, the Client is kindly requested to honor their financial obligations. This includes the settlement of all outstanding service fees, any applicable cancellation fees, and any other fees that may be due. It's also important to acknowledge that, should the need arise, the Company may need to incur legal or collection fees in the process of securing the payments owed."
+    }
+    }}
   
 }
