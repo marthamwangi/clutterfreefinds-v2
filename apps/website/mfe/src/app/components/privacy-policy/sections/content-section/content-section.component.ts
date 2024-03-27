@@ -1,0 +1,96 @@
+import { NgFor } from '@angular/common';
+import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+
+@Component({
+  selector: 'pp-content-section',
+  standalone: true,
+  imports: [TranslateModule, NgFor],
+  templateUrl: './content-section.component.html',
+  styleUrls: ['./content-section.component.scss'],
+})
+export class ContentSectionComponent {
+  public contentArray: Array<any> = [
+    {
+      title: 'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.TITLE',
+      description_1:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.DESCRIPTION1',
+      description_2:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.DESCRIPTION2',
+      description_3:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.DESCRIPTION3',
+      description_4:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.DESCRIPTION4',
+      list1: [
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.LIST_1.BULLET_POINT_1',
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.LIST_1.BULLET_POINT_2',
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.LIST_1.BULLET_POINT_3',
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.LIST_1.BULLET_POINT_4',
+      ],
+      list2: [
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.LIST_2.BULLET_POINT_1',
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.LIST_2.BULLET_POINT_2',
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.LIST_2.BULLET_POINT_3',
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.LIST_2.BULLET_POINT_4',
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.LIST_2.BULLET_POINT_5',
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_1.LIST_2.BULLET_POINT_6',
+      ],
+    },
+    {
+      title: 'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_2.TITLE',
+      description_1:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_2.DESCRIPTION1',
+      description_2:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_2.DESCRIPTION2',
+    },
+    {
+      title: 'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_3.TITLE',
+      description_1:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_3.DESCRIPTION1',
+      description_2:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_3.DESCRIPTION2',
+      link: [
+        {
+          ref: 'https://policies.google.com/technologies/ads',
+          title: 'Google',
+        },
+      ],
+    },
+    {
+      title: 'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_4.TITLE',
+      description_1:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_4.DESCRIPTION1',
+      description_2:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_4.DESCRIPTION2',
+    },
+    {
+      title: 'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_5.TITLE',
+      description_1:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_5.DESCRIPTION1',
+      description_2:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_5.DESCRIPTION2',
+    },
+    {
+      title: 'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_6.TITLE',
+      description_1:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_6.DESCRIPTION1',
+      description_2:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_6.DESCRIPTION2',
+    },
+    {
+      title: 'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_7.TITLE',
+      description_1:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_7.DESCRIPTION1',
+    },
+    {
+      title: 'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_8.TITLE',
+      description_1:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_8.DESCRIPTION1',
+    },
+    {
+      title: 'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_9.TITLE',
+      description_1:
+        'PRIVACY_POLICY_PAGE.CONTENT_SECTION.CONTENT_9.DESCRIPTION1',
+    },
+  ];
+}

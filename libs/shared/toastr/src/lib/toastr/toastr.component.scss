@@ -1,0 +1,38 @@
+:host {
+  background-color: var(--light);
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 6px;
+  width: 300px;
+  pointer-events: all;
+  cursor: pointer;
+  filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.12));
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  background-image: url('~libs/assets/icons/error.svg') !important;
+}
+.toast-error {
+  background-image: url('~libs/assets/icons/error.svg') !important;
+}
+.toast-success {
+  background-image: url('~libs/assets/icons/green-tick.svg') !important;
+}
+.toast-title {
+  color: var(--purple) !important;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+
+.toast-message {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(var(--dark-rgb), 0.65) !important;
+}
+.btn-pink {
+  display: none;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+}

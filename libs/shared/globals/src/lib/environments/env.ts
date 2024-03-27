@@ -1,6 +1,6 @@
 export const production = false;
-export const APP_URL = 'http://127.0.0.1:5001';
-export const BASE_API = 'https://localhost:3000';
+export const APP_URL = 'http://localhost:4200/';
+export const BASE_API = 'http://localhost:5260/api';
 export const firebaseConfig = {
   apiKey: 'AIzaSyCTYJdqWrGxQz9GJ2pgx2Z21qvnxsuftd0',
   authDomain: 'cff-v2.firebaseapp.com',

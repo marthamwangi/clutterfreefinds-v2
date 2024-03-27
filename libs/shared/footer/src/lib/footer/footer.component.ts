@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import {
   FormControl,
@@ -123,10 +123,7 @@ export class FooterComponent {
     },
   ];
   newsletterForm = new FormGroup({
-    email: new FormControl('mail@mail.com', [
-      Validators.required,
-      Validators.email,
-    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
   });
 
   constructor(
@@ -139,6 +136,9 @@ export class FooterComponent {
     if (!this.newsletterForm.valid) return;
     this.newsletterProgress = true;
     this._newsLetterService
+      /**
+       * Disable button to prevent overpostings
+       */
       .newsLetterService(
         `${BASE_API}/${WEB_APP_NEWSLETTER}`,
         {
@@ -170,7 +170,7 @@ export class FooterComponent {
     this.newsletterTitle = msgSuccessTitle;
     this.newsletterMessage = msgSuccessDesc;
     this._toastrService.success(msgSuccessDesc, msgSuccessTitle, {
-      closeButton: true,
+      positionClass: 'toast-bottom-right',
     });
     this.resetSubscribeMessage();
   }
@@ -182,7 +182,7 @@ export class FooterComponent {
     this.newsletterTitle = msgFailedTitle;
     this.newsletterMessage = error;
     this._toastrService.error(error, msgFailedTitle, {
-      closeButton: true,
+      positionClass: 'toast-bottom-right',
     });
     this.resetSubscribeMessage();
   }

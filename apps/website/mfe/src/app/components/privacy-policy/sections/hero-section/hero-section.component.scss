@@ -1,0 +1,33 @@
+.bg-pattern {
+  background-color: var(--purple);
+  height: 100vh; /* set the height to 100% of the viewport */
+  width: 100%; /* set the width to 100% of the viewport */
+}
+
+.pp-hero-title {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 4rem;
+  text-align: center;
+}
+
+.pp-hero-description {
+  margin-top: 24px;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5rem;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.pp-hero-container {
+  margin: auto;
+  max-width: 765px;
+  color: var(--light);
+}
+
+@media only screen and (max-width: 767px) {
+  .pp-hero-description {
+    text-align: justify;
+  }
+}

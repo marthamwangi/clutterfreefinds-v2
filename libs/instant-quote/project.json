@@ -1,0 +1,9 @@
+{
+  "name": "instant-quote",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/instant-quote/src",
+  "prefix": "iq",
+  "tags": [],
+  "projectType": "library",
+  "targets": {}
+}

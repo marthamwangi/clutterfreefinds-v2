@@ -1,0 +1,118 @@
+.about-who-is-section {
+  margin-bottom: 24px;
+  &-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 56px;
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+  &-description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    color: rgba(var(--dark-rgb), 0.8);
+    opacity: 0.9;
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+  }
+  &-divider {
+    width: 5px;
+    height: 240px;
+    background-color: var(--purple);
+  }
+}
+
+.carousel-indicators [data-bs-target] {
+  border-radius: 50%;
+  background-color: #c2d1d9;
+  &:nth-child(1) {
+    width: 12px;
+    height: 12px;
+    &.active {
+      background-color: var(--purple);
+      width: 16px;
+      height: 16px;
+    }
+  }
+  &:nth-child(2) {
+    width: 12px;
+    height: 12px;
+    &.active {
+      background-color: var(--purple);
+      width: 16px;
+      height: 16px;
+    }
+  }
+  &:nth-child(3) {
+    width: 10px;
+    height: 10px;
+    &.active {
+      background-color: var(--purple);
+      width: 16px;
+      height: 16px;
+    }
+  }
+  &:nth-child(4) {
+    width: 8px;
+    height: 8px;
+    &.active {
+      background-color: var(--purple);
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+.carousel-indicators {
+  flex-direction: column;
+  position: relative;
+  margin: 0;
+  align-items: center;
+}
+.img-fluid {
+  max-inline-size: 100%;
+  block-size: auto;
+  object-fit: cover;
+  object-position: top center;
+}
+.carousel-image {
+  @extend .img-fluid;
+  border-radius: 16px;
+  width: 240px;
+  height: 240px;
+  margin-bottom: 24px;
+
+  @media (max-width: 1400px) {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+.isLast,
+.isFirst {
+  @extend .img-fluid;
+  border-radius: 16px;
+  width: 120px;
+  height: 120px;
+}
+
+.isLast {
+  margin-left: 24px;
+  transform: translateY(-50%);
+  @media (max-width: 1400px) {
+    transform: translateY(-30%);
+  }
+}
+
+.isFirst {
+  margin-right: 24px;
+  transform: translateY(50%);
+
+  @media (max-width: 1400px) {
+    transform: translateY(30%);
+  }
+}
