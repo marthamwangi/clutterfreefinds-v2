@@ -26,8 +26,8 @@
       }
     }
     --bs-accordion-btn-icon-width: 24px;
-    --bs-accordion-btn-icon: url(~libs/shared/assets/icons/check_circle_incomplete.svg);
-    --bs-accordion-btn-active-icon: url(~libs/shared/assets/icons/check_circle_incomplete.svg);
+    --bs-accordion-btn-icon: url('/assets/icons/check_circle_incomplete.svg');
+    --bs-accordion-btn-active-icon: url('/assets/icons/check_circle_incomplete.svg');
     &.collapsed {
       border-radius: 8px;
     }

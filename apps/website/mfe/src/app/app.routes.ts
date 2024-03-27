@@ -10,7 +10,7 @@ export const APP_ROUTES: Route[] = [
     pathMatch: 'full',
   },
   {
-    path: 'about-us',
+    path: 'about',
     loadComponent: () =>
       import('./components/about-us/about-us.component').then(
         (c) => c.AboutUsComponent

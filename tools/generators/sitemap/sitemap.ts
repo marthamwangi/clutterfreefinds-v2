@@ -18,6 +18,7 @@ const main = async () => {
     'https://clutterfreefinds.com/pricing',
     'https://clutterfreefinds.com/privacy-policy',
     'https://clutterfreefinds.com/service-agreement',
+    'https://clutterfreefinds.com/instant-quote',
   ].map((item) =>
     pageEntryTemplate(item, formatDate(new Date()), 'daily', '0.8')
   );

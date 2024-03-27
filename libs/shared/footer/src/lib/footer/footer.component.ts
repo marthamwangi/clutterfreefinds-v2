@@ -53,7 +53,7 @@ export class FooterComponent {
       list: [
         {
           text: 'FOOTER.PAGES.COMPANY.LIST.ITEM1',
-          link: '/about-us',
+          link: '/about',
         },
         {
           text: 'FOOTER.PAGES.COMPANY.LIST.ITEM2',
