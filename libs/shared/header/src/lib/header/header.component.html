@@ -9,16 +9,28 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown has-megamenu">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             Company
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/about-us">About Us</a></li>
-            <li><a class="dropdown-item" href="#">Become A Partner</a></li>
+          <ul class="dropdown-menu  show" aria-labelledby="navbarDropdown">
+            <li *ngFor="let item of [1,2,3]" class="header-item-container"><a class="dropdown-item h-100"
+                href="/about-us">
+                <div class="d-flex align-items-center h-100" style="column-gap: 16px;">
+                  <div class="header-item-icon"><img [src]="'assets/header/about.svg'" alt="about clutter free finds">
+                  </div>
+                  <div class="header-item-content">
+                    <div class="header-item-title">About Us</div>
+                    <div class="header-item-description">Who are we? What is our Vision? And Our Goals And
+                      everything you need to know about Clutter Free Finds
+                    </div>
+                  </div>
+                </div>
+              </a></li>
           </ul>
         </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
