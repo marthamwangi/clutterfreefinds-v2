@@ -1,0 +1,52 @@
+<section>
+    <div class="row about-who-is-section ">
+        <div class="row d-flex align-items-end p-0 m-0">
+            <div class="col-12 col-md-12 col-lg-5 col-xl-5" style="margin-bottom: 24px;">
+                <div>
+                    <img src="/assets/images/shapes.svg" alt="" class="img-fluid" width="200"
+                        style="margin-bottom: 24px;" />
+                </div>
+                <div class="d-flex align-items-start" style="column-gap: 20px;">
+                    <div class="about-who-is-section-divider col-1"></div>
+                    <div>
+                        <div class="about-who-is-section-title">{{'ABOUT_US_PAGE.WHO_IS_SECTION.TITLE'| translate}}
+                        </div>
+                        <div class="about-who-is-section-description">{{'ABOUT_US_PAGE.WHO_IS_SECTION.DESCRIPTION_1'|
+                            translate}}
+
+                        </div>
+                        <div class="about-who-is-section-description" style="margin-bottom: 24px;">
+                            {{'ABOUT_US_PAGE.WHO_IS_SECTION.DESCRIPTION_2'|
+                            translate}}
+                        </div>
+                        <button class="btn primary-btn" type="button">
+                            <a target="_blank" href="">{{
+                                'ABOUT_US_PAGE.WHO_IS_SECTION.BUTTON' | translate
+                                }}</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-xl-2"></div>
+            <div class="col-12 col-md-7 col-lg-6 col-xl-5 mx-auto">
+                <div id="carouselServicesIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="d-flex flex-row">
+                        <div class="carousel-inner">
+                            <div *ngFor="let item of carousel" [class.active]="item.active" class="carousel-item">
+                                <img *ngFor="let img of item.images; first as isFirst; last as isLast"
+                                    [class.isFirst]="isFirst" [class.isLast]="isLast" [src]="img.image"
+                                    class="carousel-image" [alt]="img.label">
+                            </div>
+                        </div>
+                        <div class="carousel-indicators">
+                            <div *ngFor="let item of carousel; index as slide" type="button"
+                                data-bs-target="#carouselServicesIndicators" [attr.data-bs-slide-to]="slide"
+                                [class.active]="item.active" aria-current="true" [attr.aria-label]="'Slide '+(slide+1)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

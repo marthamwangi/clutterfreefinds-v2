@@ -10,12 +10,33 @@ export const APP_ROUTES: Route[] = [
     pathMatch: 'full',
   },
   {
+    path: 'about-us',
+    loadComponent: () =>
+      import('./components/about-us/about-us.component').then(
+        (c) => c.AboutUsComponent
+      ),
+  },
+  {
     path: 'instant-quote',
     loadComponent: () =>
       import('@clutterfreefinds-v2/instant-quote').then(
         (c) => c.InstantQuoteComponent
       ),
     pathMatch: 'full',
+  },
+  {
+    path: 'privacy-policy',
+    loadComponent: () =>
+      import('./components/privacy-policy/privacy-policy.component').then(
+        (c) => c.PrivacyPolicyComponent
+      ),
+  },
+  {
+    path: 'service-agreement',
+    loadComponent: () =>
+      import('./components/service-agreement/service-agreement.component').then(
+        (c) => c.ServiceAgreementComponent
+      ),
   },
   {
     path: '**',

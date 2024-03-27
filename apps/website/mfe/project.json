@@ -17,6 +17,11 @@
         "tsConfig": "apps/website/mfe/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
+          {
+            "glob": "**/*",
+						"input": "libs/assets/",
+						"output": "./assets/"
+          },
           "apps/website/mfe/src/favicon.ico",
           "apps/website/mfe/src/assets"
         ],

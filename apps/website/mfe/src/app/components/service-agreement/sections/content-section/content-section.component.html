@@ -1,0 +1,21 @@
+<div class="row privacy-policy">
+    <div class="content" *ngFor="let content of contentArray;">
+        <div class="pp-first-title">
+            {{ content.title| translate }}
+        </div>
+        <div class="pp-description">
+            {{ content.description_1 | translate }}
+        </div>
+        <div class="pp-list-container">
+            <ul>
+                <li class="pp-text-style" *ngFor="let bullet of content.list1;">
+                    {{ bullet | translate }}
+                </li>
+            </ul>
+        </div>
+
+        <div class="pp-description">
+            {{ content.description_2 | translate }}
+        </div>
+    </div>
+</div>

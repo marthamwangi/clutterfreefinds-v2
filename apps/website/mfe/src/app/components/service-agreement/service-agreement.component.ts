@@ -4,9 +4,9 @@ import { ContentSectionComponent } from './sections/content-section/content-sect
 import { HeroSectionComponent } from './sections/hero-section/hero-section.component';
 
 @Component({
-  selector: 'wc-privacy-policy',
+  selector: 'sa-service-agreement',
   standalone: true,
   imports: [HowItWorksComponent, ContentSectionComponent, HeroSectionComponent],
-  templateUrl: './privacy-policy.component.html',
+  templateUrl: './service-agreement.component.html',
 })
-export class PrivacyPolicyComponent {}
+export class ServiceAgreementComponent {}

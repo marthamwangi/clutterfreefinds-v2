@@ -145,3 +145,10 @@ a {
   align-items: center;
   justify-content: center;
 }
+
+main {
+  @media (max-width: 575px) {
+    margin-top: 20%;
+  }
+  margin-top: 100px;
+}

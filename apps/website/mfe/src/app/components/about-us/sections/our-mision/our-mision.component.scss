@@ -1,0 +1,91 @@
+.about-our-mision {
+  &-title-hollow {
+    background: -webkit-linear-gradient(180deg, #7a23d3 0%, #c13dff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 4px transparent;
+    color: var(--light);
+    text-align: center;
+    font-weight: 700;
+    font-size: 150px;
+    line-height: 225px;
+    text-align: center;
+    opacity: 0.2;
+
+    @media (max-width: 768px) {
+      font-size: 75px;
+    }
+  }
+  &-title {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 56px;
+    color: var(--purple);
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+  &-content-title {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 56px;
+    margin-bottom: 24px;
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+    &-content-description {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 140%;
+      color: rgba(var(--dark-rgb), 0.8);
+    }
+  }
+  &-venn {
+    &-left-circle {
+      border: 2px solid #f3e3ff;
+      border-radius: 50%;
+      width: 178px;
+      height: 178px;
+      background: linear-gradient(
+        90.18deg,
+        rgba(246, 227, 255, 0.4) 0.15%,
+        rgba(233, 205, 255, 0.4) 92.77%
+      );
+      .text {
+        width: 134px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 140%;
+        text-align: center;
+      }
+    }
+    &-right-circle {
+      margin-left: -20px;
+      border-radius: 50%;
+      width: 178px;
+      height: 178px;
+      background: linear-gradient(
+        90.18deg,
+        rgba(208, 161, 255, 0.5) 0.15%,
+        rgba(202, 177, 255, 0.5) 92.77%
+      );
+      .text {
+        width: 123px;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 140%;
+        text-align: center;
+      }
+    }
+  }
+  &-divider {
+    width: 5px;
+    height: 240px;
+    background: var(--purple);
+  }
+}
+.title-content {
+  top: 45%;
+  @media (max-width: 768px) {
+    top: 35%;
+  }
+}
