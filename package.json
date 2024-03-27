@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start-website": "nx serve website-mfe --serve-path /"
+    "start-website": "nx serve website-mfe --serve-path /",
+    "gen-sitemap": "tools/generators/sitemap/script.sh"
   },
   "private": true,
   "dependencies": {
