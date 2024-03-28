@@ -4,21 +4,23 @@ import { pageEntryTemplate, sitemapFileTemplate } from './lib';
 import * as minimist from 'minimist';
 const argv = minimist(process.argv.slice(2));
 const outputPath = argv['_']?.[0] || './sitemap.xml';
+const site = 'https://clutterfreefinds.com';
 const main = async () => {
   const websiteEntriesHighPriority = [
-    'https://clutterfreefinds.com',
-    'https://clutterfreefinds.com/services',
-    'https://clutterfreefinds.com/mess-vs-yess',
-    'https://clutterfreefinds.com/about',
+    `${site}`,
+    `${site}/services`,
+    `${site}/mess-vs-yess`,
+    `${site}/about`,
   ].map((item) =>
     pageEntryTemplate(item, formatDate(new Date()), 'daily', '1.0')
   );
 
   const websiteEntriesMediumPriority = [
-    'https://clutterfreefinds.com/pricing',
-    'https://clutterfreefinds.com/privacy-policy',
-    'https://clutterfreefinds.com/service-agreement',
-    'https://clutterfreefinds.com/instant-quote',
+    `${site}/how-it-works`,
+    `${site}/pricing`,
+    `${site}/privacy-policy`,
+    `${site}/service-agreement`,
+    `${site}/instant-quote`,
   ].map((item) =>
     pageEntryTemplate(item, formatDate(new Date()), 'daily', '0.8')
   );

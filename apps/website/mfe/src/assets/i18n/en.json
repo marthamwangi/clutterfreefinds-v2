@@ -241,7 +241,7 @@
         "TITLE": "Company",
         "LIST": {
           "ITEM1": "About Us",
-          "ITEM2": "Become A Partner"
+          "ITEM2": "How it Works"
         }
       },
       "PRICING": {
@@ -593,6 +593,39 @@
         "2023": {
           "TITLE": "Global Recognition",
           "DESCRIPTION": "As of 2023, SeekMake is the world's largest manufacturing services network, specializing in 3D printing, laser cutting, and CNC machining. We provide cutting-edge automation, powerful tools, and a user-friendly experience, setting new standards in the industry."
+        }
+      }
+    },
+    "HOW_IT_WORKS_PAGE":{
+      "TITLE":"How it works?",
+      "STEPS":{
+        "STEP_1":{
+          "TITLE":"Visualize",
+          "STEP1":"Picture your life clutter-free",
+          "STEP2":"Envision your “dream home”",
+          "STEP3":"Write down your goals"
+        },
+        "STEP_2":{
+          "TITLE":"Make a Plan",
+          "STEP1":"Draw map or checklist areas to declutter",
+          "STEP2":"Gather boxes: donate, sell, give, trash, etc.",
+          "STEP3":"Identify local removal channels (donation centers, join second hand groups e.t.c)"
+        },
+        "STEP_3":{
+          "TITLE":"Declutter",
+          "STEP1":"Pick up an item and decide if you want to keep it or let it go",
+          "STEP2":"Place in appropriate box if you don’t want to keep"
+        },
+        "STEP_4":{
+          "TITLE":"Re-home",
+          "STEP1":"Organize what is left where it's supposed to be (ZONE)",
+          "STEP2":"Let go of unwanted clutter by, selling, donating, recycling or trashing"
+        },
+        "STEP_5":{
+          "TITLE":"Repeat",
+          "STEP1":"Move on to continue decluttering elsewheree",
+          "STEP2":"Pay attention to how this space functions in your daily life",
+          "STEP3":"Don’t be afraid to redo if things are not working"
         }
       }
     }

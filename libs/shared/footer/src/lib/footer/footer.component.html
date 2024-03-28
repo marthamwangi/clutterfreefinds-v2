@@ -31,7 +31,7 @@
                         <div class="mb-3 link-title text-capitalize">{{
                             link.title | translate
                             }}</div>
-                        <div class="link-content" *ngFor="let item of link.list"><a [href]="item.link" target="_blank"
+                        <div class="link-content" *ngFor="let item of link.list"><a [routerLink]="item.link"
                                 class="text-decoration-none">{{
                                 item.text | translate
                                 }}</a></div>

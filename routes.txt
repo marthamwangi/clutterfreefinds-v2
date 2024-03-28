@@ -1,7 +1,11 @@
 /
 /about
+/service-agreement
+/privacy-policy
+/how-it-works
 /services
 /pricing
-/privacy-policy
 /mess-vs-yess
-/service-agreement
+/the-organizers
+/blog
+/store
