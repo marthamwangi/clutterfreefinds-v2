@@ -49,11 +49,12 @@ nav {
         font-weight: 400;
         font-size: 12px;
         line-height: 16px;
-        color: rgba(14, 28, 54, 0.8);
+        color: rgba(var(--dark), 0.8);
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         overflow: hidden;
+        white-space: pre-wrap;
       }
     }
   }

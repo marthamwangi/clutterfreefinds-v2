@@ -1,1 +1,25 @@
-<p>how-it-works-page works!</p>
+<main role="main" class="d-flex flex-column container position-relative mb-5 mx-auto">
+    <div class="how-it-works-title">{{'HOW_IT_WORKS_PAGE.TITLE' | translate}}</div>
+    <div class="row  d-flex align-items-stretch justify-content-center" *ngFor="let step of steps; index as i">
+        <div class="col-1 col-lg-2 how-it-works-rectangle p-0 position-relative">
+            <div class="how-it-works-step-number d-flex align-items-center justify-content-center">
+                <div class="text">{{i+1}}</div>
+            </div>
+        </div>
+        <div class="col-7 col-lg-5 p-0 ps-4 ps-lg-5">
+            <div class="how-it-works-step-title">{{step.title | translate}}</div>
+            <div *ngFor="let text of step.steps" class=" d-flex align-items-start how-it-works-steps">
+                <div>
+                    <div class="circle-check-green"><img alt="clutter free finds how it works"
+                            src="/assets/icons/check-light.svg">
+                    </div>
+                </div>
+                <div class="how-it-works-step">{{text | translate}}</div>
+            </div>
+        </div>
+        <div class="col-3 col-lg-2 p-0">
+            <img [src]="'/assets/images/how-it-works/step-'+(i+1)+'.png'" alt="" class="img-fluid mb-5" width="150"
+                height="200">
+        </div>
+    </div>
+</main>
