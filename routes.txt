@@ -1,0 +1,7 @@
+/
+/about
+/services
+/pricing
+/privacy-policy
+/mess-vs-yess
+/service-agreement

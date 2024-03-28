@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start-website": "nx serve website-mfe --serve-path /",
-    "gen-sitemap": "tools/generators/sitemap/script.sh"
+    "gen-sitemap": "tools/generators/sitemap/script.sh",
+    "prerender-website":"nx prerender website-mfe --routes-file routes.txt"
   },
   "private": true,
   "dependencies": {
