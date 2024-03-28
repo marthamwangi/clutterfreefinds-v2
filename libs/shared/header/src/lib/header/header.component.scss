@@ -20,7 +20,19 @@ nav {
     }
   }
 }
+.dropdown-item:active {
+  color: var(--dark);
+  background-color: var(--light);
+}
+.dropdown-item:focus-visible {
+  outline: none;
+}
 .nav-link {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  transition: border-bottom 1s ease-in-out;
   &::after {
     display: inline-block;
     margin-left: 0;
@@ -34,8 +46,10 @@ nav {
   &:hover {
     &::after {
       content: url('/assets/icons/drop-down-purple.svg');
+      margin-left: 4px;
+      transition: margin-left 450ms ease-in-out;
     }
-    border-bottom: 3px solid var(--purple);
+    border-bottom: 1px solid var(--purple);
     color: var(--purple);
   }
 }
