@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HowItWorksComponent } from '../how-it-works/how-it-works.component';
+import { HowItWorksComponent } from '../../components/how-it-works/how-it-works.component';
 import { HeroSectionComponent } from './sections/hero-section/hero-section.component';
 import { WhoIsSectionComponent } from './sections/who-is-section/who-is-section.component';
 import { OurVisionComponent } from './sections/our-vision/our-vision.component';
