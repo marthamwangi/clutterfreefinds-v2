@@ -1,16 +1,12 @@
 <nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container-fluid pt-2" style="max-width: 1440px">
+  <div class="container-fluid pt-2" style="max-width: 1440px; gap: 16px;">
     <a class="navbar-brand me-5" href="/">
-      <img src="/assets/images/logo.svg" alt="Clutter Free Finds Logo" width="50" />
+      <img src="/assets/images/logo.svg" alt="Clutter Free Finds Logo" class="img-fluid" width="50" />
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown has-megamenu">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          <a class="nav-link px-0 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             Company
           </a>
@@ -66,9 +62,17 @@
         </li> -->
       </ul>
       <cff-language></cff-language>
-      <a href="/instant-quote" class="btn primary-btn" type="button">
-        {{ 'HEADER.BUTTON_1'| translate }}
-      </a>
+    </div>
+    <div class="d-flex align-items-center">
+      <div>
+        <a href="/instant-quote" class="btn primary-btn" type="button">
+          {{ 'HEADER.BUTTON_1'| translate }}
+        </a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
   </div>
 </nav>
