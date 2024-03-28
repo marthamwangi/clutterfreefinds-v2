@@ -20,6 +20,12 @@ import { Observable, of } from 'rxjs';
       },
     }),
   ],
+  providers: [
+    {
+      provide: REQUEST,
+      useExisting: REQUEST,
+    },
+  ],
 })
 export class I18nServerModuleModule {
   /**
@@ -29,7 +35,7 @@ export class I18nServerModuleModule {
  *  */
   constructor(translate: TranslateService, @Inject(REQUEST) req: Request) {
     translate.addLangs(['en', 'sw']);
-    const language: 'en' | 'sw' = req.cookies.lang || 'en';
+    const language: 'en' | 'sw' = req.cookies?.lang || 'en';
     translate.use(language.match(/en|sw/) ? language : 'en');
   }
 }
