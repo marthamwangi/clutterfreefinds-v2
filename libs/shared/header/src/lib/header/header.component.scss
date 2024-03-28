@@ -12,11 +12,31 @@ nav {
     @media (max-width: 575px) {
       padding: 10px 16px;
       border-radius: 5px;
+      margin-bottom: 0px;
       a {
         font-size: 12px;
         line-height: 16px;
       }
     }
+  }
+}
+.nav-link {
+  &::after {
+    display: inline-block;
+    margin-left: 0;
+    vertical-align: 0;
+    content: url('/assets/icons/drop-down-dark.svg');
+    border-top: 0 solid;
+    border-right: 0 solid transparent;
+    border-bottom: 0;
+    border-left: 0 solid transparent;
+  }
+  &:hover {
+    &::after {
+      content: url('/assets/icons/drop-down-purple.svg');
+    }
+    border-bottom: 3px solid var(--purple);
+    color: var(--purple);
   }
 }
 .has-megamenu .dropdown-menu {
