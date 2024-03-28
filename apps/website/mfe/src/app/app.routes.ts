@@ -17,6 +17,13 @@ export const APP_ROUTES: Route[] = [
       ),
   },
   {
+    path: 'how-it-works',
+    loadComponent: () =>
+      import('./components/how-it-works-page/how-it-works-page.component').then(
+        (c) => c.HowItWorksPageComponent
+      ),
+  },
+  {
     path: 'instant-quote',
     loadComponent: () =>
       import('@clutterfreefinds-v2/instant-quote').then(

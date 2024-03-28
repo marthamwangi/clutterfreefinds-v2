@@ -20,6 +20,8 @@ import { FooterService } from './footer.service';
 import { BehaviorSubject, take } from 'rxjs';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import { ToastrService } from 'ngx-toastr';
+import { RouterLink } from '@angular/router';
+
 @Component({
   selector: 'clutterfreefinds-v2-footer',
   standalone: true,
@@ -30,6 +32,7 @@ import { ToastrService } from 'ngx-toastr';
     NgIf,
     AsyncPipe,
     MatTooltipModule,
+    RouterLink,
   ],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
@@ -57,7 +60,7 @@ export class FooterComponent {
         },
         {
           text: 'FOOTER.PAGES.COMPANY.LIST.ITEM2',
-          link: '/become-a-partner',
+          link: '/how-it-works',
         },
       ],
     },
