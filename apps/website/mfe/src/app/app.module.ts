@@ -26,7 +26,6 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule,
     ToastrModule.forRoot({
       toastComponent: ToastrComponent,
-      disableTimeOut: true,
     }),
 
     RouterModule.forRoot(APP_ROUTES, {

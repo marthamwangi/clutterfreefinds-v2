@@ -173,7 +173,7 @@ export class FooterComponent {
     this.newsletterTitle = msgSuccessTitle;
     this.newsletterMessage = msgSuccessDesc;
     this._toastrService.success(msgSuccessDesc, msgSuccessTitle, {
-      positionClass: 'toast-bottom-right',
+      positionClass: 'toast-top-right',
     });
     this.resetSubscribeMessage();
   }
@@ -185,7 +185,7 @@ export class FooterComponent {
     this.newsletterTitle = msgFailedTitle;
     this.newsletterMessage = error;
     this._toastrService.error(error, msgFailedTitle, {
-      positionClass: 'toast-bottom-right',
+      positionClass: 'toast-top-right',
     });
     this.resetSubscribeMessage();
   }
