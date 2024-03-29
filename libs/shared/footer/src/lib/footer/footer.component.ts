@@ -11,6 +11,7 @@ import {
   APP_URL,
   BASE_API,
   CFF_SOCIAL_ACCOUNTS,
+  CFF_WHATS_APP_CONTACT_US,
   CFF_WHATS_APP_LINK,
   EMAIL,
   GOOGLE_BUSINESS_PROFILE,
@@ -114,7 +115,7 @@ export class FooterComponent {
     },
     {
       image: 'dialog',
-      link: this.APP_URL + '/contact-us',
+      link: CFF_WHATS_APP_CONTACT_US,
       title: 'FOOTER.CTA_LINKS.CONTACT_US.TITLE',
       content: 'FOOTER.CTA_LINKS.CONTACT_US.CONTENT',
     },
@@ -200,9 +201,6 @@ export class FooterComponent {
     navigator.clipboard.writeText(EMAIL).then(() => {
       this.emailTooltip$.next('FOOTER.EMAIL_TOOLTIP_COPIED');
       this._tooltipRef.show();
-      // setTimeout(() => {
-      //   this._tooltipRef.hide();
-      // }, 2000);
       this._tooltipRef._tooltipInstance
         ?.afterHidden()
         .pipe(take(1))
