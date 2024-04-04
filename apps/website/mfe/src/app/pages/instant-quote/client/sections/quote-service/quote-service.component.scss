@@ -13,6 +13,8 @@
     }
     &.isActive {
       color: var(--purple);
+      --bs-accordion-btn-active-icon: url('/assets/icons/check-circle-completed.svg');
+      --bs-accordion-btn-icon: url('/assets/icons/check-circle-completed.svg');
     }
     .steps {
       margin-right: auto;
@@ -81,7 +83,7 @@
   }
 
   input[type='radio']:checked + label.cff-service {
-    background: rgba(242, 228, 255, 0.5);
+    background: rgba(var(--purple-rgb), 0.1);
     svg path {
       fill: #7a23d3;
     }

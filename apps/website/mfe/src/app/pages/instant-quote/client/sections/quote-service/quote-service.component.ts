@@ -1,4 +1,4 @@
-import { Component, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CFFServices } from '../../services/quote-service.service';
 import { BASE_API, WEB_API_CFF_SERVICES } from '@clutterfreefinds-v2/globals';
 import { AsyncPipe, NgFor } from '@angular/common';
@@ -23,20 +23,25 @@ export class QuoteServiceComponent {
   public cffServices: Array<ICffService> = [];
   public cffServiceTooltip$: BehaviorSubject<any>;
 
-  public selectedCffService: ICffService = {
-    name: '',
-    price: 0,
-    description: '',
-    label: '',
-    isSelected: false,
-  };
-
+  public selectedCffService$: BehaviorSubject<ICffService>;
+  public selectedCffService!: ICffService;
   constructor(private _cffServices: CFFServices) {
     this.cffServiceTooltip$ = new BehaviorSubject('');
+    this.selectedCffService$ = new BehaviorSubject<ICffService>({
+      name: '',
+      price: 0,
+      description: '',
+      label: '',
+      isSelected: false,
+    });
+    this.selectedCffService$.subscribe({
+      next: (service) => {
+        this.selectedCffService = service;
+      },
+    });
   }
   ngOnInit() {
     this.getCffServices();
-    console.log('selected', this.selectedCffService);
   }
   private getCffServices(): void {
     this.cffServicesProgress = true;
@@ -73,9 +78,8 @@ export class QuoteServiceComponent {
     this.cffServiceTooltip$.next('');
   }
 
-  public selectedService(event: any) {
-    this.selectedCffService.isSelected = true;
-
-    console.log('selected', event);
+  public selectedService(service: ICffService) {
+    service.isSelected = true;
+    this.selectedCffService$.next(service);
   }
 }
