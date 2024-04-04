@@ -13,10 +13,10 @@
         <div class="accordion-body">
             <div class="cff-services">
                 <div class="d-flex" *ngFor="let service of cffServices; index as i;">
-                    <input type="radio" name="service" [id]="'radio-btn-'+i" [value]="service"
+                    <input type="radio" name="service" [id]="'radio-service-btn-'+i" [value]="service"
                         [(ngModel)]="selectedCffService" [ngModelOptions]="{standalone: true}"
                         (ngModelChange)="selectedService(service)" />
-                    <label [for]="'radio-btn-'+i" class="cff-service">
+                    <label [for]="'radio-service-btn-'+i" class="cff-service">
                         <img [src]="'/assets/icons/cff-services/' +service.label+'.svg'" [alt]="service.name">
                         {{service.name}}
                         <div (mouseenter)="showCffServiceDescriptionTooltip(service)" (mouseleave)="resetTooltip()"

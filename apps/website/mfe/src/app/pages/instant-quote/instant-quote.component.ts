@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { QuoteServiceComponent } from './client/sections/quote-service/quote-service.component';
 import { ICffService } from './models/cffSservice.model';
 import { QuoteSpaceComponent } from './client/sections/quote-space/quote-space.component';
+import { ISpaceModel } from './models/space.model';
 @Component({
   selector: 'iq-instant-quote',
   standalone: true,
@@ -23,9 +24,20 @@ export class InstantQuoteComponent {
     description: '',
     label: '',
   };
+
+  spaceSelected: ISpaceModel = {
+    name: '',
+    maxHours: 0,
+    minHours: 0,
+  };
+
   constructor() {}
 
-  getMAxMinHours($event: ICffService): void {
+  getPricingPerHour($event: ICffService): void {
     this.serviceSelected = $event;
+  }
+
+  getMAxMinHours($event: ISpaceModel): void {
+    this.spaceSelected = $event;
   }
 }
