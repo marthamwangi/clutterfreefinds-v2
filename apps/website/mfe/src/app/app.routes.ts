@@ -26,7 +26,7 @@ export const APP_ROUTES: Route[] = [
   {
     path: 'instant-quote',
     loadComponent: () =>
-      import('@clutterfreefinds-v2/instant-quote').then(
+      import('./pages/instant-quote/instant-quote.component').then(
         (c) => c.InstantQuoteComponent
       ),
     pathMatch: 'full',

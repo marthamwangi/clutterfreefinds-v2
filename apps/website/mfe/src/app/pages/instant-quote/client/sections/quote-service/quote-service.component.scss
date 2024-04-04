@@ -45,6 +45,45 @@
   .accordion-collapse.collapse.show {
     .accordion-body {
       color: rgba(var(--dark-rgb), 0.75);
+      padding: 24px 0px;
+    }
+  }
+}
+
+.cff-services {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  padding: 0px;
+  gap: 12px;
+
+  input[type='radio'] + label.cff-service {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 12px;
+    width: auto;
+    height: 44px;
+    border-radius: 24px;
+    background: #f6f6f6;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  input[type='radio'] {
+    display: none;
+  }
+
+  input[type='radio']:checked + label.cff-service {
+    background: rgba(242, 228, 255, 0.5);
+    svg path {
+      fill: #7a23d3;
     }
   }
 }

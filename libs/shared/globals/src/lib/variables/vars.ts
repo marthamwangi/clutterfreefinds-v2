@@ -9,10 +9,12 @@ export const CFF_WHATS_APP_LINK =
   'https://api.whatsapp.com/send/?phone=%2B254706347399&text&type=phone_number&app_absent=0';
 export const CFF_WHATS_APP_CONTACT_US =
   'https://api.whatsapp.com/send?phone=254706347399&text=Hi%20Clutter Free Finds%20I%20have%20a%20question%20on%20megaproject';
-export const WEB_APP_NEWSLETTER = 'Newsletter';
 export const DEFAULT_APP_LANGUAGE = 'en';
 export const SUPPORTED_LANGUAGES: any = {
   en: 'en',
   sw: 'sw',
 };
 export const EMAIL = 'clutterfreefinds@gmail.com';
+
+export const WEB_APP_NEWSLETTER = 'Newsletter';
+export const WEB_API_CFF_SERVICES = 'CffServices';

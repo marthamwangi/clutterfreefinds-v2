@@ -1,0 +1,35 @@
+<main role="main" class="d-flex flex-column container mx-auto">
+    <div class=" row" style="  row-gap: 24px;">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            <div>Quotation Estimate</div>
+            <div>1 / 2</div>
+            <div>Validate Quotation</div>
+        </div>
+        <!-- <div class="col-12 col-lg-5"><iframe src="https://koalendar.com/e/have-us-call-you?embed=true" width="100%"
+                height="800px" frameborder="0" class="calendar-border"></iframe></div> -->
+        <div class="col-12 col-lg-7">
+            <div class="row">
+                <div class="col-8 col-lg-10">
+                    <div class="estimate-price">KSH 0.00-0.00</div>
+                    <div class="estimate-price-info">Estimated price range may be inaccurate,<br>
+                        Please complete the process to receive a final quote</div>
+                </div>
+                <div class="col-4 col-lg-2">
+                    <div class="hours-container">
+                        <span class="hours-header"> {{ 'HOURS_ESTIMATES.HOURS' | translate }} </span>
+                        <div class="hours-grp">
+                            <span class="hours-btn">4</span>
+                            <span class="houts-to">to</span>
+                            <span class="hours-btn">8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" accordion" id="accordionQuote">
+                <div class="row">
+                    <iq-quote-service></iq-quote-service>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
