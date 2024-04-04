@@ -3,10 +3,16 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { QuoteServiceComponent } from './client/sections/quote-service/quote-service.component';
 import { ICffService } from './models/cffSservice.model';
+import { QuoteSpaceComponent } from './client/sections/quote-space/quote-space.component';
 @Component({
   selector: 'iq-instant-quote',
   standalone: true,
-  imports: [TranslateModule, ReactiveFormsModule, QuoteServiceComponent],
+  imports: [
+    TranslateModule,
+    ReactiveFormsModule,
+    QuoteServiceComponent,
+    QuoteSpaceComponent,
+  ],
   templateUrl: './instant-quote.component.html',
   styleUrls: ['./instant-quote.component.scss'],
 })
