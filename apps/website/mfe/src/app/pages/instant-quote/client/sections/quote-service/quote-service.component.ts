@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { CFFServices } from '../../services/quote-service.service';
 import { BASE_API, WEB_API_CFF_SERVICES } from '@clutterfreefinds-v2/globals';
 import { AsyncPipe, NgFor } from '@angular/common';
@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./quote-service.component.scss'],
 })
 export class QuoteServiceComponent {
+  @Output() selectedService$ = new EventEmitter<ICffService>();
   @ViewChild('tooltipRef', { static: false })
   private _tooltipRef!: MatTooltip;
 
@@ -81,5 +82,7 @@ export class QuoteServiceComponent {
   public selectedService(service: ICffService) {
     service.isSelected = true;
     this.selectedCffService$.next(service);
+
+    this.selectedService$.emit(service);
   }
 }
