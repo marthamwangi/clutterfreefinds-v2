@@ -1,1 +1,54 @@
-<p>quote-additonal-info works!</p>
+<div class="accordion-item ">
+    <h2 class="accordion-header" id="headingQuoteInfo">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQuoteInfo"
+            aria-expanded="true" aria-controls="collapseQuoteInfo">
+            <div class="row steps w-100">
+                <div class="col-2 step-text-number">Step 4:</div>
+                <div class="col-10 step-text">Additional information (optional) </div>
+            </div>
+        </button>
+    </h2>
+    <div id="collapseQuoteInfo" class="accordion-collapse collapse show" aria-labelledby="headingQuoteInfo"
+        data-bs-parent="#accordionQuote">
+        <div class="accordion-body">
+            <div class="cff-quote-additional-info row">
+                <div class="col-12 col-lg-6">
+                    <div class="info-header d-flex align-items-center" style="gap: 8px;">
+                        <div>Pictures of your mess</div>
+                        <div class="d-inline-flex align-items-center position-relative" #tooltipRef="matTooltip"
+                            [matTooltip]="mediaPrivacy" matTooltipPosition="above"><img
+                                src="assets/icons/bi_info-circle.svg" alt="Professional organizing"></div>
+                    </div>
+                    <div class="row" style="margin-top: 16px;">
+                        <div class="col-6">
+                            <input type="file" name="files" id="messFiles" multiple accept="image/*"
+                                (change)="onFilesSelected($event)" multiple [(ngModel)]="files"
+                                (ngModelOptions)="{stadalone:true}">
+                            <label for="messFiles" class="cff-quote-info">
+                                <div class="file-text">Choose files </div>
+                                <div>
+                                    <img src="assets/icons/upload.svg" alt="Professional Organizing Before Pictures" />
+                                </div>
+                            </label>
+                        </div>
+                        <div class="col-6 file-count">
+                            <div class="img-count">{{filesCount}} Images Uploaded</div>
+                            <div>
+                                <img src="assets/icons/close-rounded.svg" alt="Professional Organizing Before Pictures">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="info-header">Additional notes</div>
+                    <div>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
+                            placeholder="Type here"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

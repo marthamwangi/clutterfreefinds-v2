@@ -65,6 +65,11 @@
     height: 37px;
     border: 1px solid rgba(26, 111, 238, 0.1);
     border-radius: 16px;
+    &:focus {
+      border-color: var(--purple);
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgba(var(--purple-rgb), 0.25);
+    }
 
     option {
       width: 139px;

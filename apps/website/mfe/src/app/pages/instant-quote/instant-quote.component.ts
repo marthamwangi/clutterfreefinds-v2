@@ -9,6 +9,7 @@ import { QuoteProductComponent } from './client/sections/quote-product/quote-pro
 import { IMaterialModel } from './models/material.model';
 import { BehaviorSubject } from 'rxjs';
 import { NgIf } from '@angular/common';
+import { QuoteAdditonalInfoComponent } from './client/sections/quote-additonal-info/quote-additonal-info.component';
 
 interface IPriceRange {
   minPrice: number;
@@ -23,6 +24,7 @@ interface IPriceRange {
     QuoteServiceComponent,
     QuoteSpaceComponent,
     QuoteProductComponent,
+    QuoteAdditonalInfoComponent,
     NgIf,
   ],
   templateUrl: './instant-quote.component.html',
