@@ -4,12 +4,10 @@
 @import 'ngx-toastr/toastr';
 
 @font-face {
-  font-family: 'Didot';
-  src: url(assets/fonts/Didot-HTF-M24-Medium.woff2);
-}
-@font-face {
-  font-family: 'Didot Italic';
-  src: url(assets/fonts/Didot-Italic.ttf);
+  font-family: 'Poppins';
+  font-style: normal;
+  src: url('assets/fonts/poppins/poppins-regular-webfont.woff2') format('woff2');
+  font-display: swap;
 }
 :root {
   /**Colors
@@ -32,8 +30,7 @@
   --red-rgb: 235, 15, 38;
 
   /*Fonts*/
-  --didot: 'Didot', 'Open Sans', 'Helvetica Neue', sans-serif;
-  --didot-italic: 'Didot Italic', 'Open Sans', 'Helvetica Neue', sans-serif;
+  --poppins: 'Poppins', 'Open Sans', 'Helvetica Neue', sans-serif;
   --background-gradient: linear-gradient(
     227.26deg,
     rgba(246, 220, 255, 0.8) 0%,
@@ -45,7 +42,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: var(--didot);
+  font-family: var(--poppins);
 }
 a {
   text-decoration: none;

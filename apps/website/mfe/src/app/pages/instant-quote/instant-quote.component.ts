@@ -11,6 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { QuoteAdditonalInfoComponent } from './client/sections/quote-additonal-info/quote-additonal-info.component';
 import { QuoteCalendarComponent } from './client/sections/quote-calendar/quote-calendar.component';
+import { QuoteClientDetailsComponent } from './client/sections/quote-client-details/quote-client-details.component';
 
 interface IPriceRange {
   minPrice: number;
@@ -27,6 +28,7 @@ interface IPriceRange {
     QuoteProductComponent,
     QuoteAdditonalInfoComponent,
     QuoteCalendarComponent,
+    QuoteClientDetailsComponent,
     NgIf,
   ],
   templateUrl: './instant-quote.component.html',
