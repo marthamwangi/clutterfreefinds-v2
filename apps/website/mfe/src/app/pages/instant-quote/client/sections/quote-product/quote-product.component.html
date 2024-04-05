@@ -33,18 +33,17 @@
                 <material-tabs [tabsName]="allTabs"></material-tabs>
                 <ng-template #Pros>
                     <div class="material-container">
-                        <div class="pros" *ngFor="let pro of pickedMaterial.pros">
+                        <div class="pros " *ngFor="let pro of pickedMaterial.pros">
                             <img src="assets/icons/check.svg" alt="">
-                            {{pro}}
-
+                            <div>{{pro}}</div>
                         </div>
                     </div>
                 </ng-template>
                 <ng-template #Cons>
                     <div class="material-container">
-                        <div class="cons" *ngFor="let con of pickedMaterial.cons">
+                        <div class="cons " *ngFor="let con of pickedMaterial.cons">
                             <img src="assets/icons/red-close.svg" alt="" width="16">
-                            {{con}}
+                            <div>{{con}}</div>
                         </div>
                     </div>
                 </ng-template>

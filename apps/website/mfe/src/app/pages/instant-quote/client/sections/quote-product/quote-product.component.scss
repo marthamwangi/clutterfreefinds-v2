@@ -80,6 +80,9 @@
 }
 .pros,
 .cons {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
@@ -87,10 +90,8 @@
 }
 
 .material-container {
-  overflow-y: scroll;
-  flex: none;
-  order: 2;
-  flex-grow: 0;
-  max-height: 95px;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
+  overflow-x: auto;
 }
