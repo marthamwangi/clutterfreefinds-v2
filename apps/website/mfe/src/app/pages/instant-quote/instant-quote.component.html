@@ -10,8 +10,8 @@
         <div class="col-12 col-lg-7">
             <div class="row">
                 <div class="col-8 col-lg-10">
-                    <div class="estimate-price">KSH
-                        {{(serviceSelected.price)*(spaceSelected.minHours)}}-{{(serviceSelected.price)*(spaceSelected.maxHours)}}
+                    <div class="estimate-price">
+                        {{minPrice}}-{{maxPrice}}
                     </div>
                     <div class="estimate-price-info">Estimated price range may be inaccurate,<br>
                         Please complete the process to receive a final quote</div>
@@ -19,7 +19,7 @@
                 <div class="col-4 col-lg-2">
                     <div class="hours-container">
                         <span class="hours-header"> {{ 'HOURS_ESTIMATES.HOURS' | translate }} </span>
-                        <div class="hours-grp">
+                        <div class="hours-grp" *ngIf="spaceSelected">
                             <span class="hours-btn">{{spaceSelected.minHours}}</span>
                             <span class="houts-to">to</span>
                             <span class="hours-btn">{{spaceSelected.maxHours}}</span>
@@ -29,8 +29,9 @@
             </div>
             <div class=" accordion" id="accordionQuote">
                 <div class="row">
-                    <iq-quote-service (selectedService$)="getPricingPerHour($event)"></iq-quote-service>
-                    <iq-quote-space (selectedSpaceEmit$)="getMAxMinHours($event)"></iq-quote-space>
+                    <iq-quote-service (selectedService$)="getService($event)"></iq-quote-service>
+                    <iq-quote-space (selectedSpaceEmit$)="getSpace($event)"></iq-quote-space>
+                    <iq-quote-product (selectedMaterialEmit$)="getMaterial($event)"></iq-quote-product>
                 </div>
             </div>
         </div>
