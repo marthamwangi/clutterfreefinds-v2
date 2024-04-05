@@ -1,0 +1,32 @@
+.calendar-container {
+  box-sizing: border-box;
+  padding: 16px 56px 24px;
+  gap: 16px;
+  background: rgba(122, 35, 211, 0.1);
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%237A23D366' stroke-width='2' stroke-dasharray='24' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+  border-radius: 10px;
+  border-radius: 10px;
+}
+.inline-calendar-card {
+  padding: 8px;
+  width: 350px;
+}
+.check-availability {
+  color: var(--purple);
+}
+.quote-text,
+.quote-author {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 10px;
+}
+
+.quote-author {
+  font-style: italic;
+}
+
+.mat-mdc-card {
+  background-color: transparent;
+  border-color: none;
+  box-shadow: none;
+}

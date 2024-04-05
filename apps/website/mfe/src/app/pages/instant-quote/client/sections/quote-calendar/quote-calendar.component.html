@@ -1,1 +1,17 @@
-<p>quote-calendar works!</p>
+<div class="calendar-container d-flex flex-wrap justify-content-center">
+    <div>
+        <div class="check-availability d-flex my-2">
+            <div class="me-2">
+                Checking availability
+            </div>
+            <img src="assets/icons/loading-loop.svg" alt="">
+        </div>
+        <mat-card class="inline-calendar-card">
+            <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+        </mat-card>
+    </div>
+    <div>Selected date: {{selectedDate}}</div>
+    <div class="text-center quote-text">Your home should be the antidote of stress, not the cause of it.
+    </div>
+    <div class="quote-author">~Peter Walsh</div>
+</div>

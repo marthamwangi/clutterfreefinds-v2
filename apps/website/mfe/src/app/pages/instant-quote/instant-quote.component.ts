@@ -10,6 +10,7 @@ import { IMaterialModel } from './models/material.model';
 import { BehaviorSubject } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { QuoteAdditonalInfoComponent } from './client/sections/quote-additonal-info/quote-additonal-info.component';
+import { QuoteCalendarComponent } from './client/sections/quote-calendar/quote-calendar.component';
 
 interface IPriceRange {
   minPrice: number;
@@ -25,6 +26,7 @@ interface IPriceRange {
     QuoteSpaceComponent,
     QuoteProductComponent,
     QuoteAdditonalInfoComponent,
+    QuoteCalendarComponent,
     NgIf,
   ],
   templateUrl: './instant-quote.component.html',
