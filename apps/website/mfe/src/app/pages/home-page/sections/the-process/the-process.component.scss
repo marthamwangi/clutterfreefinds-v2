@@ -1,12 +1,12 @@
 .cff-v2-the-process-section {
   max-width: 1056px;
   border-radius: 8px;
-  border-bottom: 1px solid var(--purple);
-  border-left: 1px solid var(--purple);
+  border-bottom: 1px solid var(--purple-100);
+  border-left: 1px solid var(--purple-100);
   background: var(--fade-purple);
 }
 .cff-v2-the-process-section-title {
-  color: rgba(var(--dark-rgb), 0.8);
+  color: var(--black-60);
   margin-bottom: 24px;
   max-width: 863px;
   font-weight: 600;
@@ -25,7 +25,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: rgba(var(--dark-rgb), 0.8);
+  color: var(--black-60);
   margin-bottom: 44px;
   max-width: 494px;
   @media (max-width: 575px) {
@@ -43,7 +43,7 @@
   margin-bottom: 36px;
 }
 .list-item {
-  color: rgba(var(--dark-rgb), 0.9);
+  color: var(--black-10);
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
@@ -74,7 +74,7 @@
   margin-top: 24px;
   width: 30px;
   height: 30px;
-  background: var(--purple);
+  background: var(--purple-100);
   font-weight: 700;
   font-size: 14px;
   line-height: 24px;
@@ -99,7 +99,7 @@
   font-size: 12px;
   line-height: 18px;
   text-align: center;
-  color: rgba(var(--dark-rgb), 0.75);
+  color: var(--black-60);
   @media (min-width: 576px) {
     font-size: 12px;
     line-height: 18px;

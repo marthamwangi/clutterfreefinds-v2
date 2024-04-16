@@ -19,7 +19,7 @@
   font-weight: 400;
   opacity: 0.75;
   font-size: 16px;
-  color: rgba(var(--dark-rgb), 0.8);
+  color: var(--black-60);
   line-height: 24px;
   margin-bottom: 36px;
 
@@ -36,7 +36,7 @@
   padding: 32px 16px;
   align-items: center;
   border-radius: 8px !important;
-  background: rgba(var(--purple-rgb), 0.1);
+  background: rgba(var(--purple-100-rgb), 0.1);
   gap: 17px;
   transition: background-color 450ms ease-in-out;
   .link-btn span {
@@ -46,9 +46,9 @@
   }
 
   &:hover {
-    background-color: rgba(var(--purple-rgb), 0.25);
+    background-color: rgba(var(--purple-100-rgb), 0.25);
     .link-btn span {
-      border-bottom: 1px solid var(--purple);
+      border-bottom: 1px solid var(--purple-100);
       margin-right: 8px;
       transition: margin-right 450ms ease-in-out;
     }

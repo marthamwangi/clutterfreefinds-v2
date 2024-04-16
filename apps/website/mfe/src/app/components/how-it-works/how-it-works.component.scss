@@ -5,10 +5,10 @@ section {
   .cover {
     background: linear-gradient(
         89.95deg,
-        rgba(var(--light-rgb), 0.855) 0.04%,
-        rgba(var(--light-rgb), 0.855) 20.33%,
-        rgba(var(--light-rgb), 0.855) 50.5%,
-        rgba(var(--light-rgb), 0.855) 89.02%
+        var(--white-60) 0.04%,
+        var(--white-60) 20.33%,
+        var(--white-60) 50.5%,
+        var(--white-60) 89.02%
       ),
       url(/assets/images/bg/how-clutter-works.jpg) no-repeat top/100%;
     padding: 40px 64px;

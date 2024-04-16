@@ -16,7 +16,7 @@
 
 .cff-v2-hero-section-description {
   opacity: 0.9;
-  color: rgba(var(--dark-rgb), 0.8);
+  color: var(--black-60);
   font-size: 18px;
   font-weight: 500;
   line-height: 160%;
@@ -36,7 +36,7 @@
 }
 
 .list-item {
-  color: rgba(var(--dark-rgb), 0.9);
+  color: var(--black-10);
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;

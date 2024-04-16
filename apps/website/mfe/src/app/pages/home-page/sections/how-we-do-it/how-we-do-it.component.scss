@@ -16,7 +16,7 @@
 .cff-v2-how-we-do-it-section-description {
   font-weight: 400;
   opacity: 0.75;
-  color: rgba(var(--dark-rgb), 0.9);
+  color: var(--black-10);
   font-size: 18px;
   line-height: 160%;
   margin-bottom: 24px;
@@ -36,7 +36,7 @@
   font-size: 18px;
   line-height: 27px;
   opacity: 0.75;
-  color: rgba(var(--dark-rgb), 0.9);
+  color: var(--black-10);
   font-weight: 400;
   @media (max-width: 992.98px) {
     font-size: 12px;
