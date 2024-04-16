@@ -14,7 +14,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 160%;
-    color: rgba(var(--dark-rgb), 0.8);
+    color: var(--black-60);
     opacity: 0.9;
     @media (max-width: 768px) {
       font-size: 14px;
@@ -23,7 +23,7 @@
   &-divider {
     width: 5px;
     height: 240px;
-    background-color: var(--purple);
+    background-color: var(--purple-100);
   }
 }
 
@@ -34,7 +34,7 @@
     width: 12px;
     height: 12px;
     &.active {
-      background-color: var(--purple);
+      background-color: var(--purple-100);
       width: 16px;
       height: 16px;
     }
@@ -43,7 +43,7 @@
     width: 12px;
     height: 12px;
     &.active {
-      background-color: var(--purple);
+      background-color: var(--purple-100);
       width: 16px;
       height: 16px;
     }
@@ -52,7 +52,7 @@
     width: 10px;
     height: 10px;
     &.active {
-      background-color: var(--purple);
+      background-color: var(--purple-100);
       width: 16px;
       height: 16px;
     }
@@ -61,7 +61,7 @@
     width: 8px;
     height: 8px;
     &.active {
-      background-color: var(--purple);
+      background-color: var(--purple-100);
       width: 16px;
       height: 16px;
     }

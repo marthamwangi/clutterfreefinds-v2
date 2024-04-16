@@ -1,5 +1,5 @@
 * {
-  color: var(--light);
+  color: var(--white-100);
 }
 section {
   background-color: var(--black);
@@ -13,7 +13,7 @@ section {
   font-weight: 500;
 }
 .footer-description {
-  color: rgba(var(--light-rgb), 0.7);
+  color: var(--white-60);
   font-size: 14px;
   font-weight: 400;
 }
@@ -30,26 +30,26 @@ section {
 .cta-links {
   font-size: 11px;
   margin-bottom: 4px;
-  color: rgba(var(--light-rgb), 0.75);
+  color: var(--white-60);
 }
 .link-content a,
 .link-content {
-  color: rgba(var(--light-rgb), 0.7);
+  color: var(--white-60);
   margin-bottom: 10px;
 }
 .contact-section {
   padding: 10px 16px;
   border-radius: 16px;
-  background: rgba(var(--light-rgb), 0.2);
+  background: var(--white-30);
 }
 input::placeholder {
-  color: #a7a7a7 !important;
+  color: var(--white-30) !important;
 }
 
 input {
   border-radius: 5px;
-  border: 1px solid #9f9f9f;
-  background: #4e4e4e;
+  border: 1px solid var(--purple-10);
+  background: var(--white-10);
   padding: 11px 12px;
 }
 button {
@@ -61,7 +61,7 @@ button {
 }
 .line {
   width: 100%;
-  border: 0.5px solid rgba(var(--light-rgb), 0.2);
+  border: 0.5px solid var(--white-30);
 }
 
 .privacy-links {
@@ -76,14 +76,14 @@ button {
 }
 
 .form-control:focus {
-  border-color: var(--purple);
+  border-color: var(--purple-100);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(var(--purple-rgb), 0.25);
+  box-shadow: 0 0 0 0.25rem var(--purple-30);
 }
 
 .toast {
-  color: var(--dark);
-  border-color: var(--purple);
+  color: var(--black-100);
+  border-color: var(--purple-100);
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(var(--purple-rgb), 0.25);
+  box-shadow: 0 0 0 0.25rem var(--purple-30);
 }

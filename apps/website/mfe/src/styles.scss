@@ -4,19 +4,44 @@
 @import 'ngx-toastr/toastr';
 
 @font-face {
-  font-family: 'Didot';
-  src: url(assets/fonts/Didot-HTF-M24-Medium.woff2);
-}
-@font-face {
-  font-family: 'Didot Italic';
-  src: url(assets/fonts/Didot-Italic.ttf);
+  font-family: 'Poppins';
+  font-style: normal;
+  src: url('assets/fonts/poppins/poppins-regular-webfont.woff2') format('woff2');
+  font-display: swap;
 }
 :root {
   /**Colors
   */
-  --green: #00b428;
-  --purple: #7a23d3;
-  --purple-rgb: 122, 35, 211;
+  --purple-100: rgb(122, 35, 211);
+  --purple-100-rgb: 122, 35, 211;
+  --purple-60: rgba(var(--purple-100-rgb), 0.6);
+  --purple-30: rgba(var(--purple-100-rgb), 0.3);
+  --purple-10: rgba(var(--purple-100-rgb), 0.1);
+
+  --green-100: rgb(0, 180, 40);
+  --green-100-rgb: 0, 180, 40;
+  --green-60: rgba(var(--green-100-rgb), 0.6);
+  --green-30: rgba(var(--green-100-rgb), 0.3);
+  --green-10: rgba(var(--green-100-rgb), 0.1);
+
+  --white-100: rgb(255, 255, 255);
+  --white-100-rgb: 255, 255, 255;
+  --white-60: rgba(var(--white-100-rgb), 0.6);
+  --white-30: rgba(var(--white-100-rgb), 0.3);
+  --white-10: rgba(var(--white-100-rgb), 0.1);
+
+  --black-100: rgb(0, 0, 0);
+  --black-100-rgb: 0, 0, 0;
+  --black-60: rgba(var(--black-100-rgb), 0.6);
+  --black-30: rgba(var(--black-100-rgb), 0.3);
+  --black-10: rgba(var(--black-100-rgb), 0.1);
+
+  --yellow-100: rgb(241, 205, 14);
+  --yellow-100-rgb: 241, 205, 14;
+  --yellow-60: rgba(var(--yellow-100-rgb), 0.6);
+  --yellow-30: rgba(var(--yellow-100-rgb), 0.3);
+  --yellow-10: rgba(var(--yellow-100-rgb), 0.1);
+
   --fade-purple: #f2e4ff;
   --light-red: #f6f6f6;
   --grey: #f2f5f7;
@@ -32,20 +57,19 @@
   --red-rgb: 235, 15, 38;
 
   /*Fonts*/
-  --didot: 'Didot', 'Open Sans', 'Helvetica Neue', sans-serif;
-  --didot-italic: 'Didot Italic', 'Open Sans', 'Helvetica Neue', sans-serif;
+  --poppins: 'Poppins', 'Open Sans', 'Helvetica Neue', sans-serif;
   --background-gradient: linear-gradient(
     227.26deg,
-    rgba(246, 220, 255, 0.8) 0%,
-    rgba(189, 116, 246, 0.8) 70.47%,
-    rgba(122, 35, 211, 0.8) 100.38%
+    var(--purple-30) 0%,
+    var(--purple-60) 70.47%,
+    var(--purple-60) 100.38%
   );
 }
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: var(--didot);
+  font-family: var(--poppins);
 }
 a {
   text-decoration: none;
@@ -63,7 +87,7 @@ a {
   cursor: pointer;
   a,
   span {
-    color: var(--purple);
+    color: var(--purple-100);
     text-align: center;
     font-size: 14px;
     font-weight: 500;
@@ -79,7 +103,7 @@ a {
   padding: 12px 24px;
   gap: 8px;
   border-radius: 8px;
-  background-color: var(--purple) !important;
+  background-color: var(--purple-100) !important;
   cursor: pointer;
   color: var(--light);
 
@@ -94,7 +118,7 @@ a {
 
   &:hover {
     color: var(--light);
-    background-color: var(--dark) !important;
+    background-color: var(--black-100) !important;
   }
   @media (max-width: 575.98px) {
     margin-bottom: 12px;
@@ -108,10 +132,10 @@ a {
   padding: 12px 40px;
   gap: 8px;
   border-radius: 8px;
-  border-color: var(--purple) !important;
+  border-color: var(--purple-100) !important;
 
   a {
-    color: var(--purple);
+    color: var(--purple-100);
     text-decoration: none;
     font-weight: 500;
     font-size: 16px;
@@ -120,9 +144,9 @@ a {
   }
 
   &:hover {
-    border-color: var(--dark) !important;
+    border-color: var(--black-100) !important;
     a {
-      color: var(--dark) !important;
+      color: var(--black-100) !important;
     }
   }
   @media (max-width: 575.98px) {
@@ -130,16 +154,20 @@ a {
   }
 }
 .title-gradient {
-  background: linear-gradient(90.52deg, #7a23d3 25.3%, #7bf5c7 66.74%);
+  background: linear-gradient(
+    90.52deg,
+    var(--purple-100) 25.3%,
+    var(--yellow-100) 66.74%
+  );
   text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.circle-check-green {
+.circle-check-yellow {
   width: 18px !important;
   height: 18px !important;
-  background-color: var(--green);
+  background-color: var(--yellow-100);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -148,10 +176,71 @@ a {
     width: 10px;
   }
 }
+.circle-check-yellow-30 {
+  @extend .circle-check-yellow;
+  background-color: var(--yellow-30);
+}
+
+.circle-check-purple {
+  width: 18px !important;
+  height: 18px !important;
+  background-color: var(--purple-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    width: 10px;
+  }
+}
+.circle-check-purple-10 {
+  @extend .circle-check-purple;
+  background-color: var(--yellow-10);
+}
 
 main {
   @media (max-width: 575px) {
     margin-top: 20%;
   }
   margin-top: 100px;
+}
+
+span.mdc-tab__text-label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--black-100) !important;
+}
+span.mdc-tab-indicator {
+  left: -50%;
+  width: 200% !important;
+}
+
+.mat-mdc-tab-body-wrapper {
+  padding: 10px;
+}
+.mat-mdc-tab-label-container {
+  margin-top: 10px;
+  background-color: rgba(var(--purple-100-rgb), 0.03);
+  border-radius: 8px;
+}
+.mat-calendar-body-label {
+  visibility: hidden;
+}
+.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+  > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(
+    .mat-calendar-body-comparison-identical
+  ) {
+  background-color: var(--purple-30);
+}
+.mat-calendar-body-today:not(.mat-calendar-body-selected):not(
+    .mat-calendar-body-comparison-identical
+  ) {
+  border-color: var(--black-10);
+}
+
+.mat-calendar-body-selected {
+  border-color: var(--purple-100);
+  background-color: var(--purple-100);
+  color: var(--white-100);
 }

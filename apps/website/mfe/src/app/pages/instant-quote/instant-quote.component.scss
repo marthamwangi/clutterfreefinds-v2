@@ -1,0 +1,137 @@
+main {
+  margin: 100px 0;
+  max-width: 1200px;
+}
+.next-btn,
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--purple-100);
+  opacity: 0.2;
+  &.active {
+    color: var(--purple-100);
+  }
+  &.disabled {
+    color: var(--purple-10);
+  }
+}
+
+.back-btn {
+  img {
+    transform: rotate(180deg);
+  }
+}
+
+.active-step,
+.disabled-step {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+}
+.isActiveStep {
+  color: var(--purple-100);
+}
+.isDisabledStep {
+  color: var(--black-30);
+}
+
+.estimate-price {
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 120%;
+  margin-bottom: 24px;
+  @media (max-width: 575px) {
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 12px;
+  }
+}
+.estimate-price-info {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 14px;
+  color: rgba(235, 15, 38, 0.6);
+  opacity: 0.8;
+  margin-bottom: 24px;
+  @media (max-width: 575px) {
+    width: 220px;
+  }
+}
+
+.hours-container {
+  max-width: 119px;
+  height: fit-content;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 0;
+  margin-bottom: 32px;
+}
+.hours-header,
+.houts-to {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  @media (max-width: 575px) {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+
+.hours-grp {
+  max-width: 119px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  gap: 12px;
+}
+
+.hours-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(14, 28, 54, 0.1);
+}
+
+.payment-options-header {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  opacity: 0.8;
+  margin: 16px 0px;
+}
+.payment-options-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  opacity: 0.8;
+  margin-bottom: 16px;
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+}
+
+.form-heading {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 22px;
+  margin-bottom: 24px;
+}

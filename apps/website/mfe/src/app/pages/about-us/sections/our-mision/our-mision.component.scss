@@ -19,7 +19,7 @@
     font-weight: 500;
     font-size: 32px;
     line-height: 56px;
-    color: var(--purple);
+    color: var(--purple-100);
     @media (max-width: 768px) {
       font-size: 24px;
     }
@@ -36,7 +36,7 @@
       font-weight: 400;
       font-size: 18px;
       line-height: 140%;
-      color: rgba(var(--dark-rgb), 0.8);
+      color: var(--black-60);
     }
   }
   &-venn {
@@ -80,7 +80,7 @@
   &-divider {
     width: 5px;
     height: 240px;
-    background: var(--purple);
+    background: var(--purple-100);
   }
 }
 .title-content {

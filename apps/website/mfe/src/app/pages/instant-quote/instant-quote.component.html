@@ -1,0 +1,92 @@
+<main role="main" class="d-flex flex-column container mx-auto">
+    <div class="row" style="row-gap: 24px;">
+        <div class="col-12 d-flex align-items-center justify-content-start" style="gap: 16px;">
+            <a class="back-btn"><img src="assets/icons/arrow-right.svg" alt=""> Go Back</a>
+            <div class="active-step" [class.isActiveStep]="currentStep === 0">active</div>
+            <div><img src="assets/icons/slice.svg" alt=""> </div>
+            <div class="disabled-step" [class.isDisabledStep]="currentStep !== 0">disabled</div>
+            <a class="next-btn">Go Next <img src="assets/icons/arrow-right.svg" alt=""></a>
+        </div>
+        <ng-container *ngTemplateOutlet="returnStepsTeplate()"> </ng-container>
+        <ng-template #iqCalendar>
+            <div class="col-12  mx-auto">
+                <iq-quote-calendar></iq-quote-calendar>
+            </div>
+        </ng-template>
+        <ng-template #iqEstimates>
+            <div class="col-12 col-lg-9 mx-auto">
+                <div class="row">
+                    <div class="col-8 col-lg-10">
+                        <div class="estimate-price">
+                            {{minPrice}}-{{maxPrice}}
+                        </div>
+                        <div class="estimate-price-info">Estimated price range may be inaccurate,<br>
+                            Please complete the process to receive a final quote</div>
+                    </div>
+                    <div class="col-4 col-lg-2">
+                        <div class="hours-container">
+                            <span class="hours-header"> {{ 'HOURS_ESTIMATES.HOURS' | translate }} </span>
+                            <div class="hours-grp" *ngIf="spaceSelected">
+                                <span class="hours-btn">{{spaceSelected.minHours}}</span>
+                                <span class="houts-to">to</span>
+                                <span class="hours-btn">{{spaceSelected.maxHours}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" accordion" id="accordionQuote">
+                    <div class="row">
+                        <iq-quote-service (selectedService$)="getService($event)"></iq-quote-service>
+                        <iq-quote-space (selectedSpaceEmit$)="getSpace($event)"></iq-quote-space>
+                        <iq-quote-product (selectedMaterialEmit$)="getMaterial($event)"></iq-quote-product>
+                        <iq-quote-additonal-info></iq-quote-additonal-info>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #iqClientDetails>
+            <div class="col-12 col-lg-9 mx-auto">
+                <iq-quote-client-details></iq-quote-client-details>
+            </div>
+        </ng-template>
+        <ng-template #iqServiceType>
+            <div class="col-12 col-lg-9 mx-auto">
+                <div class="row service-type">
+                    <div class="col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="servicyTypeHome"
+                                checked>
+                            <label class="form-check-label" for="servicyTypeHome">
+                                Home Service
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="servicyTypeOnline">
+                            <label class="form-check-label" for="servicyTypeOnline">
+                                Online service
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #iqQuoteSummary>
+            <div class="col-12 col-lg-9 mx-auto">
+                <div class="row">
+                    <div class="payment-options-header">Payment options</div>
+                    <div class="payment-options-text">We support Visa, MasterCard, PayPal, M-Pesa Transfer and many
+                        other
+                        payment methods</div>
+                    <div class="payment-options ps-3 flex-wrap">
+                        <img src="assets/icons/money/visa.svg" alt="visa logo" class="img-fluid" width="80">
+                        <img src="assets/icons/money/paypal.svg" alt="paypal-logo" class="img-fluid" width="80">
+                        <img src="assets/icons/money/mastercard.svg" alt="mastercard-logo" class="img-fluid" width="80">
+                        <img src="assets/icons/money/mpesa.svg" alt="mpesa logo" class="img-fluid" width="80">
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</main>

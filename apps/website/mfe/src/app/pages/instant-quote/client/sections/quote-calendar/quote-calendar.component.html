@@ -1,0 +1,39 @@
+<div class="row d-flex align-items-start" style="row-gap: 24px;">
+    <div class="col-12 col-lg-6">
+        <div class="calendar-container d-flex flex-wrap justify-content-center">
+            <div>
+                <div class="check-availability d-flex my-2">
+                    <div class="me-2">
+                        Checking availability
+                    </div>
+                    <img src="assets/icons/loading-loop.svg" alt="">
+                </div>
+                <mat-card class="inline-calendar-card">
+                    <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+                </mat-card>
+            </div>
+            <div>Selected date: {{selectedDate}}</div>
+            <div class="text-center quote-text">Your home should be the antidote of stress, not the cause of it.
+            </div>
+            <div class="quote-author">~Peter Walsh</div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-6">
+        <div class="date-time-header d-flex align-items-center justify-content-between">
+            <div>Pick a time</div>
+            <div class="circle-check-yellow-30">
+                <img alt="clutter free finds services" src="/assets/icons/check-green.svg" width="10" />
+            </div>
+        </div>
+        <div class="date-time-frame d-flex flex-wrap">
+            <div class="date-time-item" *ngFor="let time of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]; index as i">
+                <input type="radio" name="time" [id]="'radio-time-btn-'+i" />
+                <label [for]="'radio-time-btn-'+i" class="date-time-item">
+                    <div class="text">
+                        9:00 AM
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

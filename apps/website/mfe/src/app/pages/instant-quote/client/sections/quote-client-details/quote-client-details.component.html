@@ -1,0 +1,85 @@
+<div class="form-heading">3. Service address</div>
+<div class="client-details-form">
+    <div class="row">
+        <div class="col-12 col-md-4 mb-3">
+            <label for="clienQuoteEmail">E-mail address</label>
+            <input type="email" class="form-control" id="clienQuoteEmail" placeholder="example@gmail.com">
+            <div class="invalid-feedback">
+                Enter a valid email
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <label for="clienFirstName">First name</label>
+            <input type="text" class="form-control" id="clienFirstName" placeholder="First name">
+            <div class="valid-feedback">
+                error
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <label for="clienLastName">Last name</label>
+            <input type="text" class="form-control" id="clienLastName" placeholder="Last name">
+            <div class="valid-feedback">
+                error
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <label for="clientPhoneNumber">Phone Number</label>
+            <input type="text" class="form-control" id="clientPhoneNumber" placeholder="+254 06 34 73 99">
+            <div class="invalid-feedback">
+                error
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <label for="clientQuoteCounty">City / County</label>
+            <select [disabled]="!(selectedCounty$ | async)" class="form-select" (change)="onCountySelect($event)">
+                <option selected disabled>County</option>
+                <option [value]="county.countyCode" *ngFor="let county of counties">
+                    {{county.name}}</option>
+            </select>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <label for="clientQuoteConstituency">Constituency</label>
+            <select [disabled]="!(selectedConstituency$ | async)" class="form-select"
+                (change)="onConstituencyChange($event)">
+                <option selected disabled>Constituency</option>
+                <option [value]="constituency.name" *ngFor="let constituency of constituencies">
+                    {{constituency.name}}
+                </option>
+            </select>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <label for="clientQuoteNeighbourhood">Neighborhood</label>
+            <select [disabled]="!(selectedWard$ | async)" class="form-select" (change)="onWardChange($event)">
+                <option selected disabled>Neighborhood</option>
+                <option [value]="ward" *ngFor="let ward of wards">
+                    {{ward}}
+                </option>
+            </select>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <label for="clientQuoteAddress">Address</label>
+            <input type="text" class="form-control" id="clientQuoteAddress" placeholder="Apartment, street name">
+            <div class="valid-feedback">
+                error!
+            </div>
+        </div>
+        <div class="col-12 col-md-4 mb-3">
+            <label for="clientQuoteHseNumber">House Number</label>
+            <input type="text" class="form-control" id="clientQuoteHseNumber"
+                placeholder="House Number, suite, unit, Hse. etc.">
+            <div class="invalid-feedback">
+                error
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mt-5 d-flex flex-column justify-content-center">
+    <div class="form-check consent mb-3">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+            I agree to the <a href="/privacy-policy">Privacy Policy</a> and <a href="/service-agreement">Service
+                Agreement</a>
+        </label>
+    </div>
+    <button class="btn primary-btn w-50">Validate Quote</button>
+</div>
