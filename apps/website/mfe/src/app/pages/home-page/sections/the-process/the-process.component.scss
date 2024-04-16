@@ -4,9 +4,10 @@
   border-bottom: 1px solid var(--purple-100);
   border-left: 1px solid var(--purple-100);
   background: var(--fade-purple);
+  background: linear-gradient(254.25deg, rgba(122, 35, 211, 0) 1.55%);
 }
 .cff-v2-the-process-section-title {
-  color: var(--black-60);
+  color: var(--black-100);
   margin-bottom: 24px;
   max-width: 863px;
   font-weight: 600;
@@ -43,12 +44,15 @@
   margin-bottom: 36px;
 }
 .list-item {
-  color: var(--black-10);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--black-60);
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
   &:last-child {
-    img {
+    .circle-check-purple {
       display: none;
     }
   }

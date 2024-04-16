@@ -11,7 +11,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 22px;
-    color: var(--dark);
+    color: var(--black-100);
   }
 
   input,
@@ -30,12 +30,12 @@
     --bs-form-check-bg-image: url('/assets/icons/ellipse-off.svg');
     &:checked {
       --bs-form-check-bg-image: url('/assets/icons/ellipse-on.svg');
-      border: 1px solid var(--purple);
+      border: 1px solid var(--purple-100);
     }
     &:focus {
-      border-color: var(--purple);
+      border-color: var(--purple-100);
       outline: 0;
-      box-shadow: 0 0 0 0.25rem rgba(var(--purple-rgb), 0.25);
+      box-shadow: 0 0 0 0.25rem var(--purple-30);
     }
   }
 }
@@ -53,14 +53,14 @@
   }
   .form-check-input {
     &:checked {
-      background-color: rgba(var(--purple-rgb), 1);
+      background-color: rgba(var(--purple-100-rgb), 1);
       border-color: transparent;
       box-shadow: none;
     }
     &:focus {
-      border-color: var(--purple);
+      border-color: var(--purple-100);
       outline: 0;
-      box-shadow: 0 0 0 0.25rem rgba(var(--purple-rgb), 0.25);
+      box-shadow: 0 0 0 0.25rem var(--purple-30);
     }
   }
 }

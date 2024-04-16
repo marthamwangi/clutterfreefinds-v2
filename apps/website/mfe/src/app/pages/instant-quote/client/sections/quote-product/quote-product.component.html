@@ -19,7 +19,7 @@
                             <div class=" select-header">Material</div>
                             <select class="form-select" [(ngModel)]="pickedMaterial"
                                 [ngModelOptions]="{standalone: true}" (change)="fnSelectMaterial(pickedMaterial)">
-                                <option [selected]="(selectedMaterial$ | async)" [ngValue]="material"
+                                <option [selected]="(selectedMaterial$ | async)" [value]="material"
                                     *ngFor="let material of materialsArr;">
                                     {{material.name}}
                                 </option>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="">
-                        <button class="btn secondary-btn py-1" style="color: var(--purple);">Skip</button>
+                        <button class="btn secondary-btn py-1" style="color: var(--purple-100);">Skip</button>
                     </div>
                 </div>
                 <material-tabs [tabsName]="allTabs"></material-tabs>

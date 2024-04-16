@@ -10,35 +10,38 @@
             aria-expanded="false">
             Company
           </a>
-          <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-            <li class="header-item-container"><a class="dropdown-item h-100" [routerLink]="'/about'">
-                <div class="d-flex align-items-center h-100" style="column-gap: 16px;">
-                  <div class="header-item-icon"><img [src]="'assets/header/about.svg'" alt="about clutter free finds">
-                  </div>
-                  <div class="header-item-content">
-                    <div class="header-item-title">About Us</div>
-                    <div class="header-item-description">Who are we? What is our Vision? And Our
-                      Goals And
-                      everything you need to know about Clutter Free Finds
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-list d-flex flex-column flex-sm-row">
+              <li class="header-item-container col-12 col-lg-6"><a class="dropdown-item h-100" [routerLink]="'/about'">
+                  <div class="d-flex align-items-center h-100" style="column-gap: 16px;">
+                    <div class="header-item-icon"><img [src]="'assets/header/about.svg'" alt="about clutter free finds">
+                    </div>
+                    <div class="header-item-content">
+                      <div class="header-item-title">About Us</div>
+                      <div class="header-item-description">Who are we? What is our Vision? And Our
+                        Goals And
+                        everything you need to know about Clutter Free Finds
+                      </div>
                     </div>
                   </div>
-                </div>
-              </a></li>
-            <li class="header-item-container"><a class="dropdown-item h-100" [routerLink]="'/how-it-works'">
-                <div class="d-flex align-items-center h-100" style="column-gap: 16px;">
-                  <div class="header-item-icon"><img [src]="'assets/header/how-it-works.svg'"
-                      alt="how-it-works clutter free finds">
-                  </div>
-                  <div class="header-item-content">
-                    <div class="header-item-title">How it Works</div>
-                    <div class="header-item-description">Explore the step-by-step breakdown of our
-                      Professional
-                      Organizing approach
+                </a></li>
+              <li class="header-item-container col-12 col-lg-6"><a class="dropdown-item h-100"
+                  [routerLink]="'/how-it-works'">
+                  <div class="d-flex align-items-center h-100" style="column-gap: 16px;">
+                    <div class="header-item-icon"><img [src]="'assets/header/how-it-works.svg'"
+                        alt="how-it-works clutter free finds">
+                    </div>
+                    <div class="header-item-content">
+                      <div class="header-item-title">How it Works</div>
+                      <div class="header-item-description">Explore the step-by-step breakdown of our
+                        Professional
+                        Organizing approach
+                      </div>
                     </div>
                   </div>
-                </div>
-              </a></li>
-          </ul>
+                </a></li>
+            </ul>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" role="button" aria-expanded="false">

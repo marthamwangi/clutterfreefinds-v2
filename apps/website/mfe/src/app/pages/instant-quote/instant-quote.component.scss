@@ -2,6 +2,39 @@ main {
   margin: 100px 0;
   max-width: 1200px;
 }
+.next-btn,
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--purple-100);
+  opacity: 0.2;
+  &.active {
+    color: var(--purple-100);
+  }
+  &.disabled {
+    color: var(--purple-10);
+  }
+}
+
+.back-btn {
+  img {
+    transform: rotate(180deg);
+  }
+}
+
+.active-step,
+.disabled-step {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+}
+.isActiveStep {
+  color: var(--purple-100);
+}
+.isDisabledStep {
+  color: var(--black-30);
+}
 
 .estimate-price {
   font-weight: 600;
@@ -73,7 +106,6 @@ main {
 }
 
 .payment-options-header {
-  font-family: 'Ubuntu';
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -95,4 +127,11 @@ main {
   align-items: flex-start;
   padding: 0px;
   gap: 24px;
+}
+
+.form-heading {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 22px;
+  margin-bottom: 24px;
 }

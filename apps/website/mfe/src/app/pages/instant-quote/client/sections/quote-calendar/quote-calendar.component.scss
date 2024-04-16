@@ -2,23 +2,23 @@
   box-sizing: border-box;
   padding: 16px 56px 24px;
   gap: 16px;
-  background: rgba(122, 35, 211, 0.1);
+  background: var(--purple-10);
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%237A23D366' stroke-width='2' stroke-dasharray='24' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
   border-radius: 10px;
-  border-radius: 10px;
 }
+
 .inline-calendar-card {
   padding: 8px;
   width: 350px;
 }
 .check-availability {
-  color: var(--purple);
+  color: var(--purple-100);
 }
 .quote-text,
 .quote-author {
   font-weight: 400;
   font-size: 13px;
-  line-height: 10px;
+  line-height: 16px;
 }
 
 .quote-author {
@@ -29,4 +29,45 @@
   background-color: transparent;
   border-color: none;
   box-shadow: none;
+}
+
+.date-time-header {
+  padding: 10px;
+  background: var(--purple-10);
+  color: var(--black-100);
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+.date-time-frame {
+  gap: 24px;
+  input[type='radio'] + label.date-time-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 12px;
+    width: auto;
+    height: 44px;
+    border-radius: 24px;
+    background-color: var(--black-10);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    cursor: pointer;
+    .text {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+  input[type='radio'] {
+    display: none;
+  }
+
+  input[type='radio']:checked + label.date-time-item {
+    background-color: var(--purple-100);
+    color: var(--white-100);
+  }
 }

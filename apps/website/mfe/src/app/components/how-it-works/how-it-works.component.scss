@@ -5,14 +5,15 @@ section {
   .cover {
     background: linear-gradient(
         89.95deg,
-        var(--white-60) 0.04%,
-        var(--white-60) 20.33%,
-        var(--white-60) 50.5%,
-        var(--white-60) 89.02%
+        rgba(255, 255, 255, 0.95) 0.04%,
+        rgba(255, 255, 255, 0.843705) 20.33%,
+        rgba(255, 255, 255, 0.6175) 50.5%,
+        rgba(255, 255, 255, 0.855) 89.02%
       ),
-      url(/assets/images/bg/how-clutter-works.jpg) no-repeat top/100%;
+      url(/assets/images/bg/how-clutter-works.jpg) no-repeat top center;
     padding: 40px 64px;
     border-radius: 30px;
+
     @media (max-width: 575.98px) {
       padding: 30px 24px;
     }
@@ -47,6 +48,6 @@ section {
   }
 
   .secondary-btn {
-    background-color: var(--light);
+    background-color: var(--white-100);
   }
 }
