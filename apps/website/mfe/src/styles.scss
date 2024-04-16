@@ -156,18 +156,19 @@ a {
 .title-gradient {
   background: linear-gradient(
     90.52deg,
-    var(--purple-100) 25.3%,
-    var(--yellow-100) 66.74%
+    var(--black-100) 25%,
+    var(--black-60) 50%,
+    var(--purple-100) 75%,
+    var(--purple-60) 100%
   );
   text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.circle-check-yellow {
+.circle-round {
   width: 18px !important;
   height: 18px !important;
-  background-color: var(--yellow-100);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -175,6 +176,10 @@ a {
   img {
     width: 10px;
   }
+}
+.circle-check-yellow {
+  @extend .circle-round;
+  background-color: var(--yellow-100);
 }
 .circle-check-yellow-30 {
   @extend .circle-check-yellow;
@@ -182,22 +187,17 @@ a {
 }
 
 .circle-check-purple {
-  width: 18px !important;
-  height: 18px !important;
+  @extend .circle-round;
   background-color: var(--purple-100);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  img {
-    width: 10px;
-  }
 }
 .circle-check-purple-10 {
   @extend .circle-check-purple;
-  background-color: var(--yellow-10);
+  background-color: var(--purple-10);
 }
-
+.circle-check-green {
+  @extend .circle-round;
+  background-color: var(--green-100);
+}
 main {
   @media (max-width: 575px) {
     margin-top: 20%;
