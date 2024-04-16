@@ -12,9 +12,30 @@
 :root {
   /**Colors
   */
-  --green: #00b428;
-  --purple: #7a23d3;
-  --purple-rgb: 122, 35, 211;
+  --purple-100: rgb(122, 35, 211);
+  --purple-100-rgb: 122, 35, 211;
+  --purple-60: rgba(var(--purple-100-rgb), 0.6);
+  --purple-30: rgba(var(--purple-100-rgb), 0.3);
+  --purple-10: rgba(var(--purple-100-rgb), 0.1);
+
+  --green-100: rgb(0, 180, 40);
+  --green-100-rgb: 0, 180, 40;
+  --green-60: rgba(var(--green-100-rgb), 0.6);
+  --green-30: rgba(var(--green-100-rgb), 0.3);
+  --green-10: rgba(var(--green-100-rgb), 0.1);
+
+  --white-100: rgb(255, 255, 255);
+  --white-100-rgb: 255, 255, 255;
+  --white-60: rgba(var(--white-100-rgb), 0.6);
+  --white-30: rgba(var(--white-100-rgb), 0.3);
+  --white-10: rgba(var(--white-100-rgb), 0.1);
+
+  --black-100: rgb(0, 0, 0);
+  --black-100-rgb: 0, 0, 0;
+  --black-60: rgba(var(--black-100-rgb), 0.6);
+  --black-30: rgba(var(--black-100-rgb), 0.3);
+  --black-10: rgba(var(--black-100-rgb), 0.1);
+
   --fade-purple: #f2e4ff;
   --light-red: #f6f6f6;
   --grey: #f2f5f7;
@@ -60,7 +81,7 @@ a {
   cursor: pointer;
   a,
   span {
-    color: var(--purple);
+    color: var(--purple-100);
     text-align: center;
     font-size: 14px;
     font-weight: 500;
@@ -76,7 +97,7 @@ a {
   padding: 12px 24px;
   gap: 8px;
   border-radius: 8px;
-  background-color: var(--purple) !important;
+  background-color: var(--purple-100) !important;
   cursor: pointer;
   color: var(--light);
 
@@ -91,7 +112,7 @@ a {
 
   &:hover {
     color: var(--light);
-    background-color: var(--dark) !important;
+    background-color: var(--black-100) !important;
   }
   @media (max-width: 575.98px) {
     margin-bottom: 12px;
@@ -105,10 +126,10 @@ a {
   padding: 12px 40px;
   gap: 8px;
   border-radius: 8px;
-  border-color: var(--purple) !important;
+  border-color: var(--purple-100) !important;
 
   a {
-    color: var(--purple);
+    color: var(--purple-100);
     text-decoration: none;
     font-weight: 500;
     font-size: 16px;
@@ -117,9 +138,9 @@ a {
   }
 
   &:hover {
-    border-color: var(--dark) !important;
+    border-color: var(--black-100) !important;
     a {
-      color: var(--dark) !important;
+      color: var(--black-100) !important;
     }
   }
   @media (max-width: 575.98px) {
@@ -136,7 +157,7 @@ a {
 .circle-check-green {
   width: 18px !important;
   height: 18px !important;
-  background-color: var(--green);
+  background-color: var(--green-100);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -145,7 +166,10 @@ a {
     width: 10px;
   }
 }
-
+.circle-check-green-30 {
+  @extend .circle-check-green;
+  background-color: var(--green-30);
+}
 main {
   @media (max-width: 575px) {
     margin-top: 20%;
@@ -157,7 +181,7 @@ span.mdc-tab__text-label {
   font-weight: 500;
   font-size: 16px;
   line-height: 28px;
-  color: var(--dark) !important;
+  color: var(--black-100) !important;
 }
 span.mdc-tab-indicator {
   left: -50%;
@@ -169,9 +193,26 @@ span.mdc-tab-indicator {
 }
 .mat-mdc-tab-label-container {
   margin-top: 10px;
-  background-color: rgba(var(--purple-rgb), 0.03);
+  background-color: rgba(var(--purple-100-rgb), 0.03);
   border-radius: 8px;
 }
 .mat-calendar-body-label {
   visibility: hidden;
+}
+.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+  > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(
+    .mat-calendar-body-comparison-identical
+  ) {
+  background-color: var(--purple-30);
+}
+.mat-calendar-body-today:not(.mat-calendar-body-selected):not(
+    .mat-calendar-body-comparison-identical
+  ) {
+  border-color: var(--black-10);
+}
+
+.mat-calendar-body-selected {
+  border-color: var(--purple-100);
+  background-color: var(--purple-100);
+  color: var(--white-100);
 }
