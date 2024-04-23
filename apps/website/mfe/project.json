@@ -48,6 +48,12 @@
               "maximumError": "4kb"
             }
           ],
+          "fileReplacements": [
+            {
+              "replace": "libs/shared/globals/src/lib/environments/env.ts",
+              "with": "libs/shared/globals/src/lib/environments/env.prod.ts"
+            }
+          ],
           "outputHashing": "all"
         },
         "development": {
