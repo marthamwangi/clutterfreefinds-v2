@@ -124,6 +124,12 @@ a {
     margin-bottom: 12px;
   }
 }
+
+a.primary-btn {
+  @media (max-width: 575.98px) {
+    font-size: 12px;
+  }
+}
 .secondary-btn {
   display: flex;
   flex-direction: row;
@@ -153,6 +159,7 @@ a {
     margin-bottom: 12px;
   }
 }
+
 .title-gradient {
   background: linear-gradient(
     90.52deg,
