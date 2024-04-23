@@ -198,6 +198,10 @@ a {
   @extend .circle-round;
   background-color: var(--green-100);
 }
+.circle-check-green-30 {
+  @extend .circle-round;
+  background-color: var(--green-30);
+}
 main {
   @media (max-width: 575px) {
     margin-top: 20%;

@@ -27,35 +27,57 @@ nav {
 .dropdown-item:focus-visible {
   outline: none;
 }
-.nav-link {
+.nav-link,
+.header-link {
   font-weight: 600;
-  font-size: 14px;
-  line-height: 16px;
-  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  color: var(--black-100);
+  min-width: -moz-fit-content;
+  min-width: fit-content;
 }
 
 .dropdown-item:hover {
   background-color: transparent;
 }
 .nav-link.dropdown-toggle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  .header-link:hover {
+    color: var(--purple-100);
+  }
   &::after {
     display: inline-block;
     margin-left: 0;
     vertical-align: 0;
-    content: url('/assets/icons/drop-down-dark.svg');
     border-top: 0 solid;
     border-right: 0 solid transparent;
     border-bottom: 0;
     border-left: 0 solid transparent;
   }
+}
+
+.header-underline-animation {
+  display: inline-block;
+  position: relative;
+  line-height: 200% !important;
+  &::after {
+    content: '' !important;
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--purple-100);
+    transform-origin: bottom left;
+    transition: transform 400ms ease-out;
+  }
   &:hover {
     &::after {
-      content: url('/assets/icons/drop-down-purple.svg');
-      margin-left: 4px;
-      transition: margin-left 450ms ease-in-out;
+      transform: scaleX(1);
     }
-    border-bottom: 2px solid var(--purple-100);
-    color: var(--purple-100);
   }
 }
 .has-megamenu .dropdown-menu {
