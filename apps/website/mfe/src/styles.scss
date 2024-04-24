@@ -258,3 +258,7 @@ span.mdc-tab-indicator {
   background-color: var(--purple-100);
   color: var(--white-100);
 }
+
+.mat-calendar-body-disabled span {
+  text-decoration: line-through;
+}
