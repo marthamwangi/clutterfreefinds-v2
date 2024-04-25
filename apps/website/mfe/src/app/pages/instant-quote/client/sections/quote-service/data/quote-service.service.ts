@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { DeserializeCffService } from '../../mappers/cffService.mapper';
+import { DeserializeCffService } from '../mappers/cffService.mapper';
 import { Observable, map } from 'rxjs';
-import { ICffServiceResponse } from '../../models/cffSservice.model';
+import { ICffServiceResponse } from '../model/cffSservice.model';
 
 @Injectable({
   providedIn: 'root',
