@@ -5,7 +5,6 @@ export interface ISpaceModel {
   name: string;
   maxHours: number;
   minHours: number;
-  isSelected?: boolean;
 }
 
 export interface SpaceResponse extends IResponseModel {

@@ -1,10 +1,11 @@
 import { NgFor, AsyncPipe } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ISpaceModel } from '../../../models/space.model';
-import { SpaceService } from '../../services/space.service';
-import { BehaviorSubject } from 'rxjs';
-import { BASE_API, WEB_API_CFF_SPACE } from '@clutterfreefinds-v2/globals';
+import { ISpaceModel } from './models/space.model';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { AppState } from 'apps/website/mfe/src/app/shared/interface';
+import { Store } from '@ngrx/store';
+import { fromSpaceSelectors } from './data/quote-space.selectors';
 
 @Component({
   selector: 'iq-quote-space',
@@ -16,6 +17,11 @@ import { BASE_API, WEB_API_CFF_SPACE } from '@clutterfreefinds-v2/globals';
 export class QuoteSpaceComponent {
   @Output() selectedSpaceEmit$ = new EventEmitter<ISpaceModel>();
   @Input() isServiceSelected: any;
+  @Input() selectedCffSpace!: ISpaceModel;
+
+  private store: Store<AppState> = inject(Store);
+
+  private _cff_spaces$: Observable<Array<ISpaceModel>>;
 
   public spaceProgress: boolean = false;
   public spacesArr: Array<ISpaceModel> = [];
@@ -23,13 +29,13 @@ export class QuoteSpaceComponent {
   public selectedSpace$: BehaviorSubject<ISpaceModel>;
   public selectedSpace!: ISpaceModel;
 
-  constructor(private _spaceService: SpaceService) {
+  constructor() {
+    this._cff_spaces$ = this.store.select(fromSpaceSelectors.selectSepacesList);
     this.selectedSpace$ = new BehaviorSubject<ISpaceModel>({
       id: '',
       name: '',
       maxHours: 1,
       minHours: 1,
-      isSelected: false,
     });
     this.selectedSpace$.subscribe({
       next: (space) => {
@@ -42,24 +48,12 @@ export class QuoteSpaceComponent {
     this._getAllSpaces();
   }
   private _getAllSpaces(): void {
-    this.spaceProgress = true;
-    this._spaceService
-      .getAllSpaces(`${BASE_API}/${WEB_API_CFF_SPACE}`)
-      .subscribe({
-        next: (response: any) => {
-          this.spaceProgress = false;
-          if (response.success) {
-            this.spacesArr = response.spaces;
-          }
-        },
-        error: (error: any) => {
-          this.spaceProgress = false;
-        },
-      });
+    this._cff_spaces$.subscribe((data: Array<ISpaceModel>) => {
+      this.spacesArr = data;
+    });
   }
 
   public fnSelectSpace(space: ISpaceModel) {
-    space.isSelected = true;
     this.selectedSpace$.next(space);
     this.selectedSpaceEmit$.emit(space);
   }

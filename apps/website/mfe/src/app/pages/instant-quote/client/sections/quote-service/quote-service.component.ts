@@ -45,7 +45,6 @@ export class QuoteServiceComponent {
   }
   private _getCffServices(): void {
     this._cff_services$.subscribe((data: Array<ICffService>) => {
-      // this.cffServices = this._returnShallowCopy(data);
       this.cffServices = data;
     });
   }

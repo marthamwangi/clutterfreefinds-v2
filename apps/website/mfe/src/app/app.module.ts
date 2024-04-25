@@ -19,6 +19,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CFFServiceEffects } from './pages/instant-quote/client/sections/quote-service/data/quote-service.effects';
 import { APP_STORE } from './shared/interface';
+import { CFFSpacesEffects } from './pages/instant-quote/client/sections/quote-space/data/quote-space.effects';
 
 @NgModule({
   declarations: [AppComponent, ToastrComponent],
@@ -39,7 +40,7 @@ import { APP_STORE } from './shared/interface';
     }),
     AppBrowserModuleModule,
     StoreModule.forRoot(APP_STORE.cff_store),
-    EffectsModule.forRoot([CFFServiceEffects]),
+    EffectsModule.forRoot([CFFServiceEffects, CFFSpacesEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: !isDevMode(),

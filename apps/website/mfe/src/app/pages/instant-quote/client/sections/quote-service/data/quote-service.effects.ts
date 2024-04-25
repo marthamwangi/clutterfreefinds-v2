@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
-import { map, switchMap } from 'rxjs';
+import { exhaustMap, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ICffServiceResponse } from '../model/cffSservice.model';
 import { DeserializeCffService } from '../mappers/cffService.mapper';
@@ -18,7 +17,7 @@ export class CFFServiceEffects {
   load$ = createEffect(() =>
     this.#actions.pipe(
       ofType(fromCffServiceActions.getCffServicesFromBE),
-      switchMap(({ url }) => this.#http.get<ICffServiceResponse>(url)),
+      exhaustMap(({ url }) => this.#http.get<ICffServiceResponse>(url)),
       map((response) =>
         fromCffServiceActions.setCffServiceToStore({
           cffServices: this.#deserializeCffServices.deserialize(response.data),
