@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { AppComponent } from './app.component';
 import {
   BrowserModule,
@@ -14,6 +14,11 @@ import { ToastrComponent } from '@clutterfreefinds-v2/toastr';
 import { HeaderComponent } from '@clutterfreefinds-v2/header';
 import { FooterComponent } from '@clutterfreefinds-v2/footer';
 import { TranslateModule } from '@ngx-translate/core';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CFFServiceEffects } from './pages/instant-quote/client/sections/quote-service/data/quote-service.effects';
+import { APP_STORE } from './pages/instant-quote/client/sections/quote-service/model/cffSservice.model';
 
 @NgModule({
   declarations: [AppComponent, ToastrComponent],
@@ -33,6 +38,12 @@ import { TranslateModule } from '@ngx-translate/core';
       scrollPositionRestoration: 'enabled',
     }),
     AppBrowserModuleModule,
+    StoreModule.forRoot(APP_STORE),
+    EffectsModule.forRoot([CFFServiceEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: !isDevMode(),
+    }),
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
