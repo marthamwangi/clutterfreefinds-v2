@@ -8,12 +8,13 @@ main {
   align-items: center;
   gap: 8px;
   color: var(--purple-100);
-  opacity: 0.2;
-  &.active {
-    color: var(--purple-100);
-  }
-  &.disabled {
+  background-color: transparent;
+
+  &.deactivated {
     color: var(--purple-10);
+    img {
+      opacity: 0.2;
+    }
   }
 }
 
@@ -23,16 +24,28 @@ main {
   }
 }
 
+.form-heading,
 .active-step,
 .disabled-step {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 32px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  @media (max-width: 575.98px) {
+    font-size: 14px;
+    justify-content: space-between;
+  }
+}
+.step-separator,
+.disabled-step {
+  @media (max-width: 575.98px) {
+    display: none;
+  }
 }
 .isActiveStep {
   color: var(--purple-100);
 }
-.isDisabledStep {
+.isNextStep,
+.isPreviousStep {
   color: var(--black-30);
 }
 
@@ -127,11 +140,4 @@ main {
   align-items: flex-start;
   padding: 0px;
   gap: 24px;
-}
-
-.form-heading {
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 22px;
-  margin-bottom: 24px;
 }

@@ -1,11 +1,11 @@
 <div class="accordion-item ">
     <h2 class="accordion-header" id="headingSpace">
         <button [class.isActive]="selectedSpace.isSelected" class="accordion-button" type="button"
-            data-bs-toggle="collapse" data-bs-target="#collapseSpace" aria-expanded="true"
-            aria-controls="collapseSpace">
+            data-bs-toggle="collapse" [attr.data-bs-target]="isServiceSelected ? '#collapseSpace' : '' "
+            aria-expanded="true" aria-controls="collapseSpace">
             <div class="row steps w-100">
                 <div class="col-2 step-text-number">Step 2:</div>
-                <div class="col-10 step-text">Select Space </div>
+                <div class="col-10 step-text">Select Space</div>
             </div>
         </button>
     </h2>

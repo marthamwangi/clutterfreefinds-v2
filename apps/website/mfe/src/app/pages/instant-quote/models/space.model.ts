@@ -1,6 +1,7 @@
 import { IResponseModel } from './response.model';
 
 export interface ISpaceModel {
+  id: string;
   name: string;
   maxHours: number;
   minHours: number;
@@ -12,6 +13,7 @@ export interface SpaceResponse extends IResponseModel {
 }
 
 export interface SpaceModel {
+  id: string;
   name: string;
   maxHours: number;
   minHours: number;

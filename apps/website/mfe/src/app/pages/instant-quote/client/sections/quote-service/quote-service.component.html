@@ -1,7 +1,7 @@
 <div class="accordion-item ">
     <h2 class="accordion-header" id="headingOne">
-        <button [class.isActive]="selectedCffService.isSelected" class="accordion-button" type="button"
-            data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <button [class.isActive]="selectedCffService" class="accordion-button" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             <div class="row steps w-100">
                 <div class="col-2 step-text-number">Step 1:</div>
                 <div class="col-10 step-text">Select Service </div>
@@ -15,7 +15,7 @@
                 <div class="d-flex" *ngFor="let service of cffServices; index as i;">
                     <input type="radio" name="service" [id]="'radio-service-btn-'+i" [value]="service"
                         [(ngModel)]="selectedCffService" [ngModelOptions]="{standalone: true}"
-                        (ngModelChange)="selectedService(service)" />
+                        (ngModelChange)="onSelectedService(service)" />
                     <label [for]="'radio-service-btn-'+i" class="cff-service">
                         <img [src]="'/assets/icons/cff-services/' +service.label+'.svg'" [alt]="service.name">
                         {{service.name}}

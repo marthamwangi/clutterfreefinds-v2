@@ -1,5 +1,5 @@
 import { NgFor, AsyncPipe } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ISpaceModel } from '../../../models/space.model';
 import { SpaceService } from '../../services/space.service';
@@ -15,6 +15,7 @@ import { BASE_API, WEB_API_CFF_SPACE } from '@clutterfreefinds-v2/globals';
 })
 export class QuoteSpaceComponent {
   @Output() selectedSpaceEmit$ = new EventEmitter<ISpaceModel>();
+  @Input() isServiceSelected: any;
 
   public spaceProgress: boolean = false;
   public spacesArr: Array<ISpaceModel> = [];
@@ -24,6 +25,7 @@ export class QuoteSpaceComponent {
 
   constructor(private _spaceService: SpaceService) {
     this.selectedSpace$ = new BehaviorSubject<ISpaceModel>({
+      id: '',
       name: '',
       maxHours: 1,
       minHours: 1,

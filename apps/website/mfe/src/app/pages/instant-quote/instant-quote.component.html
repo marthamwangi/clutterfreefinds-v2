@@ -1,16 +1,28 @@
 <main role="main" class="d-flex flex-column container mx-auto">
-    <div class="row" style="row-gap: 24px;">
-        <div class="col-12 d-flex align-items-center justify-content-start" style="gap: 16px;">
-            <a class="back-btn"><img src="assets/icons/arrow-right.svg" alt=""> Go Back</a>
-            <div class="active-step" [class.isActiveStep]="currentStep === 0">active</div>
-            <div><img src="assets/icons/slice.svg" alt=""> </div>
-            <div class="disabled-step" [class.isDisabledStep]="currentStep !== 0">disabled</div>
-            <a class="next-btn">Go Next <img src="assets/icons/arrow-right.svg" alt=""></a>
+    <div class="row" style="row-gap: 24px;" [formGroup]="createInstantQuote">
+        <div class="order-last order-md-first col-12 d-flex align-items-center justify-content-center form-heading"
+            style="gap: 16px;">
+            <button class="back-btn border-0" (click)="goBack()" [disabled]="currentStepIndex === 0"
+                [class]="currentStepIndex === 0 ? 'deactivated' : ''"><img src="assets/icons/arrow-right.svg" alt=""> Go
+                Back</button>
+            <div class="active-step" [class.isActiveStep]="currentStep?.status === 'active' || 'completed'">
+                {{steps[currentStepIndex].title}}
+            </div>
+            <div class="step-separator">{{steps[currentStepIndex].label}} <img src="assets/icons/slice.svg" alt="">
+                {{renderedSteps.length}}
+            </div>
+            <div class="disabled-step" [class.isNextStep]="instantQuoteForm(steps[currentStepIndex].key)?.invalid">
+                {{steps[currentStepIndex + 1].title}}</div>
+            <button class="next-btn border-0" (click)=" goToNext()"
+                [disabled]="instantQuoteForm(steps[currentStepIndex].key)?.invalid"
+                [class]="instantQuoteForm(steps[currentStepIndex].key)?.valid ? '' : 'deactivated'">Go
+                Next <img src="assets/icons/arrow-right.svg" alt=""></button>
         </div>
-        <ng-container *ngTemplateOutlet="returnStepsTeplate()"> </ng-container>
+        <ng-container *ngTemplateOutlet="returnStepsTemplate()"> </ng-container>
         <ng-template #iqCalendar>
             <div class="col-12  mx-auto">
-                <iq-quote-calendar></iq-quote-calendar>
+                <iq-quote-calendar [dateTime]="_selectedQuoteDate"
+                    (selectedDateTime$)="getQuoteDate($event)"></iq-quote-calendar>
             </div>
         </ng-template>
         <ng-template #iqEstimates>
@@ -36,8 +48,10 @@
                 </div>
                 <div class=" accordion" id="accordionQuote">
                     <div class="row">
-                        <iq-quote-service (selectedService$)="getService($event)"></iq-quote-service>
-                        <iq-quote-space (selectedSpaceEmit$)="getSpace($event)"></iq-quote-space>
+                        <iq-quote-service [selectedCffService]="serviceSelected"
+                            (selectedService$)="getService($event)"></iq-quote-service>
+                        <iq-quote-space [isServiceSelected]="isServiceSelected$ | async"
+                            (selectedSpaceEmit$)="getSpace($event)"></iq-quote-space>
                         <iq-quote-product (selectedMaterialEmit$)="getMaterial($event)"></iq-quote-product>
                         <iq-quote-additonal-info></iq-quote-additonal-info>
                     </div>
@@ -47,29 +61,6 @@
         <ng-template #iqClientDetails>
             <div class="col-12 col-lg-9 mx-auto">
                 <iq-quote-client-details></iq-quote-client-details>
-            </div>
-        </ng-template>
-        <ng-template #iqServiceType>
-            <div class="col-12 col-lg-9 mx-auto">
-                <div class="row service-type">
-                    <div class="col-6">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="servicyTypeHome"
-                                checked>
-                            <label class="form-check-label" for="servicyTypeHome">
-                                Home Service
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="servicyTypeOnline">
-                            <label class="form-check-label" for="servicyTypeOnline">
-                                Online service
-                            </label>
-                        </div>
-                    </div>
-                </div>
             </div>
         </ng-template>
         <ng-template #iqQuoteSummary>
