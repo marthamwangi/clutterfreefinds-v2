@@ -1,4 +1,4 @@
-<div class="calendar-container d-flex flex-wrap justify-content-center">
+<div class=" d-flex flex-wrap justify-content-center">
     <div class="col-12 d-flex justify-content-end">
         <div [class.circle-check-green-30]="selectedTime">
             <img class="check" [class.d-flex]="selectedTime" alt="clutter free finds services"
@@ -6,28 +6,31 @@
         </div>
     </div>
     <div class="row d-flex align-items-start col-12" style="gap: 24px;">
-        <div class="col-12 col-lg-4 me-auto mt-2">
+        <div class="col-12 col-lg-4 me-auto mt-2 ">
             <div class="date-time-header">1. Pick a date</div>
-            <div class="calendar-card">
-                <div class="check-availability d-flex ">
-                    <div class="me-2">
-                        Checking availability
+            <div class="calendar-container">
+                <div class="calendar-card">
+                    <div class="check-availability d-flex">
+                        <div class="me-2 ">
+                            Checking availability
+                        </div>
+                        <img src="assets/icons/loading-loop.svg" alt="">
                     </div>
-                    <img src="assets/icons/loading-loop.svg" alt="">
+                    <mat-card class="inline-calendar-card">
+                        <mat-calendar [minDate]="minDate" (selectedChange)="onDatePicked($event)"
+                            [selected]="selectedDate" ngDefaultControl [(ngModel)]="selectedDate"
+                            [ngModelOptions]="{standalone: true}"></mat-calendar>
+                    </mat-card>
                 </div>
-                <mat-card class="inline-calendar-card">
-                    <mat-calendar [minDate]="minDate" (selectedChange)="onDatePicked($event)" [selected]="selectedDate"
-                        ngDefaultControl [(ngModel)]="selectedDate"
-                        [ngModelOptions]="{standalone: true}"></mat-calendar>
-                </mat-card>
             </div>
+
             <div class="col-12 text-center quote-text mt-3">Your home should be the antidote of stress, not the cause of
                 it. <span class="text-center quote-author">~Peter Walsh</span>
             </div>
         </div>
         <div class="col-12 col-lg-7">
             <div class="mt-2 date-time-header ">
-                <div>2. Pick a time {{selectedDate}}</div>
+                <div>2. Pick a time</div>
             </div>
             <div class="date-time-frame  mt-2">
                 <div class="date-time-item " *ngFor="let time of timePicker; index as i">

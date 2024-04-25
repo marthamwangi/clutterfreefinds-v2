@@ -39,8 +39,11 @@
 }
 .date-time-frame {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 150px);
   gap: 16px;
+  @media (max-width: 576.98px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   input[type='radio'] + label.date-time-item {
     display: flex;
@@ -52,7 +55,7 @@
     width: auto;
     height: 44px;
     border-radius: 24px;
-    background-color: var(--white-60);
+    background-color: var(--purple-10);
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
