@@ -17,12 +17,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { QuoteServiceComponent } from './client/sections/quote-service/quote-service.component';
-import {
-  AppState,
-  ICffService,
-} from './client/sections/quote-service/model/cffSservice.model';
+
 import { QuoteSpaceComponent } from './client/sections/quote-space/quote-space.component';
-import { ISpaceModel } from './models/space.model';
+import { ISpaceModel } from './client/sections/quote-space/models/space.model';
 import { QuoteProductComponent } from './client/sections/quote-product/quote-product.component';
 import { IMaterialModel } from './models/material.model';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -34,6 +31,8 @@ import { Store } from '@ngrx/store';
 import { BASE_API, WEB_API_CFF_SERVICES } from '@clutterfreefinds-v2/globals';
 import { fromCffServiceActions } from './client/sections/quote-service/data/quote-service.actions';
 import { fromCffServiceSelectors } from './client/sections/quote-service/data/quote-service.selectors';
+import { AppState } from '../../shared/interface';
+import { ICffService } from './client/sections/quote-service/model/cffSservice.model';
 
 interface IPriceRange {
   minPrice: number;
@@ -88,7 +87,7 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
   public currentStep: Step | null = null;
 
   public serviceSelected!: ICffService;
-  public isServiceSelected$: Observable<boolean | undefined>;
+  public isServiceSelected$: Observable<ICffService>;
 
   public spaceSelected!: ISpaceModel;
   public _selectedMaterial!: IMaterialModel;
