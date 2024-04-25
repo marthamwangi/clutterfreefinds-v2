@@ -1,12 +1,12 @@
-<div class=" d-flex flex-wrap justify-content-center">
-    <div class="col-12 d-flex justify-content-end">
-        <div [class.circle-check-green-30]="selectedTime">
-            <img class="check" [class.d-flex]="selectedTime" alt="clutter free finds services"
-                src="/assets/icons/check-green.svg" width="10" />
+<div class=" d-flex flex-wrap justify-content-center mx-auto">
+    <div class="row d-flex align-items-start justify-content-between w-100">
+        <div class=" col-12 col-lg-4 order-md-last d-flex justify-content-start">
+            <div [class.circle-check-green-30]="selectedTime">
+                <img class="check" [class.d-flex]="selectedTime" alt="clutter free finds services"
+                    src="/assets/icons/check-green.svg" width="10" />
+            </div>
         </div>
-    </div>
-    <div class="row d-flex align-items-start col-12" style="gap: 24px;">
-        <div class="col-12 col-lg-4 me-auto mt-2 ">
+        <div class="col-12 col-lg-4 me-auto mt-2">
             <div class="date-time-header">1. Pick a date</div>
             <div class="calendar-container">
                 <div class="calendar-card">
@@ -23,22 +23,22 @@
                     </mat-card>
                 </div>
             </div>
-
-            <div class="col-12 text-center quote-text mt-3">Your home should be the antidote of stress, not the cause of
+            <div class="w-100 text-center quote-text mt-3">Your home should be the antidote of stress, not the cause of
                 it. <span class="text-center quote-author">~Peter Walsh</span>
             </div>
         </div>
-        <div class="col-12 col-lg-7">
+        <div class="col-12 col-lg-4 " [class]="selectedDate ? 'show-time-picker' : 'hide-time-picker'">
             <div class="mt-2 date-time-header ">
-                <div>2. Pick a time</div>
+                2. Pick a time
             </div>
-            <div class="date-time-frame  mt-2">
+            <div class="date-time-frame mt-2">
                 <div class="date-time-item " *ngFor="let time of timePicker; index as i">
                     <input (ngModelChange)="onTimePicked(time.value)" type="radio" name="time"
                         [id]="'radio-time-btn-'+i" [value]="time" [(ngModel)]="selectedTime"
                         [ngModelOptions]="{standalone: true} " />
                     <label [style.pointerEvents]=" !selectedDate ? 'none' : 'auto'" [for]="'radio-time-btn-' +i"
                         class="date-time-item">
+
                         <div class="text">
                             {{time.label}}
                         </div>
@@ -47,5 +47,4 @@
             </div>
         </div>
     </div>
-
 </div>

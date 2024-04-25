@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 24px;
   gap: 16px;
-  background: var(--purple-10);
+  // background: var(--purple-10);
   border-radius: 10px;
 }
 .calendar-card {
@@ -79,4 +79,19 @@
 
 .check {
   display: none;
+}
+
+.show-time-picker {
+  display: block;
+  animation: 450ms ease-in pop;
+}
+
+.hide-time-picker {
+  display: none;
+}
+
+@keyframes pop {
+  50% {
+    transform: scale(0.9);
+  }
 }
