@@ -7,7 +7,6 @@ const initialState: ICffServiceState = {
     id: '',
     name: '',
     price: 0,
-    isSelected: false,
     description: '',
     label: '',
   },

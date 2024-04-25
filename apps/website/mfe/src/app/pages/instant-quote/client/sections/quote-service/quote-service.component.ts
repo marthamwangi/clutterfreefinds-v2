@@ -69,17 +69,11 @@ export class QuoteServiceComponent {
   }
 
   public onSelectedService(service: ICffService) {
-    // service.isSelected = true;
-    // this.selectedCffService = service;
     this.store.dispatch(
       fromCffServiceActions.mutateSelectedServiceSelection({
         selected_service: service,
       })
     );
     this.selectedService$.emit(service);
-  }
-
-  private _returnShallowCopy(payload: any): any {
-    return JSON.parse(JSON.stringify(payload));
   }
 }
