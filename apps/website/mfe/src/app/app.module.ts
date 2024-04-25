@@ -18,7 +18,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CFFServiceEffects } from './pages/instant-quote/client/sections/quote-service/data/quote-service.effects';
-import { APP_STORE } from './pages/instant-quote/client/sections/quote-service/model/cffSservice.model';
+import { APP_STORE } from './shared/interface';
 
 @NgModule({
   declarations: [AppComponent, ToastrComponent],
@@ -38,7 +38,7 @@ import { APP_STORE } from './pages/instant-quote/client/sections/quote-service/m
       scrollPositionRestoration: 'enabled',
     }),
     AppBrowserModuleModule,
-    StoreModule.forRoot(APP_STORE),
+    StoreModule.forRoot(APP_STORE.cff_store),
     EffectsModule.forRoot([CFFServiceEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
