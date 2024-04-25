@@ -15,7 +15,7 @@
                 <div class="d-flex" *ngFor="let service of cffServices; index as i;">
                     <input type="radio" name="service" [id]="'radio-service-btn-'+i" [value]="service"
                         [(ngModel)]="selectedCffService" [ngModelOptions]="{standalone: true}"
-                        (ngModelChange)="onSelectedService(service)" />
+                        (ngModelChange)="onSelectedService($event)" />
                     <label [for]="'radio-service-btn-'+i" class="cff-service">
                         <img [src]="'/assets/icons/cff-services/' +service.label+'.svg'" [alt]="service.name">
                         {{service.name}}

@@ -7,13 +7,14 @@ import {
   inject,
 } from '@angular/core';
 import { AsyncPipe, NgFor } from '@angular/common';
-import { AppState, ICffService } from './model/cffSservice.model';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import { BehaviorSubject, Observable, take } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { fromCffServiceSelectors } from './data/quote-service.selectors';
 import { fromCffServiceActions } from './data/quote-service.actions';
+import { AppState } from 'apps/website/mfe/src/app/shared/interface';
+import { ICffService } from './model/cffSservice.model';
 @Component({
   selector: 'iq-quote-service',
   standalone: true,
@@ -44,7 +45,8 @@ export class QuoteServiceComponent {
   }
   private _getCffServices(): void {
     this._cff_services$.subscribe((data: Array<ICffService>) => {
-      this.cffServices = this._returnShallowCopy(data);
+      // this.cffServices = this._returnShallowCopy(data);
+      this.cffServices = data;
     });
   }
 
@@ -67,8 +69,8 @@ export class QuoteServiceComponent {
   }
 
   public onSelectedService(service: ICffService) {
-    service.isSelected = true;
-    this.selectedCffService = service;
+    // service.isSelected = true;
+    // this.selectedCffService = service;
     this.store.dispatch(
       fromCffServiceActions.mutateSelectedServiceSelection({
         selected_service: service,

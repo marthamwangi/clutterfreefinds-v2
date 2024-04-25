@@ -1,8 +1,8 @@
 import { createSelector } from '@ngrx/store';
-import { AppState, ICffService } from '../model/cffSservice.model';
+import { AppState } from 'apps/website/mfe/src/app/shared/interface';
 
-const allServices = (state: AppState) => state.cff_store.cffServices;
-const activeService = (state: AppState) => state.cff_store.selected_service;
+const allServices = (state: AppState) => state.cff_services.cffServices;
+const activeService = (state: AppState) => state.cff_services.selected_service;
 
 const selectActiveService = createSelector(
   activeService,
@@ -16,7 +16,7 @@ const selectServiceList = createSelector(
 
 const selectActiveServiceStatus = createSelector(
   activeService,
-  (state) => state.isSelected
+  (state) => state
 );
 
 export const fromCffServiceSelectors = {

@@ -7,18 +7,6 @@ export interface ICffServiceState {
   selected_service: ICffService;
 }
 
-export interface AppState {
-  cff_store: ICffServiceState;
-}
-
-export interface AppStore {
-  cff_store: ActionReducer<ICffServiceState, Action>;
-}
-
-export const APP_STORE: AppStore = {
-  cff_store: CFF_SERVICE_REDUCER,
-};
-
 export interface ICffService {
   id: string;
   name: string;

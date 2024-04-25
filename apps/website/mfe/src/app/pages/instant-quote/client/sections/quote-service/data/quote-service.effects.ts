@@ -12,7 +12,6 @@ import { fromCffServiceActions } from './quote-service.actions';
 })
 export class CFFServiceEffects {
   #actions: Actions = inject(Actions);
-  #store: Store = inject(Store);
   #http: HttpClient = inject(HttpClient);
   #deserializeCffServices: DeserializeCffService = new DeserializeCffService();
 
