@@ -25,9 +25,9 @@ export const CFF_SERVICE_REDUCER = createReducer(
   })),
   on(
     fromCffServiceActions.mutateSelectedServiceSelection,
-    (state, { service }) => ({
+    (state, { selected_service }) => ({
       ...state,
-      service,
+      selected_service,
     })
   )
 );

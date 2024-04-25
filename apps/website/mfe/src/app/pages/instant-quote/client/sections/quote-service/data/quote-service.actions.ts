@@ -19,7 +19,7 @@ const setCffServiceToStore = createAction(
 const mutateSelectedServiceSelection = createAction(
   fromCffServiceActionNames.updateSelectedService,
   props<{
-    service: ICffService;
+    selected_service: ICffService;
   }>()
 );
 
