@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  Input,
   OnInit,
   TemplateRef,
   ViewChild,
@@ -21,16 +20,13 @@ import { QuoteServiceComponent } from './client/sections/quote-service/quote-ser
 import { QuoteSpaceComponent } from './client/sections/quote-space/quote-space.component';
 import { ISpaceModel } from './client/sections/quote-space/models/space.model';
 import { QuoteProductComponent } from './client/sections/quote-product/quote-product.component';
-import { IMaterialModel } from './models/material.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { IMaterialModel } from './client/sections/quote-product/models/material.model';
+import { BehaviorSubject } from 'rxjs';
 import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { QuoteAdditonalInfoComponent } from './client/sections/quote-additonal-info/quote-additonal-info.component';
 import { QuoteCalendarComponent } from './client/sections/quote-calendar/quote-calendar.component';
 import { QuoteClientDetailsComponent } from './client/sections/quote-client-details/quote-client-details.component';
 import { Store } from '@ngrx/store';
-import { BASE_API, WEB_API_CFF_SERVICES } from '@clutterfreefinds-v2/globals';
-import { fromCffServiceActions } from './client/sections/quote-service/data/quote-service.actions';
-import { fromCffServiceSelectors } from './client/sections/quote-service/data/quote-service.selectors';
 import { AppState } from '../../shared/interface';
 import { ICffService } from './client/sections/quote-service/model/cffSservice.model';
 
@@ -87,10 +83,8 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
   public currentStep: Step | null = null;
 
   public serviceSelected!: ICffService;
-  public isServiceSelected$: Observable<ICffService>;
-
   public spaceSelected!: ISpaceModel;
-  public _selectedMaterial!: IMaterialModel;
+  public selectedMaterial!: IMaterialModel;
   public _selectedQuoteDate!: any;
 
   public minPrice!: string;
@@ -108,9 +102,6 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
     clientDetails: new FormControl('', Validators.required),
   });
   constructor() {
-    this.isServiceSelected$ = this.store.select(
-      fromCffServiceSelectors.selectActiveServiceStatus
-    );
     this.renderedSteps = [];
     this.currentStepIndex = 0;
     this.steps = {
@@ -144,19 +135,7 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
     this._createRenderedSteps();
     this._commonChangeDetector();
   }
-  ngOnInit() {
-    this.store.dispatch(
-      fromCffServiceActions.getCffServicesFromBE({
-        url: `${BASE_API}/${WEB_API_CFF_SERVICES}`,
-      })
-    );
-    this._priceCalculator$.pipe().subscribe({
-      next: (price: any) => {
-        this.minPrice = this._formatPriceToString(price.minPrice);
-        this.maxPrice = this._formatPriceToString(price.maxPrice);
-      },
-    });
-  }
+  ngOnInit() {}
   //onDestroy to take until unsubscribe
   public _commonChangeDetector(): void {
     this._changeDetectorRef.detectChanges();
@@ -182,6 +161,12 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
   getQuoteDate($event: any): void {
     this._selectedQuoteDate = $event;
     this._updateInstantQuoteForm({ date: $event });
+    this._priceCalculator$.pipe().subscribe({
+      next: (price: any) => {
+        this.minPrice = this._formatPriceToString(price.minPrice);
+        this.maxPrice = this._formatPriceToString(price.maxPrice);
+      },
+    });
   }
   getService($event: ICffService): void {
     this.serviceSelected = $event;
@@ -199,7 +184,7 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
 
   getMaterial($event: IMaterialModel) {
     this._resetPrices();
-    this._selectedMaterial = $event;
+    this.selectedMaterial = $event;
     this._calculatePriceMAterialRange($event);
   }
 
@@ -295,7 +280,7 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
 
   private _updateInstantQuoteForm(paylod: { [key: string]: any }): void {
     this.createInstantQuote.patchValue(paylod);
-    console.log('fomm', this.createInstantQuote.value);
+    console.log('form', this.createInstantQuote.value);
   }
 
   instantQuoteForm(key: any): any {

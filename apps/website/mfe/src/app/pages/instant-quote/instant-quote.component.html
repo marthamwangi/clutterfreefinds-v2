@@ -16,7 +16,8 @@
             <button class="next-btn border-0" (click)=" goToNext()"
                 [disabled]="instantQuoteForm(steps[currentStepIndex].key)?.invalid"
                 [class]="instantQuoteForm(steps[currentStepIndex].key)?.valid ? '' : 'deactivated'">Go
-                Next <img src="assets/icons/arrow-right.svg" alt=""></button>
+                Next <img [class.pulse]="instantQuoteForm(steps[0].key)?.valid" src="assets/icons/arrow-right.svg"
+                    alt=""></button>
         </div>
         <ng-container *ngTemplateOutlet="returnStepsTemplate()"> </ng-container>
         <ng-template #iqCalendar>
@@ -48,10 +49,8 @@
                 </div>
                 <div class=" accordion" id="accordionQuote">
                     <div class="row">
-                        <iq-quote-service [selectedCffService]="serviceSelected"
-                            (selectedService$)="getService($event)"></iq-quote-service>
-                        <iq-quote-space [isServiceSelected]="isServiceSelected$ | async"
-                            (selectedSpaceEmit$)="getSpace($event)"></iq-quote-space>
+                        <iq-quote-service (selectedService$)="getService($event)"></iq-quote-service>
+                        <iq-quote-space (selectedSpaceEmit$)="getSpace($event)"></iq-quote-space>
                         <iq-quote-product (selectedMaterialEmit$)="getMaterial($event)"></iq-quote-product>
                         <iq-quote-additonal-info></iq-quote-additonal-info>
                     </div>
