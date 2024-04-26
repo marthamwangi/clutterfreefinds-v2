@@ -1,9 +1,4 @@
-import { IResponseModel } from '../../../../models/response.model';
-export interface ICffServiceState {
-  cffServices: Array<ICffService>;
-  selected_service: ICffService;
-}
-
+import { IResponseModel } from '../../../../../../shared/response.model';
 export interface ICffService {
   id: string;
   name: string;

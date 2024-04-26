@@ -1,11 +1,13 @@
 import { createSelector } from '@ngrx/store';
 import { AppState } from 'apps/website/mfe/src/app/shared/interface';
 
+const isLoading = (state: AppState) => state.cff_services.is_loading;
 const allServices = (state: AppState) => state.cff_services.cffServices;
-const activeService = (state: AppState) => state.cff_services.selected_service;
+const selectedService = (state: AppState) =>
+  state.cff_services.selected_service;
 
 const selectActiveService = createSelector(
-  activeService,
+  selectedService,
   (statePiece) => statePiece
 );
 
@@ -14,13 +16,10 @@ const selectServiceList = createSelector(
   (statePiece) => statePiece
 );
 
-const selectActiveServiceStatus = createSelector(
-  activeService,
-  (state) => state
-);
+const selectLoadingList = createSelector(isLoading, (statePiece) => statePiece);
 
 export const fromCffServiceSelectors = {
   selectActiveService,
   selectServiceList,
-  selectActiveServiceStatus,
+  selectLoadingList,
 };

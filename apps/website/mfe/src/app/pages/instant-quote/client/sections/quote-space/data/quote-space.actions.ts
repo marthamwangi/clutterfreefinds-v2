@@ -16,7 +16,15 @@ const setCffSpacesToStore = createAction(
   }>()
 );
 
+const setSelectedService = createAction(
+  fromCffSpaceActionNames.updateSelectedSpace,
+  props<{
+    selected_space: ISpaceModel;
+  }>()
+);
+
 export const fromCffSpacesActions = {
   getCffSpacesFromBE,
   setCffSpacesToStore,
+  setSelectedService,
 };

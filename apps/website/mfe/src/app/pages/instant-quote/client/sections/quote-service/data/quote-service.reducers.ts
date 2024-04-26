@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { ICffServiceState } from '../model/cffSservice.model';
 import { fromCffServiceActions } from './quote-service.actions';
+import { ICffServiceState } from 'apps/website/mfe/src/app/shared/interface';
 const initialState: ICffServiceState = {
   cffServices: [],
   selected_service: {
@@ -10,6 +10,7 @@ const initialState: ICffServiceState = {
     description: '',
     label: '',
   },
+  is_loading: false,
 };
 
 export const CFF_SERVICE_REDUCER = createReducer(
@@ -17,10 +18,14 @@ export const CFF_SERVICE_REDUCER = createReducer(
   /**
    * on get
    */
-  on(fromCffServiceActions.getCffServicesFromBE, (state) => ({ ...state })),
+  on(fromCffServiceActions.getCffServicesFromBE, (state) => ({
+    ...state,
+    is_loading: true,
+  })),
   on(fromCffServiceActions.setCffServiceToStore, (state, { cffServices }) => ({
     ...state,
     cffServices,
+    is_loading: false,
   })),
   on(
     fromCffServiceActions.mutateSelectedServiceSelection,
