@@ -16,7 +16,7 @@
             <button class="next-btn border-0" (click)=" goToNext()"
                 [disabled]="instantQuoteForm(steps[currentStepIndex].key)?.invalid"
                 [class]="instantQuoteForm(steps[currentStepIndex].key)?.valid ? '' : 'deactivated'">Go
-                Next <img [class.pulse]="instantQuoteForm(steps[0].key)?.valid" src="assets/icons/arrow-right.svg"
+                Next <img [class.pulse]="steps[0].status === 'active'" src="assets/icons/arrow-right.svg"
                     alt=""></button>
         </div>
         <ng-container *ngTemplateOutlet="returnStepsTemplate()"> </ng-container>

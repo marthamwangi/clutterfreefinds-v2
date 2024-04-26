@@ -32,6 +32,7 @@ export const CFF_SERVICE_REDUCER = createReducer(
     (state, { selected_service }) => ({
       ...state,
       selected_service,
+      is_loading: false,
     })
   )
 );

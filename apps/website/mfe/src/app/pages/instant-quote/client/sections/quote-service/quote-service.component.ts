@@ -3,7 +3,6 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
-  Input,
   Output,
   TemplateRef,
   ViewChild,
@@ -11,7 +10,14 @@ import {
 } from '@angular/core';
 import { AsyncPipe, NgFor, NgTemplateOutlet } from '@angular/common';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
-import { BehaviorSubject, Observable, Subject, take, takeUntil } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  firstValueFrom,
+  take,
+  takeUntil,
+} from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { fromCffServiceSelectors } from './data/quote-service.selectors';
@@ -83,7 +89,6 @@ export class QuoteServiceComponent {
       } else {
         this.loadStatus = 0;
       }
-      console.log('loadStatus', this.loadStatus);
       this._commonChangeDetector();
     });
   }
@@ -100,7 +105,11 @@ export class QuoteServiceComponent {
       this.selectedCffService = service;
     });
   }
-  public loadServices(): void {
+  public async loadServices() {
+    const existingServices = await firstValueFrom(this._cff_services$);
+    if (existingServices.length) {
+      return;
+    }
     this.store.dispatch(
       fromCffServiceActions.getCffServicesFromBE({
         url: `${BASE_API}/${WEB_API_CFF_SERVICES}`,

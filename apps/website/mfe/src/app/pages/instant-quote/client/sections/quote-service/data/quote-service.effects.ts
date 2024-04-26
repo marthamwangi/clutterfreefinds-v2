@@ -1,12 +1,12 @@
 import { Injectable, inject } from '@angular/core';
-import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
-import { filter, map, mergeMap } from 'rxjs';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, mergeMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ICffServiceResponse } from '../model/cffSservice.model';
 import { DeserializeCffService } from '../mappers/cffService.mapper';
 import { fromCffServiceActions } from './quote-service.actions';
 import { Store } from '@ngrx/store';
-import { fromCffServiceSelectors } from './quote-service.selectors';
+import {} from './quote-service.selectors';
 import { AppState } from 'apps/website/mfe/src/app/shared/interface';
 
 @Injectable({
@@ -21,15 +21,7 @@ export class CFFServiceEffects {
   load$ = createEffect(() =>
     this.#actions.pipe(
       ofType(fromCffServiceActions.getCffServicesFromBE),
-      concatLatestFrom(() =>
-        this.#store.select(fromCffServiceSelectors.selectServiceList)
-      ),
-      filter(([action, cff_services]) => {
-        return !cff_services.length ? true : false;
-      }),
-      mergeMap(([action, cff_services]) =>
-        this.#http.get<ICffServiceResponse>(action.url)
-      ),
+      mergeMap((action) => this.#http.get<ICffServiceResponse>(action.url)),
       map((response) =>
         fromCffServiceActions.setCffServiceToStore({
           cffServices: this.#deserializeCffServices.deserialize(response.data),
