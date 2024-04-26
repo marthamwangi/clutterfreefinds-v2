@@ -1,4 +1,4 @@
-import { IResponseModel } from '../../../../models/response.model';
+import { IResponseModel } from '../../../../../../shared/response.model';
 
 export interface ISpaceModel {
   id: string;

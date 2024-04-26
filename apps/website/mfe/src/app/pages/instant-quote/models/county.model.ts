@@ -1,4 +1,4 @@
-import { IResponseModel } from './response.model';
+import { IResponseModel } from '../../../shared/response.model';
 
 export interface ICountyModel {
   countyCode: number;
