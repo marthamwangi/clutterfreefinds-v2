@@ -2,11 +2,11 @@
   box-sizing: border-box;
   padding: 24px;
   gap: 16px;
-  // background: var(--purple-10);
-  border-radius: 10px;
 }
 .calendar-card {
+  border-radius: 10px;
   padding: 24px;
+  background-color: var(--purple-10);
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%237A23D366' stroke-width='2' stroke-dasharray='24' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
 }
 
@@ -35,7 +35,6 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 22px;
-  margin-bottom: 24px;
 }
 .date-time-frame {
   display: grid;
@@ -79,19 +78,4 @@
 
 .check {
   display: none;
-}
-
-.show-time-picker {
-  display: block;
-  animation: 450ms ease-in pop;
-}
-
-.hide-time-picker {
-  display: none;
-}
-
-@keyframes pop {
-  50% {
-    transform: scale(0.9);
-  }
 }

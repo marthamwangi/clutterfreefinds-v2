@@ -1,13 +1,7 @@
 <div class=" d-flex flex-wrap justify-content-center mx-auto">
-    <div class="row d-flex align-items-start justify-content-between w-100">
-        <div class=" col-12 col-lg-4 order-md-last d-flex justify-content-start">
-            <div [class.circle-check-green-30]="selectedTime">
-                <img class="check" [class.d-flex]="selectedTime" alt="clutter free finds services"
-                    src="/assets/icons/check-green.svg" width="10" />
-            </div>
-        </div>
-        <div class="col-12 col-lg-4 me-auto mt-2">
-            <div class="date-time-header">1. Pick a date</div>
+    <div class="row d-flex align-items-stretch justify-content-between w-100 mx-auto ">
+        <div class="col-12 col-lg-5">
+            <div class="date-time-header text-center">1. Pick a date</div>
             <div class="calendar-container">
                 <div class="calendar-card">
                     <div class="check-availability d-flex">
@@ -23,26 +17,40 @@
                     </mat-card>
                 </div>
             </div>
-            <div class="w-100 text-center quote-text mt-3">Your home should be the antidote of stress, not the cause of
+            <div class="w-100 text-center quote-text my-3">Your home should be the antidote of stress, not the cause of
                 it. <span class="text-center quote-author">~Peter Walsh</span>
             </div>
         </div>
-        <div class="col-12 col-lg-4 " [class]="selectedDate ? 'show-time-picker' : 'hide-time-picker'">
-            <div class="mt-2 date-time-header ">
-                2. Pick a time
+        <div class="col-12 col-lg-5 me-auto d-flex flex-column align-items-start align-items-md-center"
+            [class]="selectedDate ? 'show-time-picker' : 'hide-time-picker'">
+            <div class="d-flex align-items-start justify-content-between w-100">
+                <div class="d-flex justify-content-center flex-grow-1 ">
+                    <div class="date-time-header">
+                        2. Pick a time
+                    </div>
+                </div>
+                <div [class.circle-check-green-30]="selectedTime" class="justify-self-end">
+                    <img class="check" [class.d-flex]="selectedTime" alt="clutter free finds services"
+                        src="/assets/icons/check-green.svg" width="10" />
+                </div>
             </div>
-            <div class="date-time-frame mt-2">
-                <div class="date-time-item " *ngFor="let time of timePicker; index as i">
-                    <input (ngModelChange)="onTimePicked(time.value)" type="radio" name="time"
-                        [id]="'radio-time-btn-'+i" [value]="time" [(ngModel)]="selectedTime"
-                        [ngModelOptions]="{standalone: true} " />
-                    <label [style.pointerEvents]=" !selectedDate ? 'none' : 'auto'" [for]="'radio-time-btn-' +i"
-                        class="date-time-item">
+            <div *ngIf="!selectedDate" class=" justify-content-center align-items-center py-5">
+                <img class="img-fluid" src="/assets/icons/time-picker.svg" alt="" width="450">
+            </div>
+            <div *ngIf="selectedDate">
+                <div class="date-time-frame mt-4">
+                    <div class="date-time-item " *ngFor="let time of timePicker; index as i">
+                        <input (ngModelChange)="onTimePicked(time.value)" type="radio" name="time"
+                            [id]="'radio-time-btn-'+i" [value]="time" [(ngModel)]="selectedTime"
+                            [ngModelOptions]="{standalone: true} " />
+                        <label [style.pointerEvents]=" !selectedDate ? 'none' : 'auto'" [for]="'radio-time-btn-' +i"
+                            class="date-time-item">
 
-                        <div class="text">
-                            {{time.label}}
-                        </div>
-                    </label>
+                            <div class="text">
+                                {{time.label}}
+                            </div>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>

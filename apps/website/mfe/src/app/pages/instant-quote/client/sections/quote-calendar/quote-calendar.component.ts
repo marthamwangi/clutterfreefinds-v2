@@ -11,7 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { AsyncPipe, NgFor } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 interface ITime {
@@ -28,6 +28,7 @@ interface ITime {
     NgFor,
     FormsModule,
     AsyncPipe,
+    NgIf,
   ],
   providers: [MatNativeDateModule],
   templateUrl: './quote-calendar.component.html',
