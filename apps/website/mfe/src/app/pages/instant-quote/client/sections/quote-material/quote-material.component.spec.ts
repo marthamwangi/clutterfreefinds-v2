@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { QuoteProductComponent } from './quote-product.component';
+import { QuoteMaterialComponent } from './quote-material.component';
 
-describe('QuoteProductComponent', () => {
-  let component: QuoteProductComponent;
-  let fixture: ComponentFixture<QuoteProductComponent>;
+describe('QuoteMaterialComponent', () => {
+  let component: QuoteMaterialComponent;
+  let fixture: ComponentFixture<QuoteMaterialComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [QuoteProductComponent],
+      imports: [QuoteMaterialComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(QuoteProductComponent);
+    fixture = TestBed.createComponent(QuoteMaterialComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

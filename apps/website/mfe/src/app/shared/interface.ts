@@ -3,9 +3,9 @@ import { ICffService } from '../pages/instant-quote/client/sections/quote-servic
 import { ISpaceModel } from '../pages/instant-quote/client/sections/quote-space/models/space.model';
 import { CFF_SERVICE_REDUCER } from '../pages/instant-quote/client/sections/quote-service/data/quote-service.reducers';
 import { CFF_SPACE_REDUCER } from '../pages/instant-quote/client/sections/quote-space/data/quote-space.reducers';
-import { IMaterialModel } from '../pages/instant-quote/client/sections/quote-product/models/material.model';
-import { CFF_MATERIAL_REDUCER } from '../pages/instant-quote/client/sections/quote-product/data/quote-material.reducers';
-import { MaterialEffects } from '../pages/instant-quote/client/sections/quote-product/data/quote-material.effects';
+import { IMaterialModel } from '../pages/instant-quote/client/sections/quote-material/models/material.model';
+import { CFF_MATERIAL_REDUCER } from '../pages/instant-quote/client/sections/quote-material/data/quote-material.reducers';
+import { MaterialEffects } from '../pages/instant-quote/client/sections/quote-material/data/quote-material.effects';
 import { CFFSpacesEffects } from '../pages/instant-quote/client/sections/quote-space/data/quote-space.effects';
 import { CFFServiceEffects } from '../pages/instant-quote/client/sections/quote-service/data/quote-service.effects';
 

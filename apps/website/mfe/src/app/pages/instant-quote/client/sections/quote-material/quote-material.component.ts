@@ -1,13 +1,10 @@
 import { NgFor, AsyncPipe, NgIf } from '@angular/common';
 import {
-  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
-  OnChanges,
   OnInit,
   Output,
-  SimpleChanges,
   TemplateRef,
   ViewChild,
   inject,
@@ -27,7 +24,7 @@ import { ISpaceModel } from '../quote-space/models/space.model';
 import { fromSpaceSelectors } from '../quote-space/data/quote-space.selectors';
 
 @Component({
-  selector: 'iq-quote-product',
+  selector: 'iq-quote-material',
   standalone: true,
   imports: [
     RouterOutlet,
@@ -38,10 +35,10 @@ import { fromSpaceSelectors } from '../quote-space/data/quote-space.selectors';
     TabComponent,
     NgIf,
   ],
-  templateUrl: './quote-product.component.html',
-  styleUrls: ['./quote-product.component.scss'],
+  templateUrl: './quote-material.component.html',
+  styleUrls: ['./quote-material.component.scss'],
 })
-export class QuoteProductComponent implements OnInit {
+export class QuoteMaterialComponent implements OnInit {
   private store: Store<AppState> = inject(Store);
   @Output() selectedMaterialEmit$ = new EventEmitter<IMaterialModel>();
   @ViewChild('Pros', { static: true })

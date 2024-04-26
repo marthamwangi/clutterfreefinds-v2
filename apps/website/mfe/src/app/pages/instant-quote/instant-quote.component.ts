@@ -19,8 +19,7 @@ import { QuoteServiceComponent } from './client/sections/quote-service/quote-ser
 
 import { QuoteSpaceComponent } from './client/sections/quote-space/quote-space.component';
 import { ISpaceModel } from './client/sections/quote-space/models/space.model';
-import { QuoteProductComponent } from './client/sections/quote-product/quote-product.component';
-import { IMaterialModel } from './client/sections/quote-product/models/material.model';
+import { IMaterialModel } from './client/sections/quote-material/models/material.model';
 import { BehaviorSubject } from 'rxjs';
 import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { QuoteAdditonalInfoComponent } from './client/sections/quote-additonal-info/quote-additonal-info.component';
@@ -29,6 +28,7 @@ import { QuoteClientDetailsComponent } from './client/sections/quote-client-deta
 import { Store } from '@ngrx/store';
 import { AppState } from '../../shared/interface';
 import { ICffService } from './client/sections/quote-service/model/cffSservice.model';
+import { QuoteMaterialComponent } from './client/sections/quote-material/quote-material.component';
 
 interface IPriceRange {
   minPrice: number;
@@ -49,7 +49,7 @@ interface Step {
     ReactiveFormsModule,
     QuoteServiceComponent,
     QuoteSpaceComponent,
-    QuoteProductComponent,
+    QuoteMaterialComponent,
     QuoteAdditonalInfoComponent,
     QuoteCalendarComponent,
     QuoteClientDetailsComponent,
