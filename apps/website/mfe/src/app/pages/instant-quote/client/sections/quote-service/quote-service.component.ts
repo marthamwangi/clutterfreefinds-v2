@@ -3,6 +3,8 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
+  OnDestroy,
+  OnInit,
   Output,
   TemplateRef,
   ViewChild,
@@ -34,7 +36,7 @@ import { BASE_API, WEB_API_CFF_SERVICES } from '@clutterfreefinds-v2/globals';
   styleUrls: ['./quote-service.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class QuoteServiceComponent {
+export class QuoteServiceComponent implements OnInit, OnDestroy {
   private store: Store<AppState> = inject(Store);
   private _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 

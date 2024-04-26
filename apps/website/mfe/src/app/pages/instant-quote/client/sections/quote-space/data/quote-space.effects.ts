@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { DeserializeSpace } from '../mappers/space.mapper';
 import { fromCffSpacesActions } from './quote-space.actions';
-import { exhaustMap, map } from 'rxjs';
+import { map, mergeMap } from 'rxjs';
 import { SpaceResponse } from '../models/space.model';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class CFFSpacesEffects {
   load$ = createEffect(() =>
     this.#actions.pipe(
       ofType(fromCffSpacesActions.getCffSpacesFromBE),
-      exhaustMap(({ url }) => this.#http.get<SpaceResponse>(url)),
+      mergeMap(({ url }) => this.#http.get<SpaceResponse>(url)),
       map((response) =>
         fromCffSpacesActions.setCffSpacesToStore({
           cffSpaces: this.#deserializeSpace.deserialize(response.data),

@@ -1,8 +1,19 @@
-import { NgFor, AsyncPipe } from '@angular/common';
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { NgFor, AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ISpaceModel } from './models/space.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, Subject, firstValueFrom, takeUntil } from 'rxjs';
 import { AppState } from 'apps/website/mfe/src/app/shared/interface';
 import { Store } from '@ngrx/store';
 import { fromSpaceSelectors } from './data/quote-space.selectors';
@@ -14,14 +25,20 @@ import { fromCffServiceSelectors } from '../quote-service/data/quote-service.sel
 @Component({
   selector: 'iq-quote-space',
   standalone: true,
-  imports: [NgFor, AsyncPipe, FormsModule],
+  imports: [NgFor, AsyncPipe, FormsModule, NgTemplateOutlet, AsyncPipe],
   templateUrl: './quote-space.component.html',
   styleUrls: ['./quote-space.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class QuoteSpaceComponent {
+export class QuoteSpaceComponent implements OnInit, OnDestroy {
   @Output() selectedSpaceEmit$ = new EventEmitter<ISpaceModel>();
+  @ViewChild('loadingRef')
+  private _loadingRef!: TemplateRef<any>;
+  @ViewChild('loadedRef')
+  private _loadedRef!: TemplateRef<any>;
 
-  public isServiceSelected!: ICffService;
+  private _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+
   public selectedCffSpace!: ISpaceModel;
 
   private store: Store<AppState> = inject(Store);
@@ -29,14 +46,24 @@ export class QuoteSpaceComponent {
   private _cff_spaces$: Observable<Array<ISpaceModel>>;
   private _space_selected$: Observable<ISpaceModel>;
 
-  private _service_selected$: Observable<ICffService>;
+  public _service_selected$: Observable<ICffService>;
 
   public spaceProgress: boolean = false;
   public spacesArr: Array<ISpaceModel> = [];
 
   public selectedSpace!: ISpaceModel;
 
+  private _unsubscribe$: Subject<boolean>;
+  private _loadProgress$: Observable<boolean>;
+  public loadStatus!: number;
+
   constructor() {
+    this._loadProgress$ = this.store.select(
+      fromSpaceSelectors.selectLoadingList
+    );
+
+    this._unsubscribe$ = new Subject<boolean>();
+
     this._cff_spaces$ = this.store.select(fromSpaceSelectors.selectSepacesList);
 
     this._space_selected$ = this.store.select(
@@ -51,19 +78,48 @@ export class QuoteSpaceComponent {
   ngOnInit() {
     this._setSelected();
     this._renderAllSpaces();
+    this._listenForLoadingStatus();
+  }
+
+  ngOnDestroy(): void {
+    this._unsubscribe$.next(true);
+    this._unsubscribe$.complete();
+  }
+
+  public _commonChangeDetector(): void {
+    this._changeDetectorRef.detectChanges();
+  }
+
+  private _listenForLoadingStatus() {
+    this._loadProgress$.pipe(takeUntil(this._unsubscribe$)).subscribe((l) => {
+      if (l === true) {
+        this.loadStatus = 1;
+      } else {
+        this.loadStatus = 0;
+      }
+      this._commonChangeDetector();
+    });
+  }
+
+  public returnListTemplate(): TemplateRef<any> {
+    const templateMap: any = {
+      1: this._loadingRef,
+      0: this._loadedRef,
+    };
+    return templateMap[this.loadStatus];
   }
 
   private _setSelected() {
     this._space_selected$.subscribe((space) => {
       this.selectedCffSpace = space;
     });
-
-    this._service_selected$.subscribe((service) => {
-      this.isServiceSelected = service;
-    });
   }
 
-  public loadSpaces(): void {
+  public async loadSpaces() {
+    const existingSpaces = await firstValueFrom(this._cff_spaces$);
+    if (existingSpaces.length) {
+      return;
+    }
     this.store.dispatch(
       fromCffSpacesActions.getCffSpacesFromBE({
         url: `${BASE_API}/${WEB_API_CFF_SPACE}`,
