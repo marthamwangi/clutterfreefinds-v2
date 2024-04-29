@@ -58,14 +58,20 @@ export class QuoteMaterialComponent implements OnInit {
   @ViewChild('Cons', { static: true })
   private Cons!: TemplateRef<any>;
 
-  public isSpaceSelected!: ISpaceModel;
   public materialSelected!: IMaterialModel;
 
   allTabs: any;
+  public defaultMaterial = {
+    id: 'default',
+    name: 'Choose Material',
+    percentagePrice: 1,
+    pros: [],
+    cons: [],
+  };
 
   private _cff_materials$: Observable<Array<IMaterialModel>>;
   public _material_selected$: Observable<IMaterialModel>;
-  private space_selected: Observable<ISpaceModel>;
+  public space_selected$: Observable<ISpaceModel>;
 
   public materialsArr: Array<IMaterialModel> = [];
   private _unsubscribe$: Subject<boolean>;
@@ -85,7 +91,7 @@ export class QuoteMaterialComponent implements OnInit {
     this._material_selected$ = this.store.select(
       fromMaterialSelectors.selectedMaterialSelector
     );
-    this.space_selected = this.store.select(
+    this.space_selected$ = this.store.select(
       fromSpaceSelectors.selectedSpaceSelector
     );
   }
@@ -133,6 +139,7 @@ export class QuoteMaterialComponent implements OnInit {
       { name: 'Pros', template: this.Pros },
       { name: 'Cons', template: this.Cons },
     ];
+    this._commonChangeDetector();
   }
   public async loadMaterials() {
     const existingSpaces = await firstValueFrom(this._cff_materials$);
@@ -150,18 +157,24 @@ export class QuoteMaterialComponent implements OnInit {
     this._cff_materials$.subscribe((data: Array<IMaterialModel>) => {
       if (data.length !== 0) {
         this.materialsArr = this.materialsArr.concat(data);
+        this.materialsArr.unshift(this.defaultMaterial);
+        this.materialSelected = this.materialsArr[0];
         this._setTabs();
       }
     });
   }
 
   public setDefaultMaterial() {
-    // this.selectedMaterial$.next(this.defaultSelectedMAterial);
+    this.store.dispatch(
+      fromMaterialActions.setSelectedMaterial({
+        selected_material: this.defaultMaterial,
+      })
+    );
+    this.selectedMaterialEmit$.next(this.defaultMaterial);
   }
 
   public fnSelectMaterial(material: any) {
-    const value = material;
-    console.log('value', value);
+    const value = material.target.value;
     const materialObj = this.materialsArr.find((m) => m.id === value);
     if (materialObj) {
       this.store.dispatch(

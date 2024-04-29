@@ -11,7 +11,7 @@
     &::after {
       margin-left: 0 !important;
     }
-    &.isActive {
+    &.isCompleted {
       color: var(--purple-100);
       --bs-accordion-btn-active-icon: url('/assets/icons/check-circle-completed.svg');
       --bs-accordion-btn-icon: url('/assets/icons/check-circle-completed.svg');

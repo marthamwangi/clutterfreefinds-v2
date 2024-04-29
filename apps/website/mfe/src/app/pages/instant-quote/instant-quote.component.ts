@@ -41,6 +41,14 @@ interface Step {
   title: string;
   status: 'active' | 'disabled' | 'completed' | 'active-and-completed';
 }
+
+interface Estimates {
+  service?: string;
+  space?: string;
+  material?: string;
+  images?: Array<string>;
+  notes?: string;
+}
 @Component({
   selector: 'iq-instant-quote',
   standalone: true,
@@ -86,6 +94,7 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
   public spaceSelected!: ISpaceModel;
   public selectedMaterial!: IMaterialModel;
   public _selectedQuoteDate!: any;
+  public additionalInfo!: any;
 
   public minPrice!: string;
   public maxPrice!: string;
@@ -170,59 +179,71 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
   }
   getService($event: ICffService): void {
     this.serviceSelected = $event;
-    this._calculatePriceServiceRange($event, 1);
+    // this._calculatePriceServiceRange($event, 1);
+    this._priceCalculator();
+    this._updateInstantQuoteForm(
+      this.estimates.patchValue({
+        service: this.serviceSelected?.id,
+      })
+    );
   }
 
   getSpace($event: ISpaceModel): void {
     this.spaceSelected = $event;
-    this._calculatePriceSpaceRange($event);
-    this._setNestedFormGroup(
-      { service: this.serviceSelected.id },
-      { space: $event.id }
+    this._priceCalculator();
+    this._updateInstantQuoteForm(
+      this.estimates.patchValue({
+        space: this.spaceSelected?.id,
+      })
     );
   }
 
   getMaterial($event: IMaterialModel) {
     this._resetPrices();
     this.selectedMaterial = $event;
-    this._calculatePriceMAterialRange($event);
+    this._priceCalculator();
+    this._updateInstantQuoteForm(
+      this.estimates.patchValue({
+        material: this.selectedMaterial?.id,
+      })
+    );
   }
 
-  private _calculatePriceServiceRange(service: ICffService, hours: number) {
-    const minPrice = service.price * hours;
-    const maxPrice = service.price * hours;
-    this._priceCalculator$.next({
-      minPrice: minPrice,
-      maxPrice: maxPrice,
-    });
+  getAdditionalInfo($event: any) {
+    this.additionalInfo = $event;
+    this._updateInstantQuoteForm(
+      this.estimates.patchValue({
+        images: this.additionalInfo?.images,
+        notes: this.additionalInfo.notes,
+      })
+    );
   }
 
-  private _calculatePriceSpaceRange(space: ISpaceModel) {
-    const minPrice = space.minHours * this.serviceSelected.price;
-    const maxPrice = space.maxHours * this.serviceSelected.price;
-    this._priceCalculator$.next({
-      minPrice: minPrice,
-      maxPrice: maxPrice,
-    });
-  }
-
-  private _calculatePriceMAterialRange(material: IMaterialModel) {
-    if (material.percentagePrice > 1) {
-      const minPrice =
-        ((100 + material.percentagePrice) *
-          (this.spaceSelected.minHours * this.serviceSelected.price)) /
-        100;
-      const maxPrice =
-        ((100 + material.percentagePrice) *
-          (this.spaceSelected.maxHours * this.serviceSelected.price)) /
-        100;
-      this._priceCalculator$.next({
-        minPrice: minPrice,
-        maxPrice: maxPrice,
-      });
-    } else {
-      this._resetPrices();
+  private _priceCalculator() {
+    let min_price = 0;
+    let max_price = 0;
+    if (this.serviceSelected) {
+      min_price = this.serviceSelected.price;
+      max_price = this.serviceSelected.price;
+      if (this.spaceSelected) {
+        min_price = this.serviceSelected.price * this.spaceSelected.minHours;
+        max_price = this.serviceSelected.price * this.spaceSelected.maxHours;
+        if (this.selectedMaterial) {
+          min_price =
+            ((100 + this.selectedMaterial.percentagePrice) *
+              (this.spaceSelected.minHours * this.serviceSelected.price)) /
+            100;
+          max_price =
+            ((100 + this.selectedMaterial.percentagePrice) *
+              (this.spaceSelected.maxHours * this.serviceSelected.price)) /
+            100;
+        }
+      }
     }
+    this._priceCalculator$.next({
+      minPrice: min_price,
+      maxPrice: max_price,
+    });
   }
 
   private _resetPrices() {
@@ -292,14 +313,5 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
   }
   get clientDetails(): any {
     return this.createInstantQuote.get('clientDetails');
-  }
-  private _setNestedFormGroup(
-    service: { service: string },
-    space: { space: string }
-  ): void {
-    this.estimates.patchValue({
-      service: service,
-      space: space,
-    });
   }
 }

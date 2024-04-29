@@ -3,7 +3,7 @@ const createStateMaterials =
   '[Quote Product Component] set cff materials data in store';
 
 const updateSelectedMaterial =
-  '[Quote Material Component] update space selected';
+  '[Quote Material Component] update material selected';
 
 export const fromMaterialActionNames = {
   fetchMaterial,

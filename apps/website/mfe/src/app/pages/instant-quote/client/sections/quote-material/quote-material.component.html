@@ -1,11 +1,11 @@
 <div class="accordion-item ">
     <h2 class="accordion-header" id="headingMaterial">
-        <button [disabled]="isSpaceSelected?.id === ''" (click)="loadMaterials()" [class.isCompleted]="materialSelected"
-            class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMaterial"
-            aria-expanded="true" aria-controls="collapseMaterial">
+        <button [disabled]="(space_selected$ | async)?.id === ''" (click)="loadMaterials()"
+            [class.isCompleted]="materialSelected" class="accordion-button" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseMaterial" aria-expanded="true" aria-controls="collapseMaterial">
             <div class="row steps w-100">
                 <div class="col-2 step-text-number">Step 3:</div>
-                <div class="col-10 step-text">Select Material (optional) {{materialSelected?.id === 'default'}}</div>
+                <div class="col-10 step-text">Select Material (optional)</div>
             </div>
         </button>
     </h2>
@@ -17,17 +17,12 @@
                     <div class="flex-grow-1 d-flex flex-column" style="column-gap: 24px;">
                         <div class="d-flex align-items-center" style="column-gap: 24px;">
                             <div class=" select-header">Material</div>
-                            <select class="form-select" [(ngModel)]="materialSelected"
-                                [ngModelOptions]="{standalone: true}"
-                                (ngModelChange)="fnSelectMaterial(materialSelected?.id)">
-                                <option value="default" disabled [selected]="materialSelected?.id === 'default'">
-                                    Choose a material</option>
-                                <option *ngFor="let material of materialsArr;" [value]="material.id"
-                                    [selected]="materialSelected?.id === material.id">
+                            <select class="form-select" (change)="fnSelectMaterial($event)">
+                                <option [selected]="(_material_selected$ | async)?.id === material.id"
+                                    *ngFor=" let material of materialsArr;" [value]="material.id">
                                     {{material.name}}
                                 </option>
                             </select>
-
                         </div>
                     </div>
                     <div class="">
@@ -38,7 +33,7 @@
                 <material-tabs [tabsName]="allTabs"></material-tabs>
                 <ng-template #Pros>
                     <div class="material-container">
-                        <div class="pros " *ngFor="let pro of materialSelected?.pros">
+                        <div class="pros " *ngFor="let pro of (_material_selected$ | async)?.pros">
                             <img src="assets/icons/check-purple.svg" alt="">
                             <div>{{pro}}</div>
                         </div>
@@ -46,7 +41,7 @@
                 </ng-template>
                 <ng-template #Cons>
                     <div class="material-container">
-                        <div class="cons " *ngFor="let con of materialSelected?.cons">
+                        <div class="cons " *ngFor="let con of (_material_selected$ | async)?.cons">
                             <img src="assets/icons/red-close.svg" alt="" width="16">
                             <div>{{con}}</div>
                         </div>

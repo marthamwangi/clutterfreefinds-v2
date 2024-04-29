@@ -8,6 +8,7 @@ import { CFF_MATERIAL_REDUCER } from '../pages/instant-quote/client/sections/quo
 import { MaterialEffects } from '../pages/instant-quote/client/sections/quote-material/data/quote-material.effects';
 import { CFFSpacesEffects } from '../pages/instant-quote/client/sections/quote-space/data/quote-space.effects';
 import { CFFServiceEffects } from '../pages/instant-quote/client/sections/quote-service/data/quote-service.effects';
+import { ADDITIONAL_INFO_REDUCER } from '../pages/instant-quote/client/sections/quote-additonal-info/data/quote-additional-info.reducer';
 
 /**
  * @ICffServiceState
@@ -38,16 +39,29 @@ export interface IMaterialState {
   selected_material: IMaterialModel;
   is_loading: boolean;
 }
+
+/**
+ * @IAdditionalInfoState
+ */
+export interface IAdditionalInfoState {
+  quote_additional_info: {
+    images?: Array<string>;
+    notes?: string;
+  };
+}
+
 export interface AppState {
   cff_services: ICffServiceState;
   cff_spaces: ISpaceState;
   cff_materials: IMaterialState;
+  quote_additional_info: IAdditionalInfoState;
 }
 
 const reducers: ActionReducerMap<AppState> = {
   cff_services: CFF_SERVICE_REDUCER,
   cff_spaces: CFF_SPACE_REDUCER,
   cff_materials: CFF_MATERIAL_REDUCER,
+  quote_additional_info: ADDITIONAL_INFO_REDUCER,
 };
 
 export const APP_STORE = {
