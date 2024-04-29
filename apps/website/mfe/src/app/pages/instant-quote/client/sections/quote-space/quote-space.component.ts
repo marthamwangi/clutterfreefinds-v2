@@ -48,7 +48,6 @@ export class QuoteSpaceComponent implements OnInit, OnDestroy {
 
   public _service_selected$: Observable<ICffService>;
 
-  public spaceProgress: boolean = false;
   public spacesArr: Array<ISpaceModel> = [];
 
   public selectedSpace!: ISpaceModel;
