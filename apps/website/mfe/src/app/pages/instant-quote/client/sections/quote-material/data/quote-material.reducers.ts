@@ -8,8 +8,17 @@ const initialState: IMaterialState = {
     id: 'default',
     name: 'Choose Material',
     percentagePrice: 1,
-    pros: [],
-    cons: [],
+    pros: [
+      'Saves purchasing cost',
+      'You can test what works for you before buying',
+      'Creativity and customization',
+    ],
+    cons: [
+      'Time commitment',
+      'May not be as strong or long-lasting',
+      'May not be as effective for their intended purpose',
+      'May sometimes not be aesthetically pleasing',
+    ],
   },
   is_loading: false,
 };
