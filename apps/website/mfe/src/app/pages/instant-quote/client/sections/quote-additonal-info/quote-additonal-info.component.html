@@ -38,7 +38,16 @@
                             </div>
 
                         </div>
-                        <div class="col-12" id="preview"></div>
+                        <div class="row row-cols-1 row-cols-md-2 g-2 mt-5" id="preview">
+                            <div *ngFor="let img of filesArr; index as i" class="col img-container">
+                                <img [src]="img" alt="">
+                                <div class="overlay">
+                                    <a (click)="deleteImage(i)" class="trash">
+                                        <img src="/assets/icons/trash-bin.svg" alt="" width="24">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 

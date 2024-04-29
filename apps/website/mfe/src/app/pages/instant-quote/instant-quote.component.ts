@@ -25,8 +25,6 @@ import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { QuoteAdditonalInfoComponent } from './client/sections/quote-additonal-info/quote-additonal-info.component';
 import { QuoteCalendarComponent } from './client/sections/quote-calendar/quote-calendar.component';
 import { QuoteClientDetailsComponent } from './client/sections/quote-client-details/quote-client-details.component';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../shared/interface';
 import { ICffService } from './client/sections/quote-service/model/cffSservice.model';
 import { QuoteMaterialComponent } from './client/sections/quote-material/quote-material.component';
 
@@ -70,14 +68,12 @@ interface Estimates {
   styleUrls: ['./instant-quote.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InstantQuoteComponent implements OnInit, AfterViewInit {
+export class InstantQuoteComponent implements AfterViewInit {
   @ViewChild('iqCalendar') private iqCalendarRef!: TemplateRef<any>;
   @ViewChild('iqEstimates') private iqEstimatesRef!: TemplateRef<any>;
   @ViewChild('iqClientDetails') private iqClientDetailsRef!: TemplateRef<any>;
   @ViewChild('iqQuoteSummary') private iqQuoteSummaryRef!: TemplateRef<any>;
   private _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
-
-  private store: Store<AppState> = inject(Store);
 
   public steps!: { [step: number]: Step };
 
@@ -112,7 +108,7 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
   });
   constructor() {
     this.renderedSteps = [];
-    this.currentStepIndex = 0;
+    this.currentStepIndex = 1;
     this.steps = {
       0: {
         key: 'date',
@@ -144,8 +140,6 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
     this._createRenderedSteps();
     this._commonChangeDetector();
   }
-  ngOnInit() {}
-  //onDestroy to take until unsubscribe
   public _commonChangeDetector(): void {
     this._changeDetectorRef.detectChanges();
   }
@@ -179,7 +173,6 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
   }
   getService($event: ICffService): void {
     this.serviceSelected = $event;
-    // this._calculatePriceServiceRange($event, 1);
     this._priceCalculator();
     this._updateInstantQuoteForm(
       this.estimates.patchValue({

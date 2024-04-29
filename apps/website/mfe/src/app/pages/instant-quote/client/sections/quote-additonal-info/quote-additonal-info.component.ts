@@ -1,24 +1,14 @@
-import {
-  Component,
-  EventEmitter,
-  Output,
-  ViewChild,
-  inject,
-} from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { Store } from '@ngrx/store';
 import { AppState } from 'apps/website/mfe/src/app/shared/interface';
 import { fromAdditionalInfoActions } from './data/quote-additional-info.actions';
-
-interface IAdditionalInfo {
-  images?: Array<string>;
-  notes?: string;
-}
+import { NgFor } from '@angular/common';
 @Component({
   selector: 'iq-quote-additonal-info',
   standalone: true,
-  imports: [MatTooltipModule, FormsModule],
+  imports: [MatTooltipModule, FormsModule, NgFor],
   templateUrl: './quote-additonal-info.component.html',
   styleUrls: ['./quote-additonal-info.component.scss'],
 })
@@ -72,12 +62,18 @@ export class QuoteAdditonalInfoComponent {
       images: this.filesArr,
       notes: this.notes,
     };
-    console.log('merged', merged);
     this.store.dispatch(
       fromAdditionalInfoActions.SET_QUOTE_ADDITIONAL_INFO({
         quote_additional_info: merged,
       })
     );
     this.additionalInfoEmit$.emit(merged);
+  }
+  public deleteImage(index: number) {
+    const copy = Array.from(this.filesArr);
+    copy.splice(index, 1);
+    this.filesArr = [...copy];
+    this.filesCount = this.filesArr.length;
+    this._setAdditionalInfo();
   }
 }
