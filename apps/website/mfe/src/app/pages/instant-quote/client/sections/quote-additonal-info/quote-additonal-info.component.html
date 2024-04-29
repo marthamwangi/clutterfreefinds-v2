@@ -39,7 +39,7 @@
 
                         </div>
                         <div class="row row-cols-1 row-cols-md-2 g-2 mt-5" id="preview">
-                            <div *ngFor="let img of filesArr; index as i" class="col img-container">
+                            <div *ngFor="let img of (filesArr$ | async); index as i" class="col img-container">
                                 <img [src]="img" alt="">
                                 <div class="overlay">
                                     <a (click)="deleteImage(i)" class="trash">

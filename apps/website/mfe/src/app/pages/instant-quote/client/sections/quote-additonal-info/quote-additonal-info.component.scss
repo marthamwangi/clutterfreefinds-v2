@@ -120,6 +120,7 @@ textarea {
 .img-container {
   position: relative;
   display: inline-block;
+  box-sizing: border-box;
   img {
     border-radius: 10px;
     max-inline-size: 100%;
