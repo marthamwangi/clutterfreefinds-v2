@@ -7,7 +7,7 @@ const initialState: IMaterialState = {
   selected_material: {
     id: 'default',
     name: 'Choose Material',
-    percentagePrice: 1,
+    percentagePrice: 0,
     pros: [
       'Saves purchasing cost',
       'You can test what works for you before buying',
