@@ -9,6 +9,9 @@ import { MaterialEffects } from '../pages/instant-quote/client/sections/quote-ma
 import { CFFSpacesEffects } from '../pages/instant-quote/client/sections/quote-space/data/quote-space.effects';
 import { CFFServiceEffects } from '../pages/instant-quote/client/sections/quote-service/data/quote-service.effects';
 import { ADDITIONAL_INFO_REDUCER } from '../pages/instant-quote/client/sections/quote-additonal-info/data/quote-additional-info.reducer';
+import { IConstituencyModel, ICountyModel } from './models/county.model';
+import { COUNTY_REDUCER } from './data/county/county.reducer';
+import { CountyEffects } from './data/county/county.effects';
 
 /**
  * @ICffServiceState
@@ -50,11 +53,20 @@ export interface IAdditionalInfoState {
   };
 }
 
+export interface ICountyState {
+  counties: Array<ICountyModel>;
+  selected_county: ICountyModel;
+  selected_constituency: IConstituencyModel;
+  selected_ward: string;
+  is_loading: boolean;
+}
+
 export interface AppState {
   cff_services: ICffServiceState;
   cff_spaces: ISpaceState;
   cff_materials: IMaterialState;
   quote_additional_info: IAdditionalInfoState;
+  cff_county: ICountyState;
 }
 
 const reducers: ActionReducerMap<AppState> = {
@@ -62,6 +74,7 @@ const reducers: ActionReducerMap<AppState> = {
   cff_spaces: CFF_SPACE_REDUCER,
   cff_materials: CFF_MATERIAL_REDUCER,
   quote_additional_info: ADDITIONAL_INFO_REDUCER,
+  cff_county: COUNTY_REDUCER,
 };
 
 export const APP_STORE = {
@@ -72,4 +85,5 @@ export const APP_EFFECTS = [
   MaterialEffects,
   CFFServiceEffects,
   CFFSpacesEffects,
+  CountyEffects,
 ];

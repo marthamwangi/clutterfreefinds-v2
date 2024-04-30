@@ -1,10 +1,9 @@
-import { IResponseModel } from '../../../shared/response.model';
+import { IResponseModel } from '../response.model';
 
 export interface ICountyModel {
   countyCode: number;
   name: string;
   constituencies: Array<IConstituencyModel>;
-  isSelected?: boolean;
 }
 
 export interface IConstituencyModel {

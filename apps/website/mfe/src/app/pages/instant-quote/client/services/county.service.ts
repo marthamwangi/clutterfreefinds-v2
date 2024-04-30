@@ -1,8 +1,11 @@
 import { Injectable, effect, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { DeserializeCounty } from '../../mappers/county.mapper';
-import { CountyResponse, ICountyModel } from '../../models/county.model';
+import { DeserializeCounty } from '../../../../shared/mappers/county.mapper';
+import {
+  CountyResponse,
+  ICountyModel,
+} from '../../../../shared/models/county.model';
 
 @Injectable({
   providedIn: 'root',

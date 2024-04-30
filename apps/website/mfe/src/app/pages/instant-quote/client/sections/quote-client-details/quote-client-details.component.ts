@@ -1,103 +1,90 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  signal,
-} from '@angular/core';
-import { CountyService } from '../../services/county.service';
+import { Component, inject } from '@angular/core';
 import { BASE_API, KENYA_COUNTIES } from '@clutterfreefinds-v2/globals';
-import { IConstituencyModel, ICountyModel } from '../../../models/county.model';
+import {
+  IConstituencyModel,
+  ICountyModel,
+} from '../../../../../shared/models/county.model';
 import { FormsModule } from '@angular/forms';
 import { AsyncPipe, NgFor } from '@angular/common';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, firstValueFrom } from 'rxjs';
+import { AppState } from 'apps/website/mfe/src/app/shared/interface';
+import { Store } from '@ngrx/store';
+import { fromCountyActions } from 'apps/website/mfe/src/app/shared/data/county/county.actions';
+import { fromCountySelector } from 'apps/website/mfe/src/app/shared/data/county/county.selectors';
+import { SortPipe } from '@clutterfreefinds/sort_pipe';
 
 @Component({
   selector: 'iq-quote-client-details',
   standalone: true,
-  imports: [FormsModule, NgFor, AsyncPipe],
+  imports: [FormsModule, NgFor, AsyncPipe, SortPipe],
   templateUrl: './quote-client-details.component.html',
   styleUrls: ['./quote-client-details.component.scss'],
 })
-export class QuoteClientDetailsComponent implements OnInit {
-  public selectedCounty$: BehaviorSubject<ICountyModel | undefined> =
-    new BehaviorSubject<ICountyModel | undefined>(undefined);
+export class QuoteClientDetailsComponent {
+  #store: Store<AppState> = inject(Store);
+  counties$!: Observable<Array<ICountyModel>>;
+  selected_county$!: Observable<ICountyModel>;
+  selected_constituency$!: Observable<IConstituencyModel>;
+  selected_ward$!: Observable<string>;
 
-  public counties: Array<ICountyModel> | undefined = [];
-
-  public selectedConstituency$: BehaviorSubject<
-    IConstituencyModel | undefined
-  > = new BehaviorSubject<IConstituencyModel | undefined>(undefined);
-
-  public constituencies: Array<IConstituencyModel> | undefined = [];
-
-  public selectedWard$: BehaviorSubject<string | undefined> =
-    new BehaviorSubject<string | undefined>(undefined);
-
-  public wards: Array<string> | undefined = [];
-
-  constructor(private _countyService: CountyService) {}
-  ngOnInit() {
-    this._fetchCountiesData();
-  }
-
-  private _fetchCountiesData(): void {
-    this._countyService
-      .fetchCountiesData(`${BASE_API}/${KENYA_COUNTIES}`)
-      .subscribe({
-        next: (response) => {
-          this.counties = this._sortAlphabetically(response.counties);
-          if (this.counties) {
-            const defaultCounty = this.counties[0];
-            this.selectedCounty$.next(defaultCounty);
-          }
-        },
-      });
-  }
-
-  public onCountySelect(event: any) {
-    const countyCode = event.target.value;
-    const county = this.counties?.find(
-      (element) => element.countyCode === parseInt(countyCode)
+  public async fetchCountiesData() {
+    this.counties$ = this.#store.select(fromCountySelector.ListCounties);
+    const existingCounties = await firstValueFrom(this.counties$);
+    if (existingCounties.length) {
+      return;
+    }
+    this.#store.dispatch(
+      fromCountyActions.CountyPicker.list({
+        url: `${BASE_API}/${KENYA_COUNTIES}`,
+      })
     );
-    this.selectedCounty$.next(county);
-    this.selectedConstituency$.next(county?.constituencies[0]);
-    this.constituencies = this._sortAlphabetically(county?.constituencies);
   }
 
-  public onConstituencyChange(event: any) {
-    const name = (event = event.target.value);
-    console.log('event.name', event);
-    const constituency = this.constituencies?.find(
-      (element: IConstituencyModel) => {
-        element.name.toUpperCase() === name.toUpperCase();
-      }
-      //selecting county not working correwctly
+  public async onCountySelect(event: any) {
+    const counties = await firstValueFrom(this.counties$);
+    const selected = counties.find(
+      (c) => c.countyCode.toString() === event.target.value
     );
-    console.log('constituency', constituency);
-
-    this.selectedConstituency$.next(constituency);
-    this.selectedWard$.next(constituency?.wards[0]);
-    this.wards = constituency?.wards;
+    if (selected) {
+      this.#store.dispatch(
+        fromCountyActions.CountyPicker.county({
+          selected,
+        })
+      );
+    }
+    this.selected_county$ = this.#store.select(
+      fromCountySelector.SelectedCounty
+    );
   }
 
-  public onWardChange(event: any) {
-    event = event.target.value;
-    const ward = this.wards?.find((element) => element === event.toString());
-    this.selectedWard$.next(ward);
-  }
-
-  private _sortAlphabetically(items: any): any {
-    const sortedItems = items.sort((a: any, b: any) => {
-      if (a.name.toUpperCase() > b.name.toUpperCase()) {
-        return 1;
-      } else {
-        return -1;
+  public async onConstituencyChange(event: any) {
+    const name = event.target.value;
+    const constituencies = (await firstValueFrom(this.selected_county$))
+      .constituencies;
+    if (constituencies) {
+      const selected = constituencies.find((c) => c.name === name);
+      if (selected) {
+        this.#store.dispatch(
+          fromCountyActions.ConstituencyPicker.constituency({ selected })
+        );
       }
-    });
-    return sortedItems;
+    }
+    this.selected_constituency$ = this.#store.select(
+      fromCountySelector.SelectedConstituency
+    );
+  }
+
+  public async onWardChange(event: any) {
+    const name = event.target.value;
+    const wards = (await firstValueFrom(this.selected_constituency$)).wards;
+    if (wards) {
+      const selected = wards.find((w) => w === name);
+      if (selected) {
+        this.#store.dispatch(fromCountyActions.WardPicker.ward({ selected }));
+        this.selected_ward$ = this.#store.select(
+          fromCountySelector.SelectedWard
+        );
+      }
+    }
   }
 }
