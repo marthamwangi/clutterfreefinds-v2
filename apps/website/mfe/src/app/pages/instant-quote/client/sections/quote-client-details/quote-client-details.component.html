@@ -38,7 +38,8 @@
             <select (mousedown)="fetchCountiesData()" id="clientQuoteCounty" class="form-select"
                 (change)="onCountySelect($event)">
                 <option selected disabled>County</option>
-                <option [value]="county.countyCode" *ngFor="let county of ( counties$ | async | sort:'asc':'name')">
+                <option [selected]="(selected_county$ | async)?.countyCode" [value]="county.countyCode"
+                    *ngFor="let county of ( counties$ | async | sort:'asc':'name')">
                     {{county.name}}</option>
             </select>
         </div>
@@ -47,7 +48,7 @@
             <select [disabled]="(selected_county$ | async)?.name === ''" class="form-select"
                 (change)="onConstituencyChange($event)">
                 <option selected disabled>Constituency</option>
-                <option [value]="constituency.name"
+                <option [selected]="(selected_constituency$ | async)?.name" [value]="constituency.name"
                     *ngFor="let constituency of (selected_county$ | async)?.constituencies | sort:'asc':'name'">
                     {{constituency.name}}
                 </option>
@@ -58,7 +59,8 @@
             <select [disabled]="(selected_constituency$ | async)?.name === '' " class="form-select"
                 (change)="onWardChange($event)">
                 <option selected disabled>Neighborhood</option>
-                <option [value]="ward" *ngFor="let ward of (selected_constituency$ | async)?.wards | sort:'asc'">
+                <option [selected]="(selected_ward$ | async)" [value]="ward"
+                    *ngFor="let ward of (selected_constituency$ | async)?.wards | sort:'asc'">
                     {{ward}}
                 </option>
             </select>

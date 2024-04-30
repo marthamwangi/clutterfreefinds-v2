@@ -36,16 +36,9 @@ interface Step {
   label: number;
   key: string;
   title: string;
-  status: 'active' | 'disabled' | 'completed' | 'active-and-completed';
+  status: 'active' | 'disabled' | 'completed';
 }
 
-interface Estimates {
-  service?: string;
-  space?: string;
-  material?: string;
-  images?: Array<string>;
-  notes?: string;
-}
 @Component({
   selector: 'iq-instant-quote',
   standalone: true,
