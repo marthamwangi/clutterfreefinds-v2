@@ -20,12 +20,22 @@ import { QuoteSpaceComponent } from './client/sections/quote-space/quote-space.c
 import { ISpaceModel } from './client/sections/quote-space/models/space.model';
 import { IMaterialModel } from './client/sections/quote-material/models/material.model';
 import { BehaviorSubject } from 'rxjs';
-import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import {
+  AsyncPipe,
+  CurrencyPipe,
+  NgFor,
+  NgIf,
+  NgTemplateOutlet,
+} from '@angular/common';
 import { QuoteAdditonalInfoComponent } from './client/sections/quote-additonal-info/quote-additonal-info.component';
 import { QuoteCalendarComponent } from './client/sections/quote-calendar/quote-calendar.component';
 import { QuoteClientDetailsComponent } from './client/sections/quote-client-details/quote-client-details.component';
 import { ICffService } from './client/sections/quote-service/model/cffSservice.model';
 import { QuoteMaterialComponent } from './client/sections/quote-material/quote-material.component';
+import { QuoteSummaryComponent } from './client/sections/quote-summary-options/quote-summary.component';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../shared/interface';
+import { fromInstantQuoteActions } from '../../shared/data/quote/quote.actions';
 
 interface IPriceRange {
   minPrice: number;
@@ -51,10 +61,12 @@ interface Step {
     QuoteAdditonalInfoComponent,
     QuoteCalendarComponent,
     QuoteClientDetailsComponent,
+    QuoteSummaryComponent,
     NgIf,
     NgTemplateOutlet,
     NgFor,
     AsyncPipe,
+    CurrencyPipe,
   ],
   templateUrl: './instant-quote.component.html',
   styleUrls: ['./instant-quote.component.scss'],
@@ -66,7 +78,7 @@ export class InstantQuoteComponent implements AfterViewInit {
   @ViewChild('iqClientDetails') private iqClientDetailsRef!: TemplateRef<any>;
   @ViewChild('iqQuoteSummary') private iqQuoteSummaryRef!: TemplateRef<any>;
   private _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
-
+  #store: Store<AppState> = inject(Store);
   public steps!: { [step: number]: Step };
 
   private _priceCalculator$: BehaviorSubject<IPriceRange> =
@@ -113,7 +125,7 @@ export class InstantQuoteComponent implements AfterViewInit {
   });
   constructor() {
     this.renderedSteps = [];
-    this.currentStepIndex = 2;
+    this.currentStepIndex = 3;
     this.steps = {
       0: {
         key: 'date',
@@ -171,8 +183,8 @@ export class InstantQuoteComponent implements AfterViewInit {
     this._updateInstantQuoteForm({ date: $event });
     this._priceCalculator$.pipe().subscribe({
       next: (price: any) => {
-        this.minPrice = this._formatPriceToString(price.minPrice);
-        this.maxPrice = this._formatPriceToString(price.maxPrice);
+        this.minPrice = price.minPrice;
+        this.maxPrice = price.maxPrice;
       },
     });
   }
@@ -258,14 +270,13 @@ export class InstantQuoteComponent implements AfterViewInit {
       minPrice: min_price,
       maxPrice: max_price,
     });
+    this.#store.dispatch(
+      fromInstantQuoteActions.QuotePrice.min_price({ min_price })
+    );
+    this.#store.dispatch(
+      fromInstantQuoteActions.QuotePrice.max_price({ max_price })
+    );
   }
-  private _formatPriceToString(price: number) {
-    return Intl.NumberFormat('KES', {
-      style: 'currency',
-      currency: 'KES',
-    }).format(price);
-  }
-
   goToNext() {
     if (this.currentStepIndex === this.renderedSteps.length - 1) {
       return;

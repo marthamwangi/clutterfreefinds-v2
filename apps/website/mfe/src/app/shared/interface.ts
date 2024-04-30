@@ -13,6 +13,7 @@ import { IConstituencyModel, ICountyModel } from './models/county.model';
 import { COUNTY_REDUCER } from './data/county/county.reducer';
 import { CountyEffects } from './data/county/county.effects';
 import { CLIENT_DETAILS_REDUCER } from '../pages/instant-quote/client/sections/quote-client-details/data/quote-client-details.reducers';
+import { INSTANT_QUOTE_REDUCER } from './data/quote/quote.reducer';
 
 /**
  * @ICffServiceState
@@ -76,6 +77,11 @@ export interface IClientDetailsState {
   phone: string;
   serviceType: string;
 }
+
+export interface InstantQuoteState {
+  min_price: number;
+  max_price: number;
+}
 export interface AppState {
   cff_services: ICffServiceState;
   cff_spaces: ISpaceState;
@@ -83,6 +89,7 @@ export interface AppState {
   quote_additional_info: IAdditionalInfoState;
   cff_county: ICountyState;
   client_details: IClientDetailsState;
+  instant_quote: InstantQuoteState;
 }
 
 const reducers: ActionReducerMap<AppState> = {
@@ -92,6 +99,7 @@ const reducers: ActionReducerMap<AppState> = {
   quote_additional_info: ADDITIONAL_INFO_REDUCER,
   cff_county: COUNTY_REDUCER,
   client_details: CLIENT_DETAILS_REDUCER,
+  instant_quote: INSTANT_QUOTE_REDUCER,
 };
 
 export const APP_STORE = {
