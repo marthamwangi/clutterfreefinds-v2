@@ -12,6 +12,7 @@ import { ADDITIONAL_INFO_REDUCER } from '../pages/instant-quote/client/sections/
 import { IConstituencyModel, ICountyModel } from './models/county.model';
 import { COUNTY_REDUCER } from './data/county/county.reducer';
 import { CountyEffects } from './data/county/county.effects';
+import { CLIENT_DETAILS_REDUCER } from '../pages/instant-quote/client/sections/quote-client-details/data/quote-client-details.reducers';
 
 /**
  * @ICffServiceState
@@ -52,7 +53,9 @@ export interface IAdditionalInfoState {
     notes?: string;
   };
 }
-
+/**
+ * @ICountyState
+ */
 export interface ICountyState {
   counties: Array<ICountyModel>;
   selected_county: ICountyModel;
@@ -61,12 +64,25 @@ export interface ICountyState {
   is_loading: boolean;
 }
 
+/**
+ * @IClientDetailsState
+ */
+export interface IClientDetailsState {
+  email: string;
+  fname: string;
+  lname: string;
+  address: string;
+  hseNumber: string;
+  phone: string;
+  serviceType: string;
+}
 export interface AppState {
   cff_services: ICffServiceState;
   cff_spaces: ISpaceState;
   cff_materials: IMaterialState;
   quote_additional_info: IAdditionalInfoState;
   cff_county: ICountyState;
+  client_details: IClientDetailsState;
 }
 
 const reducers: ActionReducerMap<AppState> = {
@@ -75,6 +91,7 @@ const reducers: ActionReducerMap<AppState> = {
   cff_materials: CFF_MATERIAL_REDUCER,
   quote_additional_info: ADDITIONAL_INFO_REDUCER,
   cff_county: COUNTY_REDUCER,
+  client_details: CLIENT_DETAILS_REDUCER,
 };
 
 export const APP_STORE = {

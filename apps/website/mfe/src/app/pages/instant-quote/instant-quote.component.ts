@@ -90,6 +90,7 @@ export class InstantQuoteComponent implements AfterViewInit {
   public selectedMaterial!: IMaterialModel;
   public _selectedQuoteDate!: any;
   public additionalInfo!: any;
+  public clientData!: any;
 
   public minPrice!: string;
   public maxPrice!: string;
@@ -103,7 +104,19 @@ export class InstantQuoteComponent implements AfterViewInit {
       notes: new FormControl(''),
       images: new FormControl(''),
     }),
-    clientDetails: new FormControl('', Validators.required),
+    clientDetails: new FormGroup({
+      county: new FormGroup({
+        county: new FormControl('', Validators.required),
+        constituency: new FormControl('', Validators.required),
+        ward: new FormControl('', Validators.required),
+      }),
+      address: new FormControl('', Validators.required),
+      hseNumber: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      fname: new FormControl('', Validators.required),
+      lname: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required),
+    }),
   });
   constructor() {
     this.renderedSteps = [];
@@ -179,7 +192,6 @@ export class InstantQuoteComponent implements AfterViewInit {
       })
     );
   }
-
   getSpace($event: ISpaceModel): void {
     this.spaceSelected = $event;
     this._priceCalculator();
@@ -189,9 +201,7 @@ export class InstantQuoteComponent implements AfterViewInit {
       })
     );
   }
-
   getMaterial($event: IMaterialModel) {
-    this._resetPrices();
     this.selectedMaterial = $event;
     this._priceCalculator();
     this._updateInstantQuoteForm(
@@ -200,7 +210,6 @@ export class InstantQuoteComponent implements AfterViewInit {
       })
     );
   }
-
   getAdditionalInfo($event: any) {
     this.additionalInfo = $event;
     this._updateInstantQuoteForm(
@@ -210,7 +219,27 @@ export class InstantQuoteComponent implements AfterViewInit {
       })
     );
   }
+  getClientData($event: any) {
+    this.clientData = $event;
+    this._updateInstantQuoteForm(
+      this.clientDetails.patchValue({
+        email: this.clientData?.email,
+        fname: this.clientData?.fname,
+        lname: this.clientData?.lname,
+        phone: this.clientData?.phone,
+        address: this.clientData?.address,
+        hseNumber: this.clientData?.hseNumber,
+      })
+    );
 
+    this._updateInstantQuoteForm(
+      this.clientCountyDetails.patchValue({
+        county: this.clientData.county,
+        constituency: this.clientData.constituency,
+        ward: this.clientData.ward,
+      })
+    );
+  }
   private _priceCalculator() {
     let min_price = 0;
     let max_price = 0;
@@ -237,16 +266,6 @@ export class InstantQuoteComponent implements AfterViewInit {
       maxPrice: max_price,
     });
   }
-
-  private _resetPrices() {
-    const minPrice = this.spaceSelected.minHours * this.serviceSelected.price;
-    const maxPrice = this.spaceSelected.maxHours * this.serviceSelected.price;
-    this._priceCalculator$.next({
-      minPrice: minPrice,
-      maxPrice: maxPrice,
-    });
-  }
-
   private _formatPriceToString(price: number) {
     return Intl.NumberFormat('KES', {
       style: 'currency',
@@ -305,5 +324,9 @@ export class InstantQuoteComponent implements AfterViewInit {
   }
   get clientDetails(): any {
     return this.createInstantQuote.get('clientDetails');
+  }
+
+  get clientCountyDetails(): any {
+    return this.clientDetails.get('county');
   }
 }

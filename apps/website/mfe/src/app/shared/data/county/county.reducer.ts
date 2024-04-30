@@ -42,8 +42,8 @@ export const COUNTY_REDUCER = createReducer(
       selected_constituency: selected,
     })
   ),
-  on(fromCountyActions.WardPicker.ward, (state, { selected }) => ({
+  on(fromCountyActions.WardPicker.selected_ward, (state, { selected }) => ({
     ...state,
-    ward: selected,
+    selected_ward: selected,
   }))
 );

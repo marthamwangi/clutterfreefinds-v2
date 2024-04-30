@@ -19,7 +19,7 @@ const ConstituencyPicker = createActionGroup({
 const WardPicker = createActionGroup({
   source: 'Quote Client Details Component',
   events: {
-    ward: props<{ selected: string }>(),
+    selected_ward: props<{ selected: string }>(),
   },
 });
 const CountyAPI = createActionGroup({

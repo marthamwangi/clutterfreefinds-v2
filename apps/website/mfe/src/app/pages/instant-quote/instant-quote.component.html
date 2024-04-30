@@ -59,7 +59,7 @@
         </ng-template>
         <ng-template #iqClientDetails>
             <div class="col-12 col-lg-9 mx-auto">
-                <iq-quote-client-details></iq-quote-client-details>
+                <iq-quote-client-details (clientData$)="getClientData($event)"></iq-quote-client-details>
             </div>
         </ng-template>
         <ng-template #iqQuoteSummary>
