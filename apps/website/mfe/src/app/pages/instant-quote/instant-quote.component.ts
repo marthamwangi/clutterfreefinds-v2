@@ -19,7 +19,7 @@ import { QuoteServiceComponent } from './client/sections/quote-service/quote-ser
 import { QuoteSpaceComponent } from './client/sections/quote-space/quote-space.component';
 import { ISpaceModel } from './client/sections/quote-space/models/space.model';
 import { IMaterialModel } from './client/sections/quote-material/models/material.model';
-import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import {
   AsyncPipe,
   CurrencyPipe,
@@ -36,6 +36,7 @@ import { QuoteSummaryComponent } from './client/sections/quote-summary-options/q
 import { Store } from '@ngrx/store';
 import { AppState } from '../../shared/interface';
 import { fromInstantQuoteActions } from '../../shared/data/quote/quote.actions';
+import { fromInstantQuoteSelector } from '../../shared/data/quote/quote.selectors';
 
 interface IPriceRange {
   minPrice: number;
@@ -81,11 +82,6 @@ export class InstantQuoteComponent implements AfterViewInit {
   #store: Store<AppState> = inject(Store);
   public steps!: { [step: number]: Step };
 
-  private _priceCalculator$: BehaviorSubject<IPriceRange> =
-    new BehaviorSubject<IPriceRange>({
-      minPrice: 0,
-      maxPrice: 0,
-    });
   public renderedSteps: Array<Step>;
   public currentStepIndex: number;
   public currentStep: Step | null = null;
@@ -97,8 +93,7 @@ export class InstantQuoteComponent implements AfterViewInit {
   public additionalInfo!: any;
   public clientData!: any;
 
-  public minPrice!: string;
-  public maxPrice!: string;
+  price_calculator$: Observable<{ max_price: number; min_price: number }>;
 
   public createInstantQuote: FormGroup = new FormGroup({
     date: new FormControl('', Validators.required),
@@ -115,17 +110,20 @@ export class InstantQuoteComponent implements AfterViewInit {
         constituency: new FormControl('', Validators.required),
         ward: new FormControl('', Validators.required),
       }),
-      address: new FormControl('', Validators.required),
-      hseNumber: new FormControl('', Validators.required),
+      address: new FormControl(''),
+      hseNumber: new FormControl(''),
       email: new FormControl('', Validators.required),
       fname: new FormControl('', Validators.required),
-      lname: new FormControl('', Validators.required),
+      lname: new FormControl(''),
       phone: new FormControl('', Validators.required),
     }),
   });
   constructor() {
+    this.price_calculator$ = this.#store.select(
+      fromInstantQuoteSelector.InstantQuoteSelector
+    );
     this.renderedSteps = [];
-    this.currentStepIndex = 3;
+    this.currentStepIndex = 0;
     this.steps = {
       0: {
         key: 'date',
@@ -181,12 +179,8 @@ export class InstantQuoteComponent implements AfterViewInit {
   getQuoteDate($event: any): void {
     this._selectedQuoteDate = $event;
     this._updateInstantQuoteForm({ date: $event });
-    this._priceCalculator$.pipe().subscribe({
-      next: (price: any) => {
-        this.minPrice = price.minPrice;
-        this.maxPrice = price.maxPrice;
-      },
-    });
+    this._priceCalculator();
+    this.goToNext();
   }
   getService($event: ICffService): void {
     this.serviceSelected = $event;
@@ -245,6 +239,7 @@ export class InstantQuoteComponent implements AfterViewInit {
       })
     );
   }
+
   private _priceCalculator() {
     let min_price = 0;
     let max_price = 0;
@@ -266,10 +261,6 @@ export class InstantQuoteComponent implements AfterViewInit {
         }
       }
     }
-    this._priceCalculator$.next({
-      minPrice: min_price,
-      maxPrice: max_price,
-    });
     this.#store.dispatch(
       fromInstantQuoteActions.QuotePrice.min_price({ min_price })
     );

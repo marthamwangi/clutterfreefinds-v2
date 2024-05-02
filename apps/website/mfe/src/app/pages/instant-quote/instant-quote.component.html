@@ -35,7 +35,8 @@
                 <div class="row">
                     <div class="col-8 col-lg-10">
                         <div class="estimate-price">
-                            {{minPrice | currency:'KES' }}-{{maxPrice | currency:'KES' }}
+                            {{(price_calculator$ | async)?.min_price | currency:'KES' }}-{{(price_calculator$ |
+                            async)?.max_price | currency:'KES' }}
                         </div>
                         <div class="estimate-price-info">Estimated price range may be inaccurate,<br>
                             Please complete the process to receive a final quote</div>
@@ -68,7 +69,7 @@
             </div>
         </ng-template>
         <ng-template #iqQuoteSummary>
-            <iq-quote-summary></iq-quote-summary>
+            <iq-quote-summary [instantQuote]="this.createInstantQuote.value"></iq-quote-summary>
         </ng-template>
     </div>
 </main>

@@ -21,3 +21,4 @@ export const WEB_API_CFF_SERVICES = 'CffServices';
 export const WEB_API_CFF_SPACE = 'Space';
 export const WEB_API_CFF_MATERIAL = 'Material';
 export const KENYA_COUNTIES = 'County';
+export const WEB_API_QUOTATION_REQUEST = 'QuotationRequest';

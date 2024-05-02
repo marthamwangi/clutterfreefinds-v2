@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { AppState } from 'apps/website/mfe/src/app/shared/interface';
@@ -13,6 +13,11 @@ import { fromAdditionalInfoSelectors } from '../quote-additonal-info/data/quote-
 import { fromClientDetailsSelector } from '../quote-client-details/data/quote-client-details.selector';
 import { fromCountySelector } from 'apps/website/mfe/src/app/shared/data/county/county.selectors';
 import { fromInstantQuoteSelector } from 'apps/website/mfe/src/app/shared/data/quote/quote.selectors';
+import { fromInstantQuoteActions } from 'apps/website/mfe/src/app/shared/data/quote/quote.actions';
+import {
+  BASE_API,
+  WEB_API_QUOTATION_REQUEST,
+} from '@clutterfreefinds-v2/globals';
 
 @Component({
   selector: 'iq-quote-summary',
@@ -22,6 +27,7 @@ import { fromInstantQuoteSelector } from 'apps/website/mfe/src/app/shared/data/q
   styleUrls: ['./quote-summary.component.scss'],
 })
 export class QuoteSummaryComponent {
+  @Input() instantQuote: any;
   #store: Store<AppState> = inject(Store);
   service_selected$: Observable<ICffService>;
   space_selected$: Observable<ISpaceModel>;
@@ -76,5 +82,14 @@ export class QuoteSummaryComponent {
     for (const url of urls) {
       fetchFile(url).then((file) => exportFile(file));
     }
+  }
+
+  onValidateQuote() {
+    this.#store.dispatch(
+      fromInstantQuoteActions.Quote.quoteAdd({
+        url: `${BASE_API}/${WEB_API_QUOTATION_REQUEST}`,
+        quotation: this.instantQuote,
+      })
+    );
   }
 }

@@ -147,6 +147,9 @@ export class QuoteClientDetailsComponent {
         })
       );
     }
+    this.selected_county$ = this.#store.select(
+      fromCountySelector.SelectedCounty
+    );
     this._setClientDataEmit();
   }
   /**

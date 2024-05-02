@@ -5,6 +5,7 @@ import { InstantQuoteState } from '../../interface';
 const initialState: InstantQuoteState = {
   min_price: 0,
   max_price: 0,
+  is_loading: false,
 };
 
 export const INSTANT_QUOTE_REDUCER = createReducer(
@@ -16,5 +17,8 @@ export const INSTANT_QUOTE_REDUCER = createReducer(
   on(fromInstantQuoteActions.QuotePrice.max_price, (state, { max_price }) => ({
     ...state,
     max_price: max_price,
+  })),
+  on(fromInstantQuoteActions.Quote.quoteAdd, (state) => ({
+    ...state,
   }))
 );

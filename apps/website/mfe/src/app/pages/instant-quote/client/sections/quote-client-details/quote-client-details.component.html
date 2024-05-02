@@ -2,7 +2,7 @@
     <div class="form-heading">3. Service address</div>
     <div class="row">
         <div class="col-12 col-md-4 mb-3">
-            <label for="clienQuoteEmail">E-mail address</label>
+            <label for="clienQuoteEmail">E-mail address *</label>
             <input type="email" class="form-control" id="clienQuoteEmail" placeholder="example@gmail.com"
                 [value]="clienQuoteEmail$ | async" (change)="onInputEvent($event,'email')">
             <div class="invalid-feedback">
@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="col-12 col-md-4 mb-3">
-            <label for="clienFirstName">First name</label>
+            <label for="clienFirstName">First name *</label>
             <input type="text" class="form-control" id="clienFirstName" placeholder="First name"
                 [value]="clientQuoteFirstName$ | async" (change)="onInputEvent($event,'fname')">
             <div class="valid-feedback">
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="col-12 col-md-4 mb-3">
-            <label for="clientPhoneNumber">Phone Number</label>
+            <label for="clientPhoneNumber">Phone Number *</label>
             <input type="text" class="form-control" id="clientPhoneNumber" placeholder="+254 06 34 73 99"
                 [value]="clientQuotePhoneNumber$ | async" (change)="onInputEvent($event,'phone')">
             <div class="invalid-feedback">
@@ -34,32 +34,33 @@
             </div>
         </div>
         <div class="col-12 col-md-4 mb-3">
-            <label for="clientQuoteCounty">City / County</label>
+            <label for="clientQuoteCounty">City / County *</label>
             <select (mousedown)="fetchCountiesData()" id="clientQuoteCounty" class="form-select"
                 (change)="onCountySelect($event)">
                 <option selected disabled>County</option>
-                <option [selected]="(selected_county$ | async)?.countyCode" [value]="county.countyCode"
-                    *ngFor="let county of ( counties$ | async | sort:'asc':'name')">
+                <option [selected]="(selected_county$ | async)?.countyCode === county.countyCode"
+                    [value]="county.countyCode" *ngFor="let county of ( counties$ | async | sort:'asc':'name')">
                     {{county.name}}</option>
             </select>
         </div>
         <div class="col-12 col-md-4 mb-3">
-            <label for="clientQuoteConstituency">Constituency</label>
+            <label for="clientQuoteConstituency">Constituency *</label>
             <select [disabled]="(selected_county$ | async)?.name === ''" class="form-select"
                 (change)="onConstituencyChange($event)">
                 <option selected disabled>Constituency</option>
-                <option [selected]="(selected_constituency$ | async)?.name" [value]="constituency.name"
+                <option [selected]="(selected_constituency$ | async)?.name === constituency.name"
+                    [value]="constituency.name"
                     *ngFor="let constituency of (selected_county$ | async)?.constituencies | sort:'asc':'name'">
                     {{constituency.name}}
                 </option>
             </select>
         </div>
         <div class="col-12 col-md-4 mb-3">
-            <label for="clientQuoteNeighbourhood">Neighborhood</label>
+            <label for="clientQuoteNeighbourhood">Neighborhood *</label>
             <select [disabled]="(selected_constituency$ | async)?.name === '' " class="form-select"
                 (change)="onWardChange($event)">
                 <option selected disabled>Neighborhood</option>
-                <option [selected]="(selected_ward$ | async)" [value]="ward"
+                <option [selected]="(selected_ward$ | async) === ward" [value]="ward"
                     *ngFor="let ward of (selected_constituency$ | async)?.wards | sort:'asc'">
                     {{ward}}
                 </option>
@@ -83,7 +84,11 @@
             </div>
         </div>
     </div>
-
+    <div class="d-flex gap-1 align-items-center">
+        <img src="/assets/icons/error.svg" alt="" width="16">
+        <div> All fields marked with * are required to proceed
+        </div>
+    </div>
 </div>
 <div class="row">
     <div class="form-heading">4. Service method</div>
