@@ -38,11 +38,6 @@ import { AppState } from '../../shared/interface';
 import { fromInstantQuoteActions } from '../../shared/data/quote/quote.actions';
 import { fromInstantQuoteSelector } from '../../shared/data/quote/quote.selectors';
 
-interface IPriceRange {
-  minPrice: number;
-  maxPrice: number;
-}
-
 interface Step {
   label: number;
   key: string;
@@ -102,20 +97,21 @@ export class InstantQuoteComponent implements AfterViewInit {
       space: new FormControl('', Validators.required),
       material: new FormControl(''),
       notes: new FormControl(''),
-      images: new FormControl(''),
+      images: new FormControl([]),
+      minPrice: new FormControl(),
+      maxPrice: new FormControl(),
     }),
     clientDetails: new FormGroup({
-      county: new FormGroup({
-        county: new FormControl('', Validators.required),
-        constituency: new FormControl('', Validators.required),
-        ward: new FormControl('', Validators.required),
-      }),
+      county: new FormControl('', Validators.required),
+      constituency: new FormControl('', Validators.required),
+      ward: new FormControl('', Validators.required),
       address: new FormControl(''),
       hseNumber: new FormControl(''),
       email: new FormControl('', Validators.required),
       fname: new FormControl('', Validators.required),
       lname: new FormControl(''),
       phone: new FormControl('', Validators.required),
+      serviceType: new FormControl('', Validators.required),
     }),
   });
   constructor() {
@@ -123,7 +119,7 @@ export class InstantQuoteComponent implements AfterViewInit {
       fromInstantQuoteSelector.InstantQuoteSelector
     );
     this.renderedSteps = [];
-    this.currentStepIndex = 0;
+    this.currentStepIndex = 3;
     this.steps = {
       0: {
         key: 'date',
@@ -220,6 +216,7 @@ export class InstantQuoteComponent implements AfterViewInit {
   }
   getClientData($event: any) {
     this.clientData = $event;
+    console.log('clientdata', this.clientData);
     this._updateInstantQuoteForm(
       this.clientDetails.patchValue({
         email: this.clientData?.email,
@@ -228,14 +225,10 @@ export class InstantQuoteComponent implements AfterViewInit {
         phone: this.clientData?.phone,
         address: this.clientData?.address,
         hseNumber: this.clientData?.hseNumber,
-      })
-    );
-
-    this._updateInstantQuoteForm(
-      this.clientCountyDetails.patchValue({
         county: this.clientData.county,
         constituency: this.clientData.constituency,
         ward: this.clientData.ward,
+        serviceType: this.clientData.serviceType,
       })
     );
   }
@@ -266,6 +259,12 @@ export class InstantQuoteComponent implements AfterViewInit {
     );
     this.#store.dispatch(
       fromInstantQuoteActions.QuotePrice.max_price({ max_price })
+    );
+    this._updateInstantQuoteForm(
+      this.estimates.patchValue({
+        minPrice: min_price,
+        maxPrice: max_price,
+      })
     );
   }
   goToNext() {
@@ -319,9 +318,5 @@ export class InstantQuoteComponent implements AfterViewInit {
   }
   get clientDetails(): any {
     return this.createInstantQuote.get('clientDetails');
-  }
-
-  get clientCountyDetails(): any {
-    return this.clientDetails.get('county');
   }
 }

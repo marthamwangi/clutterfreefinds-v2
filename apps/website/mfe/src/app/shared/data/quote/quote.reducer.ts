@@ -6,6 +6,7 @@ const initialState: InstantQuoteState = {
   min_price: 0,
   max_price: 0,
   is_loading: false,
+  response: {},
 };
 
 export const INSTANT_QUOTE_REDUCER = createReducer(
@@ -20,5 +21,22 @@ export const INSTANT_QUOTE_REDUCER = createReducer(
   })),
   on(fromInstantQuoteActions.Quote.quoteAdd, (state) => ({
     ...state,
-  }))
+    is_loading: true,
+  })),
+  on(
+    fromInstantQuoteActions.QuoteApi.quoteAddOnSuccess,
+    (state, { response }) => ({
+      ...state,
+      response: response,
+      is_loading: false,
+    })
+  ),
+  on(
+    fromInstantQuoteActions.QuoteApi.quoteAddOnFailure,
+    (state, { response }) => ({
+      ...state,
+      response: response,
+      is_loading: false,
+    })
+  )
 );

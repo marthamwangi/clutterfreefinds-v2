@@ -1,9 +1,9 @@
 export interface QuotationData {
   serviceDate: Date;
-  images: Array<string>;
-  notes: string;
+  images?: Array<string>;
+  notes?: string;
   service: string;
-  material: string;
+  material?: string;
   space: string;
   minimumPrice: number;
   maximumPrice: number;
@@ -13,10 +13,10 @@ export interface QuotationData {
     constituency: string;
     ward: string;
     firstName: string;
-    lastName: string;
+    lastName?: string;
     email: string;
-    address: string;
-    houseNumber: string;
+    address?: string;
+    houseNumber?: string;
     phone: string;
   };
 }
@@ -29,9 +29,9 @@ export interface IQuotation {
     service: string;
     material: string;
     space: string;
+    minPrice: number;
+    maxPrice: number;
   };
-  minPrice: number;
-  maxPrice: number;
   clientDetails: {
     county: string;
     constituency: string;

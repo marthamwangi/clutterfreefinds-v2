@@ -1,4 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import { IResponseModel } from '../../response.model';
 
 const QuotePrice = createActionGroup({
   source: 'Instant Quote Component',
@@ -19,8 +20,8 @@ const QuoteApi = createActionGroup({
   source: 'Quote Request API',
   events: {
     'Quote Loading': emptyProps(),
-    'Quote Add On Success': props<{ success: string }>(),
-    'Quote Add On Failure': props<{ error: string }>(),
+    'Quote Add On Success': props<{ response: IResponseModel }>(),
+    'Quote Add On Failure': props<{ response: IResponseModel }>(),
   },
 });
 

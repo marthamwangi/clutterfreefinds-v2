@@ -50,7 +50,7 @@
   --light-rgb: 255, 255, 255;
   --dark: #0e1c36;
   --dark-rgb: 14, 28, 54;
-  --black: #1c1b1f;
+  --black: #0e1c36;
   --luminous-green: #7bf5c7;
   --luminous-green-rgb: 123, 245, 199;
   --red: #eb0f26;
@@ -64,6 +64,10 @@
     var(--purple-60) 70.47%,
     var(--purple-60) 100.38%
   );
+}
+
+.text-primary {
+  color: var(--purple-100) !important;
 }
 * {
   box-sizing: border-box;
@@ -165,11 +169,12 @@ a.primary-btn {
 
 .title-gradient {
   background: linear-gradient(
-    90.52deg,
-    var(--black-100) 25%,
-    var(--black-60) 50%,
+    135deg,
+    var(--black-100) 0%,
+    var(--purple-100) 25%,
+    var(--black-100) 50%,
     var(--purple-100) 75%,
-    var(--purple-60) 100%
+    var(--green-100) 100%
   );
   text-fill-color: transparent;
   background-clip: text;

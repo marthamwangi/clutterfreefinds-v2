@@ -5,20 +5,11 @@ import { fromMaterialActions } from './quote-material.action';
 const initialState: IMaterialState = {
   cffMaterials: [],
   selected_material: {
-    id: 'default',
-    name: 'Choose Material',
+    id: 'zf85J3jMBM5zJRZ6fRCv',
+    name: '',
     percentagePrice: 0,
-    pros: [
-      'Saves purchasing cost',
-      'You can test what works for you before buying',
-      'Creativity and customization',
-    ],
-    cons: [
-      'Time commitment',
-      'May not be as strong or long-lasting',
-      'May not be as effective for their intended purpose',
-      'May sometimes not be aesthetically pleasing',
-    ],
+    pros: [],
+    cons: [],
   },
   is_loading: false,
 };

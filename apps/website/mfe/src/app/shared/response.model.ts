@@ -1,6 +1,6 @@
 export interface IResponseModel {
-  success: boolean;
-  message: string;
-  statusCode: number;
+  success?: boolean;
+  message?: string;
+  statusCode?: number;
   data?: any;
 }

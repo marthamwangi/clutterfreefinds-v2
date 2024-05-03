@@ -199,6 +199,7 @@ export class QuoteClientDetailsComponent {
       county: (await firstValueFrom(this.selected_county$)).name,
       constituency: (await firstValueFrom(this.selected_constituency$)).name,
       ward: await firstValueFrom(this.selected_ward$),
+      serviceType: await firstValueFrom(this.clientQuoteServiceType$),
     };
     this.clientData$.emit(data);
   }

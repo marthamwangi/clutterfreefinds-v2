@@ -58,25 +58,9 @@ export class QuoteMaterialComponent implements OnInit {
   @ViewChild('Cons', { static: true })
   private Cons!: TemplateRef<any>;
 
-  public materialSelected!: IMaterialModel;
+  public materialSelected: IMaterialModel | undefined = undefined;
 
   allTabs: any;
-  public defaultMaterial = {
-    id: 'default',
-    name: 'Choose Material',
-    percentagePrice: 0,
-    pros: [
-      'Saves purchasing cost',
-      'You can test what works for you before buying',
-      'Creativity and customization',
-    ],
-    cons: [
-      'Time commitment',
-      'May not be as strong or long-lasting',
-      'May not be as effective for their intended purpose',
-      'May sometimes not be aesthetically pleasing',
-    ],
-  };
 
   private _cff_materials$: Observable<Array<IMaterialModel>>;
   public _material_selected$: Observable<IMaterialModel>;
@@ -133,6 +117,7 @@ export class QuoteMaterialComponent implements OnInit {
     this._material_selected$.subscribe((m) => {
       this.materialSelected = m;
     });
+    this.selectedMaterialEmit$.emit(this.materialSelected);
   }
 
   public returnListTemplate(): TemplateRef<any> {
@@ -165,21 +150,33 @@ export class QuoteMaterialComponent implements OnInit {
   private _renderMAterials() {
     this._cff_materials$.subscribe((data: Array<IMaterialModel>) => {
       if (data.length !== 0) {
-        this.materialsArr = this.materialsArr.concat(data);
-        this.materialsArr.unshift(this.defaultMaterial);
-        this.materialSelected = this.materialsArr[0];
+        this.materialsArr = data;
+        this.materialSelected = this.materialsArr.find(
+          (m) => m.percentagePrice === 0
+        );
+        if (this.materialSelected)
+          this.store.dispatch(
+            fromMaterialActions.setSelectedMaterial({
+              selected_material: this.materialSelected,
+            })
+          );
         this._setTabs();
       }
     });
   }
 
   public setDefaultMaterial() {
-    this.store.dispatch(
-      fromMaterialActions.setSelectedMaterial({
-        selected_material: this.defaultMaterial,
-      })
+    let defaultMaterial = this.materialsArr.find(
+      (m) => m.percentagePrice === 0
     );
-    this.selectedMaterialEmit$.next(this.defaultMaterial);
+    if (defaultMaterial) {
+      this.store.dispatch(
+        fromMaterialActions.setSelectedMaterial({
+          selected_material: defaultMaterial,
+        })
+      );
+      this.selectedMaterialEmit$.next(defaultMaterial);
+    }
   }
 
   public fnSelectMaterial(material: any) {

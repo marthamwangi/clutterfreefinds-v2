@@ -142,6 +142,7 @@ export class FooterComponent {
     this._newsLetterService
       /**
        * Disable button to prevent overpostings
+       * check if email is already added
        */
       .newsLetterService(
         `${BASE_API}/${WEB_APP_NEWSLETTER}`,

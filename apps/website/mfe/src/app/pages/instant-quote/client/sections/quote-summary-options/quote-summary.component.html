@@ -2,12 +2,14 @@
     <div class="row">
         <div class="payment-options-header text-center fs-2 mb-5">Quote Summary</div>
         <div class="d-flex">
-            <div class="payment-options-header fs-1 col-8">Total <small class="fs-6"> (Hours * price /h)+additional
+            <div class="payment-options-header fs-1 col-8">Total <br><small class="fs-6"> (Hours * price /h)+additional
                     fees</small></div>
-            <div class="estimate-price col-4">{{(instant_quote$ | async).min_price | currency:'KES'}}-{{(instant_quote$
+            <div class="payment-options-header text-center fs-2 mb-5">{{(instant_quote$ | async).min_price |
+                currency:'KES'}}-{{(instant_quote$
                 |
                 async).max_price | currency:'KES'}}
-                <div> <small class="estimate-price-info">{{(space_selected$ | async)?.minHours}} - {{(space_selected$ |
+                <div> <small class="estimate-price-info fs-6 ">{{(space_selected$ | async)?.minHours}} -
+                        {{(space_selected$ |
                         async)?.maxHours}} hours</small></div>
             </div>
         </div>
@@ -58,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex gap-3">
+        <div class="d-flex gap-3 flex-wrap mx-auto">
             <div class="container col rounded-5 d-flex gap-2 align-items-center">
                 <div class="image">
                     <img [src]="'/assets/icons/cff-services/' +(service_selected$ | async)?.label+'.svg'"
@@ -126,3 +128,65 @@
         </div>
     </div>
 </div>
+
+<ng-container *ngTemplateOutlet="returnModalTemplate()"></ng-container>
+<ng-template #loadingRef>
+    <div class="modal-backdrop fade show"></div>
+    <div class="modal fade show" id="loadingModalCenter" tabindex="-1" aria-labelledby="loadingModalCenterTitle"
+        aria-modal="true" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div>
+                        <img class="img-fluid" src="/assets/videos/loader.gif" alt="" width="500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ng-template #responseErrorRef>
+    <div class="modal-backdrop fade show"></div>
+    <div class="modal fade show" id="errorModalCenter" tabindex="-1" aria-labelledby="errorModalCenterTitle"
+        aria-modal="true" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-3">
+                    <div class="response-heading">Quote Validation Failed</div>
+                    <div class="response-text">
+                        There was a problem validating your quote, please try again. <span class="text-primary">If you
+                            need help contact us via email or phone.</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img class="img-fluid" src="/assets/images/quote/quote-error.svg" alt="">
+                    </div>
+                    <div>
+                        <button type="button" data-bs-dismiss="modal" class="btn primary-btn mx-auto"
+                            (click)="modalView = -1">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ng-template #responseSuccessRef>
+    <div class="modal-backdrop fade show"></div>
+    <div class="modal fade show" id="successModalCenter" tabindex="-1" aria-labelledby="successModalCenterTitle"
+        aria-modal="true" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="response-heading">Quote Validation Completed!</div>
+                    <div class="response-text">
+                        You will receive an email with a quote,<span class="text-primary"> if you need help contact us
+                            via email or phone.</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img class="img-fluid" src="/assets/images/quote/quote-success.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- success close and reload instant quote -->
+</ng-template>

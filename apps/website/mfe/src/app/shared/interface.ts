@@ -15,6 +15,7 @@ import { CountyEffects } from './data/county/county.effects';
 import { CLIENT_DETAILS_REDUCER } from '../pages/instant-quote/client/sections/quote-client-details/data/quote-client-details.reducers';
 import { INSTANT_QUOTE_REDUCER } from './data/quote/quote.reducer';
 import { QuoteEffects } from './data/quote/quote.effects';
+import { IResponseModel } from './response.model';
 
 /**
  * @ICffServiceState
@@ -83,6 +84,7 @@ export interface InstantQuoteState {
   min_price: number;
   max_price: number;
   is_loading: boolean;
+  response: IResponseModel;
 }
 export interface AppState {
   cff_services: ICffServiceState;

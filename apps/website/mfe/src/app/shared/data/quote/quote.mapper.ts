@@ -9,8 +9,8 @@ export class QuoteMapper {
       service: quotation.estimates.service,
       space: quotation.estimates.space,
       material: quotation.estimates.material,
-      minimumPrice: quotation.minPrice,
-      maximumPrice: quotation.maxPrice,
+      minimumPrice: quotation.estimates.minPrice,
+      maximumPrice: quotation.estimates.maxPrice,
       serviceType: quotation.clientDetails.serviceType,
       clientDetails: {
         email: quotation.clientDetails.email,
