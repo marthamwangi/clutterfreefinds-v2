@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import {
   FormControl,
@@ -15,6 +15,7 @@ import {
   CFF_WHATS_APP_LINK,
   EMAIL,
   GOOGLE_BUSINESS_PROFILE,
+  REGEX_EMAIL,
   WEB_APP_NEWSLETTER,
 } from '@clutterfreefinds-v2/globals';
 import { FooterService } from './footer.service';
@@ -127,9 +128,12 @@ export class FooterComponent {
     },
   ];
   newsletterForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.pattern(REGEX_EMAIL),
+    ]),
   });
-
   constructor(
     private _toastrService: ToastrService,
     private _newsLetterService: FooterService,
@@ -142,6 +146,7 @@ export class FooterComponent {
     this._newsLetterService
       /**
        * Disable button to prevent overpostings
+       * check if email is already added
        */
       .newsLetterService(
         `${BASE_API}/${WEB_APP_NEWSLETTER}`,
@@ -215,5 +220,9 @@ export class FooterComponent {
     setTimeout(() => {
       this.emailTooltip$.next('FOOTER.EMAIL_TOOLTIP');
     }, 5000);
+  }
+
+  get email(): any {
+    return this.newsletterForm.get('email');
   }
 }

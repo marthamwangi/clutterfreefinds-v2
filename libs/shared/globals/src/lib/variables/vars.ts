@@ -16,8 +16,17 @@ export const SUPPORTED_LANGUAGES: any = {
 };
 export const EMAIL = 'clutterfreefinds@gmail.com';
 
+/**
+ * APIS
+ */
 export const WEB_APP_NEWSLETTER = 'Newsletter';
 export const WEB_API_CFF_SERVICES = 'CffServices';
 export const WEB_API_CFF_SPACE = 'Space';
 export const WEB_API_CFF_MATERIAL = 'Material';
 export const KENYA_COUNTIES = 'County';
+export const WEB_API_QUOTATION_REQUEST = 'QuotationRequest';
+
+/**
+ * REGEX PATTERNS
+ */
+export const REGEX_EMAIL = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';

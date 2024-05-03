@@ -1,64 +1,142 @@
-import { NgFor, AsyncPipe } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { NgFor, AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ISpaceModel } from '../../../models/space.model';
-import { SpaceService } from '../../services/space.service';
-import { BehaviorSubject } from 'rxjs';
+import { ISpaceModel } from './models/space.model';
+import { Observable, Subject, firstValueFrom, takeUntil } from 'rxjs';
+import { AppState } from 'apps/website/mfe/src/app/shared/interface';
+import { Store } from '@ngrx/store';
+import { fromSpaceSelectors } from './data/quote-space.selectors';
+import { fromCffSpacesActions } from './data/quote-space.actions';
 import { BASE_API, WEB_API_CFF_SPACE } from '@clutterfreefinds-v2/globals';
+import { ICffService } from '../quote-service/model/cffSservice.model';
+import { fromCffServiceSelectors } from '../quote-service/data/quote-service.selectors';
 
 @Component({
   selector: 'iq-quote-space',
   standalone: true,
-  imports: [NgFor, AsyncPipe, FormsModule],
+  imports: [NgFor, AsyncPipe, FormsModule, NgTemplateOutlet, AsyncPipe],
   templateUrl: './quote-space.component.html',
   styleUrls: ['./quote-space.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class QuoteSpaceComponent {
+export class QuoteSpaceComponent implements OnInit, OnDestroy {
   @Output() selectedSpaceEmit$ = new EventEmitter<ISpaceModel>();
+  @ViewChild('loadingRef')
+  private _loadingRef!: TemplateRef<any>;
+  @ViewChild('loadedRef')
+  private _loadedRef!: TemplateRef<any>;
 
-  public spaceProgress: boolean = false;
+  private _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+
+  public selectedCffSpace!: ISpaceModel;
+
+  private store: Store<AppState> = inject(Store);
+
+  private _cff_spaces$: Observable<Array<ISpaceModel>>;
+  private _space_selected$: Observable<ISpaceModel>;
+
+  public _service_selected$: Observable<ICffService>;
+
   public spacesArr: Array<ISpaceModel> = [];
 
-  public selectedSpace$: BehaviorSubject<ISpaceModel>;
   public selectedSpace!: ISpaceModel;
 
-  constructor(private _spaceService: SpaceService) {
-    this.selectedSpace$ = new BehaviorSubject<ISpaceModel>({
-      name: '',
-      maxHours: 1,
-      minHours: 1,
-      isSelected: false,
-    });
-    this.selectedSpace$.subscribe({
-      next: (space) => {
-        this.selectedSpace = space;
-      },
-    });
+  private _unsubscribe$: Subject<boolean>;
+  private _loadProgress$: Observable<boolean>;
+  public loadStatus!: number;
+
+  constructor() {
+    this._loadProgress$ = this.store.select(
+      fromSpaceSelectors.selectLoadingList
+    );
+
+    this._unsubscribe$ = new Subject<boolean>();
+
+    this._cff_spaces$ = this.store.select(fromSpaceSelectors.selectSepacesList);
+
+    this._space_selected$ = this.store.select(
+      fromSpaceSelectors.selectedSpaceSelector
+    );
+
+    this._service_selected$ = this.store.select(
+      fromCffServiceSelectors.selectActiveService
+    );
   }
 
   ngOnInit() {
-    this._getAllSpaces();
+    this._setSelected();
+    this._renderAllSpaces();
+    this._listenForLoadingStatus();
   }
-  private _getAllSpaces(): void {
-    this.spaceProgress = true;
-    this._spaceService
-      .getAllSpaces(`${BASE_API}/${WEB_API_CFF_SPACE}`)
-      .subscribe({
-        next: (response: any) => {
-          this.spaceProgress = false;
-          if (response.success) {
-            this.spacesArr = response.spaces;
-          }
-        },
-        error: (error: any) => {
-          this.spaceProgress = false;
-        },
-      });
+
+  ngOnDestroy(): void {
+    this._unsubscribe$.next(true);
+    this._unsubscribe$.complete();
+  }
+
+  public _commonChangeDetector(): void {
+    this._changeDetectorRef.detectChanges();
+  }
+
+  private _listenForLoadingStatus() {
+    this._loadProgress$.pipe(takeUntil(this._unsubscribe$)).subscribe((l) => {
+      if (l === true) {
+        this.loadStatus = 1;
+      } else {
+        this.loadStatus = 0;
+      }
+      this._commonChangeDetector();
+    });
+  }
+
+  public returnListTemplate(): TemplateRef<any> {
+    const templateMap: any = {
+      1: this._loadingRef,
+      0: this._loadedRef,
+    };
+    return templateMap[this.loadStatus];
+  }
+
+  private _setSelected() {
+    this._space_selected$.subscribe((space) => {
+      this.selectedCffSpace = space;
+    });
+  }
+
+  public async loadSpaces() {
+    const existingSpaces = await firstValueFrom(this._cff_spaces$);
+    if (existingSpaces.length) {
+      return;
+    }
+    this.store.dispatch(
+      fromCffSpacesActions.getCffSpacesFromBE({
+        url: `${BASE_API}/${WEB_API_CFF_SPACE}`,
+      })
+    );
+  }
+  private _renderAllSpaces() {
+    this._cff_spaces$.subscribe((data: Array<ISpaceModel>) => {
+      this.spacesArr = data;
+    });
   }
 
   public fnSelectSpace(space: ISpaceModel) {
-    space.isSelected = true;
-    this.selectedSpace$.next(space);
+    this.store.dispatch(
+      fromCffSpacesActions.setSelectedService({
+        selected_space: space,
+      })
+    );
     this.selectedSpaceEmit$.emit(space);
   }
 }

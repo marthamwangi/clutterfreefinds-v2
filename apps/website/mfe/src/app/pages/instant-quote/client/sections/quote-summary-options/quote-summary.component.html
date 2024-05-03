@@ -1,0 +1,197 @@
+<div class="col-12 col-lg-9 mx-auto">
+    <div class="row">
+        <div class="payment-options-header text-center fs-2 mb-5">Quote Summary</div>
+        <div class="d-flex">
+            <div class="payment-options-header fs-1 col-8">Total <br><small class="fs-6"> (Hours * price /h)+additional
+                    fees</small></div>
+            <div class="payment-options-header text-center fs-2 mb-5 lh-sm">{{(instant_quote$ | async).min_price |
+                currency:'KES'}}-{{(instant_quote$
+                |
+                async).max_price | currency:'KES'}}
+                <div> <small class="estimate-price-info fs-6 ">{{(space_selected$ | async)?.minHours}} -
+                        {{(space_selected$ |
+                        async)?.maxHours}} hours</small></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="d-flex flex-column">
+                <div class="payment-options-header">Service Address</div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>First Name:</td>
+                                <td>{{(client_details$ | async)?.fname}}</td>
+                            </tr>
+                            <tr>
+                                <td>Second Name:</td>
+                                <td>{{(client_details$ | async)?.lname}}</td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td>{{(client_details$ | async)?.email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone:</td>
+                                <td>{{(client_details$ | async)?.phone}}</td>
+                            </tr>
+                            <tr>
+                                <td>City/County:</td>
+                                <td>{{(county_details$ | async)?.selected_county?.name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Constituency:</td>
+                                <td>{{(county_details$ | async)?.selected_constituency?.name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Neighbourhood:</td>
+                                <td>{{(county_details$ | async)?.selected_ward}}</td>
+                            </tr>
+                            <tr>
+                                <td>Address:</td>
+                                <td>{{(client_details$ | async)?.address}}</td>
+                            </tr>
+                            <tr>
+                                <td>Apartment | Hse Number:</td>
+                                <td>{{(client_details$ | async)?.hseNumber}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex gap-3 flex-wrap mx-auto">
+            <div class="container col rounded-5 d-flex gap-2 align-items-center">
+                <div class="image">
+                    <img [src]="'/assets/icons/cff-services/' +(service_selected$ | async)?.label+'.svg'"
+                        [alt]="(service_selected$ | async)?.name" width="32">
+                </div>
+                <div class="content">
+                    <div class="support-text">Service</div>
+                    <div>{{(service_selected$ | async)?.name}}</div>
+                </div>
+            </div>
+            <div class="container col  rounded-5 d-flex gap-2 align-items-center">
+                <div class="image">
+                    <img src="assets/icons/cff-services/door-open.svg" alt="declutter and organize space" width="32">
+                </div>
+                <div class="content">
+                    <div class="support-text">Space</div>
+                    <div>{{(space_selected$ | async)?.name}}</div>
+                </div>
+            </div>
+            <div class="container col  rounded-5 d-flex gap-2 align-items-center">
+                <div class="image">
+                    <img src="assets/icons/cff-services/box-bold.svg" alt="declutter and organize products" width="32">
+                </div>
+                <div class="content">
+                    <div class="support-text">Material</div>
+                    <div>{{(material_selected$ | async)?.name}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-flex gap-2">
+            <div class="support-text">Attached Files: 4 Images</div>
+            <a (click)="downloadImages()" class="greyed-text" style="cursor: pointer;">Click Here to Download</a>
+        </div>
+
+        <div class="container">
+            <div class="payment-options-header  support-text">Additional Notes</div>
+            <div class="greyed-text">{{notes$ | async}}</div>
+        </div>
+
+        <div class="container">
+            <div class="payment-options-header">Service Type</div>
+            <div class="greyed-text">{{(client_details$ | async)?.serviceType}}</div>
+        </div>
+
+        <div class="payment-options-header">Payment options</div>
+        <div class="payment-options-text">We support Visa, MasterCard, PayPal, M-Pesa Transfer and many
+            other
+            payment methods</div>
+        <div class="payment-options ps-3 flex-wrap">
+            <img src="assets/icons/money/visa.svg" alt="visa logo" class="img-fluid" width="80">
+            <img src="assets/icons/money/paypal.svg" alt="paypal-logo" class="img-fluid" width="80">
+            <img src="assets/icons/money/mastercard.svg" alt="mastercard-logo" class="img-fluid" width="80">
+            <img src="assets/icons/money/mpesa.svg" alt="mpesa logo" class="img-fluid" width="80">
+        </div>
+        <div class="mt-5 d-flex flex-column justify-content-center">
+            <div class="form-check consent mb-3">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    I agree to the <a href="/privacy-policy">Privacy Policy</a> and <a href="/service-agreement">Service
+                        Agreement</a>
+                </label>
+            </div>
+            <button class="btn primary-btn w-50" (click)="onValidateQuote()">Validate Quote</button>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngTemplateOutlet="returnModalTemplate()"></ng-container>
+<ng-template #loadingRef>
+    <div class="modal-backdrop fade show"></div>
+    <div class="modal fade show" id="loadingModalCenter" tabindex="-1" aria-labelledby="loadingModalCenterTitle"
+        aria-modal="true" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div>
+                        <img class="img-fluid" src="/assets/videos/loader.gif" alt="" width="500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ng-template #responseErrorRef>
+    <div class="modal-backdrop fade show"></div>
+    <div class="modal fade show" id="errorModalCenter" tabindex="-1" aria-labelledby="errorModalCenterTitle"
+        aria-modal="true" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-3">
+                    <div class="response-heading">Quote Validation Failed</div>
+                    <div class="response-text">
+                        There was a problem validating your quote, please try again. <span class="text-primary">If you
+                            need help contact us via email or phone.</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img class="img-fluid" src="/assets/images/quote/quote-error.svg" alt="">
+                    </div>
+                    <div>
+                        <button type="button" data-bs-dismiss="modal" class="btn primary-btn mx-auto w-50"
+                            (click)="modalView = -1">Close </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<ng-template #responseSuccessRef>
+    <div class="modal-backdrop fade show"></div>
+    <div class="modal fade show" id="successModalCenter" tabindex="-1" aria-labelledby="successModalCenterTitle"
+        aria-modal="true" role="dialog" style="display: block;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="response-heading">Quote Validation Completed!</div>
+                    <div class="response-text">
+                        You will receive an email with a quote,<span class="text-primary"> if you need help contact us
+                            via email or phone.</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img class="img-fluid" src="/assets/images/quote/quote-success.svg" alt="">
+                    </div>
+                    <div>
+                        <button type="button" data-bs-dismiss="modal" class="btn primary-btn mx-auto w-50"
+                            (click)="reload()">Understood
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- success close and reload instant quote -->
+</ng-template>

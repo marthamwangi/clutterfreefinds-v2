@@ -1,64 +1,128 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
-import { CFFServices } from '../../services/quote-service.service';
-import { BASE_API, WEB_API_CFF_SERVICES } from '@clutterfreefinds-v2/globals';
-import { AsyncPipe, NgFor } from '@angular/common';
-import { ICffService } from '../../../models/cffSservice.model';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewChild,
+  inject,
+} from '@angular/core';
+import { AsyncPipe, NgFor, NgTemplateOutlet } from '@angular/common';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
-import { BehaviorSubject, take } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  firstValueFrom,
+  take,
+  takeUntil,
+} from 'rxjs';
 import { FormsModule } from '@angular/forms';
-
+import { Store } from '@ngrx/store';
+import { fromCffServiceSelectors } from './data/quote-service.selectors';
+import { fromCffServiceActions } from './data/quote-service.actions';
+import { AppState } from 'apps/website/mfe/src/app/shared/interface';
+import { ICffService } from './model/cffSservice.model';
+import { BASE_API, WEB_API_CFF_SERVICES } from '@clutterfreefinds-v2/globals';
 @Component({
   selector: 'iq-quote-service',
   standalone: true,
-  imports: [NgFor, MatTooltipModule, AsyncPipe, FormsModule],
+  imports: [NgFor, MatTooltipModule, AsyncPipe, FormsModule, NgTemplateOutlet],
 
   templateUrl: './quote-service.component.html',
   styleUrls: ['./quote-service.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class QuoteServiceComponent {
+export class QuoteServiceComponent implements OnInit, OnDestroy {
+  private store: Store<AppState> = inject(Store);
+  private _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+
   @Output() selectedService$ = new EventEmitter<ICffService>();
   @ViewChild('tooltipRef', { static: false })
   private _tooltipRef!: MatTooltip;
+  @ViewChild('loadingRef')
+  private _loadingRef!: TemplateRef<any>;
+  @ViewChild('loadedRef')
+  private _loadedRef!: TemplateRef<any>;
+  private _unsubscribe$: Subject<boolean>;
 
-  public cffServicesProgress: boolean = false;
+  private _cff_services$: Observable<Array<ICffService>>;
   public cffServices: Array<ICffService> = [];
   public cffServiceTooltip$: BehaviorSubject<any>;
-
-  public selectedCffService$: BehaviorSubject<ICffService>;
+  private _service_selected$: Observable<ICffService>;
   public selectedCffService!: ICffService;
-  constructor(private _cffServices: CFFServices) {
+  private _loadProgress$: Observable<boolean>;
+  public loadStatus!: number;
+
+  constructor() {
+    this._unsubscribe$ = new Subject<boolean>();
+    this._cff_services$ = this.store.select(
+      fromCffServiceSelectors.selectServiceList
+    );
+    this._service_selected$ = this.store.select(
+      fromCffServiceSelectors.selectActiveService
+    );
+    this._loadProgress$ = this.store.select(
+      fromCffServiceSelectors.selectLoadingList
+    );
+
     this.cffServiceTooltip$ = new BehaviorSubject('');
-    this.selectedCffService$ = new BehaviorSubject<ICffService>({
-      name: '',
-      price: 0,
-      description: '',
-      label: '',
-      isSelected: false,
-    });
-    this.selectedCffService$.subscribe({
-      next: (service) => {
-        this.selectedCffService = service;
-      },
-    });
   }
   ngOnInit() {
-    this.getCffServices();
+    this._renderServices();
+    this._setSelectedService();
+    this._listenForLoadingStatus();
   }
-  private getCffServices(): void {
-    this.cffServicesProgress = true;
-    this._cffServices
-      .getCffServices(`${BASE_API}/${WEB_API_CFF_SERVICES}`)
-      .subscribe({
-        next: (response: any) => {
-          this.cffServicesProgress = false;
-          if (response.success) {
-            this.cffServices = response.services;
-          }
-        },
-        error: (error: any) => {
-          this.cffServicesProgress = false;
-        },
-      });
+  ngOnDestroy(): void {
+    this._unsubscribe$.next(true);
+    this._unsubscribe$.complete();
+  }
+  public _commonChangeDetector(): void {
+    this._changeDetectorRef.detectChanges();
+  }
+
+  private _listenForLoadingStatus() {
+    this._loadProgress$.pipe(takeUntil(this._unsubscribe$)).subscribe((l) => {
+      if (l === true) {
+        this.loadStatus = 1;
+      } else {
+        this.loadStatus = 0;
+      }
+      this._commonChangeDetector();
+    });
+  }
+
+  public returnListTemplate(): TemplateRef<any> {
+    const templateMap: any = {
+      1: this._loadingRef,
+      0: this._loadedRef,
+    };
+    return templateMap[this.loadStatus];
+  }
+  private _setSelectedService() {
+    this._service_selected$.subscribe((service) => {
+      this.selectedCffService = service;
+    });
+  }
+  public async loadServices() {
+    const existingServices = await firstValueFrom(this._cff_services$);
+    if (existingServices.length) {
+      return;
+    }
+    this.store.dispatch(
+      fromCffServiceActions.getCffServicesFromBE({
+        url: `${BASE_API}/${WEB_API_CFF_SERVICES}`,
+      })
+    );
+  }
+
+  private _renderServices() {
+    this._cff_services$.subscribe((data: Array<ICffService>) => {
+      this.cffServices = data;
+    });
   }
 
   public showCffServiceDescriptionTooltip(service: ICffService): void {
@@ -79,10 +143,12 @@ export class QuoteServiceComponent {
     this.cffServiceTooltip$.next('');
   }
 
-  public selectedService(service: ICffService) {
-    service.isSelected = true;
-    this.selectedCffService$.next(service);
-
+  public onSelectedService(service: ICffService) {
+    this.store.dispatch(
+      fromCffServiceActions.mutateSelectedServiceSelection({
+        selected_service: service,
+      })
+    );
     this.selectedService$.emit(service);
   }
 }

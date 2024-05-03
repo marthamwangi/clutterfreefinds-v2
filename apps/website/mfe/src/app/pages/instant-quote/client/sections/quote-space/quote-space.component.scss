@@ -11,7 +11,7 @@
     &::after {
       margin-left: 0 !important;
     }
-    &.isActive {
+    &.isSelected {
       color: var(--purple-100);
       --bs-accordion-btn-active-icon: url('/assets/icons/check-circle-completed.svg');
       --bs-accordion-btn-icon: url('/assets/icons/check-circle-completed.svg');
@@ -83,6 +83,58 @@
   }
 
   input[type='radio']:checked + label.cff-space {
-    background: rgba(var(--purple-100-rgb), 0.1);
+    background: rgba(var(--purple-100-rgb), 0.4);
+  }
+}
+
+.loading {
+  content: '';
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 12px;
+  width: 200px;
+  height: 44px;
+  border-radius: 24px;
+  background-color: #e6e1e15c;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.loading- {
+  &content {
+    background: rgba(130, 130, 130, 0.2);
+    background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(8%, rgba(130, 130, 130, 0.2)),
+      color-stop(18%, rgba(130, 130, 130, 0.3)),
+      color-stop(8%, rgba(130, 130, 130, 0.2))
+    );
+    background: linear-gradient(
+      to right,
+      rgba(130, 130, 130, 0.2) 8%,
+      rgba(130, 130, 130, 0.3) 18%,
+      rgba(130, 130, 130, 0.2) 8%
+    );
+    background-size: 800px 100px;
+    animation: wave-lines 2s infinite ease-out;
+  }
+}
+
+.loading-content {
+  content: '';
+}
+
+@keyframes wave-lines {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
   }
 }

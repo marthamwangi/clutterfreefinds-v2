@@ -7,7 +7,8 @@
   margin-bottom: 24px;
 }
 .client-details-form {
-  label {
+  label,
+  .error {
     font-weight: 500;
     font-size: 14px;
     line-height: 22px;
@@ -22,6 +23,11 @@
       line-height: 22px;
       color: #828d9e;
     }
+    &:focus {
+      border-color: var(--purple-100);
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem var(--purple-30);
+    }
   }
 }
 
@@ -31,31 +37,6 @@
     &:checked {
       --bs-form-check-bg-image: url('/assets/icons/ellipse-on.svg');
       border: 1px solid var(--purple-100);
-    }
-    &:focus {
-      border-color: var(--purple-100);
-      outline: 0;
-      box-shadow: 0 0 0 0.25rem var(--purple-30);
-    }
-  }
-}
-
-.consent {
-  .form-check-label {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    color: rgba(14, 28, 54, 0.75);
-  }
-  a {
-    color: rgba(14, 28, 54, 0.75);
-  }
-  .form-check-input {
-    &:checked {
-      background-color: rgba(var(--purple-100-rgb), 1);
-      border-color: transparent;
-      box-shadow: none;
     }
     &:focus {
       border-color: var(--purple-100);

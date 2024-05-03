@@ -3,28 +3,41 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  OnInit,
-  SimpleChange,
   TemplateRef,
   ViewChild,
+  inject,
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { QuoteServiceComponent } from './client/sections/quote-service/quote-service.component';
-import { ICffService } from './models/cffSservice.model';
+
 import { QuoteSpaceComponent } from './client/sections/quote-space/quote-space.component';
-import { ISpaceModel } from './models/space.model';
-import { QuoteProductComponent } from './client/sections/quote-product/quote-product.component';
-import { IMaterialModel } from './models/material.model';
-import { BehaviorSubject } from 'rxjs';
-import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { ISpaceModel } from './client/sections/quote-space/models/space.model';
+import { IMaterialModel } from './client/sections/quote-material/models/material.model';
+import { Observable } from 'rxjs';
+import {
+  AsyncPipe,
+  CurrencyPipe,
+  NgFor,
+  NgIf,
+  NgTemplateOutlet,
+} from '@angular/common';
 import { QuoteAdditonalInfoComponent } from './client/sections/quote-additonal-info/quote-additonal-info.component';
 import { QuoteCalendarComponent } from './client/sections/quote-calendar/quote-calendar.component';
 import { QuoteClientDetailsComponent } from './client/sections/quote-client-details/quote-client-details.component';
-interface IPriceRange {
-  minPrice: number;
-  maxPrice: number;
-}
+import { ICffService } from './client/sections/quote-service/model/cffSservice.model';
+import { QuoteMaterialComponent } from './client/sections/quote-material/quote-material.component';
+import { QuoteSummaryComponent } from './client/sections/quote-summary-options/quote-summary.component';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../shared/interface';
+import { fromInstantQuoteActions } from '../../shared/data/quote/quote.actions';
+import { fromInstantQuoteSelector } from '../../shared/data/quote/quote.selectors';
+import { REGEX_EMAIL } from '@clutterfreefinds-v2/globals';
 
 interface Step {
   label: number;
@@ -32,6 +45,7 @@ interface Step {
   title: string;
   status: 'active' | 'disabled' | 'completed';
 }
+
 @Component({
   selector: 'iq-instant-quote',
   standalone: true,
@@ -40,52 +54,86 @@ interface Step {
     ReactiveFormsModule,
     QuoteServiceComponent,
     QuoteSpaceComponent,
-    QuoteProductComponent,
+    QuoteMaterialComponent,
     QuoteAdditonalInfoComponent,
     QuoteCalendarComponent,
     QuoteClientDetailsComponent,
+    QuoteSummaryComponent,
     NgIf,
     NgTemplateOutlet,
     NgFor,
+    AsyncPipe,
+    CurrencyPipe,
   ],
   templateUrl: './instant-quote.component.html',
   styleUrls: ['./instant-quote.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InstantQuoteComponent implements OnInit, AfterViewInit {
+export class InstantQuoteComponent implements AfterViewInit {
   @ViewChild('iqCalendar') private iqCalendarRef!: TemplateRef<any>;
   @ViewChild('iqEstimates') private iqEstimatesRef!: TemplateRef<any>;
   @ViewChild('iqClientDetails') private iqClientDetailsRef!: TemplateRef<any>;
-  @ViewChild('iqServiceType') private iqServiceTypeRef!: TemplateRef<any>;
   @ViewChild('iqQuoteSummary') private iqQuoteSummaryRef!: TemplateRef<any>;
+  private _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+  #store: Store<AppState> = inject(Store);
   public steps!: { [step: number]: Step };
 
-  private _priceCalculator$: BehaviorSubject<IPriceRange> =
-    new BehaviorSubject<IPriceRange>({
-      minPrice: 0,
-      maxPrice: 0,
-    });
   public renderedSteps: Array<Step>;
-  public currentStep: number;
+  public currentStepIndex: number;
+  public currentStep: Step | null = null;
 
-  private _serviceSelected!: ICffService;
+  public serviceSelected!: ICffService;
   public spaceSelected!: ISpaceModel;
-  public _selectedMaterial!: IMaterialModel;
+  public selectedMaterial!: IMaterialModel;
+  public _selectedQuoteDate!: any;
+  public additionalInfo!: any;
+  public clientData!: any;
 
-  public minPrice!: string;
-  public maxPrice!: string;
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {
+  price_calculator$: Observable<{ max_price: number; min_price: number }>;
+
+  public createInstantQuote: FormGroup = new FormGroup({
+    date: new FormControl('', Validators.required),
+    estimates: new FormGroup({
+      service: new FormControl('', Validators.required),
+      space: new FormControl('', Validators.required),
+      material: new FormControl(''),
+      notes: new FormControl(''),
+      images: new FormControl([]),
+      minPrice: new FormControl(),
+      maxPrice: new FormControl(),
+    }),
+    clientDetails: new FormGroup({
+      county: new FormControl('', Validators.required),
+      constituency: new FormControl('', Validators.required),
+      ward: new FormControl('', Validators.required),
+      address: new FormControl(''),
+      hseNumber: new FormControl(''),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email,
+        Validators.pattern(REGEX_EMAIL),
+      ]),
+      fname: new FormControl('', [Validators.required]),
+      lname: new FormControl(''),
+      phone: new FormControl('', Validators.required),
+      serviceType: new FormControl('', Validators.required),
+    }),
+  });
+  constructor() {
+    this.price_calculator$ = this.#store.select(
+      fromInstantQuoteSelector.InstantQuoteSelector
+    );
     this.renderedSteps = [];
-    this.currentStep = 0;
+    this.currentStepIndex = 0;
     this.steps = {
       0: {
-        key: 'datePicker',
+        key: 'date',
         label: 1,
         title: 'Book a Date',
         status: 'active',
       },
       1: {
-        key: 'preferences',
+        key: 'estimates',
         label: 2,
         title: 'Set your preferences',
         status: 'disabled',
@@ -97,113 +145,183 @@ export class InstantQuoteComponent implements OnInit, AfterViewInit {
         status: 'disabled',
       },
       3: {
-        key: 'serviceType',
-        label: 4,
-        title: 'Service method',
-        status: 'disabled',
-      },
-      4: {
         key: 'quoteSummary',
-        label: 5,
+        label: 4,
         title: 'Quote Summary',
         status: 'disabled',
       },
     };
   }
-  ngOnInit() {
-    this._priceCalculator$.pipe().subscribe({
-      next: (price: any) => {
-        this.minPrice = this._formatPriceToString(price.minPrice);
-        this.maxPrice = this._formatPriceToString(price.maxPrice);
-      },
-    });
-  }
-  //onDestroy to take until unsubscribe
   ngAfterViewInit(): void {
     this._createRenderedSteps();
+    this._commonChangeDetector();
+  }
+  public _commonChangeDetector(): void {
     this._changeDetectorRef.detectChanges();
   }
   private _createRenderedSteps() {
     for (const key in this.steps) {
       this.renderedSteps.push(this.steps[key]);
+      if (this.currentStepIndex === parseInt(key)) {
+        this.currentStep = this.renderedSteps[this.currentStepIndex];
+        this.currentStep.status = 'active';
+      }
     }
   }
-  public returnStepsTeplate(): TemplateRef<any> {
+  public returnStepsTemplate(): TemplateRef<any> {
     const templateMap: any = {
       0: this.iqCalendarRef,
       1: this.iqEstimatesRef,
       2: this.iqClientDetailsRef,
-      3: this.iqServiceTypeRef,
-      4: this.iqQuoteSummaryRef,
+      3: this.iqQuoteSummaryRef,
     };
-    return templateMap[this.currentStep];
+    return templateMap[this.currentStepIndex];
+  }
+  getQuoteDate($event: any): void {
+    this._selectedQuoteDate = $event;
+    this._updateInstantQuoteForm({ date: $event });
+    this._priceCalculator();
+    this.goToNext();
   }
   getService($event: ICffService): void {
-    this._serviceSelected = $event;
-    this._calculatePriceServiceRange($event, 1);
+    this.serviceSelected = $event;
+    this._priceCalculator();
+    this._updateInstantQuoteForm(
+      this.estimates.patchValue({
+        service: this.serviceSelected?.id,
+      })
+    );
   }
-
   getSpace($event: ISpaceModel): void {
     this.spaceSelected = $event;
-    this._calculatePriceSpaceRange($event);
+    this._priceCalculator();
+    this._updateInstantQuoteForm(
+      this.estimates.patchValue({
+        space: this.spaceSelected?.id,
+      })
+    );
   }
-
   getMaterial($event: IMaterialModel) {
-    this._resetPrices();
-    this._selectedMaterial = $event;
-    this._calculatePriceMAterialRange($event);
+    this.selectedMaterial = $event;
+    this._priceCalculator();
+    this._updateInstantQuoteForm(
+      this.estimates.patchValue({
+        material: this.selectedMaterial?.id,
+      })
+    );
+  }
+  getAdditionalInfo($event: any) {
+    this.additionalInfo = $event;
+    this._updateInstantQuoteForm(
+      this.estimates.patchValue({
+        images: this.additionalInfo?.images,
+        notes: this.additionalInfo.notes,
+      })
+    );
+  }
+  getClientData($event: any) {
+    this.clientData = $event;
+    console.log('clientdata', this.clientData);
+    this._updateInstantQuoteForm(
+      this.clientDetails.patchValue({
+        email: this.clientData?.email,
+        fname: this.clientData?.fname,
+        lname: this.clientData?.lname,
+        phone: this.clientData?.phone,
+        address: this.clientData?.address,
+        hseNumber: this.clientData?.hseNumber,
+        county: this.clientData.county,
+        constituency: this.clientData.constituency,
+        ward: this.clientData.ward,
+        serviceType: this.clientData.serviceType,
+      })
+    );
   }
 
-  private _calculatePriceServiceRange(service: ICffService, hours: number) {
-    const minPrice = service.price * hours;
-    const maxPrice = service.price * hours;
-    this._priceCalculator$.next({
-      minPrice: minPrice,
-      maxPrice: maxPrice,
-    });
-  }
-
-  private _calculatePriceSpaceRange(space: ISpaceModel) {
-    const minPrice = space.minHours * this._serviceSelected.price;
-    const maxPrice = space.maxHours * this._serviceSelected.price;
-    this._priceCalculator$.next({
-      minPrice: minPrice,
-      maxPrice: maxPrice,
-    });
-  }
-
-  private _calculatePriceMAterialRange(material: IMaterialModel) {
-    if (material.percentagePrice > 1) {
-      const minPrice =
-        ((100 + material.percentagePrice) *
-          (this.spaceSelected.minHours * this._serviceSelected.price)) /
-        100;
-      const maxPrice =
-        ((100 + material.percentagePrice) *
-          (this.spaceSelected.maxHours * this._serviceSelected.price)) /
-        100;
-      this._priceCalculator$.next({
-        minPrice: minPrice,
-        maxPrice: maxPrice,
-      });
-    } else {
-      this._resetPrices();
+  private _priceCalculator() {
+    let min_price = 0;
+    let max_price = 0;
+    if (this.serviceSelected) {
+      min_price = this.serviceSelected.price;
+      max_price = this.serviceSelected.price;
+      if (this.spaceSelected) {
+        min_price = this.serviceSelected.price * this.spaceSelected.minHours;
+        max_price = this.serviceSelected.price * this.spaceSelected.maxHours;
+        if (this.selectedMaterial) {
+          min_price =
+            ((100 + this.selectedMaterial.percentagePrice) *
+              (this.spaceSelected.minHours * this.serviceSelected.price)) /
+            100;
+          max_price =
+            ((100 + this.selectedMaterial.percentagePrice) *
+              (this.spaceSelected.maxHours * this.serviceSelected.price)) /
+            100;
+        }
+      }
     }
+    this.#store.dispatch(
+      fromInstantQuoteActions.QuotePrice.min_price({ min_price })
+    );
+    this.#store.dispatch(
+      fromInstantQuoteActions.QuotePrice.max_price({ max_price })
+    );
+    this._updateInstantQuoteForm(
+      this.estimates.patchValue({
+        minPrice: min_price,
+        maxPrice: max_price,
+      })
+    );
   }
-
-  private _resetPrices() {
-    const minPrice = this.spaceSelected.minHours * this._serviceSelected.price;
-    const maxPrice = this.spaceSelected.maxHours * this._serviceSelected.price;
-    this._priceCalculator$.next({
-      minPrice: minPrice,
-      maxPrice: maxPrice,
+  goToNext() {
+    if (this.currentStepIndex === this.renderedSteps.length - 1) {
+      return;
+    }
+    this.currentStepIndex = this.currentStepIndex + 1;
+    this.renderedSteps.forEach((step, index) => {
+      if (index === this.currentStepIndex) {
+        step.status = 'active';
+        this.currentStep = step;
+      } else if (index < this.currentStepIndex) {
+        step.status = 'completed';
+        this.currentStep = step;
+      } else {
+        step.status = 'disabled';
+        this.currentStep = step;
+      }
+    });
+  }
+  goBack() {
+    if (this.currentStepIndex === this.renderedSteps.length) {
+      return;
+    }
+    this.currentStepIndex -= 1;
+    this.renderedSteps.forEach((step, index) => {
+      if (index === this.currentStepIndex) {
+        step.status = 'active';
+        this.currentStep = step;
+      } else if (index < this.currentStepIndex) {
+        step.status = 'completed';
+        this.currentStep = step;
+      } else {
+        step.status = 'disabled';
+        this.currentStep = step;
+      }
     });
   }
 
-  private _formatPriceToString(price: number) {
-    return Intl.NumberFormat('KES', {
-      style: 'currency',
-      currency: 'KES',
-    }).format(price);
+  private _updateInstantQuoteForm(paylod: { [key: string]: any }): void {
+    this.createInstantQuote.patchValue(paylod);
+    console.log('form', this.createInstantQuote.value);
+  }
+
+  instantQuoteForm(key: any): any {
+    return this.createInstantQuote.get(key);
+  }
+
+  get estimates(): any {
+    return this.createInstantQuote.get('estimates');
+  }
+  get clientDetails(): any {
+    return this.createInstantQuote.get('clientDetails');
   }
 }

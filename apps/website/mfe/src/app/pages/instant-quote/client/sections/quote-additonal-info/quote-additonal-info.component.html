@@ -1,10 +1,11 @@
 <div class="accordion-item ">
     <h2 class="accordion-header" id="headingQuoteInfo">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQuoteInfo"
-            aria-expanded="true" aria-controls="collapseQuoteInfo">
-            <div class="row steps w-100">
-                <div class="col-2 step-text-number">Step 4:</div>
-                <div class="col-10 step-text">Additional information (optional) </div>
+            aria-expanded="true" aria-controls="collapseQuoteInfo"
+            [class.isCompleted]="notes !== '' || filesArr.length !== 0">
+            <div class="row  row-cols-2 steps w-100">
+                <div class="col-auto step-text-number">Step 4:</div>
+                <div class="col step-text">Additional information (optional) </div>
             </div>
         </button>
     </h2>
@@ -21,9 +22,8 @@
                     </div>
                     <div class="row" style="margin-top: 16px;">
                         <div class="col-6">
-                            <input type="file" name="files" id="messFiles" multiple accept="image/*"
-                                (change)="onFilesSelected($event)" multiple [(ngModel)]="files"
-                                (ngModelOptions)="{stadalone:true}">
+                            <input type="file" name="files" id="messFiles" multiple (change)=" onFilesSelected($event)"
+                                accept="image/*">
                             <label for="messFiles" class="cff-quote-info">
                                 <div class="file-text">Choose files </div>
                                 <div>
@@ -36,6 +36,17 @@
                             <div>
                                 <img src="assets/icons/close-rounded.svg" alt="Professional Organizing Before Pictures">
                             </div>
+
+                        </div>
+                        <div class="row row-cols-1 row-cols-md-2 g-2 mt-5" id="preview">
+                            <div *ngFor="let img of (filesArr$ | async); index as i" class="col img-container">
+                                <img [src]="img" alt="">
+                                <div class="overlay">
+                                    <a (click)="deleteImage(i)" class="trash">
+                                        <img src="/assets/icons/trash-bin.svg" alt="" width="24">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -44,8 +55,8 @@
                 <div class="col-12 col-lg-6">
                     <div class="info-header">Additional notes</div>
                     <div>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"
-                            placeholder="Type here"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Type here"
+                            (change)="onAdditionalNotesChange($event)" [(ngModel)]="notes"></textarea>
                     </div>
                 </div>
             </div>

@@ -30,8 +30,8 @@
   --white-30: rgba(var(--white-100-rgb), 0.3);
   --white-10: rgba(var(--white-100-rgb), 0.1);
 
-  --black-100: rgb(0, 0, 0);
-  --black-100-rgb: 0, 0, 0;
+  --black-100: rgb(14, 28, 54);
+  --black-100-rgb: 14, 28, 54;
   --black-60: rgba(var(--black-100-rgb), 0.6);
   --black-30: rgba(var(--black-100-rgb), 0.3);
   --black-10: rgba(var(--black-100-rgb), 0.1);
@@ -42,6 +42,12 @@
   --yellow-30: rgba(var(--yellow-100-rgb), 0.3);
   --yellow-10: rgba(var(--yellow-100-rgb), 0.1);
 
+  --red-100: rgb(235, 15, 38);
+  --red-100-rgb: 235, 15, 38;
+  --red-60: rgba(var(--red-100-rgb), 0.6);
+  --red-30: rgba(var(--red-100-rgb), 0.3);
+  --red-10: rgba(var(--red-100-rgb), 0.1);
+
   --fade-purple: #f2e4ff;
   --light-red: #f6f6f6;
   --grey: #f2f5f7;
@@ -50,7 +56,7 @@
   --light-rgb: 255, 255, 255;
   --dark: #0e1c36;
   --dark-rgb: 14, 28, 54;
-  --black: #1c1b1f;
+  --black: #0e1c36;
   --luminous-green: #7bf5c7;
   --luminous-green-rgb: 123, 245, 199;
   --red: #eb0f26;
@@ -64,6 +70,10 @@
     var(--purple-60) 70.47%,
     var(--purple-60) 100.38%
   );
+}
+
+.text-primary {
+  color: var(--purple-100) !important;
 }
 * {
   box-sizing: border-box;
@@ -106,7 +116,10 @@ a {
   background-color: var(--purple-100) !important;
   cursor: pointer;
   color: var(--light);
-
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
   a {
     color: var(--light);
     text-decoration: none;
@@ -122,6 +135,12 @@ a {
   }
   @media (max-width: 575.98px) {
     margin-bottom: 12px;
+  }
+}
+
+a.primary-btn {
+  @media (max-width: 575.98px) {
+    font-size: 12px;
   }
 }
 .secondary-btn {
@@ -153,13 +172,15 @@ a {
     margin-bottom: 12px;
   }
 }
+
 .title-gradient {
   background: linear-gradient(
-    90.52deg,
-    var(--black-100) 25%,
-    var(--black-60) 50%,
+    135deg,
+    var(--black-100) 0%,
+    var(--purple-100) 25%,
+    var(--purple-100) 50%,
     var(--purple-100) 75%,
-    var(--purple-60) 100%
+    var(--green-100) 100%
   );
   text-fill-color: transparent;
   background-clip: text;
@@ -190,6 +211,10 @@ a {
   @extend .circle-round;
   background-color: var(--purple-100);
 }
+.circle-check-purple-30 {
+  @extend .circle-check-purple;
+  background-color: var(--purple-30);
+}
 .circle-check-purple-10 {
   @extend .circle-check-purple;
   background-color: var(--purple-10);
@@ -197,6 +222,14 @@ a {
 .circle-check-green {
   @extend .circle-round;
   background-color: var(--green-100);
+}
+.circle-check-green-30 {
+  @extend .circle-round;
+  background-color: var(--green-30);
+}
+.circle-check-red-30 {
+  @extend .circle-round;
+  background-color: var(--red-30);
 }
 main {
   @media (max-width: 575px) {
@@ -243,4 +276,43 @@ span.mdc-tab-indicator {
   border-color: var(--purple-100);
   background-color: var(--purple-100);
   color: var(--white-100);
+}
+
+.mat-calendar-body-disabled span {
+  text-decoration: line-through;
+}
+
+.pulse {
+  border-radius: 50%;
+  margin: 10px;
+  height: 20px;
+  width: 20px;
+  transform: scale(1);
+  box-shadow: 0 0 0 0 rgba(var(--purple-100-rgb), 1);
+  animation: pulse-purple 2s infinite;
+}
+@keyframes pulse-purple {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(var(--purple-100-rgb), 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(var(--purple-100-rgb), 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(var(--purple-100-rgb), 0);
+  }
+}
+
+.feedback {
+  display: none;
+}
+
+.form-select:disabled {
+  border-color: transparent;
+  background-color: var(--purple-10);
 }
