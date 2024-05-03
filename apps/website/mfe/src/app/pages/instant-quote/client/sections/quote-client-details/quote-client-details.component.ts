@@ -5,7 +5,7 @@ import {
   ICountyModel,
 } from '../../../../../shared/models/county.model';
 import { FormsModule } from '@angular/forms';
-import { AsyncPipe, NgFor } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Observable, firstValueFrom } from 'rxjs';
 import { AppState } from 'apps/website/mfe/src/app/shared/interface';
 import { Store } from '@ngrx/store';
@@ -18,7 +18,7 @@ import { fromClientDetailsActions } from './data/quote-client-details.actions';
 @Component({
   selector: 'iq-quote-client-details',
   standalone: true,
-  imports: [FormsModule, NgFor, AsyncPipe, SortPipe],
+  imports: [FormsModule, NgFor, AsyncPipe, SortPipe, NgIf],
   templateUrl: './quote-client-details.component.html',
   styleUrls: ['./quote-client-details.component.scss'],
 })
@@ -37,7 +37,8 @@ export class QuoteClientDetailsComponent {
   clientQuoteAddress$!: Observable<string>;
   clientQuoteHseNumber$!: Observable<string>;
   clientQuoteServiceType$!: Observable<string>;
-
+  REGEX_EMAIL = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+  PHONE_REGEX = '^([0|+[0-9]{1,5})?([0-9]{10})$';
   ngOnInit() {
     this.clienQuoteEmail$ = this.#store.select(
       fromClientDetailsSelector.EmailSelector

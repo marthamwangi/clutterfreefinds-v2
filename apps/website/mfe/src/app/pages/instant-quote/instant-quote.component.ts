@@ -37,6 +37,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../shared/interface';
 import { fromInstantQuoteActions } from '../../shared/data/quote/quote.actions';
 import { fromInstantQuoteSelector } from '../../shared/data/quote/quote.selectors';
+import { REGEX_EMAIL } from '@clutterfreefinds-v2/globals';
 
 interface Step {
   label: number;
@@ -107,8 +108,12 @@ export class InstantQuoteComponent implements AfterViewInit {
       ward: new FormControl('', Validators.required),
       address: new FormControl(''),
       hseNumber: new FormControl(''),
-      email: new FormControl('', Validators.required),
-      fname: new FormControl('', Validators.required),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email,
+        Validators.pattern(REGEX_EMAIL),
+      ]),
+      fname: new FormControl('', [Validators.required]),
       lname: new FormControl(''),
       phone: new FormControl('', Validators.required),
       serviceType: new FormControl('', Validators.required),
@@ -119,7 +124,7 @@ export class InstantQuoteComponent implements AfterViewInit {
       fromInstantQuoteSelector.InstantQuoteSelector
     );
     this.renderedSteps = [];
-    this.currentStepIndex = 3;
+    this.currentStepIndex = 0;
     this.steps = {
       0: {
         key: 'date',

@@ -6,7 +6,9 @@ const initialState: InstantQuoteState = {
   min_price: 0,
   max_price: 0,
   is_loading: false,
-  response: {},
+  response: {
+    success: false,
+  },
 };
 
 export const INSTANT_QUOTE_REDUCER = createReducer(

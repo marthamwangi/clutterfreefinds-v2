@@ -4,7 +4,7 @@
         <div class="d-flex">
             <div class="payment-options-header fs-1 col-8">Total <br><small class="fs-6"> (Hours * price /h)+additional
                     fees</small></div>
-            <div class="payment-options-header text-center fs-2 mb-5">{{(instant_quote$ | async).min_price |
+            <div class="payment-options-header text-center fs-2 mb-5 lh-sm">{{(instant_quote$ | async).min_price |
                 currency:'KES'}}-{{(instant_quote$
                 |
                 async).max_price | currency:'KES'}}
@@ -161,8 +161,8 @@
                         <img class="img-fluid" src="/assets/images/quote/quote-error.svg" alt="">
                     </div>
                     <div>
-                        <button type="button" data-bs-dismiss="modal" class="btn primary-btn mx-auto"
-                            (click)="modalView = -1">Close</button>
+                        <button type="button" data-bs-dismiss="modal" class="btn primary-btn mx-auto w-50"
+                            (click)="modalView = -1">Close </button>
                     </div>
                 </div>
             </div>
@@ -183,6 +183,11 @@
                     </div>
                     <div class="d-flex align-items-center justify-content-center">
                         <img class="img-fluid" src="/assets/images/quote/quote-success.svg" alt="">
+                    </div>
+                    <div>
+                        <button type="button" data-bs-dismiss="modal" class="btn primary-btn mx-auto w-50"
+                            (click)="reload()">Understood
+                        </button>
                     </div>
                 </div>
             </div>

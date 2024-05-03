@@ -4,49 +4,121 @@
         <div class="col-12 col-md-4 mb-3">
             <label for="clienQuoteEmail">E-mail address *</label>
             <input type="email" class="form-control" id="clienQuoteEmail" placeholder="example@gmail.com"
-                [value]="clienQuoteEmail$ | async" (change)="onInputEvent($event,'email')">
-            <div class="invalid-feedback">
-                Enter a valid email
+                [value]="clienQuoteEmail$ | async" (change)="onInputEvent($event,'email')"
+                [ngModel]="clienQuoteEmail$ | async" #email="ngModel" required [pattern]="REGEX_EMAIL">
+            <div [class.d-flex]="email.invalid && (email.dirty || email.touched) && email.value"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/red-close.svg" alt="" width="10">
+                </div>
+                <div class="error" *ngIf="email.errors?.['required']"> Enter your email address</div>
+                <div class="error" *ngIf="email.errors?.['pattern']"> Enter a valid email address</div>
+            </div>
+            <div [class.d-flex]="email.valid && (email.dirty || email.touched) && email.value"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/check-green.svg" width="10" />
+                </div>
+                <div class="error"> Looks good!</div>
             </div>
         </div>
         <div class="col-12 col-md-4 mb-3">
             <label for="clienFirstName">First name *</label>
             <input type="text" class="form-control" id="clienFirstName" placeholder="First name"
-                [value]="clientQuoteFirstName$ | async" (change)="onInputEvent($event,'fname')">
-            <div class="valid-feedback">
-                error
+                [value]="clientQuoteFirstName$ | async" (change)="onInputEvent($event,'fname')"
+                [ngModel]="clientQuoteFirstName$ | async" #fname="ngModel" required minlength="2" maxlength="25">
+            <div [class.d-flex]="fname.invalid && (fname.dirty || fname.touched) && fname.value"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/red-close.svg" alt="" width="10">
+                </div>
+                <div class="error" *ngIf="fname.errors?.['required']"> Enter your First Name</div>
+                <div class="error" *ngIf="fname.errors?.['minlength']"> First Name is too short</div>
+            </div>
+            <div [class.d-flex]="fname.valid && (fname.dirty || fname.touched) && fname.value"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/check-green.svg" width="10" />
+                </div>
+                <div class="error"> Looks good!</div>
             </div>
         </div>
         <div class="col-12 col-md-4 mb-3">
             <label for="clienLastName">Last name</label>
             <input type="text" class="form-control" id="clienLastName" placeholder="Last name"
-                [value]="clienQuoteLastName$ | async" (change)="onInputEvent($event, 'lname')">
-            <div class="valid-feedback">
-                error
+                [value]="clienQuoteLastName$ | async" (change)="onInputEvent($event, 'lname')"
+                [ngModel]="clienQuoteLastName$ | async" #lname="ngModel" required minlength="2" maxlength="25">
+            <div [class.d-flex]="lname.invalid && (lname.dirty || lname.touched) && lname.value"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/red-close.svg" alt="" width="10">
+                </div>
+                <div class="error" *ngIf="lname.errors?.['required']"> Enter your Last Name</div>
+                <div class="error" *ngIf="lname.errors?.['minlength']"> Last Name is too short</div>
+            </div>
+            <div [class.d-flex]="lname.valid && (lname.dirty || lname.touched) && lname.value"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/check-green.svg" width="10" />
+                </div>
+                <div class="error"> Looks good!</div>
             </div>
         </div>
         <div class="col-12 col-md-4 mb-3">
             <label for="clientPhoneNumber">Phone Number *</label>
-            <input type="text" class="form-control" id="clientPhoneNumber" placeholder="+254 06 34 73 99"
-                [value]="clientQuotePhoneNumber$ | async" (change)="onInputEvent($event,'phone')">
-            <div class="invalid-feedback">
-                error
+            <input type="tel" class="form-control" id="clientPhoneNumber" placeholder="+254 06 34 73 99"
+                [value]="clientQuotePhoneNumber$ | async" (change)="onInputEvent($event,'phone')"
+                [ngModel]="clientQuotePhoneNumber$ | async" #phoneNo="ngModel" required minlength="8" maxlength="25"
+                [pattern]="PHONE_REGEX">
+            <div [class.d-flex]="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched) && phoneNo.value"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/red-close.svg" alt="" width="10">
+                </div>
+                <div class="flex flex-wrap">
+                    <div class="error" *ngIf="phoneNo.errors?.['required']"> Enter your Phone Number</div>
+                    <div class="error" *ngIf="phoneNo.errors?.['minlength']"> Phone Number is too short</div>
+                    <div class="error" *ngIf="phoneNo.errors?.['pattern']"> Phone Number is invalid</div>
+                </div>
+            </div>
+            <div [class.d-flex]="phoneNo.valid && (phoneNo.dirty || phoneNo.touched) && phoneNo.value"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/check-green.svg" width="10" />
+                </div>
+                <div class="error"> Looks good!</div>
             </div>
         </div>
         <div class="col-12 col-md-4 mb-3">
             <label for="clientQuoteCounty">City / County *</label>
             <select (mousedown)="fetchCountiesData()" id="clientQuoteCounty" class="form-select"
-                (change)="onCountySelect($event)">
+                (change)="onCountySelect($event)" [ngModel]="(selected_county$ | async)?.countyCode"
+                #countySelect="ngModel" required>
                 <option selected disabled>County</option>
                 <option [selected]="(selected_county$ | async)?.countyCode === county.countyCode"
                     [value]="county.countyCode" *ngFor="let county of ( counties$ | async | sort:'asc':'name')">
                     {{county.name}}</option>
             </select>
+            <div [class.d-flex]="!countySelect.value && (countySelect.dirty || countySelect.touched)"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/red-close.svg" alt="" width="10">
+                </div>
+                <div class="error"> Please select your City / County</div>
+            </div>
+            <div [class.d-flex]="countySelect.value && (countySelect.dirty || countySelect.touched)"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/check-green.svg" width="10" />
+                </div>
+                <div class="error"> Looks good!</div>
+            </div>
         </div>
         <div class="col-12 col-md-4 mb-3">
             <label for="clientQuoteConstituency">Constituency *</label>
             <select [disabled]="(selected_county$ | async)?.name === ''" class="form-select"
-                (change)="onConstituencyChange($event)">
+                (change)="onConstituencyChange($event)" [ngModel]="(selected_constituency$ | async)?.name"
+                #constituencySelect="ngModel" required>
                 <option selected disabled>Constituency</option>
                 <option [selected]="(selected_constituency$ | async)?.name === constituency.name"
                     [value]="constituency.name"
@@ -54,17 +126,45 @@
                     {{constituency.name}}
                 </option>
             </select>
+            <div [class.d-flex]="!constituencySelect.value &&( (constituencySelect.dirty || constituencySelect.touched) || (countySelect.dirty || countySelect.touched))"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/red-close.svg" alt="" width="10">
+                </div>
+                <div class="error"> Please select your Constituency</div>
+            </div>
+            <div [class.d-flex]="constituencySelect.value && (constituencySelect.dirty || constituencySelect.touched)"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/check-green.svg" width="10" />
+                </div>
+                <div class="error"> Looks good!</div>
+            </div>
         </div>
         <div class="col-12 col-md-4 mb-3">
             <label for="clientQuoteNeighbourhood">Neighborhood *</label>
             <select [disabled]="(selected_constituency$ | async)?.name === '' " class="form-select"
-                (change)="onWardChange($event)">
+                (change)="onWardChange($event)" [ngModel]="selected_ward$ | async" #wardSelect="ngModel" required>
                 <option selected disabled>Neighborhood</option>
                 <option [selected]="(selected_ward$ | async) === ward" [value]="ward"
                     *ngFor="let ward of (selected_constituency$ | async)?.wards | sort:'asc'">
                     {{ward}}
                 </option>
             </select>
+            <div [class.d-flex]="!wardSelect.value && ((wardSelect.dirty || wardSelect.touched) || (constituencySelect.dirty || constituencySelect.touched))"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/red-close.svg" alt="" width="10">
+                </div>
+                <div class="error"> Please select a Neighbourhood</div>
+            </div>
+            <div [class.d-flex]="wardSelect.value && (wardSelect.dirty || wardSelect.touched)"
+                class="col-12 gap-1 align-items-center feedback mt-1">
+                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                        src="/assets/icons/check-green.svg" width="10" />
+                </div>
+                <div class="error"> Looks good!</div>
+            </div>
         </div>
         <div class="col-12 col-md-4 mb-3">
             <label for="clientQuoteAddress">Address</label>
@@ -82,11 +182,6 @@
             <div class="invalid-feedback">
                 error
             </div>
-        </div>
-    </div>
-    <div class="d-flex gap-1 align-items-center">
-        <img src="/assets/icons/error.svg" alt="" width="16">
-        <div> All fields marked with * are required to proceed
         </div>
     </div>
 </div>

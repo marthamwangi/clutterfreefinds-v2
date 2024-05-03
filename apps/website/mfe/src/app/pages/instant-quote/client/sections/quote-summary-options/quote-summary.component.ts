@@ -32,7 +32,6 @@ import {
   BASE_API,
   WEB_API_QUOTATION_REQUEST,
 } from '@clutterfreefinds-v2/globals';
-import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
 
 @Component({
   selector: 'iq-quote-summary',
@@ -55,7 +54,7 @@ export class QuoteSummaryComponent implements OnInit {
   #store: Store<AppState> = inject(Store);
   #unsubscribe$: Subject<boolean>;
 
-  modalView!: number;
+  modalView: number = -1;
   service_selected$: Observable<ICffService>;
   space_selected$: Observable<ISpaceModel>;
   material_selected$: Observable<IMaterialModel>;
@@ -111,16 +110,14 @@ export class QuoteSummaryComponent implements OnInit {
           this.modalView = 1;
         } else if (iq.response.success) {
           this.modalView = 2;
-          /**
-           * Refresh page
-           */
-        } else if (!iq.response.success) {
+        } else if (iq.response.error) {
           this.modalView = 0;
         }
-        this._commonChangeDetector();
       });
   }
-
+  reload() {
+    location.reload();
+  }
   public returnModalTemplate(): TemplateRef<any> {
     const templateMap: any = {
       0: this._responseError,

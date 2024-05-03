@@ -6,7 +6,7 @@
 }
 .cff-v2-hero-section-title-text {
   margin-bottom: 24px;
-  font-weight: 100;
+  font-weight: 600;
   font-size: 64px;
   line-height: 130%;
   @media (max-width: 575px) {
@@ -73,7 +73,7 @@
   line-height: 64px;
 
   .cff-v2-hero-section-plus {
-    color: var(--accent);
+    color: var(--purple-100);
   }
   @media (max-width: 575px) {
     font-size: 40px;

@@ -4,9 +4,9 @@
             [class.isCompleted]="materialSelected?.name !== ''" class="accordion-button" type="button"
             data-bs-toggle="collapse" data-bs-target="#collapseMaterial" aria-expanded="true"
             aria-controls="collapseMaterial">
-            <div class="row steps w-100">
-                <div class="col-2 step-text-number">Step 3:</div>
-                <div class="col-10 step-text">Select Material (optional)</div>
+            <div class="row  row-cols-2 steps w-100">
+                <div class="col-auto step-text-number">Step 3:</div>
+                <div class="col step-text">Select Material (optional)</div>
             </div>
         </button>
     </h2>
@@ -35,7 +35,9 @@
                 <ng-template #Pros>
                     <div class="material-container">
                         <div class="pros " *ngFor="let pro of (_material_selected$ | async)?.pros">
-                            <img src="assets/icons/check-purple.svg" alt="">
+                            <div class="circle-check-purple-30">
+                                <img src="assets/icons/check-purple.svg" alt="">
+                            </div>
                             <div>{{pro}}</div>
                         </div>
                     </div>
@@ -43,7 +45,9 @@
                 <ng-template #Cons>
                     <div class="material-container">
                         <div class="cons " *ngFor="let con of (_material_selected$ | async)?.cons">
-                            <img src="assets/icons/red-close.svg" alt="" width="16">
+                            <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                                    src="/assets/icons/red-close.svg" alt="" width="10">
+                            </div>
                             <div>{{con}}</div>
                         </div>
                     </div>
