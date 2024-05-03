@@ -1,4 +1,7 @@
-import { Inject, NgModule } from '@angular/core';
+import { Platform } from '@angular/cdk/platform';
+import { isPlatformBrowser } from '@angular/common';
+import { HttpRequest } from '@angular/common/http';
+import { Inject, InjectionToken, NgModule } from '@angular/core';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
 import {
   TranslateLoader,
@@ -23,7 +26,7 @@ import { Observable, of } from 'rxjs';
   providers: [
     {
       provide: REQUEST,
-      useExisting: REQUEST,
+      useValue: REQUEST,
     },
   ],
 })
