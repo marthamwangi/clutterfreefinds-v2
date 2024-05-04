@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container-fluid pt-2" style="max-width: 1440px; gap: 16px;">
-    <a class="navbar-brand me-5" href="/">
+    <a class="navbar-brand me-5" [routerLink]="'/'">
       <img src="/assets/images/logo.svg" alt="Clutter Free Finds Logo" class="img-fluid" />
     </a>
     <div class="collapse navbar-collapse flex-col-md" id="navbarSupportedContent">
@@ -69,7 +69,7 @@
     </div>
     <div class="d-flex align-items-center">
       <div>
-        <a href="/instant-quote" class="btn primary-btn " type="button">
+        <a [routerLink]="'/instant-quote'" class="btn primary-btn " type="button">
           {{ 'HEADER.BUTTON_1'| translate }}
         </a>
       </div>

@@ -27,14 +27,11 @@
           </ng-container>
         </div>
         <div class="d-flex flex-column flex-md-row align-items-center">
-          <button class="btn primary-btn" type="button">
-            <a target="_blank" href="">{{
-              'HOME_PAGE.HERO_SECTION.BUTTON_1' | translate
-              }}</a>
-          </button>
-          <button class="btn link-btn" type="button">
-            <a href="">{{ 'HOME_PAGE.HERO_SECTION.BUTTON_2' | translate }}</a>
-          </button>
+          <a class="btn primary-btn" type="button" [routerLink]="['/instant-quote']">{{
+            'HOME_PAGE.HERO_SECTION.BUTTON_1' | translate
+            }}</a>
+          <a (click)="bookACall()" class="btn link-btn" type="button">{{ 'HOME_PAGE.HERO_SECTION.BUTTON_2' | translate
+            }}</a>
         </div>
       </div>
       <div class="col-12 col-lg-6 slider">

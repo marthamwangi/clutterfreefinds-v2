@@ -71,11 +71,11 @@ export class FooterComponent {
       list: [
         {
           text: 'FOOTER.PAGES.FOR_CLIENTS.LIST.ITEM1',
-          link: '/request-quote',
+          link: '/instant-quote',
         },
         {
           text: 'FOOTER.PAGES.FOR_CLIENTS.LIST.ITEM2',
-          link: '/service-agreement',
+          link: '#',
         },
       ],
     },
@@ -84,7 +84,7 @@ export class FooterComponent {
       list: [
         {
           text: 'FOOTER.PAGES.PRICING.LIST.ITEM1',
-          link: '/pricing',
+          link: '#',
         },
       ],
     },

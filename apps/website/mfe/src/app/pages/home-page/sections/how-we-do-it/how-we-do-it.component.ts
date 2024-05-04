@@ -1,11 +1,12 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'cff-v2-how-we-do-it',
   standalone: true,
-  imports: [TranslateModule, NgFor, NgIf],
+  imports: [TranslateModule, NgFor, NgIf, RouterLink],
   templateUrl: './how-we-do-it.component.html',
   styleUrls: ['./how-we-do-it.component.scss'],
 })

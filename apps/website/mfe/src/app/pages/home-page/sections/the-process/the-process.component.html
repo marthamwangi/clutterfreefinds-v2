@@ -54,11 +54,8 @@
           </ng-container>
         </div>
         <div class="d-flex flex-column align-items-start">
-          <button class="btn primary-btn" type="button">
-            <a target="_blank" href="">{{
-              'HOME_PAGE.THE_PROCESS.BUTTON' | translate
-              }}</a>
-          </button>
+          <a (click)="bookACall()" class="btn primary-btn" type="button">
+            {{ 'HOME_PAGE.THE_PROCESS.BUTTON' | translate}}</a>
           <span class="cff-v2-the-process-section-support-text d-flex align-items-center">
             <img src="assets/icons/shield.svg" alt="clutter free finds client privacy" class="me-1" />
             {{ 'HOME_PAGE.THE_PROCESS.SUPPORT_TEXT' | translate }}

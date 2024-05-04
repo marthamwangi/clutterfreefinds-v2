@@ -34,6 +34,7 @@ interface ITime {
   templateUrl: './quote-calendar.component.html',
   styleUrls: ['./quote-calendar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { ngSkipHydration: 'true' },
 })
 export class QuoteCalendarComponent implements OnInit {
   @Output() selectedDateTime$ = new EventEmitter<any>();
