@@ -105,6 +105,14 @@ a {
     text-decoration: none;
   }
 }
+a.link-btn {
+  color: var(--purple-100);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+  text-decoration: none;
+}
 .primary-btn {
   display: flex;
   flex-direction: row;

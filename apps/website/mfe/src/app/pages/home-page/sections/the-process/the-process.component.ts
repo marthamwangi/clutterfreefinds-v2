@@ -41,4 +41,7 @@ export class TheProcessComponent {
       image: 'transform.png',
     },
   ];
+  bookACall() {
+    window.open('https://koalendar.com/e/have-us-call-you', '_blank');
+  }
 }

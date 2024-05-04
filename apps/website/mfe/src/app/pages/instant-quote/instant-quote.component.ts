@@ -221,7 +221,6 @@ export class InstantQuoteComponent implements AfterViewInit {
   }
   getClientData($event: any) {
     this.clientData = $event;
-    console.log('clientdata', this.clientData);
     this._updateInstantQuoteForm(
       this.clientDetails.patchValue({
         email: this.clientData?.email,
@@ -311,7 +310,6 @@ export class InstantQuoteComponent implements AfterViewInit {
 
   private _updateInstantQuoteForm(paylod: { [key: string]: any }): void {
     this.createInstantQuote.patchValue(paylod);
-    console.log('form', this.createInstantQuote.value);
   }
 
   instantQuoteForm(key: any): any {
