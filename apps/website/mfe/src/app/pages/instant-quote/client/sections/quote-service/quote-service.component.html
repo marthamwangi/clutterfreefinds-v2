@@ -29,12 +29,13 @@
                             [(ngModel)]="selectedCffService" [ngModelOptions]="{standalone: true}"
                             (ngModelChange)="onSelectedService($event)" />
                         <label [for]="'radio-service-btn-'+i" class="cff-service">
-                            <img [src]="'/assets/icons/cff-services/' +service.label+'.svg'" [alt]="service.name">
+                            <img loading="lazy" [src]="'/assets/icons/cff-services/' +service.label+'.svg'"
+                                [alt]="service.name">
                             {{service.name}}
                             <div (mouseenter)="showCffServiceDescriptionTooltip(service)" (mouseleave)="resetTooltip()"
                                 class="d-inline-flex align-items-center position-relative" #tooltipRef="matTooltip"
                                 [matTooltip]="(cffServiceTooltip$ | async)" matTooltipPosition="above">
-                                <img src="/assets/icons/info.svg" alt="">
+                                <img loading="lazy" src="/assets/icons/info.svg" alt="">
                             </div>
                         </label>
                     </div>

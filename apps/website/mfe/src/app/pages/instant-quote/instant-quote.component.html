@@ -3,13 +3,14 @@
         <div class="col-12 d-flex align-items-center justify-content-center form-heading" style="gap: 16px;">
             <button class="back-btn border-0" (click)="goBack()" [disabled]="currentStepIndex === 0"
                 [class]="currentStepIndex === 0 ? 'deactivated' : ''"
-                [class.d-none]="currentStepIndex === renderedSteps.length-4"><img src="assets/icons/arrow-right.svg"
-                    alt=""> Go
+                [class.d-none]="currentStepIndex === renderedSteps.length-4"><img loading="lazy"
+                    src="assets/icons/arrow-right.svg" alt=""> Go
                 Back</button>
             <div class="active-step" [class.isActiveStep]="currentStep?.status === 'active' || 'completed'">
                 {{steps[currentStepIndex].title}}
             </div>
-            <div class="step-separator">{{steps[currentStepIndex].label}} <img src="assets/icons/slice.svg" alt="">
+            <div class="step-separator">{{steps[currentStepIndex].label}} <img loading="lazy"
+                    src="assets/icons/slice.svg" alt="">
                 {{renderedSteps.length}}
             </div>
             <div class="disabled-step" [class.isNextStep]="instantQuoteForm(steps[currentStepIndex].key)?.invalid">
@@ -20,7 +21,7 @@
                 [class.d-none]="currentStepIndex === renderedSteps.length-1"
                 [disabled]="instantQuoteForm(steps[currentStepIndex].key)?.invalid"
                 [class]="instantQuoteForm(steps[currentStepIndex].key)?.valid ? '' : 'deactivated'">Go
-                Next <img [class.pulse]="steps[0].status === 'active'" src="assets/icons/arrow-right.svg"
+                Next <img loading="lazy" [class.pulse]="steps[0].status === 'active'" src="assets/icons/arrow-right.svg"
                     alt=""></button>
         </div>
         <ng-container *ngTemplateOutlet="returnStepsTemplate()"> </ng-container>

@@ -13,7 +13,8 @@
       <ng-container *ngFor="let process of processes">
         <div class="col-12 col-md-6 col-lg-3 z-2 d-flex align-items-center flex-column" style=" margin-bottom: 18px;">
           <div>
-            <img [src]="'assets/images/' + process.image" [alt]="process.description | translate" class="img-fluid" />
+            <img loading="lazy" [src]="'assets/images/' + process.image" [alt]="process.description | translate"
+              class="img-fluid" />
           </div>
           <div class="d-flex flex-column align-items-center">
             <div class="cff-v2-the-process-section-number">
@@ -40,8 +41,8 @@
           <ng-container *ngFor="let item of [1, 2, 3, 4]">
             <div class="list-item mb-3">
               <div class="circle-check-purple">
-                <img alt="clutter free finds services circle-check-purple" src="/assets/icons/check-light.svg"
-                  width="10" />
+                <img loading="lazy" alt="clutter free finds services circle-check-purple"
+                  src="/assets/icons/check-light.svg" width="10" />
               </div>
 
               <span>
@@ -57,13 +58,14 @@
           <a (click)="bookACall()" class="btn primary-btn" type="button">
             {{ 'HOME_PAGE.THE_PROCESS.BUTTON' | translate}}</a>
           <span class="cff-v2-the-process-section-support-text d-flex align-items-center">
-            <img src="assets/icons/shield.svg" alt="clutter free finds client privacy" class="me-1" />
+            <img loading="lazy" src="assets/icons/shield.svg" alt="clutter free finds client privacy" class="me-1" />
             {{ 'HOME_PAGE.THE_PROCESS.SUPPORT_TEXT' | translate }}
           </span>
         </div>
       </div>
       <div class="d-none d-md-block col align-self-center" style="border-radius: 16px;">
-        <img src="/assets/videos/living-room-organizing.gif" alt="Living Room organizing" class="img-fluid" />
+        <img loading="lazy" src="/assets/videos/living-room-organizing.gif" alt="Living Room organizing"
+          class="img-fluid" />
       </div>
     </div>
   </div>

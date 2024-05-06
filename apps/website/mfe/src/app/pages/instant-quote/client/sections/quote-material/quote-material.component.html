@@ -36,7 +36,7 @@
                     <div class="material-container">
                         <div class="pros " *ngFor="let pro of (_material_selected$ | async)?.pros">
                             <div class="circle-check-purple-30">
-                                <img src="assets/icons/check-purple.svg" alt="">
+                                <img loading="lazy" src="assets/icons/check-purple.svg" alt="">
                             </div>
                             <div>{{pro}}</div>
                         </div>
@@ -45,7 +45,7 @@
                 <ng-template #Cons>
                     <div class="material-container">
                         <div class="cons " *ngFor="let con of (_material_selected$ | async)?.cons">
-                            <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                            <div class="circle-check-red-30"> <img loading="lazy" alt="clutter free finds services"
                                     src="/assets/icons/red-close.svg" alt="" width="10">
                             </div>
                             <div>{{con}}</div>

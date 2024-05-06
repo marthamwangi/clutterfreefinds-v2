@@ -8,7 +8,7 @@
                 [ngModel]="clienQuoteEmail$ | async" #email="ngModel" required [pattern]="REGEX_EMAIL">
             <div [class.d-flex]="email.invalid && (email.dirty || email.touched) && email.value"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                <div class="circle-check-red-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/red-close.svg" alt="" width="10">
                 </div>
                 <div class="error" *ngIf="email.errors?.['required']"> Enter your email address</div>
@@ -16,7 +16,7 @@
             </div>
             <div [class.d-flex]="email.valid && (email.dirty || email.touched) && email.value"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                <div class="circle-check-green-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/check-green.svg" width="10" />
                 </div>
                 <div class="error"> Looks good!</div>
@@ -29,7 +29,7 @@
                 [ngModel]="clientQuoteFirstName$ | async" #fname="ngModel" required minlength="2" maxlength="25">
             <div [class.d-flex]="fname.invalid && (fname.dirty || fname.touched) && fname.value"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                <div class="circle-check-red-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/red-close.svg" alt="" width="10">
                 </div>
                 <div class="error" *ngIf="fname.errors?.['required']"> Enter your First Name</div>
@@ -37,7 +37,7 @@
             </div>
             <div [class.d-flex]="fname.valid && (fname.dirty || fname.touched) && fname.value"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                <div class="circle-check-green-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/check-green.svg" width="10" />
                 </div>
                 <div class="error"> Looks good!</div>
@@ -50,7 +50,7 @@
                 [ngModel]="clienQuoteLastName$ | async" #lname="ngModel" required minlength="2" maxlength="25">
             <div [class.d-flex]="lname.invalid && (lname.dirty || lname.touched) && lname.value"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                <div class="circle-check-red-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/red-close.svg" alt="" width="10">
                 </div>
                 <div class="error" *ngIf="lname.errors?.['required']"> Enter your Last Name</div>
@@ -58,7 +58,7 @@
             </div>
             <div [class.d-flex]="lname.valid && (lname.dirty || lname.touched) && lname.value"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                <div class="circle-check-green-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/check-green.svg" width="10" />
                 </div>
                 <div class="error"> Looks good!</div>
@@ -72,7 +72,7 @@
                 [pattern]="PHONE_REGEX">
             <div [class.d-flex]="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched) && phoneNo.value"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                <div class="circle-check-red-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/red-close.svg" alt="" width="10">
                 </div>
                 <div class="flex flex-wrap">
@@ -83,7 +83,7 @@
             </div>
             <div [class.d-flex]="phoneNo.valid && (phoneNo.dirty || phoneNo.touched) && phoneNo.value"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                <div class="circle-check-green-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/check-green.svg" width="10" />
                 </div>
                 <div class="error"> Looks good!</div>
@@ -101,14 +101,14 @@
             </select>
             <div [class.d-flex]="!countySelect.value && (countySelect.dirty || countySelect.touched)"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                <div class="circle-check-red-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/red-close.svg" alt="" width="10">
                 </div>
                 <div class="error"> Please select your City / County</div>
             </div>
             <div [class.d-flex]="countySelect.value && (countySelect.dirty || countySelect.touched)"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                <div class="circle-check-green-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/check-green.svg" width="10" />
                 </div>
                 <div class="error"> Looks good!</div>
@@ -128,14 +128,14 @@
             </select>
             <div [class.d-flex]="!constituencySelect.value &&( (constituencySelect.dirty || constituencySelect.touched) || (countySelect.dirty || countySelect.touched))"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                <div class="circle-check-red-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/red-close.svg" alt="" width="10">
                 </div>
                 <div class="error"> Please select your Constituency</div>
             </div>
             <div [class.d-flex]="constituencySelect.value && (constituencySelect.dirty || constituencySelect.touched)"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                <div class="circle-check-green-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/check-green.svg" width="10" />
                 </div>
                 <div class="error"> Looks good!</div>
@@ -153,14 +153,14 @@
             </select>
             <div [class.d-flex]="!wardSelect.value && ((wardSelect.dirty || wardSelect.touched) || (constituencySelect.dirty || constituencySelect.touched))"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-red-30"> <img alt="clutter free finds services"
+                <div class="circle-check-red-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/red-close.svg" alt="" width="10">
                 </div>
                 <div class="error"> Please select a Neighbourhood</div>
             </div>
             <div [class.d-flex]="wardSelect.value && (wardSelect.dirty || wardSelect.touched)"
                 class="col-12 gap-1 align-items-center feedback mt-1">
-                <div class="circle-check-green-30"> <img alt="clutter free finds services"
+                <div class="circle-check-green-30"> <img loading="lazy" alt="clutter free finds services"
                         src="/assets/icons/check-green.svg" width="10" />
                 </div>
                 <div class="error"> Looks good!</div>

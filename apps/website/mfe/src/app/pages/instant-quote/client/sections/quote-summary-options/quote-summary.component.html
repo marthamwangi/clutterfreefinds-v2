@@ -63,7 +63,7 @@
         <div class="d-flex gap-3 flex-wrap mx-auto">
             <div class="container col rounded-5 d-flex gap-2 align-items-center">
                 <div class="image">
-                    <img [src]="'/assets/icons/cff-services/' +(service_selected$ | async)?.label+'.svg'"
+                    <img loading="lazy" [src]="'/assets/icons/cff-services/' +(service_selected$ | async)?.label+'.svg'"
                         [alt]="(service_selected$ | async)?.name" width="32">
                 </div>
                 <div class="content">
@@ -73,7 +73,8 @@
             </div>
             <div class="container col  rounded-5 d-flex gap-2 align-items-center">
                 <div class="image">
-                    <img src="assets/icons/cff-services/door-open.svg" alt="declutter and organize space" width="32">
+                    <img loading="lazy" src="assets/icons/cff-services/door-open.svg" alt="declutter and organize space"
+                        width="32">
                 </div>
                 <div class="content">
                     <div class="support-text">Space</div>
@@ -82,7 +83,8 @@
             </div>
             <div class="container col  rounded-5 d-flex gap-2 align-items-center">
                 <div class="image">
-                    <img src="assets/icons/cff-services/box-bold.svg" alt="declutter and organize products" width="32">
+                    <img loading="lazy" src="assets/icons/cff-services/box-bold.svg"
+                        alt="declutter and organize products" width="32">
                 </div>
                 <div class="content">
                     <div class="support-text">Material</div>
@@ -111,10 +113,11 @@
             other
             payment methods</div>
         <div class="payment-options ps-3 flex-wrap">
-            <img src="assets/icons/money/visa.svg" alt="visa logo" class="img-fluid" width="80">
-            <img src="assets/icons/money/paypal.svg" alt="paypal-logo" class="img-fluid" width="80">
-            <img src="assets/icons/money/mastercard.svg" alt="mastercard-logo" class="img-fluid" width="80">
-            <img src="assets/icons/money/mpesa.svg" alt="mpesa logo" class="img-fluid" width="80">
+            <img loading="lazy" src="assets/icons/money/visa.svg" alt="visa logo" class="img-fluid" width="80">
+            <img loading="lazy" src="assets/icons/money/paypal.svg" alt="paypal-logo" class="img-fluid" width="80">
+            <img loading="lazy" src="assets/icons/money/mastercard.svg" alt="mastercard-logo" class="img-fluid"
+                width="80">
+            <img loading="lazy" src="assets/icons/money/mpesa.svg" alt="mpesa logo" class="img-fluid" width="80">
         </div>
         <div class="mt-5 d-flex flex-column justify-content-center">
             <div class="form-check consent mb-3">
@@ -138,7 +141,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div>
-                        <img class="img-fluid" src="/assets/videos/loader.gif" alt="" width="500">
+                        <img loading="lazy" class="img-fluid" src="/assets/videos/loader.gif" alt="" width="500">
                     </div>
                 </div>
             </div>
@@ -158,7 +161,7 @@
                             need help contact us via email or phone.</span>
                     </div>
                     <div class="d-flex align-items-center justify-content-center">
-                        <img class="img-fluid" src="/assets/images/quote/quote-error.svg" alt="">
+                        <img loading="lazy" class="img-fluid" src="/assets/images/quote/quote-error.svg" alt="">
                     </div>
                     <div>
                         <button type="button" data-bs-dismiss="modal" class="btn primary-btn mx-auto w-50"
@@ -182,7 +185,7 @@
                             via email or phone.</span>
                     </div>
                     <div class="d-flex align-items-center justify-content-center">
-                        <img class="img-fluid" src="/assets/images/quote/quote-success.svg" alt="">
+                        <img loading="lazy" class="img-fluid" src="/assets/images/quote/quote-success.svg" alt="">
                     </div>
                     <div>
                         <button type="button" data-bs-dismiss="modal" class="btn primary-btn mx-auto w-50"
