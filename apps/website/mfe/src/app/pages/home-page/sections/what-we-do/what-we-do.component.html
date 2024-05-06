@@ -15,7 +15,7 @@
     <ng-container *ngFor="let servie of services">
       <a
         class="card col-12 col-lg-4 cff-v2-what-we-do-card border-0 d-flex flex-column align-items-center justify-content-between">
-        <img alt="clutter free finds services" class="img-fluid" [src]="servie.image" />
+        <img loading="lazy" alt="clutter free finds services" class="img-fluid" [src]="servie.image" />
         <span class="cff-v2-what-we-do-card-header">
           {{ servie.title | translate }}
         </span>
@@ -25,7 +25,8 @@
         </div>
         <button class="btn link-btn d-flex" type="button">
           <span> {{ 'HOME_PAGE.WHAT_WE_DO.LINK' | translate }}</span>
-          <img alt="learn more about clutter free finds" src="./assets/icons/arrow-right.svg" width="24" height="24" />
+          <img loading="lazy" alt="learn more about clutter free finds" src="./assets/icons/arrow-right.svg" width="24"
+            height="24" />
         </button>
       </a>
     </ng-container>

@@ -8,7 +8,7 @@
                         <div class="me-2 ">
                             Checking availability
                         </div>
-                        <img src="assets/icons/loading-loop.svg" alt="">
+                        <img loading="lazy" src="assets/icons/loading-loop.svg" alt="">
                     </div>
                     <mat-card class="inline-calendar-card">
                         <mat-calendar [minDate]="minDate" (selectedChange)="onDatePicked($event)"
@@ -30,12 +30,12 @@
                     </div>
                 </div>
                 <div [class.circle-check-green-30]="selectedTime" class="justify-self-end">
-                    <img class="check" [class.d-flex]="selectedTime" alt="clutter free finds services"
+                    <img loading="lazy" class="check" [class.d-flex]="selectedTime" alt="clutter free finds services"
                         src="/assets/icons/check-green.svg" width="10" />
                 </div>
             </div>
             <div *ngIf="!selectedDate" class=" justify-content-center align-items-center py-5">
-                <img class="img-fluid" src="/assets/icons/time-picker.svg" alt="" width="450">
+                <img loading="lazy" class="img-fluid" src="/assets/icons/time-picker.svg" alt="" width="450">
             </div>
             <div *ngIf="selectedDate">
                 <div class="date-time-frame mt-4">

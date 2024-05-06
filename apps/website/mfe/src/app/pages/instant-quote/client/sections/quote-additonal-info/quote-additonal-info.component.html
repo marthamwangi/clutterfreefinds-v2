@@ -17,7 +17,7 @@
                     <div class="info-header d-flex align-items-center" style="gap: 8px;">
                         <div>Pictures of your mess</div>
                         <div class="d-inline-flex align-items-center position-relative" #tooltipRef="matTooltip"
-                            [matTooltip]="mediaPrivacy" matTooltipPosition="above"><img
+                            [matTooltip]="mediaPrivacy" matTooltipPosition="above"><img loading="lazy"
                                 src="assets/icons/bi_info-circle.svg" alt="Professional organizing"></div>
                     </div>
                     <div class="row" style="margin-top: 16px;">
@@ -27,23 +27,25 @@
                             <label for="messFiles" class="cff-quote-info">
                                 <div class="file-text">Choose files </div>
                                 <div>
-                                    <img src="assets/icons/upload.svg" alt="Professional Organizing Before Pictures" />
+                                    <img loading="lazy" src="assets/icons/upload.svg"
+                                        alt="Professional Organizing Before Pictures" />
                                 </div>
                             </label>
                         </div>
                         <div class="col-6 file-count">
                             <div class="img-count">{{filesCount}} Images Uploaded</div>
                             <div>
-                                <img src="assets/icons/close-rounded.svg" alt="Professional Organizing Before Pictures">
+                                <img loading="lazy" src="assets/icons/close-rounded.svg"
+                                    alt="Professional Organizing Before Pictures">
                             </div>
 
                         </div>
                         <div class="row row-cols-1 row-cols-md-2 g-2 mt-5" id="preview">
                             <div *ngFor="let img of (filesArr$ | async); index as i" class="col img-container">
-                                <img [src]="img" alt="">
+                                <img loading="lazy" [src]="img" alt="">
                                 <div class="overlay">
                                     <a (click)="deleteImage(i)" class="trash">
-                                        <img src="/assets/icons/trash-bin.svg" alt="" width="24">
+                                        <img loading="lazy" src="/assets/icons/trash-bin.svg" alt="" width="24">
                                     </a>
                                 </div>
                             </div>

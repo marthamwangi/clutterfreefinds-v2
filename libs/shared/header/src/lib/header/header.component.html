@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container-fluid pt-2" style="max-width: 1440px; gap: 16px;">
     <a class="navbar-brand me-5" [routerLink]="'/'">
-      <img src="/assets/images/logo.svg" alt="Clutter Free Finds Logo" class="img-fluid" />
+      <img loading="lazy" src="/assets/images/logo.svg" alt="Clutter Free Finds Logo" class="img-fluid" />
     </a>
     <div class="collapse navbar-collapse flex-col-md" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="gap: 16px;">
@@ -9,13 +9,14 @@
           <a class="nav-link px-0 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             <div class="header-link header-underline-animation">Company </div>
-            <img src="/assets/icons/drop-down-dark.svg" alt="">
+            <img loading="lazy" src="/assets/icons/drop-down-dark.svg" alt="">
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <ul class="dropdown-list d-flex flex-column flex-sm-row">
               <li class="header-item-container col-12 col-lg-6"><a class="dropdown-item h-100" [routerLink]="'/about'">
                   <div class="d-flex align-items-center h-100" style="column-gap: 16px;">
-                    <div class="header-item-icon"><img [src]="'assets/header/about.svg'" alt="about clutter free finds">
+                    <div class="header-item-icon"><img loading="lazy" [src]="'assets/header/about.svg'"
+                        alt="about clutter free finds">
                     </div>
                     <div class="header-item-content">
                       <div class="header-item-title">About Us</div>
@@ -29,7 +30,7 @@
               <li class="header-item-container col-12 col-lg-6"><a class="dropdown-item h-100"
                   [routerLink]="'/how-it-works'">
                   <div class="d-flex align-items-center h-100" style="column-gap: 16px;">
-                    <div class="header-item-icon"><img [src]="'assets/header/how-it-works.svg'"
+                    <div class="header-item-icon"><img loading="lazy" [src]="'assets/header/how-it-works.svg'"
                         alt="how-it-works clutter free finds">
                     </div>
                     <div class="header-item-content">

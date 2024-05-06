@@ -94,18 +94,18 @@
 									<th class="fw-light text-muted" scope="row" style="padding-left: 1rem">{{
 										data.rowHeader | translate }}</th>
 									<td *ngFor="let td of data.rowData" [ngSwitch]="td">
-										<ng-template [ngSwitchCase]="'check'"><img class="checkmark" alt="" width="24"
-												height="24" /></ng-template>
-										<ng-template [ngSwitchCase]="'grey-badge'"><img class="grey-badge me-2" alt=""
-												width="20" height="20" /></ng-template> <ng-template
-											[ngSwitchCase]="'green-badge'"><img class="green-badge me-2" width="20"
-												height="20" /></ng-template>
-										<ng-template [ngSwitchCase]="'blue-badge'"><img class="blue-badge me-2" alt=""
-												width="20" height="20" /></ng-template>
-										<ng-template [ngSwitchCase]="'gold-badge'"><img class="gold-badge me-2" alt=""
-												width="20" height="20" /></ng-template>
-										<ng-template [ngSwitchCase]="'any-badge'"><img class="any-badge me-2" alt=""
-												width="24" height="24" /></ng-template>
+										<ng-template [ngSwitchCase]="'check'"><img loading="lazy" class="checkmark"
+												alt="" width="24" height="24" /></ng-template>
+										<ng-template [ngSwitchCase]="'grey-badge'"><img loading="lazy"
+												class="grey-badge me-2" alt="" width="20" height="20" /></ng-template>
+										<ng-template [ngSwitchCase]="'green-badge'"><img loading="lazy"
+												class="green-badge me-2" width="20" height="20" /></ng-template>
+										<ng-template [ngSwitchCase]="'blue-badge'"><img loading="lazy"
+												class="blue-badge me-2" alt="" width="20" height="20" /></ng-template>
+										<ng-template [ngSwitchCase]="'gold-badge'"><img loading="lazy"
+												class="gold-badge me-2" alt="" width="20" height="20" /></ng-template>
+										<ng-template [ngSwitchCase]="'any-badge'"><img loading="lazy"
+												class="any-badge me-2" alt="" width="24" height="24" /></ng-template>
 										<ng-template ngSwitchDefault><span style="color: var(--accent);
 											font-weight: 400;
 											font-size: 14px;

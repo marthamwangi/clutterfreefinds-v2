@@ -1,7 +1,7 @@
 <select #langSelect (change)="translate.use(langSelect.value)" class="me-2 border-0 bg-transparent">
     <option *ngFor="let lang of SUPPORTED_LANGUAGES" [value]="lang"
-        [attr.selected]="lang === translate.currentLang ? '' : null"
-        data.content="<img src='assets/icons/flags/en.svg' >lang">
+        [attr.selected]="lang === translate.currentLang ? '' : null" data.content="<img loading=" lazy"
+        src='assets/icons/flags/en.svg'>lang">
         {{lang}}
     </option>
 </select>
