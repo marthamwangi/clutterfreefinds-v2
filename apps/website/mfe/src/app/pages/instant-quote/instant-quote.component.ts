@@ -124,7 +124,7 @@ export class InstantQuoteComponent implements AfterViewInit {
       fromInstantQuoteSelector.InstantQuoteSelector
     );
     this.renderedSteps = [];
-    this.currentStepIndex = 0;
+    this.currentStepIndex = 2;
     this.steps = {
       0: {
         key: 'date',

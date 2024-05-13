@@ -28,6 +28,9 @@ export const COUNTY_REDUCER = createReducer(
     (state, { counties }) => ({
       ...state,
       counties: counties,
+      selected_county: counties[0],
+      selected_constituency: counties[0].constituencies[0],
+      selected_ward: counties[0].constituencies[0].wards[0],
       is_loading: false,
     })
   ),

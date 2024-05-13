@@ -28,8 +28,8 @@ export class QuoteClientDetailsComponent {
   counties$!: Observable<Array<ICountyModel>>;
   selected_county$!: Observable<ICountyModel>;
   selected_constituency$!: Observable<IConstituencyModel>;
+  isLoadingCounties$!: Observable<boolean>;
   selected_ward$!: Observable<string>;
-
   clienQuoteEmail$!: Observable<string>;
   clientQuoteFirstName$!: Observable<string>;
   clienQuoteLastName$!: Observable<string>;
@@ -39,6 +39,7 @@ export class QuoteClientDetailsComponent {
   clientQuoteServiceType$!: Observable<string>;
   REGEX_EMAIL = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   PHONE_REGEX = '^([0|+[0-9]{1,5})?([0-9]{10})$';
+
   ngOnInit() {
     this.clienQuoteEmail$ = this.#store.select(
       fromClientDetailsSelector.EmailSelector
@@ -72,6 +73,9 @@ export class QuoteClientDetailsComponent {
       fromCountySelector.SelectedConstituency
     );
     this.selected_ward$ = this.#store.select(fromCountySelector.SelectedWard);
+    this.isLoadingCounties$ = this.#store.select(
+      fromCountySelector.LoadingStatus
+    );
   }
   /**
    * onInputEvent
