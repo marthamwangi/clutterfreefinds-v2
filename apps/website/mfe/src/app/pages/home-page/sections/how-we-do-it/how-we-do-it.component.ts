@@ -1,5 +1,6 @@
 import { NgFor, NgIf } from '@angular/common';
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   OnDestroy,
@@ -17,7 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './how-we-do-it.component.html',
   styleUrls: ['./how-we-do-it.component.scss'],
 })
-export class HowWeDoItComponent implements OnInit, OnDestroy {
+export class HowWeDoItComponent implements AfterViewInit, OnDestroy {
   @ViewChild('youtubeVideoRef', { static: true })
   private _youtubeIframe!: ElementRef<HTMLDivElement>;
 
@@ -26,7 +27,12 @@ export class HowWeDoItComponent implements OnInit, OnDestroy {
     threshold: 0.5,
     rootMargin: '0px',
   };
-  #ytIntersectionObserver!: IntersectionObserver;
+  #ytIntersectionObserver: IntersectionObserver = new IntersectionObserver(
+    (event) => {
+      this.isVideoVisible = event[0].isIntersecting;
+    },
+    this.#videoObserverOptions
+  );
   ytIframe: string =
     'https://www.youtube.com/embed/eZClhYwU7Qc?start=210;controls=0&mute=1&showinfo=0&rel=0&autoplay=1&loop=1';
   public description: Array<{ title: string; bold: boolean }> = [
@@ -56,17 +62,10 @@ export class HowWeDoItComponent implements OnInit, OnDestroy {
     },
   ];
 
-  ngOnInit(): void {
-    this.#triggerYTVideo();
+  ngAfterViewInit(): void {
+    this.#ytIntersectionObserver.observe(this._youtubeIframe.nativeElement);
   }
   ngOnDestroy(): void {
     this.#ytIntersectionObserver.disconnect();
-  }
-
-  #triggerYTVideo() {
-    this.#ytIntersectionObserver = new IntersectionObserver((event) => {
-      this.isVideoVisible = event[0].isIntersecting;
-    }, this.#videoObserverOptions);
-    this.#ytIntersectionObserver.observe(this._youtubeIframe.nativeElement);
   }
 }
