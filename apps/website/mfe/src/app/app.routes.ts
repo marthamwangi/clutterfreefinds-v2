@@ -47,6 +47,9 @@ export const APP_ROUTES: Route[] = [
   },
   {
     path: '**',
-    redirectTo: '',
+    loadComponent: () =>
+      import('./pages/coming-soon/coming-soon.component').then(
+        (c) => c.ComingSoonComponent
+      ),
   },
 ];

@@ -18,6 +18,7 @@ const main = async () => {
   const websiteEntriesMediumPriority = [
     `${site}/how-it-works`,
     `${site}/pricing`,
+    `${site}/resources`,
     `${site}/privacy-policy`,
     `${site}/service-agreement`,
     `${site}/instant-quote`,
