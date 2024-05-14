@@ -75,7 +75,7 @@ export class FooterComponent {
         },
         {
           text: 'FOOTER.PAGES.FOR_CLIENTS.LIST.ITEM2',
-          link: '#',
+          link: '/resources',
         },
       ],
     },
@@ -84,7 +84,7 @@ export class FooterComponent {
       list: [
         {
           text: 'FOOTER.PAGES.PRICING.LIST.ITEM1',
-          link: '#',
+          link: '/pricing',
         },
       ],
     },
