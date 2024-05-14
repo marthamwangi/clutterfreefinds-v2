@@ -1,18 +1,6 @@
 <div class="col-12 col-lg-9 mx-auto">
-    <div class="row">
+    <div class="row p-3">
         <div class="payment-options-header text-center fs-2 mb-5">Quote Summary</div>
-        <div class="d-flex">
-            <div class="payment-options-header fs-1 col-8">Total <br><small class="fs-6"> (Hours * price /h)+additional
-                    fees</small></div>
-            <div class="payment-options-header text-center fs-2 mb-5 lh-sm">{{(instant_quote$ | async).min_price |
-                currency:'KES'}}-{{(instant_quote$
-                |
-                async).max_price | currency:'KES'}}
-                <div> <small class="estimate-price-info fs-6 ">{{(space_selected$ | async)?.minHours}} -
-                        {{(space_selected$ |
-                        async)?.maxHours}} hours</small></div>
-            </div>
-        </div>
         <div class="container">
             <div class="d-flex flex-column">
                 <div class="payment-options-header">Service Address</div>
@@ -108,6 +96,19 @@
             <div class="greyed-text">{{(client_details$ | async)?.serviceType}}</div>
         </div>
 
+        <div class="d-flex flex-wrap">
+            <div class="payment-options-header fs-1 col-8">Total <br><small class="fs-6"> (Hours * price /h)+additional
+                    fees</small></div>
+            <div class="payment-options-header text-center fs-2 mb-5 lh-sm">{{(instant_quote$ | async).min_price |
+                currency:'KES'}}-{{(instant_quote$
+                |
+                async).max_price | currency:'KES'}}
+                <div> <small class="estimate-price-info fs-6 ">{{(space_selected$ | async)?.minHours}} -
+                        {{(space_selected$ |
+                        async)?.maxHours}} hours</small></div>
+            </div>
+        </div>
+
         <div class="payment-options-header">Payment options</div>
         <div class="payment-options-text">We support Visa, MasterCard, PayPal, M-Pesa Transfer and many
             other
@@ -127,7 +128,7 @@
                         Agreement</a>
                 </label>
             </div>
-            <button class="btn primary-btn w-50" (click)="onValidateQuote()">Validate Quote</button>
+            <button class="btn primary-btn w-75" (click)="onValidateQuote()">Validate Quote</button>
         </div>
     </div>
 </div>
