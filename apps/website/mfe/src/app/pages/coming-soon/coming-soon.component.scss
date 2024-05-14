@@ -1,0 +1,26 @@
+.coming-soon-header {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 72px;
+  letter-spacing: 0.01em;
+  color: var(--purple-100);
+  margin-bottom: 24px;
+  @media (max-width: 575.98px) {
+    font-size: 32px;
+    line-height: 32px;
+  }
+}
+
+.coming-soon-helper-text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 36px;
+  letter-spacing: 0.01em;
+
+  /* Black/100 */
+  color: var(--black-60);
+  @media (max-width: 575.98px) {
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
