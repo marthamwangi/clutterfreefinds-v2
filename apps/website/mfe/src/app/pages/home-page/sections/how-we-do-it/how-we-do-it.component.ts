@@ -1,10 +1,12 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   Component,
   ElementRef,
+  Inject,
   OnDestroy,
   OnInit,
+  PLATFORM_ID,
   ViewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -18,7 +20,7 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './how-we-do-it.component.html',
   styleUrls: ['./how-we-do-it.component.scss'],
 })
-export class HowWeDoItComponent implements AfterViewInit, OnDestroy {
+export class HowWeDoItComponent implements AfterViewInit, OnDestroy, OnInit {
   @ViewChild('youtubeVideoRef', { static: true })
   private _youtubeIframe!: ElementRef<HTMLDivElement>;
 
@@ -27,12 +29,7 @@ export class HowWeDoItComponent implements AfterViewInit, OnDestroy {
     threshold: 0.5,
     rootMargin: '0px',
   };
-  #ytIntersectionObserver: IntersectionObserver = new IntersectionObserver(
-    (event) => {
-      this.isVideoVisible = event[0].isIntersecting;
-    },
-    this.#videoObserverOptions
-  );
+  #ytIntersectionObserver!: IntersectionObserver;
   ytIframe: string =
     'https://www.youtube.com/embed/eZClhYwU7Qc?start=210;controls=0&mute=1&showinfo=0&rel=0&autoplay=1&loop=1';
   public description: Array<{ title: string; bold: boolean }> = [
@@ -62,10 +59,19 @@ export class HowWeDoItComponent implements AfterViewInit, OnDestroy {
     },
   ];
 
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
+  ngOnInit(): void {
+    isPlatformBrowser(this.platformId) &&
+      new IntersectionObserver((event) => {
+        this.isVideoVisible = event[0].isIntersecting;
+      }, this.#videoObserverOptions);
+  }
   ngAfterViewInit(): void {
-    this.#ytIntersectionObserver.observe(this._youtubeIframe.nativeElement);
+    isPlatformBrowser(this.platformId) &&
+      this.#ytIntersectionObserver.observe(this._youtubeIframe.nativeElement);
   }
   ngOnDestroy(): void {
-    this.#ytIntersectionObserver.disconnect();
+    isPlatformBrowser(this.platformId) &&
+      this.#ytIntersectionObserver.disconnect();
   }
 }
