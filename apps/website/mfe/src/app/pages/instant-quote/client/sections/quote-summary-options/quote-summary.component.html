@@ -82,7 +82,7 @@
         </div>
 
         <div class="container d-flex gap-2">
-            <div class="support-text">Attached Files: 4 Images</div>
+            <div class="support-text">Attached Files: {{(images$ | async).length}} Images</div>
             <a (click)="downloadImages()" class="greyed-text" style="cursor: pointer;">Click Here to Download</a>
         </div>
 

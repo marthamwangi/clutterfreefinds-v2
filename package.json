@@ -5,7 +5,7 @@
   "scripts": {
     "start-website": "nx serve website-mfe --serve-path /",
     "gen-sitemap": "tools/generators/sitemap/script.sh",
-    "prerender-website": "nx run website-mfe:prerender:production"
+    "prerender-website": "nx prerender website-mfe"
   },
   "private": true,
   "dependencies": {
