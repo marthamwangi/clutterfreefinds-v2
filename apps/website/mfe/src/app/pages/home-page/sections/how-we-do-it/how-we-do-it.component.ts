@@ -5,7 +5,6 @@ import {
   ElementRef,
   Inject,
   OnDestroy,
-  OnInit,
   PLATFORM_ID,
   ViewChild,
 } from '@angular/core';
@@ -20,7 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './how-we-do-it.component.html',
   styleUrls: ['./how-we-do-it.component.scss'],
 })
-export class HowWeDoItComponent implements AfterViewInit, OnDestroy, OnInit {
+export class HowWeDoItComponent implements AfterViewInit, OnDestroy {
   @ViewChild('youtubeVideoRef', { static: true })
   private _youtubeIframe!: ElementRef<HTMLDivElement>;
 
@@ -59,19 +58,22 @@ export class HowWeDoItComponent implements AfterViewInit, OnDestroy, OnInit {
     },
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: any) {}
-  ngOnInit(): void {
-    isPlatformBrowser(this.platformId) &&
-      new IntersectionObserver((event) => {
+  constructor(@Inject(PLATFORM_ID) private platformId: any) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.#ytIntersectionObserver = new IntersectionObserver((event) => {
         this.isVideoVisible = event[0].isIntersecting;
       }, this.#videoObserverOptions);
+    }
   }
+
   ngAfterViewInit(): void {
-    isPlatformBrowser(this.platformId) &&
+    if (isPlatformBrowser(this.platformId)) {
       this.#ytIntersectionObserver.observe(this._youtubeIframe.nativeElement);
+    }
   }
   ngOnDestroy(): void {
-    isPlatformBrowser(this.platformId) &&
+    if (isPlatformBrowser(this.platformId)) {
       this.#ytIntersectionObserver.disconnect();
+    }
   }
 }
