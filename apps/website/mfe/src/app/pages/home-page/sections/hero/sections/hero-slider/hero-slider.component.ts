@@ -1,11 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { APP_URL } from '@clutterfreefinds-v2/globals';
 import { TranslateModule } from '@ngx-translate/core';
 

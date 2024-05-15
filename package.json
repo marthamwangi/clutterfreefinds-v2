@@ -5,7 +5,10 @@
   "scripts": {
     "start-website": "nx serve website-mfe --serve-path /",
     "gen-sitemap": "tools/generators/sitemap/script.sh",
-    "prerender-website": "nx prerender website-mfe"
+    "prerender-website": "nx prerender website-mfe && postbuild",
+    "postbuild":"node postbuild.js",
+    "build": "nx build website-mfe --prod && postbuild",
+    "serve-ssr":"nx serve-ssr website-mfe --prod && postbuild"
   },
   "private": true,
   "dependencies": {
@@ -32,6 +35,7 @@
     "bootstrap": "^5.3.3",
     "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
+    "moment": "^2.30.1",
     "ngx-toastr": "^18.0.0",
     "ngx-translate-cache": "^16.0.0",
     "rxjs": "~7.8.0",
@@ -48,6 +52,7 @@
     "@angular/cli": "~16.1.0",
     "@angular/compiler-cli": "~16.1.0",
     "@angular/language-service": "~16.1.0",
+    "@fullhuman/postcss-purgecss": "^6.0.0",
     "@ngrx/schematics": "~16.0.0",
     "@nguniversal/builders": "~16.2.0",
     "@nx/cypress": "18.0.4",

@@ -8,7 +8,7 @@
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/shared/globals",
+        "outputPath": "apps/website/public/libs/shared/globals",
         "main": "libs/shared/globals/src/index.ts",
         "tsConfig": "libs/shared/globals/tsconfig.lib.json",
         "assets": ["libs/shared/globals/*.md"]

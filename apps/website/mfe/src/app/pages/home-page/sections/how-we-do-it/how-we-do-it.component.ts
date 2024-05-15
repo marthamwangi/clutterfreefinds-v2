@@ -26,7 +26,7 @@ export class HowWeDoItComponent implements AfterViewInit, OnDestroy {
   public isVideoVisible: boolean = false;
   #videoObserverOptions = {
     threshold: 0.5,
-    rootMargin: '0px',
+    rootMargin: '30%',
   };
   #ytIntersectionObserver!: IntersectionObserver;
   ytIframe: string =
