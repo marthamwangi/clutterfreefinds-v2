@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
-import { BASE_API, KENYA_COUNTIES } from '@clutterfreefinds-v2/globals';
+import {
+  BASE_API,
+  KENYA_COUNTIES,
+  PHONE_REGEX,
+  REGEX_EMAIL,
+} from '@clutterfreefinds-v2/globals';
 import {
   IConstituencyModel,
   ICountyModel,
@@ -14,6 +19,8 @@ import { fromCountySelector } from 'apps/website/mfe/src/app/shared/data/county/
 import { SortPipe } from '@clutterfreefinds/sort_pipe';
 import { fromClientDetailsSelector } from './data/quote-client-details.selector';
 import { fromClientDetailsActions } from './data/quote-client-details.actions';
+import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'iq-quote-client-details',
@@ -35,12 +42,13 @@ export class QuoteClientDetailsComponent {
   clienQuoteLastName$!: Observable<string>;
   clientQuotePhoneNumber$!: Observable<string>;
   clientQuoteAddress$!: Observable<string>;
-  clientQuoteHseNumber$!: Observable<string>;
-  clientQuoteServiceType$!: Observable<string>;
-  REGEX_EMAIL = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
-  PHONE_REGEX = '^([0|+[0-9]{1,5})?([0-9]{10})$';
+  clientQuoteHseNumber$: Observable<string>;
+  clientQuoteServiceType$: Observable<string>;
+  #countyFetchResponse$: Observable<IResponseModel>;
+  REGEX_EMAIL = REGEX_EMAIL;
+  PHONE_REGEX = PHONE_REGEX;
 
-  ngOnInit() {
+  constructor(private _toastrService: ToastrService) {
     this.clienQuoteEmail$ = this.#store.select(
       fromClientDetailsSelector.EmailSelector
     );
@@ -75,6 +83,9 @@ export class QuoteClientDetailsComponent {
     this.selected_ward$ = this.#store.select(fromCountySelector.SelectedWard);
     this.isLoadingCounties$ = this.#store.select(
       fromCountySelector.LoadingStatus
+    );
+    this.#countyFetchResponse$ = this.#store.select(
+      fromCountySelector.SelectResponse
     );
   }
   /**
@@ -127,6 +138,7 @@ export class QuoteClientDetailsComponent {
   }
   public async fetchCountiesData() {
     const existingCounties = await firstValueFrom(this.counties$);
+    const response = await firstValueFrom(this.#countyFetchResponse$);
     if (existingCounties.length) {
       return;
     }
@@ -135,6 +147,15 @@ export class QuoteClientDetailsComponent {
         url: `${BASE_API}/${KENYA_COUNTIES}`,
       })
     );
+    if (!response.success) {
+      this._toastrService.error(
+        response.message,
+        'Something happened, please try again',
+        {
+          positionClass: 'toast-top-right',
+        }
+      );
+    }
   }
   /**
    * onCountySelect

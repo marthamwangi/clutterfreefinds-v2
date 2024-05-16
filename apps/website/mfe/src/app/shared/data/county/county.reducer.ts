@@ -15,6 +15,9 @@ const initialState: ICountyState = {
   },
   selected_ward: '',
   is_loading: false,
+  response: {
+    success: false,
+  },
 };
 
 export const COUNTY_REDUCER = createReducer(
@@ -31,6 +34,14 @@ export const COUNTY_REDUCER = createReducer(
       selected_county: counties[0],
       selected_constituency: counties[0].constituencies[0],
       selected_ward: counties[0].constituencies[0].wards[0],
+      is_loading: false,
+    })
+  ),
+  on(
+    fromCountyActions.CountyAPI.countyListOnFailure,
+    (state, { response }) => ({
+      ...state,
+      response,
       is_loading: false,
     })
   ),

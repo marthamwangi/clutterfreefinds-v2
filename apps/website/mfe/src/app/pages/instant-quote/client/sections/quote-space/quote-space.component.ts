@@ -21,6 +21,8 @@ import { fromCffSpacesActions } from './data/quote-space.actions';
 import { BASE_API, WEB_API_CFF_SPACE } from '@clutterfreefinds-v2/globals';
 import { ICffService } from '../quote-service/model/cffSservice.model';
 import { fromCffServiceSelectors } from '../quote-service/data/quote-service.selectors';
+import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'iq-quote-space',
@@ -56,7 +58,9 @@ export class QuoteSpaceComponent implements OnInit, OnDestroy {
   private _loadProgress$: Observable<boolean>;
   public loadStatus!: number;
 
-  constructor() {
+  private _response$: Observable<IResponseModel>;
+
+  constructor(private _toastrService: ToastrService) {
     this._loadProgress$ = this.store.select(
       fromSpaceSelectors.selectLoadingList
     );
@@ -72,6 +76,7 @@ export class QuoteSpaceComponent implements OnInit, OnDestroy {
     this._service_selected$ = this.store.select(
       fromCffServiceSelectors.selectActiveService
     );
+    this._response$ = this.store.select(fromSpaceSelectors.selectResponse);
   }
 
   ngOnInit() {
@@ -116,6 +121,7 @@ export class QuoteSpaceComponent implements OnInit, OnDestroy {
 
   public async loadSpaces() {
     const existingSpaces = await firstValueFrom(this._cff_spaces$);
+    const response = await firstValueFrom(this._response$);
     if (existingSpaces.length) {
       return;
     }
@@ -124,6 +130,15 @@ export class QuoteSpaceComponent implements OnInit, OnDestroy {
         url: `${BASE_API}/${WEB_API_CFF_SPACE}`,
       })
     );
+    if (!response.success) {
+      this._toastrService.error(
+        response.message,
+        'Something happened, please try again',
+        {
+          positionClass: 'toast-top-right',
+        }
+      );
+    }
   }
   private _renderAllSpaces() {
     this._cff_spaces$.subscribe((data: Array<ISpaceModel>) => {

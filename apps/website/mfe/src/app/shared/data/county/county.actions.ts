@@ -1,5 +1,6 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { IConstituencyModel, ICountyModel } from '../../models/county.model';
+import { IResponseModel } from '../../response.model';
 
 const CountyPicker = createActionGroup({
   source: 'Quote Client Details Component',
@@ -27,7 +28,7 @@ const CountyAPI = createActionGroup({
   events: {
     'County Loading': emptyProps(),
     'County List On Success': props<{ counties: Array<ICountyModel> }>(),
-    'County List On Failure': props<{ error: string }>(),
+    'County List On Failure': props<{ response: IResponseModel }>(),
   },
 });
 

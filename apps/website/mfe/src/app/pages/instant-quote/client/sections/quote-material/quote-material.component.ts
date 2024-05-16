@@ -4,7 +4,6 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
-  Input,
   OnInit,
   Output,
   TemplateRef,
@@ -24,6 +23,8 @@ import { fromMaterialActions } from './data/quote-material.action';
 import { BASE_API, WEB_API_CFF_MATERIAL } from '@clutterfreefinds-v2/globals';
 import { ISpaceModel } from '../quote-space/models/space.model';
 import { fromSpaceSelectors } from '../quote-space/data/quote-space.selectors';
+import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'iq-quote-material',
@@ -70,8 +71,9 @@ export class QuoteMaterialComponent implements OnInit {
   private _unsubscribe$: Subject<boolean>;
   private _loadProgress$: Observable<boolean>;
   public loadStatus!: number;
+  private _response$: Observable<IResponseModel>;
 
-  constructor() {
+  constructor(private _toastrService: ToastrService) {
     this._unsubscribe$ = new Subject<boolean>();
 
     this._loadProgress$ = this.store.select(
@@ -87,6 +89,7 @@ export class QuoteMaterialComponent implements OnInit {
     this.space_selected$ = this.store.select(
       fromSpaceSelectors.selectedSpaceSelector
     );
+    this._response$ = this.store.select(fromMaterialSelectors.selectResponse);
   }
 
   ngOnInit() {
@@ -137,6 +140,7 @@ export class QuoteMaterialComponent implements OnInit {
   }
   public async loadMaterials() {
     const existingSpaces = await firstValueFrom(this._cff_materials$);
+    const response = await firstValueFrom(this._response$);
     if (existingSpaces.length) {
       return;
     }
@@ -145,6 +149,15 @@ export class QuoteMaterialComponent implements OnInit {
         url: `${BASE_API}/${WEB_API_CFF_MATERIAL}`,
       })
     );
+    if (!response.success) {
+      this._toastrService.error(
+        response.message,
+        'Something happened, please try again',
+        {
+          positionClass: 'toast-top-right',
+        }
+      );
+    }
   }
 
   private _renderMAterials() {

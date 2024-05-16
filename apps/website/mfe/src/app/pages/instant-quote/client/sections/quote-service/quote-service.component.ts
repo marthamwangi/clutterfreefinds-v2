@@ -27,6 +27,8 @@ import { fromCffServiceActions } from './data/quote-service.actions';
 import { AppState } from 'apps/website/mfe/src/app/shared/interface';
 import { ICffService } from './model/cffSservice.model';
 import { BASE_API, WEB_API_CFF_SERVICES } from '@clutterfreefinds-v2/globals';
+import { ToastrService } from 'ngx-toastr';
+import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
 @Component({
   selector: 'iq-quote-service',
   standalone: true,
@@ -55,9 +57,11 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
   private _service_selected$: Observable<ICffService>;
   public selectedCffService!: ICffService;
   private _loadProgress$: Observable<boolean>;
+  private _response$: Observable<IResponseModel>;
+
   public loadStatus!: number;
 
-  constructor() {
+  constructor(private _toastrService: ToastrService) {
     this._unsubscribe$ = new Subject<boolean>();
     this._cff_services$ = this.store.select(
       fromCffServiceSelectors.selectServiceList
@@ -69,6 +73,7 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
       fromCffServiceSelectors.selectLoadingList
     );
 
+    this._response$ = this.store.select(fromCffServiceSelectors.selectResponse);
     this.cffServiceTooltip$ = new BehaviorSubject('');
   }
   ngOnInit() {
@@ -103,12 +108,15 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
     return templateMap[this.loadStatus];
   }
   private _setSelectedService() {
-    this._service_selected$.subscribe((service) => {
-      this.selectedCffService = service;
+    this._service_selected$.subscribe({
+      next: (service) => {
+        this.selectedCffService = service;
+      },
     });
   }
   public async loadServices() {
     const existingServices = await firstValueFrom(this._cff_services$);
+    const response = await firstValueFrom(this._response$);
     if (existingServices.length) {
       return;
     }
@@ -117,6 +125,15 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
         url: `${BASE_API}/${WEB_API_CFF_SERVICES}`,
       })
     );
+    if (!response.success) {
+      this._toastrService.error(
+        response.message,
+        'Something happened, please try again',
+        {
+          positionClass: 'toast-top-right',
+        }
+      );
+    }
   }
 
   private _renderServices() {
