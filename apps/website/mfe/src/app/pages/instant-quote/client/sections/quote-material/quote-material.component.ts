@@ -149,7 +149,7 @@ export class QuoteMaterialComponent implements OnInit {
         url: `${BASE_API}/${WEB_API_CFF_MATERIAL}`,
       })
     );
-    if (!response.success) {
+    if (!response.success && response.message) {
       this._toastrService.error(
         response.message,
         'Something happened, please try again',

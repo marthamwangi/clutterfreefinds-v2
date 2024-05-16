@@ -147,7 +147,7 @@ export class QuoteClientDetailsComponent {
         url: `${BASE_API}/${KENYA_COUNTIES}`,
       })
     );
-    if (!response.success) {
+    if (!response.success && response.message) {
       this._toastrService.error(
         response.message,
         'Something happened, please try again',

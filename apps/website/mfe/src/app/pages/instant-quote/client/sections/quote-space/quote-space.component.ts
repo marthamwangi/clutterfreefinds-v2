@@ -130,7 +130,7 @@ export class QuoteSpaceComponent implements OnInit, OnDestroy {
         url: `${BASE_API}/${WEB_API_CFF_SPACE}`,
       })
     );
-    if (!response.success) {
+    if (!response.success && response.message) {
       this._toastrService.error(
         response.message,
         'Something happened, please try again',

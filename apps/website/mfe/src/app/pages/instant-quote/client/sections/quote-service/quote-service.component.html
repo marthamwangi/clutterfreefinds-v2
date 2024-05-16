@@ -32,11 +32,14 @@
                             <img loading="lazy" [src]="'/assets/icons/cff-services/' +service.label+'.svg'"
                                 [alt]="service.name">
                             {{service.name}}
-                            <div (mouseenter)="showCffServiceDescriptionTooltip(service)" (mouseleave)="resetTooltip()"
-                                class="d-inline-flex align-items-center position-relative" #tooltipRef="matTooltip"
-                                [matTooltip]="(cffServiceTooltip$ | async)" matTooltipPosition="above">
-                                <img loading="lazy" src="/assets/icons/info.svg" alt="">
-                            </div>
+                            <button (touchend)="showCffServiceDescriptionTooltip(service,$event)"
+                                (mouseenter)="showCffServiceDescriptionTooltip(service,$event)"
+                                (mouseleave)="resetTooltip()"
+                                class="d-inline-flex align-items-center position-relative p-2 bg-transparent border-0"
+                                #tooltipRef="matTooltip" [matTooltip]="(cffServiceTooltip$ | async)"
+                                matTooltipPosition="above">
+                                <img loading="lazy" src="/assets/icons/info.svg" alt="" width="18">
+                            </button>
                         </label>
                     </div>
 

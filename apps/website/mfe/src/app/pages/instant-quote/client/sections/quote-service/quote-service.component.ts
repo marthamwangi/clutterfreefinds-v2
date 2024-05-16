@@ -125,7 +125,7 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
         url: `${BASE_API}/${WEB_API_CFF_SERVICES}`,
       })
     );
-    if (!response.success) {
+    if (!response.success && response.message) {
       this._toastrService.error(
         response.message,
         'Something happened, please try again',
@@ -142,7 +142,8 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
     });
   }
 
-  public showCffServiceDescriptionTooltip(service: ICffService): void {
+  public showCffServiceDescriptionTooltip(service: ICffService, e: any): void {
+    e.preventDefault();
     this._tooltipRef.show();
     this.cffServiceTooltip$.next(service.description);
     this._tooltipRef._tooltipInstance
