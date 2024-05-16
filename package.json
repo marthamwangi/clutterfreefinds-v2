@@ -5,10 +5,10 @@
   "scripts": {
     "start-website": "nx serve website-mfe --serve-path /",
     "gen-sitemap": "tools/generators/sitemap/script.sh",
-    "prerender-website": "nx prerender website-mfe && postbuild",
+    "prerender-website": "nx prerender website-mfe --prod && npm run postbuild",
     "postbuild":"node postbuild.js",
-    "build": "nx build website-mfe --prod && postbuild",
-    "serve-ssr":"nx serve-ssr website-mfe --prod && postbuild"
+    "build": "nx build website-mfe --prod && npm run postbuild",
+    "serve-ssr":"nx serve-ssr website-mfe --prod && npm run postbuild"
   },
   "private": true,
   "dependencies": {
