@@ -1,7 +1,3 @@
-<!--
-    The images are repeated code
-    Try to refactor the code
--->
 <!-- <a [href]="APP_URL + '/services'"> -->
 <a>
     <div class="columns feature-container position-relative">
@@ -27,8 +23,10 @@
                         'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.DESCRIPTION'
                         | translate
                         }} </div>
-                    <img [src]="'/assets/images/organizing/slides/slide-' + (imgName+1) + '.jpg'" [alt]=" 'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
-                    | translate" class="card-img-bottom" />
+                    <div>
+                        <img [ngSrc]="'/assets/images/organizing/slides/slide-' + (imgName+1) + '.jpg'" [alt]=" 'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
+                    | translate" class="card-img-bottom" width="1080" height="1080" loading="lazy" decoding="async" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,8 +52,11 @@
                         'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.DESCRIPTION'
                         | translate
                         }} </div>
-                    <img [src]="'/assets/images/organizing/slides/slide-' + (imgName+1) + '.jpg'" [alt]=" 'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
-            | translate" class="card-img-bottom" />
+                    <div>
+                        <img [ngSrc]="'/assets/images/organizing/slides/slide-' + (imgName+1) + '.jpg'" [alt]=" 'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
+                        | translate" class="card-img-bottom" width="1080" height="1080" loading="lazy"
+                            decoding="async" />
+                    </div>
                 </div>
             </div>
         </div>

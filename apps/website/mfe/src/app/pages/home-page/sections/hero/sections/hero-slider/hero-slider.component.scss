@@ -64,16 +64,9 @@
   block-size: auto;
   object-fit: cover;
   object-position: center;
-  /* Picture shadow */
   filter: drop-shadow(4px 4px 30px rgba(14, 28, 54, 0.15));
   border-radius: 10px;
-  width: 200px;
-  height: 150px;
-  @media (max-width: 575.98px) {
-    border-radius: 5px;
-    width: 150px;
-    height: 100px;
-  }
+  aspect-ratio: 1/1;
 }
 .card-text-title {
   color: rgba(var(--purple-100-rgb), 0.8) !important;
