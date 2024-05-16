@@ -1,15 +1,15 @@
 <div class="accordion-item ">
-    <h2 class="accordion-header" id="headingSpace">
+    <div class="accordion-header" id="headingSpace">
         <button (click)="loadSpaces()" [disabled]="(_service_selected$ | async)?.id === ''"
             [class.isSelected]="selectedCffSpace.id !== ''" class="accordion-button" type="button"
             data-bs-toggle="collapse" data-bs-target="#collapseSpace" aria-expanded="true"
             aria-controls="collapseSpace">
-            <div class="row  row-cols-2 steps w-100">
+            <div class="row   steps w-100">
                 <div class="col-auto  step-text-number">Step 2:</div>
                 <div class="col step-text">Select Space </div>
             </div>
         </button>
-    </h2>
+    </div>
     <div id="collapseSpace" class="accordion-collapse collapse " aria-labelledby="headingSpace"
         data-bs-parent="#accordionQuote">
         <div class="accordion-body">

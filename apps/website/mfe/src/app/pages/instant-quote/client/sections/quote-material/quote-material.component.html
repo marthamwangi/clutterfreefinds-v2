@@ -1,15 +1,15 @@
 <div class="accordion-item ">
-    <h2 class="accordion-header" id="headingMaterial">
+    <div class="accordion-header" id="headingMaterial">
         <button [disabled]="(space_selected$ | async)?.id === ''" (click)="loadMaterials()"
             [class.isCompleted]="materialSelected?.name !== ''" class="accordion-button" type="button"
             data-bs-toggle="collapse" data-bs-target="#collapseMaterial" aria-expanded="true"
             aria-controls="collapseMaterial">
-            <div class="row  row-cols-2 steps w-100">
+            <div class="row steps w-100">
                 <div class="col-auto step-text-number">Step 3:</div>
                 <div class="col step-text">Select Material (optional)</div>
             </div>
         </button>
-    </h2>
+    </div>
     <div id="collapseMaterial" class="accordion-collapse collapse" aria-labelledby="headingMaterial"
         data-bs-parent="#accordionQuote">
         <div class="accordion-body">
@@ -27,16 +27,15 @@
                         </div>
                     </div>
                     <div class="">
-                        <button (click)="setDefaultMaterial()" class="btn secondary-btn py-1"
-                            style="color: var(--purple-100);">Skip</button>
+                        <a (click)="setDefaultMaterial()" style="color: var(--purple-100);">Skip</a>
                     </div>
                 </div>
                 <material-tabs [tabsName]="allTabs"></material-tabs>
                 <ng-template #Pros>
                     <div class="material-container">
-                        <div class="pros " *ngFor="let pro of (_material_selected$ | async)?.pros">
+                        <div class="pros list-item" *ngFor="let pro of (_material_selected$ | async)?.pros">
                             <div class="circle-check-purple-30">
-                                <img loading="lazy" src="assets/icons/check-purple.svg" alt="">
+                                <img loading="lazy" src="assets/icons/check-purple.svg" alt="house organizing products">
                             </div>
                             <div>{{pro}}</div>
                         </div>
@@ -44,9 +43,9 @@
                 </ng-template>
                 <ng-template #Cons>
                     <div class="material-container">
-                        <div class="cons " *ngFor="let con of (_material_selected$ | async)?.cons">
+                        <div class="cons list-item " *ngFor="let con of (_material_selected$ | async)?.cons">
                             <div class="circle-check-red-30"> <img loading="lazy" alt="clutter free finds services"
-                                    src="/assets/icons/red-close.svg" alt="" width="10">
+                                    src="/assets/icons/red-close.svg" alt="house organizing products">
                             </div>
                             <div>{{con}}</div>
                         </div>

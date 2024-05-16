@@ -181,7 +181,6 @@ export class InstantQuoteComponent implements AfterViewInit {
     this._selectedQuoteDate = $event;
     this._updateInstantQuoteForm({ date: $event });
     this._priceCalculator();
-    this.goToNext();
   }
   getService($event: ICffService): void {
     this.serviceSelected = $event;
