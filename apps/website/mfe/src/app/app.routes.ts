@@ -46,6 +46,11 @@ export const APP_ROUTES: Route[] = [
       ),
   },
   {
+    path: 'store',
+    loadChildren: () =>
+      import('@clutterfreefinds-v2/store').then((lib) => lib.STORE_ROUTES),
+  },
+  {
     path: '**',
     loadComponent: () =>
       import('./pages/coming-soon/coming-soon.component').then(
