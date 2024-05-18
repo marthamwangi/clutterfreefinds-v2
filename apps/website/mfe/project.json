@@ -26,12 +26,9 @@
           "apps/website/mfe/src/assets"
         ],
         "styles": [
-        "node_modules/bootstrap/dist/css/bootstrap.min.css",
         "apps/website/mfe/src/styles.scss"
       ],
       "scripts": [
-        "node_modules/@popperjs/core/dist/umd/popper.min.js",
-        "node_modules/bootstrap/dist/js/bootstrap.min.js"
       ],
       "allowedCommonJsDependencies":[
         "moment"

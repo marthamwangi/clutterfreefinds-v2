@@ -1,6 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* You can add global styles to this file, and also import other style files */
 @import 'node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import 'bootstrap/scss/bootstrap';
 @import 'ngx-toastr/toastr';
 
 @font-face {
@@ -11,7 +14,7 @@
 }
 :root {
   /**Colors
-  */
+*/
   --purple-100: rgb(122, 35, 211);
   --purple-100-rgb: 122, 35, 211;
   --purple-60: rgba(var(--purple-100-rgb), 0.6);

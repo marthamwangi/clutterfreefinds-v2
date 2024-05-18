@@ -1,83 +1,92 @@
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container-fluid pt-2" style="max-width: 1440px; gap: 16px;">
-    <a class="navbar-brand" [routerLink]="'/'">
-      <img loading="lazy" src="/assets/images/logo.svg" alt="Clutter Free Finds Logo" class="img-fluid" />
+<nav class="bg-light border-dark-100 dark:border-dark-600 dark:bg-dark-100">
+  <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+    <a [routerLink]="'/'" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img loading="lazy" src="/assets/images/logo.svg" class="h-10" alt="Clutter Free Finds Logo" />
     </a>
-    <div class="collapse navbar-collapse flex-col-md" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="gap: 16px;">
-        <li class="nav-item dropdown has-megamenu">
-          <a class="nav-link px-0 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <div class="header-link header-underline-animation">Company </div>
-            <img loading="lazy" src="/assets/icons/drop-down-dark.svg" alt="">
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <ul class="dropdown-list d-flex flex-column flex-sm-row">
-              <li class="header-item-container col-12 col-lg-6"><a class="dropdown-item h-100" [routerLink]="'/about'">
-                  <div class="d-flex align-items-center h-100" style="column-gap: 16px;">
-                    <div class="header-item-icon"><img loading="lazy" [src]="'assets/header/about.svg'"
-                        alt="about clutter free finds">
-                    </div>
-                    <div class="header-item-content">
-                      <div class="header-item-title">About Us</div>
-                      <div class="header-item-description">Who are we? What is our Vision? And Our
-                        Goals And
-                        everything you need to know about Clutter Free Finds
-                      </div>
-                    </div>
-                  </div>
-                </a></li>
-              <li class="header-item-container col-12 col-lg-6"><a class="dropdown-item h-100"
-                  [routerLink]="'/how-it-works'">
-                  <div class="d-flex align-items-center h-100" style="column-gap: 16px;">
-                    <div class="header-item-icon"><img loading="lazy" [src]="'assets/header/how-it-works.svg'"
-                        alt="how-it-works clutter free finds">
-                    </div>
-                    <div class="header-item-content">
-                      <div class="header-item-title">How it Works</div>
-                      <div class="header-item-description">Explore the step-by-step breakdown of our
-                        Professional
-                        Organizing approach
-                      </div>
-                    </div>
-                  </div>
-                </a></li>
-            </ul>
-          </div>
+    <div class="flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
+      <button type="button" data-dropdown-toggle="language-dropdown-menu"
+        class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm bg-primary-900 text-light-900 dark:text-light-900 rounded-lg cursor-pointer hover:bg-dark-900 dark:hover:bg-dark-600 dark:hover:text-light-900">
+        Get started
+      </button>
+    </div>
+    <button data-collapse-toggle="mega-menu-full" type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-dark-600 rounded-lg md:hidden hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-dark-200 dark:text-dark-400 dark:hover:bg-dark-600 dark:focus:ring-dark-600"
+      aria-controls="mega-menu-full" aria-expanded="false">
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15" />
+      </svg>
+    </button>
+    <div id="mega-menu-full"
+      class="items-center justify-between font-medium hidden w-full md:flex md:w-auto md:order-1">
+      <ul
+        class="flex flex-col p-4 md:p-0 mt-4 border border-dark-100 rounded-lg bg-dark-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-light-900 dark:bg-dark-900 md:dark:bg-dark-900 dark:border-dark-600">
+        <li>
+          <a [routerLink]="'/'"
+            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 dark:text-light-900 md:dark:hover:text-primary-600 dark:hover:bg-dark-primary dark:hover:text-primary-600 md:dark:hover:bg-transparent dark:border-dark-600"
+            aria-current="page">Home</a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" [routerLink]="'/resources'" role="button" aria-expanded="false">
-            <div class="header-underline-animation">Resources</div>
-          </a>
+        <li>
+          <button id="mega-menu-full-dropdown-button" data-collapse-toggle="mega-menu-full-dropdown"
+            class=" nav-link font-semibold flex items-center justify-between w-full py-2 px-3 text-dark-900 rounded md:w-auto hover:bg-primary-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-900  md:p-0 dark:text-light-900 md:dark:hover:text-primary-600 dark:hover:bg-dark-600 dark:hover:text-primary-600 md:dark:hover:bg-transparent dark:border-dark-600">Company
+            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 10 6">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 4 4 4-4" />
+            </svg></button>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" [routerLink]="'/pricing'" role="button" aria-expanded="false">
-            <div class="header-underline-animation">Pricing</div>
-          </a>
+        <li>
+          <a [routerLink]="'/store'"
+            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 dark:text-light-900 md:dark:hover:text-primary-600 dark:hover:bg-dark-primary dark:hover:text-primary-600 md:dark:hover:bg-transparent dark:border-dark-600">
+            Store</a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" [routerLink]="'/blog'" role="button" aria-expanded="false">
-            <div class="header-underline-animation">Blog</div>
-          </a>
+        <li>
+          <a [routerLink]="'/resources'"
+            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 dark:text-light-900 md:dark:hover:text-primary-600 dark:hover:bg-dark-primary dark:hover:text-primary-600 md:dark:hover:bg-transparent dark:border-dark-600">Resources</a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" [routerLink]="'/store'" role="button" aria-expanded="false">
-            <div class="header-underline-animation">Store</div>
+        <li>
+          <a [routerLink]="'/pricing'" class=" nav-link block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent
+            md:hover:text-primary-900  md:p-0 dark:text-light-900 md:dark:hover:text-primary-600
+            dark:hover:bg-dark-primary dark:hover:text-primary-600 md:dark:hover:bg-transparent
+            dark:border-dark-600 font-semibold">Pricing</a>
+        </li>
+        <li>
+          <a [routerLink]="'/blog'"
+            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 dark:text-light-900 md:dark:hover:text-primary-600 dark:hover:bg-dark-primary dark:hover:text-primary-600 md:dark:hover:bg-transparent dark:border-dark-600">Blog</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="mega-menu-full-dropdown"
+    class="mt-1  bg-dark-100 md:bg-light-900 dark:bg-dark-900 dark:border-dark-600 hidden">
+    <div class="grid max-w-screen-lg px-4 py-5 mx-auto text-dark-900 dark:text-light-900 sm:grid-cols-2 md:px-6">
+      <ul>
+        <li>
+          <a [routerLink]="'/about'"
+            class="flex items-start gap-2 p-3 rounded-lg hover:bg-primary-100 dark:hover:bg-dark-600">
+            <img loading="lazy" [src]="'assets/header/about.svg'" alt="about clutter free finds">
+            <div class="block">
+              <div class="font-semibold">About Us</div>
+              <span class="text-sm text-dark-600 dark:text-dark-400">Who are we? What is our Vision? And Our
+                Goals and everything you need to know about Clutter Free Finds.</span>
+            </div>
           </a>
         </li>
       </ul>
-      <cff-language></cff-language>
-    </div>
-    <div class="d-flex align-items-center">
-      <div>
-        <a [routerLink]="'/instant-quote'" class="btn primary-btn " type="button">
-          {{ 'HEADER.BUTTON_1'| translate }}
-        </a>
-      </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <ul>
+        <li>
+          <a [routerLink]="'/how-it-works'"
+            class="flex items-start block gap-2 p-3 rounded-lg hover:bg-primary-100 dark:hover:bg-dark-600">
+            <img loading="lazy" [src]="'assets/header/how-it-works.svg'" alt="how-it-works clutter free finds">
+            <div class="block">
+              <div class="font-semibold">How it Works</div>
+              <span class="text-sm text-dark-600 dark:text-dark-400">Explore the step-by-step breakdown of our
+                Professional Organizing approach from Mess to Yess</span>
+            </div>
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
