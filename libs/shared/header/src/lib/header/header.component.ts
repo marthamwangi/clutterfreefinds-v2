@@ -8,6 +8,5 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [TranslateModule, LanguageComponent, NgFor, RouterLink],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {}

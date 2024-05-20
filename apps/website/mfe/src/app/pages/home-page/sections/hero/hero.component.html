@@ -1,58 +1,64 @@
-<section>
-  <div class="container-fluid cff-v2-hero-section p-3 p-md-5 mb-5">
-    <div class="row align-items-center" style="row-gap: 24px;">
-      <div class="col-12 col-lg-6 d-flex flex-column align-items-center align-items-md-start">
-        <div class="cff-v2-hero-section-title">
-          <span class="cff-v2-hero-section-title-text">
-            {{ 'HOME_PAGE.HERO_SECTION.TITLE' | translate }}
-            <span class="title-gradient">
-              {{ 'HOME_PAGE.HERO_SECTION.GRADIENT' | translate }}
-            </span>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-2 items-center">
+  <div class="flex flex-col gap-6">
+    <div class="mb-4 text-3xl font-extrabold text-dark-900 dark:text-white md:text-5xl lg:text-6xl">{{
+      'HOME_PAGE.HERO_SECTION.TITLE' | translate }}<br>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r to-secondary-900 from-primary-900">{{
+        'HOME_PAGE.HERO_SECTION.GRADIENT' | translate }}</span>
+    </div>
+    <div class="text-lg font-normal text-dark-900 lg:text-xl dark:text-dark-300"> {{
+      'HOME_PAGE.HERO_SECTION.DESCRIPTION' | translate }} <strong class="font-semibold text-dark-900 dark:text-white">{{
+        'HOME_PAGE.HERO_SECTION.EMPHASIS' | translate }}</strong> </div>
+    <div>
+      <ul class="grid grid-cols-1 md:grid-cols-2  text-gray-500 list-inside dark:text-dark-300">
+        <li class="flex items-center mb-4" *ngFor="let item of [1, 2, 3, 4]">
+          <svg class="w-5 h-5 me-2 text-secondary-900 dark:text-secondary-300 flex-shrink-0" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path
+              d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+          </svg>
+          <span>
+            {{ 'HOME_PAGE.HERO_SECTION.LIST.ITEM' + item | translate }}
           </span>
-        </div>
-        <div class="cff-v2-hero-section-description">
-          {{ 'HOME_PAGE.HERO_SECTION.DESCRIPTION' | translate }}
-          <b>{{ 'HOME_PAGE.HERO_SECTION.EMPHASIS' | translate }}</b>
-        </div>
-        <div class="cff-v2-hero-section-list">
-          <ng-container *ngFor="let item of [1, 2, 3, 4]">
-            <div class="list-item d-flex align-items-center mb-3" style="column-gap: 6px;">
-              <div class="circle-check-green"> <img loading="lazy" alt="clutter free finds services"
-                  src="/assets/icons/check-light.svg" width="10" />
-              </div>
-              <span>
-                {{ 'HOME_PAGE.HERO_SECTION.LIST.ITEM' + item | translate }}
-              </span>
-            </div>
-          </ng-container>
-        </div>
-        <div class="d-flex flex-column flex-md-row align-items-center">
-          <a class="btn primary-btn" type="button" [routerLink]="['/instant-quote']">{{
-            'HOME_PAGE.HERO_SECTION.BUTTON_1' | translate
-            }}</a>
-          <a (click)="bookACall()" class="btn link-btn" type="button">{{ 'HOME_PAGE.HERO_SECTION.BUTTON_2' | translate
-            }}</a>
-        </div>
-      </div>
-      <div class="col-12 col-lg-6 slider">
-        <wc-hero-slider></wc-hero-slider>
-      </div>
+        </li>
+      </ul>
+    </div>
+    <div class="grid grid-cols-2 gap-4 items-center">
+      <a class="cursor-pointer focus:outline-none text-white text-center bg-primary-900 hover:bg-dark-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-primary-600 dark:hover:bg-dark-600 dark:focus:ring-primary-900"
+        type="button" [routerLink]="['/instant-quote']">{{
+        'HOME_PAGE.HERO_SECTION.BUTTON_1' | translate
+        }}</a>
+      <a (click)="bookACall()" class="cursor-pointer text-primary-900 hover:text-dark-900 px-5 py-2.5 mb-2"
+        type="button">{{
+        'HOME_PAGE.HERO_SECTION.BUTTON_2' | translate
+        }}</a>
     </div>
   </div>
-  <div class="d-flex flex-column flex-wrap flex-md-row align-items-center justify-content-center"
-    style="column-gap: 16px; row-gap: 6px">
-    <ng-container *ngFor="let statistic of statistics">
-      <div class="cff-v2-hero-section-numbers">
-        <div class="cff-v2-hero-section-number">
-          <div class="cff-v2-hero-section-count title-gradient">
-            <span class="cff-v2-hero-section-plus">+</span>{{ statistic.statistic | translate }}
-          </div>
-          <div class="cff-v2-hero-section-content">
-            {{ statistic.value | translate }}
-          </div>
-        </div>
-      </div>
-      <div class="divider"></div>
-    </ng-container>
+  <div class="max-h-80 md:max-h-128 overflow-hidden">
+    <wc-hero-slider></wc-hero-slider>
   </div>
-</section>
+</div>
+<div class="p-4 bg-white rounded-lg md:p-8 dark:bg-dark-600" id="stats">
+  <dl
+    class="md:divide-x bg-purple  divide-dark-100 dark:divide-dark-300 grid grid-cols-1 p-4 mx-auto text-gray-900 sm:grid-cols-1 md:grid-cols-5 dark:text-white sm:p-8">
+    <div class="flex flex-col items-center justify-center ">
+      <dt class="mb-2 text-3xl md:text-6xl font-extrabold text-primary-900 ">+3</dt>
+      <dd class="text-dark-900 dark:text-gray-400">Organized Spaces</dd>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+      <dt class="mb-2 text-3xl md:text-6xl font-extrabold text-primary-900">+79</dt>
+      <dd class="text-dark-900 dark:text-gray-400">Instagram Community</dd>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+      <dt class="mb-2 text-3xl md:text-6xl font-extrabold text-primary-900">+7</dt>
+      <dd class="text-dark-900 dark:text-gray-400">Facebook Community</dd>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+      <dt class="mb-2 text-3xl md:text-6xl font-extrabold text-primary-900">+720</dt>
+      <dd class="text-dark-900 dark:text-gray-400">TikTok Community</dd>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+      <dt class="mb-2 text-3xl md:text-6xl font-extrabold text-primary-900">+18</dt>
+      <dd class="text-dark-900 dark:text-gray-400">YouTube Community</dd>
+    </div>
+  </dl>
+</div>

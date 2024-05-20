@@ -12,6 +12,31 @@
   src: url('assets/fonts/poppins/poppins-regular-webfont.woff2') format('woff2');
   font-display: swap;
 }
+
+@media (min-width: 480.98px) {
+  .nav-link {
+    position: relative;
+    line-height: 200% !important;
+    &::after {
+      content: '' !important;
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--purple-100);
+      transform-origin: bottom left;
+      transition: transform 400ms ease-out;
+    }
+    &:hover {
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
 :root {
   /**Colors
 */
@@ -242,12 +267,6 @@ a.primary-btn {
 .circle-check-red-30 {
   @extend .circle-round;
   background-color: var(--red-30);
-}
-main {
-  @media (max-width: 575px) {
-    margin-top: 20%;
-  }
-  margin-top: 100px;
 }
 
 span.mdc-tab__text-label {

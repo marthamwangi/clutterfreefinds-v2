@@ -56,6 +56,11 @@ module.exports = {
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],
     },
+    extend:{
+      maxHeight: {
+        '128': '32rem',
+      }
+    }
   },
   plugins: [require('flowbite/plugin')],
 };

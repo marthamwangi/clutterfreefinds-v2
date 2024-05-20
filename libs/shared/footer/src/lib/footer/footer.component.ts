@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import {
   FormControl,
@@ -20,9 +20,9 @@ import {
 } from '@clutterfreefinds-v2/globals';
 import { FooterService } from './footer.service';
 import { BehaviorSubject, take } from 'rxjs';
-import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 import { ToastrService } from 'ngx-toastr';
 import { RouterLink } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'clutterfreefinds-v2-footer',
@@ -33,16 +33,11 @@ import { RouterLink } from '@angular/router';
     NgFor,
     NgIf,
     AsyncPipe,
-    MatTooltipModule,
     RouterLink,
   ],
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent {
-  @ViewChild('tooltipRef', { static: false })
-  private _tooltipRef!: MatTooltip;
-
   APP_URL = APP_URL;
   BASE_API = BASE_API;
   newsletterProgress = false;
@@ -107,6 +102,7 @@ export class FooterComponent {
       image: 'letter-unread',
       title: 'FOOTER.CTA_LINKS.EMAIL.TITLE',
       content: 'FOOTER.CTA_LINKS.EMAIL.CONTENT',
+      link: this._sanitizer.bypassSecurityTrustUrl('javascript:void(0);'),
     },
     {
       image: 'whatsapp',
@@ -137,7 +133,8 @@ export class FooterComponent {
   constructor(
     private _toastrService: ToastrService,
     private _newsLetterService: FooterService,
-    private readonly _translateService: TranslateService
+    private readonly _translateService: TranslateService,
+    private _sanitizer: DomSanitizer
   ) {}
 
   public subscribeToNewsletter() {
@@ -205,15 +202,7 @@ export class FooterComponent {
   copyToClipboard(): void {
     navigator.clipboard.writeText(EMAIL).then(() => {
       this.emailTooltip$.next('FOOTER.EMAIL_TOOLTIP_COPIED');
-      this._tooltipRef.show();
-      this._tooltipRef._tooltipInstance
-        ?.afterHidden()
-        .pipe(take(1))
-        .subscribe({
-          complete: () => {
-            this._resetCopyToClipboard();
-          },
-        });
+      this._resetCopyToClipboard();
     });
   }
   private _resetCopyToClipboard() {
