@@ -1,32 +1,32 @@
-<section style="margin-top: 16px">
-  <div class="container cff-v2-why-cff-section p-3 p-lg-5">
-    <div class="row align-items-center">
-      <div>
-        <img loading="lazy" src="/assets/images/shapes.svg" alt="" class="img-fluid d-none d-lg-block" width="200" />
+<section class="grid md:grid-cols-2 p-3 p-lg-5">
+  <div class="flex flex-col">
+    <div>
+      <img loading="lazy" src="/assets/images/shapes.svg" alt="" width="200" />
+    </div>
+    <div class="">
+      <div class="my-4 text-3xl font-extrabold text-dark-900 lg:text-5xl">
+        {{ 'HOME_PAGE.WHY_CFF.TITLE' | translate }}
+        <span class="text-transparent bg-clip-text bg-gradient-to-r to-secondary-900 from-primary-900">{{
+          'HOME_PAGE.WHY_CFF.GRADIENT' | translate
+          }}</span>
       </div>
-      <div class="col d-flex flex-column align-items-center align-items-lg-start" style="max-width: 673px">
-        <div class="cff-v2-why-cff-section-title">
-          <div class="cff-v2-why-cff-section-title-text">
-            {{ 'HOME_PAGE.WHY_CFF.TITLE' | translate }}
-            <span class="title-gradient">{{
-              'HOME_PAGE.WHY_CFF.GRADIENT' | translate
-              }}</span>
-          </div>
-        </div>
-        <div class="cff-v2-why-cff-section-description">
-          {{ 'HOME_PAGE.WHY_CFF.DESCRIPTION' | translate }}
-        </div>
-        <div class="d-flex flex-column flex-lg-row align-items-center">
-          <a [routerLink]="['instant-quote']" class="btn primary-btn" type="button">{{
-            'HOME_PAGE.WHY_CFF.BUTTON_1' | translate
-            }}</a>
-          <a (click)="bookACall()" class="btn link-btn" type="button">
-            {{ 'HOME_PAGE.WHY_CFF.BUTTON_2' | translate }}</a>
-        </div>
+      <div class="text-dark-600 mb-4 md:mb-9">
+        {{ 'HOME_PAGE.WHY_CFF.DESCRIPTION' | translate }}
       </div>
-      <div class="d-none d-lg-block col align-self-center">
-        <img loading="lazy" src="/assets/images/why-clutter-free-finds.png" alt="" class="img-fluid" />
+      <div class="flex flex-col md:flex-row items-center gap-4">
+        <a [routerLink]="['instant-quote']"
+          class="inline-flex items-center font-medium justify-center px-4 py-4 text-sm bg-primary-900 text-light-900 dark:text-light-900 rounded-lg cursor-pointer hover:bg-dark-900"
+          type="button">{{
+          'HOME_PAGE.WHY_CFF.BUTTON_1' | translate
+          }}</a>
+        <a (click)="bookACall()"
+          class="inline-flex items-center font-medium justify-center px-4 py-4 text-md text-primary-900 hover:text-dark-900"
+          type="button">
+          {{ 'HOME_PAGE.WHY_CFF.BUTTON_2' | translate }}</a>
       </div>
     </div>
+  </div>
+  <div class="sm:hidden md:block">
+    <img loading="lazy" src="/assets/images/why-clutter-free-finds.png" alt="" class="img-fluid" />
   </div>
 </section>

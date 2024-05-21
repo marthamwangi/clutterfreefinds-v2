@@ -7,7 +7,6 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, NgFor],
   templateUrl: './the-process.component.html',
-  styleUrls: ['./the-process.component.scss'],
 })
 export class TheProcessComponent {
   public processes: Array<{

@@ -8,7 +8,6 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, NgFor, RouterLink],
   templateUrl: './what-we-do.component.html',
-  styleUrls: ['./what-we-do.component.scss'],
 })
 export class WhatWeDoComponent {
   APP_URL = 'clutterfreefinds.com';

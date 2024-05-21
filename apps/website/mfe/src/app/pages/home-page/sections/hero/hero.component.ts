@@ -9,7 +9,6 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [TranslateModule, NgFor, HeroSliderComponent, RouterLink],
   templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.scss'],
 })
 export class HeroComponent {
   private vox = 1;
