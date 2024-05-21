@@ -9,9 +9,9 @@
   <div class="text-dark-600 text-center w-4/5 mx-auto mb-4 md:mb-9 ">
     {{ 'HOME_PAGE.WHAT_WE_DO.DESCRIPTION' | translate }}
   </div>
-  <div class="grid md:grid-cols-3 mb-8 border border-primary-100 rounded-lg shadow-sm">
+  <div class="grid md:grid-cols-3 mb-8 rounded-lg">
     <figure *ngFor="let servie of services"
-      class="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-primary-100 rounded-t-lg md:rounded-t-none md:rounded-ss-lg md:border-e ">
+      class="flex flex-col items-center justify-center p-8 text-center rounded-lg bg-secondary-100/5 me-2">
       <figcaption class="flex items-center justify-center mb-5">
         <img loading="lazy" alt="clutter free finds services" class="img-fluid" [src]="servie.image" />
       </figcaption>
