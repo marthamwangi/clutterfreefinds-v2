@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { HeroShopComponent } from './components/hero-shop/hero-shop.component';
 
 @Component({
   selector: 'landing',
   standalone: true,
-  imports: [CommonModule],
+  imports: [HeroShopComponent],
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss'],
 })
 export class LandingComponent {}

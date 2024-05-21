@@ -1,16 +1,16 @@
-<nav class="bg-light border-dark-100 dark:border-dark-600 dark:bg-dark-100">
+<nav class="bg-light border-dark-100 py-16">
   <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
     <a [routerLink]="'/'" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img loading="lazy" src="/assets/images/logo.svg" class="h-10" alt="Clutter Free Finds Logo" />
     </a>
     <div class="flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
       <button type="button" data-dropdown-toggle="language-dropdown-menu"
-        class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm bg-primary-900 text-light-900 dark:text-light-900 rounded-lg cursor-pointer hover:bg-dark-900 dark:hover:bg-dark-600 dark:hover:text-light-900">
+        class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm bg-primary-900 text-light-900 rounded-lg cursor-pointer hover:bg-dark-900">
         Get started
       </button>
     </div>
     <button data-collapse-toggle="mega-menu-full" type="button"
-      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-dark-600 rounded-lg md:hidden hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-dark-200 dark:text-dark-400 dark:hover:bg-dark-600 dark:focus:ring-dark-600"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-dark-600 rounded-lg md:hidden hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-dark-200"
       aria-controls="mega-menu-full" aria-expanded="false">
       <span class="sr-only">Open main menu</span>
       <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -21,10 +21,10 @@
     <div id="mega-menu-full"
       class="items-center justify-between font-medium hidden w-full md:flex md:w-auto md:order-1">
       <ul
-        class="flex flex-col p-4 md:p-0 mt-4 border border-dark-100 rounded-lg bg-dark-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-light-900 dark:bg-dark-900 md:dark:bg-dark-900 dark:border-dark-600">
+        class="flex flex-col p-4 md:p-0 mt-4 border border-dark-100 rounded-lg bg-dark-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-light-900">
         <li>
           <a [routerLink]="'/'"
-            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 dark:text-light-900 md:dark:hover:text-primary-600 dark:hover:bg-dark-primary dark:hover:text-primary-600 md:dark:hover:bg-transparent dark:border-dark-600"
+            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 "
             aria-current="page">Home</a>
         </li>
         <li class="relative">
@@ -91,22 +91,20 @@
         </li>
         <li>
           <a [routerLink]="'/store'"
-            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 dark:text-light-900 md:dark:hover:text-primary-600 dark:hover:bg-dark-primary dark:hover:text-primary-600 md:dark:hover:bg-transparent dark:border-dark-600">
+            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 ">
             Store</a>
         </li>
         <li>
           <a [routerLink]="'/resources'"
-            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 dark:text-light-900 md:dark:hover:text-primary-600 dark:hover:bg-dark-primary dark:hover:text-primary-600 md:dark:hover:bg-transparent dark:border-dark-600">Resources</a>
+            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 ">Resources</a>
         </li>
         <li>
           <a [routerLink]="'/pricing'" class=" nav-link block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent
-            md:hover:text-primary-900  md:p-0 dark:text-light-900 md:dark:hover:text-primary-600
-            dark:hover:bg-dark-primary dark:hover:text-primary-600 md:dark:hover:bg-transparent
-            dark:border-dark-600 font-semibold">Pricing</a>
+            md:hover:text-primary-900  md:p-0 ">Pricing</a>
         </li>
         <li>
           <a [routerLink]="'/blog'"
-            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 dark:text-light-900 md:dark:hover:text-primary-600 dark:hover:bg-dark-primary dark:hover:text-primary-600 md:dark:hover:bg-transparent dark:border-dark-600">Blog</a>
+            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 ">Blog</a>
         </li>
       </ul>
     </div>
