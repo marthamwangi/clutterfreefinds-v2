@@ -51,7 +51,10 @@ module.exports = {
         600:'#0e1c3699',
         300:'#0e1c364d',
         100:'#0e1c361a'
-      }
+      },
+    'gray':{
+      100:'#F8F8F8'
+    }
     },
     fontFamily: {
       sans: ['Poppins', 'sans-serif'],
@@ -62,10 +65,20 @@ module.exports = {
       },
       minHeight: {
         '128': '32rem',
+        '144':'36rem'
       }
     }
   },
   plugins: [
+    function ({addUtilities}) {
+      const extendUnderline = {
+          '.underline': {
+              'textDecoration': 'underline',
+              'text-decoration-color': '#7a23d3',
+          },
+      }
+      addUtilities(extendUnderline)
+  },
     require('flowbite/plugin'),
     require('@tailwindcss/aspect-ratio')],
 };
