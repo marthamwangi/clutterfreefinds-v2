@@ -18,15 +18,15 @@ export class WhatWeDoComponent {
     link: string;
   }> = [
     {
-      title: 'HOME_PAGE.WHAT_WE_DO.SERVICES.ITEM1.TITLE',
-      description: 'HOME_PAGE.WHAT_WE_DO.SERVICES.ITEM1.DESCRIPTION',
-      image: 'assets/images/decluttering.png',
-      link: '/#',
-    },
-    {
       title: 'HOME_PAGE.WHAT_WE_DO.SERVICES.ITEM2.TITLE',
       description: 'HOME_PAGE.WHAT_WE_DO.SERVICES.ITEM2.DESCRIPTION',
       image: 'assets/images/organizing.png',
+      link: '/#',
+    },
+    {
+      title: 'HOME_PAGE.WHAT_WE_DO.SERVICES.ITEM1.TITLE',
+      description: 'HOME_PAGE.WHAT_WE_DO.SERVICES.ITEM1.DESCRIPTION',
+      image: 'assets/images/decluttering.png',
       link: '/#',
     },
     {
