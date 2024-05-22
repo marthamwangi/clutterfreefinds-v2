@@ -7,7 +7,6 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, NgFor],
   templateUrl: './faq-section.component.html',
-  styleUrls: ['./faq-section.component.scss'],
 })
 export class FaqSectionComponent {
   public questions: Array<{ question: string; answer: string }> = [
