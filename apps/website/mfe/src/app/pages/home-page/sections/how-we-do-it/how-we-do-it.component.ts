@@ -17,7 +17,6 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, NgFor, NgIf, RouterLink, IframeUrlPipe],
   templateUrl: './how-we-do-it.component.html',
-  styleUrls: ['./how-we-do-it.component.scss'],
 })
 export class HowWeDoItComponent implements AfterViewInit, OnDestroy {
   @ViewChild('youtubeVideoRef', { static: true })
