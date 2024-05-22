@@ -8,7 +8,6 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, NgFor, RouterLink],
   templateUrl: './who-is-section.component.html',
-  styleUrls: ['./who-is-section.component.scss'],
 })
 export class WhoIsSectionComponent {
   public carousel: Array<{

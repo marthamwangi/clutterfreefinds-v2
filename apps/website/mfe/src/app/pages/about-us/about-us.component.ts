@@ -16,6 +16,5 @@ import { OurMisionComponent } from './sections/our-mision/our-mision.component';
     OurMisionComponent,
   ],
   templateUrl: './about-us.component.html',
-  styleUrls: ['./about-us.component.scss'],
 })
 export class AboutUsComponent {}

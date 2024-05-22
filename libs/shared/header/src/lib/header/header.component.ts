@@ -20,6 +20,7 @@ import {
       state(
         'open',
         style({
+          display: 'none',
           opacity: 0,
           transform: 'translateY(0.25rem)',
         })
@@ -45,6 +46,7 @@ import {
           '200ms ease-in',
           style({
             opacity: 0,
+            display: 'none',
             transform: 'translateY(0.25rem)',
           })
         ),

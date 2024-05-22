@@ -41,7 +41,20 @@
   margin: 0;
   -webkit-text-stroke: 2px #ffffff;
 }
-
+.text-hollow {
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 4px transparent;
+  color: var(--light);
+  text-align: center;
+  font-weight: 700;
+  font-size: 150px;
+  line-height: 225px;
+  text-align: center;
+  opacity: 0.2;
+  @media (max-width: 768px) {
+    font-size: 75px;
+  }
+}
 :root {
   /**Colors
 */

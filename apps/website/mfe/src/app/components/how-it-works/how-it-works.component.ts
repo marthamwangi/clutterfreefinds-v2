@@ -7,6 +7,5 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, RouterLink],
   templateUrl: './how-it-works.component.html',
-  styleUrls: ['./how-it-works.component.scss'],
 })
 export class HowItWorksComponent {}

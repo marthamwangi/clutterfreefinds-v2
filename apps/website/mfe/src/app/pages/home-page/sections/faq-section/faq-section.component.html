@@ -2,11 +2,11 @@
   {{ 'FAQ.TITLE' | translate }}
 </div>
 <div id="accordion-flush" data-accordion="flush" data-accordion="collapse"
-  data-active-classes="bg-primary-600 text-light-900" data-inactive-classes="text-dark-600">
+  data-active-classes="bg-primary-900 text-light-900" data-inactive-classes="text-dark-600">
   <div *ngFor="let question of questions; index as index">
     <h2 [id]="'faqHeading' + (index + 1)">
       <button type="button"
-        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-dark-600 rounded-lg  hover:text-light-900 hover:bg-primary-900 gap-3"
+        class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-dark-600 rounded-lg  hover:text-light-900 hover:bg-primary-300 gap-3"
         [attr.data-accordion-target]="'#accordion-flush-body'+ (index + 1)" aria-expanded="false"
         [attr.aria-controls]="'accordion-flush-body'+ (index + 1)">
         <span class="flex items-center"><svg class="w-5 h-5 me-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"

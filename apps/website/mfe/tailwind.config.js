@@ -66,7 +66,18 @@ module.exports = {
       minHeight: {
         '128': '32rem',
         '144':'36rem'
-      }
+      },
+      lineHeight: {
+        'extra-loose': '130%'
+       },
+       height:{
+        '128': '32rem',
+        '40-p':'40%'
+       },
+       width:{
+        '128': '32rem',
+        '40-p':'40%'
+       }
     }
   },
   plugins: [
