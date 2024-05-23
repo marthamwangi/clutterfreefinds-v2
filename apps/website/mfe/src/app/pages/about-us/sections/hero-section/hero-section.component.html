@@ -1,26 +1,23 @@
-<section>
-    <div class="flex items-center">
-        <div class="w-full lg:w-5/12" style="margin-bottom: 24px;">
-            <div class="!leading-extra-loose text-2xl lg:text-6xl font-extrabold text-primary-900">
-                {{'ABOUT_US_PAGE.HERO_SECTION.TITLE' |
-                translate}}</div>
-            <div class="mb-2 text-dark-600">{{'ABOUT_US_PAGE.HERO_SECTION.DESCRIPTION'| translate}}
-            </div>
-            <div class="flex flex-col md:flex-row items-center gap-4">
-                <a type="button"
-                    class="inline-flex items-center font-medium justify-center px-4 py-4 text-sm bg-primary-900 text-light-900 dark:text-light-900 rounded-lg cursor-pointer hover:bg-dark-900"
-                    ng-reflect-router-link="instant-quote" href="/instant-quote">{{
-                    'ABOUT_US_PAGE.HERO_SECTION.BUTTON_1' | translate
-                    }}</a>
-                <a type="button"
-                    class="inline-flex items-center font-medium justify-center px-4 py-4 text-md text-primary-900 hover:text-dark-900 cursor-pointer">
-                    {{ 'ABOUT_US_PAGE.HERO_SECTION.BUTTON_2' |
-                    translate }}</a>
-            </div>
+<div class="flex items-center">
+    <div class="w-full lg:w-5/12" style="margin-bottom: 24px;">
+        <div class="!leading-extra-loose text-2xl lg:text-6xl font-extrabold text-primary-900">
+            {{'ABOUT_US_PAGE.HERO_SECTION.TITLE' |
+            translate}}</div>
+        <div class="mb-2 text-dark-600">{{'ABOUT_US_PAGE.HERO_SECTION.DESCRIPTION'| translate}}
         </div>
-        <div class="w-full lg:w-7/12">
-            <img loading="lazy" src="/assets/images/bg/about-us.png"
-                [alt]="'ABOUT_US_PAGE.HERO_SECTION.TITLE' | translate">
+        <div class="flex flex-col md:flex-row items-center gap-4">
+            <a type="button"
+                class="inline-flex items-center font-medium justify-center px-4 py-4 text-sm bg-primary-900 text-light-900 dark:text-light-900 rounded-lg cursor-pointer hover:bg-dark-900"
+                ng-reflect-router-link="instant-quote" href="/instant-quote">{{
+                'ABOUT_US_PAGE.HERO_SECTION.BUTTON_1' | translate
+                }}</a>
+            <a type="button"
+                class="inline-flex items-center font-medium justify-center px-4 py-4 text-md text-primary-900 hover:text-dark-900 cursor-pointer">
+                {{ 'ABOUT_US_PAGE.HERO_SECTION.BUTTON_2' |
+                translate }}</a>
         </div>
     </div>
-</section>
+    <div class="w-full lg:w-7/12">
+        <img loading="lazy" src="/assets/images/bg/about-us.png" [alt]="'ABOUT_US_PAGE.HERO_SECTION.TITLE' | translate">
+    </div>
+</div>

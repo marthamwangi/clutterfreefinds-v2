@@ -7,7 +7,6 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, NgFor],
   templateUrl: './how-it-works-page.component.html',
-  styleUrls: ['./how-it-works-page.component.scss'],
 })
 export class HowItWorksPageComponent {
   public steps: Array<any> = [
