@@ -10,8 +10,7 @@ import {
   ViewChild,
   inject,
 } from '@angular/core';
-import { AsyncPipe, NgFor, NgTemplateOutlet } from '@angular/common';
-import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
+import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   BehaviorSubject,
   Observable,
@@ -32,10 +31,9 @@ import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
 @Component({
   selector: 'iq-quote-service',
   standalone: true,
-  imports: [NgFor, MatTooltipModule, AsyncPipe, FormsModule, NgTemplateOutlet],
+  imports: [NgFor, AsyncPipe, FormsModule, NgTemplateOutlet, NgIf],
 
   templateUrl: './quote-service.component.html',
-  styleUrls: ['./quote-service.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuoteServiceComponent implements OnInit, OnDestroy {
@@ -43,8 +41,6 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
   private _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   @Output() selectedService$ = new EventEmitter<ICffService>();
-  @ViewChild('tooltipRef', { static: false })
-  private _tooltipRef!: MatTooltip;
   @ViewChild('loadingRef')
   private _loadingRef!: TemplateRef<any>;
   @ViewChild('loadedRef')
@@ -140,25 +136,6 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
     this._cff_services$.subscribe((data: Array<ICffService>) => {
       this.cffServices = data;
     });
-  }
-
-  public showCffServiceDescriptionTooltip(service: ICffService, e: any): void {
-    e.preventDefault();
-    this._tooltipRef.show();
-    this.cffServiceTooltip$.next(service.description);
-    this._tooltipRef._tooltipInstance
-      ?.afterHidden()
-      .pipe(take(1))
-      .subscribe({
-        complete: () => {
-          this.resetTooltip();
-        },
-      });
-  }
-
-  public resetTooltip() {
-    this._tooltipRef.hide();
-    this.cffServiceTooltip$.next('');
   }
 
   public onSelectedService(service: ICffService) {

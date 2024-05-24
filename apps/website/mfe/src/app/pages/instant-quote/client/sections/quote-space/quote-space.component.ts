@@ -1,4 +1,4 @@
-import { NgFor, AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import { NgFor, AsyncPipe, NgTemplateOutlet, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -27,9 +27,8 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'iq-quote-space',
   standalone: true,
-  imports: [NgFor, AsyncPipe, FormsModule, NgTemplateOutlet, AsyncPipe],
+  imports: [NgFor, AsyncPipe, FormsModule, NgTemplateOutlet, AsyncPipe, NgIf],
   templateUrl: './quote-space.component.html',
-  styleUrls: ['./quote-space.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuoteSpaceComponent implements OnInit, OnDestroy {

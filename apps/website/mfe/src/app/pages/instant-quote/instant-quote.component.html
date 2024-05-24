@@ -1,4 +1,105 @@
-<main role="main" class="d-flex flex-column container mx-auto">
+<div class="max-w-4xl mx-auto mb-5">
+    <ol class="flex items-center justify-center w-full text-sm font-medium text-center text-dark-600 sm:text-base mb-8">
+        <li *ngFor="let step of renderedSteps; last as isLast" [class.text-primary-900]="step?.status === 'active'"
+            [class.sm:after:hidden]="isLast"
+            class="flex md:w-full items-center sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-dark-300 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10">
+            <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-dark-300 ">
+                <!-- <svg [class.hidden]="currentStep?.status === 'completed'" class="w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5"
+                    aria-hidden="true" xmlns="http://www.w3.org/3000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                </svg> -->
+                {{step.title}}
+            </span>
+        </li>
+    </ol>
+    <div class="flex items-center gap-x-3 ">
+        <button (click)="goBack()" [class.hidden]="currentStepIndex === renderedSteps.length-4"
+            class="flex items-center justify-center self-end w-1/2 p-2 text-sm text-dark-900 transition-colors duration-200 bg-light-900 border rounded-full  gap-x-2 sm:w-auto hover:bg-dark-100">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-5 h-5 rtl:rotate-180">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+            </svg>
+        </button>
+        <!-- class="back-btn border-0" (click)="goBack()" [disabled]="currentStepIndex === 0"
+        [class]="currentStepIndex === 0 ? 'deactivated' : ''"
+        [class.d-none]="currentStepIndex === renderedSteps.length-4"><img loading="lazy"
+            src="assets/icons/arrow-right.svg" alt=""> <span class="d-none d-md-block">Go
+            Back</span> -->
+        <div [formGroup]="createInstantQuote" class="w-full">
+            <ng-container *ngTemplateOutlet="returnStepsTemplate()"> </ng-container>
+        </div>
+        <button [disabled]="instantQuoteForm(steps[currentStepIndex].key)?.invalid" (click)="goToNext()"
+            [class.hidden]="currentStepIndex === renderedSteps.length-1"
+            class="flex items-center justify-center self-end w-1/2 p-2 text-sm text-dark-900 transition-colors duration-200 bg-light-900 border rounded-full  gap-x-2 sm:w-auto hover:bg-dark-100">
+            <svg stroke="currentColor" class="w-5 h-5 rtl:-rotate-180" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M19 12H5m14 0-4 4m4-4-4-4" />
+            </svg>
+
+        </button>
+        <!-- <button class="next-btn border-0" (click)=" goToNext()"
+            [class.d-none]="currentStepIndex === renderedSteps.length-1"
+            [disabled]="instantQuoteForm(steps[currentStepIndex].key)?.invalid"
+            [class]="instantQuoteForm(steps[currentStepIndex].key)?.valid ? '' : 'deactivated'"><span class="d-none
+            d-md-block">Go
+                Next</span> <img loading="lazy" [class.pulse]="steps[0].status === 'active'"
+                src="assets/icons/arrow-right.svg" alt=""></button> -->
+    </div>
+</div>
+
+<ng-template #iqCalendar>
+    <div class="flex">
+        <iq-quote-calendar [dateTime]="_selectedQuoteDate"
+            (selectedDateTime$)="getQuoteDate($event)"></iq-quote-calendar>
+    </div>
+</ng-template>
+
+<ng-template #iqEstimates>
+    <div class="flex mt-5">
+        <div class=" w-full">
+            <div class="font-extrabold text-2xl">
+                {{(price_calculator$ | async)?.min_price | currency:'KES' }}-{{(price_calculator$ |
+                async)?.max_price | currency:'KES' }}
+            </div>
+            <div class="text-xs lg:text-base text-danger-600">Estimated price range may be inaccurate,<br>
+                Please complete the process to receive a final quote</div>
+        </div>
+        <div class="w-24">
+            <div class="hours-container">
+                <span class="hours-header"> {{ 'HOURS_ESTIMATES.HOURS' | translate }} </span>
+                <div class="grid grid-cols-2 grid-x-4" *ngIf="spaceSelected">
+                    <div class="text-xs lg:text-base text-danger-6006">
+                        Min {{spaceSelected.minHours}} Hrs-Max{{spaceSelected.maxHours}} Hrs
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="w-4/12  lg:w-2/12">
+                <div class="hours-container">
+                    <span class="hours-header"> {{ 'HOURS_ESTIMATES.HOURS' | translate }} </span>
+                    <div class="hours-grp" *ngIf="spaceSelected">
+                        <div class="estimate-price-info fs-6">
+                            {{spaceSelected.minHours}}-{{spaceSelected.maxHours}}
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+    </div>
+    <div class=" accordion" id="accordionQuote" data-accordion="collapse">
+        <div class="grid gap-y-3">
+            <iq-quote-service class="w-full lg:min-w-full mt-5"
+                (selectedService$)="getService($event)"></iq-quote-service>
+            <iq-quote-space (selectedSpaceEmit$)="getSpace($event)"></iq-quote-space>
+            <!--   <iq-quote-material (selectedMaterialEmit$)="getMaterial($event)"></iq-quote-material>
+                <iq-quote-additonal-info (additionalInfoEmit$)="getAdditionalInfo($event)"></iq-quote-additonal-info> -->
+        </div>
+    </div>
+</ng-template>
+
+
+<!-- <main role="main" class="d-flex flex-column container mx-auto">
     <div class="row" style="row-gap: 24px;" [formGroup]="createInstantQuote">
         <div class="col-12 d-flex align-items-center justify-content-center form-heading" style="gap: 16px;">
             <button class="back-btn border-0" (click)="goBack()" [disabled]="currentStepIndex === 0"
@@ -74,4 +175,4 @@
             <iq-quote-summary [instantQuote]="this.createInstantQuote.value"></iq-quote-summary>
         </ng-template>
     </div>
-</main>
+</main> -->

@@ -29,9 +29,7 @@
         "apps/website/mfe/src/styles.scss"
       ],
       "scripts": [
-      ],
-      "allowedCommonJsDependencies":[
-        "moment"
+        "node_modules/flowbite-datepicker/dist/js/datepicker-full.min.js"
       ]
       },
       "configurations": {

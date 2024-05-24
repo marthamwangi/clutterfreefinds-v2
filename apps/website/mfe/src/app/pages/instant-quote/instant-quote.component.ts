@@ -124,30 +124,30 @@ export class InstantQuoteComponent implements AfterViewInit {
       fromInstantQuoteSelector.InstantQuoteSelector
     );
     this.renderedSteps = [];
-    this.currentStepIndex = 0;
+    this.currentStepIndex = 1;
     this.steps = {
       0: {
         key: 'date',
         label: 1,
-        title: 'Book a Date',
+        title: 'Booking',
         status: 'active',
       },
       1: {
         key: 'estimates',
         label: 2,
-        title: 'Set your preferences',
+        title: 'Preferences',
         status: 'disabled',
       },
       2: {
         key: 'clientDetails',
         label: 3,
-        title: 'Service address',
+        title: 'Address',
         status: 'disabled',
       },
       3: {
         key: 'quoteSummary',
         label: 4,
-        title: 'Quote Summary',
+        title: 'Finish',
         status: 'disabled',
       },
     };
@@ -178,6 +178,7 @@ export class InstantQuoteComponent implements AfterViewInit {
     return templateMap[this.currentStepIndex];
   }
   getQuoteDate($event: any): void {
+    console.log('_selectedQuoteDate', $event);
     this._selectedQuoteDate = $event;
     this._updateInstantQuoteForm({ date: $event });
     this._priceCalculator();

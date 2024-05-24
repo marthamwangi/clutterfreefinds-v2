@@ -1,159 +1,164 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   OnInit,
   Output,
   ViewChild,
+  inject,
 } from '@angular/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatCardModule } from '@angular/material/card';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, DatePipe, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+declare var Datepicker: any;
 
 interface ITime {
-  value: Array<number>;
+  value: string;
   label: string;
 }
 @Component({
   selector: 'iq-quote-calendar',
   standalone: true,
-  imports: [
-    MatCardModule,
-    MatDatepickerModule,
-    MatMomentDateModule,
-    NgFor,
-    FormsModule,
-    AsyncPipe,
-    NgIf,
-  ],
-  providers: [MatNativeDateModule],
+  imports: [NgFor, FormsModule, AsyncPipe, NgIf, DatePipe],
   templateUrl: './quote-calendar.component.html',
-  styleUrls: ['./quote-calendar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { ngSkipHydration: 'true' },
 })
 export class QuoteCalendarComponent implements OnInit {
   @Output() selectedDateTime$ = new EventEmitter<any>();
   @Input() dateTime!: Date;
+  @ViewChild('dateField', { static: true }) dateField!: ElementRef;
+  private _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 
+  public dataDate!: string;
   public selectedDate!: Date;
-  public minDate: Date = new Date();
   public selectedTime: any;
-
-  // public minDate
   public timePicker: Array<ITime>;
+
+  private formatter = new Intl.DateTimeFormat('en-US', {
+    month: '2-digit',
+    day: '2-digit',
+    year: 'numeric',
+  });
   constructor() {
     this.timePicker = [
       {
-        value: [9, 0, 0],
-        label: '9:00 AM',
+        value: '09:00',
+        label: '09:00 AM',
       },
       {
-        value: [9, 30, 0],
-        label: '9:30 AM',
+        value: '09:30',
+        label: '09:30 AM',
       },
       {
-        value: [10, 0, 0],
+        value: '10:00',
         label: '10:00 AM',
       },
       {
-        value: [10, 30, 0],
+        value: '10:30',
         label: '10:30 AM',
       },
       {
-        value: [11, 0, 0],
+        value: '11:00',
         label: '11:00 AM',
       },
       {
-        value: [11, 30, 0],
+        value: '11:30',
         label: '11:30 AM',
       },
       {
-        value: [12, 0, 0],
+        value: '12:00',
         label: '12:00 PM',
       },
       {
-        value: [12, 30, 0],
+        value: '12:30',
         label: '12:30 PM',
       },
       {
-        value: [1, 0, 0],
-        label: '1:00 PM',
+        value: '01:00',
+        label: '01:00 PM',
       },
       {
-        value: [1, 30, 0],
-        label: '1:30 PM',
+        value: '01:30',
+        label: '01:30 PM',
       },
       {
-        value: [2, 0, 0],
-        label: '2:00 PM',
+        value: '02:00 ',
+        label: '02:00 PM',
       },
       {
-        value: [2, 30, 0],
-        label: '2:30 PM',
+        value: '02:30',
+        label: '02:30 PM',
       },
       {
-        value: [3, 0, 0],
-        label: '3:00 PM',
+        value: '03:00',
+        label: '03:00 PM',
       },
       {
-        value: [3, 30, 0],
-        label: '3:30 PM',
+        value: '03:30',
+        label: '03:30 PM',
       },
       {
-        value: [4, 0, 0],
-        label: '4:00 PM',
+        value: '04:00',
+        label: '04:00 PM',
       },
       {
-        value: [4, 30, 0],
-        label: '4:30 PM',
+        value: '04:30',
+        label: '04:30 PM',
       },
     ];
   }
   ngOnInit(): void {
     this.selectedDate = this.dateTime;
-    this.selectedTime = this.dateTime?.getTime();
-    this._formatTime(this.dateTime);
+    this.dataDate = this.formatter.format(this.dateTime);
+    console.log('dataDate', this.dataDate);
+    this._setTimeSelected(this.dateTime);
+    this.initDatePicker();
   }
 
-  onDatePicked($event: any) {
-    //if time is picked from the db strikethrough it
-    this.selectedDate = new Date($event._d);
+  public _commonChangeDetector(): void {
+    this._changeDetectorRef.detectChanges();
   }
-  onTimePicked($event: Array<number>) {
+
+  initDatePicker(): void {
+    new Datepicker(this.dateField.nativeElement, {
+      minDate: new Date(),
+      todayHighlight: true,
+      daysOfWeekDisabled: [0],
+      title: 'Pick a Date',
+      //if time is picked from the db strikethrough it
+      // datesDisabled:[] booked dates
+    });
+  }
+
+  onDatePicked(e: any) {
+    this.selectedDate = new Date(e.detail.date);
+    this.dataDate = this.formatter.format(new Date(this.selectedDate));
+    this._commonChangeDetector();
+  }
+  onTimePicked($event: string) {
     const time = $event;
     this.selectedTime = time;
     //if time is picked from the db strikethrough it
     this._formatDate(time);
   }
 
-  private _formatTime(date: Date) {
-    let valuesArr: number[] = [];
-    let hours = date?.getHours();
-    let minutes = date?.getMinutes();
-    valuesArr.push(hours);
-    valuesArr.push(minutes);
-    valuesArr.push(0);
-
-    /**
-     * find the timepicker with values given
-     * if hours is less than 12 -> AM else ->pm
-     * append values and labels
-     */
-
-    let time = this.timePicker.find(
-      (time: ITime) => time.value.toString() === valuesArr.toString()
-    );
-    this.selectedTime = time;
+  private _setTimeSelected(date: Date) {
+    this.selectedTime = new Date(date).toTimeString().slice(0, 5);
+    console.log('selectedTime', this.selectedTime);
   }
 
-  private _formatDate(time: any) {
+  private _formatDate(time: string) {
+    console.log('time', time);
+    var timeParts = time
+      .split(':')
+      .map((timePartString) => parseInt(timePartString));
+
     let date = this.selectedDate;
-    let format = date.setHours(time[0], time[1], 0);
+    let format = date.setHours(timeParts[0], timeParts[1]);
+
     var d = new Date();
     d.setTime(format);
     d.toDateString();

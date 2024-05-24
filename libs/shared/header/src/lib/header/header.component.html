@@ -74,9 +74,9 @@
                   </div>
                 </div>
               </div>
-              <div class="grid divide-x divide-dark-300 bg-dark-100">
+              <div class="flex divide-x divide-dark-100 bg-dark-100">
                 <a href="https://www.youtube.com/watch?v=eZClhYwU7Qc&t=245s" target="_blank"
-                  class="flex items-center justify-start gap-x-2.5 p-4 font-semibold text-dark-900 hover:bg-dark-100">
+                  class="w-3/4 flex items-center justify-start p-2 font-semibold text-dark-900 hover:bg-dark-100 gap-x-2.5">
                   <svg class="w-6 h-6 text-danger-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" fill="currentColor" viewBox="0 0 24 24">
                     <path fill-rule="evenodd"
@@ -84,6 +84,10 @@
                       clip-rule="evenodd" />
                   </svg>
                   Watch our work on YouTube
+                </a>
+                <a (click)="toggleCustomerMegaMenu()"
+                  class="flex items-center justify-center p-2 font-semibold text-dark-900 cursor-pointer text-center">
+                  Close
                 </a>
               </div>
             </div>

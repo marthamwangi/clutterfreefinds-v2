@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 /* You can add global styles to this file, and also import other style files */
-@import 'node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import 'ngx-toastr/toastr';
 
 @font-face {
@@ -12,7 +11,19 @@
   src: url('assets/fonts/poppins/poppins-regular-webfont.woff2') format('woff2');
   font-display: swap;
 }
+span.datepicker-cell.disabled.cursor-not-allowed {
+  text-decoration: line-through !important;
+  color: #191d231a !important;
+  border-radius: 50%;
+}
+span.datepicker-cell {
+  border-radius: 50%;
+}
 
+span.datepicker-cell.selected {
+  background-color: #7a23d3;
+  color: #ffffff;
+}
 @media (min-width: 480.98px) {
   .nav-link {
     position: relative;
