@@ -1,4 +1,4 @@
-import { NgFor, AsyncPipe, NgIf } from '@angular/common';
+import { NgFor, AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -14,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 import { IMaterialModel } from './models/material.model';
 import { Observable, Subject, firstValueFrom, takeUntil } from 'rxjs';
 import { RouterOutlet } from '@angular/router';
-import { MatTabsModule } from '@angular/material/tabs';
 import { TabComponent } from './sections/tab/tab.component';
 import { Store } from '@ngrx/store';
 import { AppState } from 'apps/website/mfe/src/app/shared/interface';
@@ -34,9 +33,9 @@ import { ToastrService } from 'ngx-toastr';
     NgFor,
     AsyncPipe,
     FormsModule,
-    MatTabsModule,
     TabComponent,
     NgIf,
+    NgTemplateOutlet,
   ],
   templateUrl: './quote-material.component.html',
   styleUrls: ['./quote-material.component.scss'],
@@ -52,12 +51,6 @@ export class QuoteMaterialComponent implements OnInit {
   private _loadingRef!: TemplateRef<any>;
   @ViewChild('loadedRef')
   private _loadedRef!: TemplateRef<any>;
-
-  @ViewChild('Pros', { static: true })
-  private Pros!: TemplateRef<any>;
-
-  @ViewChild('Cons', { static: true })
-  private Cons!: TemplateRef<any>;
 
   public materialSelected: IMaterialModel | undefined = undefined;
 
@@ -101,7 +94,7 @@ export class QuoteMaterialComponent implements OnInit {
     this._unsubscribe$.next(true);
     this._unsubscribe$.complete();
   }
-  public _commonChangeDetector(): void {
+  private _commonChangeDetector(): void {
     this._changeDetectorRef.detectChanges();
   }
 
@@ -132,11 +125,17 @@ export class QuoteMaterialComponent implements OnInit {
   }
 
   private _setTabs() {
-    this.allTabs = [
-      { name: 'Pros', template: this.Pros },
-      { name: 'Cons', template: this.Cons },
-    ];
-    this._commonChangeDetector();
+    (this.allTabs = {
+      pros: {
+        label: 'Pros',
+        items: this.materialSelected?.pros,
+      },
+      cons: {
+        label: 'Cons',
+        items: this.materialSelected?.cons,
+      },
+    }),
+      this._commonChangeDetector();
   }
   public async loadMaterials() {
     const existingSpaces = await firstValueFrom(this._cff_materials$);
@@ -201,6 +200,7 @@ export class QuoteMaterialComponent implements OnInit {
           selected_material: materialObj,
         })
       );
+      this._setTabs();
       this.selectedMaterialEmit$.emit(materialObj);
     }
   }

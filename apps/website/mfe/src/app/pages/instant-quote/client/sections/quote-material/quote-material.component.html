@@ -1,57 +1,45 @@
-<div class="accordion-item ">
-    <div class="accordion-header" id="headingMaterial">
-        <button [disabled]="(space_selected$ | async)?.id === ''" (click)="loadMaterials()"
-            [class.isCompleted]="materialSelected?.name !== ''" class="accordion-button" type="button"
-            data-bs-toggle="collapse" data-bs-target="#collapseMaterial" aria-expanded="true"
-            aria-controls="collapseMaterial">
-            <div class="row steps w-100">
-                <div class="col-auto step-text-number">Step 3:</div>
-                <div class="col step-text">Select Material (optional)</div>
-            </div>
-        </button>
-    </div>
-    <div id="collapseMaterial" class="accordion-collapse collapse" aria-labelledby="headingMaterial"
-        data-bs-parent="#accordionQuote">
-        <div class="accordion-body">
-            <div class="cff-materials">
-                <div class="d-flex align-items-start justify-content-between" style="column-gap: 24px;">
-                    <div class="flex-grow-1 d-flex flex-column" style="column-gap: 24px;">
-                        <div class="d-flex align-items-center" style="column-gap: 24px;">
-                            <div class=" select-header">Material</div>
-                            <select class="form-select" (change)="fnSelectMaterial($event)">
-                                <option [selected]="(_material_selected$ | async)?.id === material.id"
-                                    *ngFor=" let material of materialsArr;" [value]="material.id">
-                                    {{material.name}}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="">
-                        <a (click)="setDefaultMaterial()" style="color: var(--purple-100);">Skip</a>
-                    </div>
-                </div>
-                <material-tabs [tabsName]="allTabs"></material-tabs>
-                <ng-template #Pros>
-                    <div class="material-container">
-                        <div class="pros list-item" *ngFor="let pro of (_material_selected$ | async)?.pros">
-                            <div class="circle-check-purple-30">
-                                <img loading="lazy" src="assets/icons/check-purple.svg" alt="house organizing products">
-                            </div>
-                            <div>{{pro}}</div>
-                        </div>
-                    </div>
-                </ng-template>
-                <ng-template #Cons>
-                    <div class="material-container">
-                        <div class="cons list-item " *ngFor="let con of (_material_selected$ | async)?.cons">
-                            <div class="circle-check-red-30"> <img loading="lazy" alt="clutter free finds services"
-                                    src="/assets/icons/red-close.svg" alt="house organizing products">
-                            </div>
-                            <div>{{con}}</div>
-                        </div>
-                    </div>
-                </ng-template>
-            </div>
-        </div>
+<h2 id="accordion-collapse-heading-material">
+    <button type="button" [disabled]="(space_selected$ | async)?.id === ''" (click)="loadMaterials()"
+        [class.text-primary-900]="materialSelected?.name !== ''" class=" flex items-center justify-between w-full p-5 font-bold text-dark-600 border rounded-lg gap-3
+        bg-primary-100" data-accordion-target="#accordion-collapse-body-material" aria-expanded="false"
+        aria-controls="accordion-collapse-body-material">
+        <span>Step 3: Select Material</span>
+        <svg *ngIf="materialSelected?.name !== ''" class=" w-6 h-6 text-secondary-900" aria-hidden="false"
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd"
+                d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z"
+                clip-rule="evenodd" />
+        </svg>
+    </button>
+</h2>
+<div id="accordion-collapse-body-material" class="hidden" aria-labelledby="accordion-collapse-heading-service">
+    <div class="p-5">
+        <ng-container *ngTemplateOutlet="returnListTemplate()"></ng-container>
     </div>
 </div>
+<ng-template #loadingRef>
+    <div role="status" class="flex flex-wrap gap-2">
+        <div class="flex items-center justify-between rounded-lg rounded bg animate-pulse  w-1/4 gap-x-2">
+            <div class=" h-10 bg-dark-100 rounded-full w-full p-2"></div>
+        </div>
+        <span class="sr-only">Loading...</span>
+    </div>
+</ng-template>
+<ng-template #loadedRef>
+    <div class="flex justify-between items-end gap-3">
+        <div class="w-full">
+            <label for="materials" class="block mb-2 text-base font-semibold text-dark-900">Material</label>
+            <select id="materials" (change)="fnSelectMaterial($event)"
+                class="bg-light-900 border border-dark-300 text-dark-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                <option [selected]="(_material_selected$ | async)?.id === material.id"
+                    *ngFor=" let material of materialsArr;" [value]="material.id">
+                    {{material.name}}
+                </option>
+            </select>
+        </div>
+
+        <a (click)="setDefaultMaterial()"
+            class="text-primary-900 border rounded-lg border-primary-900 px-3 py-2 cursor-pointer">Skip</a>
+    </div>
+    <material-tabs [tabs]="allTabs"></material-tabs>
+</ng-template>
