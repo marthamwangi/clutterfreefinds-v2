@@ -1,22 +1,23 @@
-<div class="flex flex-col max-w-2xl mx-auto  my-12 mx-auto">
-    <div class="text-2xl lg:text-6xl font-extrabold text-center mb-12">{{'HOW_IT_WORKS_PAGE.TITLE' | translate}}</div>
+<div class="flex flex-col max-w-2xl mx-auto  my-12 mx-auto px-3">
+    <div class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-center mb-12">{{'HOW_IT_WORKS_PAGE.TITLE' |
+        translate}}</div>
     <div class="w-full  flex items-start" *ngFor="let step of steps; index as i">
         <div class="bg-primary-900 w-1.5 h-60">
             <div
-                class="flex items-center justify-center -ml-3 text-sm lg:text-lg rounded-full bg-primary-900 w-8 h-8 font-semibold text-light-900">
+                class="flex items-center justify-center -ml-3 text-sm md:text-lg rounded-full bg-primary-900 w-8 h-8 font-semibold text-light-900">
                 {{i+1}}
             </div>
         </div>
         <div class="w-full">
             <div class="pl-4 lg:pl-5">
-                <div class="font-semibold text-lg lg:text-2xl mb-5 ">{{step.title | translate}}</div>
+                <div class="font-semibold text-lg lg:text-2xl mb-5 ml-2 ">{{step.title | translate}}</div>
                 <div *ngFor="let text of step.steps" class=" flex items-start">
                     <svg class="w-5 h-5 me-2 text-secondary-900 dark:text-secondary-300 flex-shrink-0"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         <path
                             d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
                     </svg>
-                    <span class="text-sm lg:text-lg text-dark-600">
+                    <span class="text-sm md:mb-3 md:text-lg text-dark-600">
                         {{text | translate}}
                     </span>
                 </div>

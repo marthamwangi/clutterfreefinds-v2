@@ -18,14 +18,12 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { APP_EFFECTS, APP_STORE } from './shared/interface';
-import { BannerComponent } from './components/banner/banner.component';
 
 @NgModule({
   declarations: [AppComponent, ToastrComponent],
   imports: [
     FooterComponent,
     HeaderComponent,
-    BannerComponent,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,

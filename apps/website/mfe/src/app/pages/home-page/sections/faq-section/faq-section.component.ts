@@ -1,6 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { initAccordions } from 'flowbite';
 
 @Component({
   selector: 'cff-v2-faq-section',
@@ -31,4 +32,8 @@ export class FaqSectionComponent {
       answer: 'FAQ.QUESTIONS.ITEM_5.ANSWER',
     },
   ];
+
+  ngOnInit() {
+    initAccordions();
+  }
 }

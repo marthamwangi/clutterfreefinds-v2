@@ -1,66 +1,105 @@
-<div class="accordion-item ">
-    <div class="accordion-header" id="headingQuoteInfo">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQuoteInfo"
-            aria-expanded="true" aria-controls="collapseQuoteInfo"
-            [class.isCompleted]="notes !== '' || filesArr.length !== 0">
-            <div class="row  steps w-100">
-                <div class="col-auto step-text-number">Step 4:</div>
-                <div class="col step-text">Additional information (optional) </div>
+<h2 id="accordion-collapse-heading-additional-info">
+    <button type="button" [class.text-primary-900]="notes !== '' || filesArr.length !== 0"
+        class="flex items-center justify-between w-full p-5 font-bold text-dark-600 border rounded-lg gap-3 bg-primary-100"
+        data-accordion-target="#accordion-collapse-body-additional-info" aria-expanded="false"
+        aria-controls="accordion-collapse-body-additional-info">
+        <span class="text-xs lg:text-base">Step 4: Additional Info (optional)</span>
+        <svg *ngIf="notes !== '' || filesArr.length !== 0" class="w-6 h-6 text-secondary-900" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd"
+                d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z"
+                clip-rule="evenodd" />
+        </svg>
+    </button>
+</h2>
+<div id="accordion-collapse-body-additional-info" class="hidden" aria-labelledby="accordion-collapse-heading-service">
+    <div class="p-5">
+        <div class=" flex flex-wrap items-center rounded-lg rounded w-full gap-2">
+            <div class="font-semibold text-base w-full flex items-center gap-2">Pictures of your mess
+                <button [disabled]="(filesArr$ | async).length === 0" data-tooltip-target="tooltip-pictures"
+                    type="button">
+                    <img class="w-5 h-5" loading="lazy" src="/assets/icons/info.svg" alt="Professional organizing">
+                </button>
+                <div id="tooltip-pictures" role="tooltip"
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-xs lg:text-base font-medium text-light-900 transition-opacity duration-300 bg-dark-600 rounded-lg shadow-sm opacity-0 tooltip min-w-48  w-96">
+                    {{mediaPrivacy}}
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
             </div>
-        </button>
+            <div class="w-full grid lg:grid-cols-2 gap-4 lg:gap-3">
+                <div class="">
+                    <input class="hidden" type="file" name="files" id="messFiles" multiple
+                        (change)=" onFilesSelected($event)" accept="image/*">
+                    <label for="messFiles" class="flex justify-around items-center cursor-pointer">
+                        <div class="text-base flex justify-between gap-2 text-xs lg:text-base">Choose files <svg
+                                class="w-4 h-4 lg:w-6 lg:h-6 text-dark-600" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 5v9m-5 0H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2M8 9l4-5 4 5m1 8h.01" />
+                            </svg>
+                        </div>
+                        <button type="button" data-modal-target="images-modal" data-modal-toggle="images-modal"
+                            class="rounded-full bg-primary-900 text-light-900 px-3 py-2.5 text-xs lg:text-base">Preview
+                            {{filesCount}} Images
+                        </button>
+                    </label>
+                </div>
+                <div class="">
+                    <textarea id="message" rows="4"
+                        class="block p-2.5 w-full text-sm text-dark-900 bg-dark-100 rounded-lg border border-dark-300 focus:ring-primary-600 focus:border-primary-600"
+                        placeholder="Write your addidional request here..." (change)="onAdditionalNotesChange($event)"
+                        [(ngModel)]="notes"></textarea>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="collapseQuoteInfo" class="accordion-collapse collapse show" aria-labelledby="headingQuoteInfo"
-        data-bs-parent="#accordionQuote">
-        <div class="accordion-body">
-            <div class="cff-quote-additional-info row">
-                <div class="col-12 col-lg-6">
-                    <div class="info-header d-flex align-items-center" style="gap: 8px;">
-                        <div>Pictures of your mess</div>
-                        <div class="d-inline-flex align-items-center position-relative" #tooltipRef="matTooltip"
-                            [matTooltip]="mediaPrivacy" matTooltipPosition="above"><img loading="lazy"
-                                src="assets/icons/bi_info-circle.svg" alt="Professional organizing"></div>
-                    </div>
-                    <div class="row" style="margin-top: 16px;">
-                        <div class="col-6">
-                            <input type="file" name="files" id="messFiles" multiple (change)=" onFilesSelected($event)"
-                                accept="image/*">
-                            <label for="messFiles" class="cff-quote-info">
-                                <div class="file-text">Choose files </div>
-                                <div>
-                                    <img loading="lazy" src="assets/icons/upload.svg"
-                                        alt="Professional Organizing Before Pictures" />
-                                </div>
-                            </label>
-                        </div>
-                        <div class="col-6 file-count">
-                            <div class="img-count">{{filesCount}} Images Uploaded</div>
-                            <div>
-                                <img loading="lazy" src="assets/icons/close-rounded.svg"
-                                    alt="Professional Organizing Before Pictures">
-                            </div>
-
-                        </div>
-                        <div class="row row-cols-1 row-cols-md-2 g-2 mt-5" id="preview">
-                            <div *ngFor="let img of (filesArr$ | async); index as i" class="col img-container">
-                                <img loading="lazy" [src]="img" alt="">
-                                <div class="overlay">
-                                    <a (click)="deleteImage(i)" class="trash">
-                                        <img loading="lazy" src="/assets/icons/trash-bin.svg" alt="" width="24">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="col-12 col-lg-6">
-                    <div class="info-header">Additional notes</div>
+</div>
+<!-- Main modal -->
+<div id="images-modal" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow">
+            <!-- Modal header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                <h3 class="text-xl font-semibold text-dark-900">
+                    Pictures of Mess
+                </h3>
+                <button type="button"
+                    class="text-dark-300 bg-transparent hover:bg-dark-300 hover:text-dark-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                    data-modal-hide="images-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <!-- Modal body -->
+            <div class="p-4 md:p-5 grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div *ngFor="let img of (filesArr$ | async); index as i"
+                    class="relative transition-all duration-300 cursor-pointer">
                     <div>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Type here"
-                            (change)="onAdditionalNotesChange($event)" [(ngModel)]="notes"></textarea>
-                    </div>
+                        <img class="min-h-48 max-h-48 max-w-full rounded-lg" [src]="img" alt="image description">
+                    </div> <a (click)="deleteImage(i)"
+                        class="absolute inset-0 z-50 bg-dark-100/50 hover:bg-dark-100/10 rounded-lg flex items-center justify-center">
+                        <svg class="w-8 h-8 text-light-900 rounded-full p-1.5 bg-light-100" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
                 </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="flex items-center justify-center p-4 md:p-5">
+                <button data-modal-hide="images-modal" type="button"
+                    class="py-2.5 px-5 ms-3 text-sm font-medium text-light-900 focus:outline-none bg-primary-900 rounded-lg border border-dark-300 hover:bg-dark-900 hover:text-light-900 focus:z-10 focus:ring-4 focus:ring-dark-100">Close</button>
             </div>
         </div>
     </div>

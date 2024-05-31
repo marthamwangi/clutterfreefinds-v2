@@ -19,25 +19,25 @@ export class TheProcessComponent {
       number: '1',
       title: 'HOME_PAGE.THE_PROCESS.PROCESS.ITEM_1.TITLE',
       description: 'HOME_PAGE.THE_PROCESS.PROCESS.ITEM_1.DESCRIPTION',
-      image: 'consult.png',
+      image: 'consult.svg',
     },
     {
       number: '2',
       title: 'HOME_PAGE.THE_PROCESS.PROCESS.ITEM_2.TITLE',
       description: 'HOME_PAGE.THE_PROCESS.PROCESS.ITEM_2.DESCRIPTION',
-      image: 'estimate.png',
+      image: 'estimate.svg',
     },
     {
       number: '3',
       title: 'HOME_PAGE.THE_PROCESS.PROCESS.ITEM_3.TITLE',
       description: 'HOME_PAGE.THE_PROCESS.PROCESS.ITEM_3.DESCRIPTION',
-      image: 'schedule.png',
+      image: 'schedule.svg',
     },
     {
       number: '4',
       title: 'HOME_PAGE.THE_PROCESS.PROCESS.ITEM_4.TITLE',
       description: 'HOME_PAGE.THE_PROCESS.PROCESS.ITEM_4.DESCRIPTION',
-      image: 'transform.png',
+      image: 'transform.svg',
     },
   ];
   bookACall() {

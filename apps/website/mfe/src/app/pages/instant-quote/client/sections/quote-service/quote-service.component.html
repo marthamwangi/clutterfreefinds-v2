@@ -3,7 +3,7 @@
         class="flex items-center justify-between w-full p-5 font-bold text-dark-600 border rounded-lg gap-3 bg-primary-100"
         data-accordion-target="#accordion-collapse-body-service" aria-expanded="false"
         aria-controls="accordion-collapse-body-service">
-        <span>Step 1: Select Service</span>
+        <span class="text-xs lg:text-base">Step 1: Select Service</span>
         <svg *ngIf="selectedCffService?.id !== ''" class="w-6 h-6 text-secondary-900" aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
             <path fill-rule="evenodd"
@@ -34,7 +34,7 @@
                     <img class="w-6 h-6" loading="lazy" [src]="'/assets/icons/cff-services/' +service.label+'.svg'" />
                 </div>
                 <label [for]="'radio-service-btn-'+i" [class.bg-primary-300]="selectedCffService?.id === service.id"
-                    class="bg-light-900 border border-dark-300 text-dark-900 text-md rounded-full block w-full px-12 p-2.5">
+                    class="bg-light-900 border border-dark-300 text-dark-900 text-md rounded-full block w-full px-12 p-2.5 text-xs lg:text-base">
                     {{service.name}}
                 </label>
                 <input type="radio" name="service" [id]="'radio-service-btn-'+i" [value]="service" class="hidden"
@@ -45,7 +45,7 @@
                     <img class="w-5 h-5" loading="lazy" src="/assets/icons/info.svg" [alt]="service.name">
                 </button>
                 <div [id]="'tooltip-'+service.label" role="tooltip"
-                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-xs lg:text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                     {{service.description}}
                     <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>

@@ -4,7 +4,7 @@
         class="flex items-center justify-between w-full p-5 font-bold text-dark-600 border rounded-lg gap-3 bg-primary-100"
         data-accordion-target="#accordion-collapse-body-space" aria-expanded="false"
         aria-controls="accordion-collapse-body-space">
-        <span>Step 2: Select Space</span>
+        <span class="text-xs lg:text-base">Step 2: Select Space</span>
         <svg *ngIf="selectedCffSpace?.id !== ''" class="w-6 h-6 text-secondary-900" aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
             <path fill-rule="evenodd"
@@ -29,10 +29,10 @@
 </ng-template>
 <ng-template #loadedRef>
     <div class=" flex flex-wrap items-center rounded-lg rounded w-full gap-2">
-        <div class="flex w-max" *ngFor="let space of spacesArr; index as i;">
+        <div class="flex w-min" *ngFor="let space of spacesArr; index as i;">
             <div class="w-full">
                 <label [for]="'radio-space-btn-'+i" [class.bg-primary-300]="selectedCffSpace?.id === space.id"
-                    class="bg-light-900 border border-dark-300 text-dark-900 text-md rounded-full block w-full px-12 p-2.5">
+                    class="bg-light-900 border border-dark-300 text-dark-900 text-md rounded-full block w-full p-2.5 text-xs lg:text-base">
                     {{space.name}}
                 </label>
                 <input class="hidden" type="radio" name="space" [id]="'radio-space-btn-'+i" [value]="space"

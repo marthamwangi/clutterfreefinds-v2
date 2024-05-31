@@ -1,7 +1,7 @@
 <div class="bg-light-900">
-  <div class="max-w-screen-xl py-24 sm:px-6 sm:py-32 lg:px-8">
+  <div class="max-w-screen-xl sm:px-6 lg:px-8">
     <div
-      class="relative isolate overflow-hidden bg-primary-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+      class="relative isolate overflow-hidden bg-primary-900 px-6 pt-8 shadow-2xl rounded-lg sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
       <svg viewBox="0 0 1024 1024"
         class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
         aria-hidden="true">
@@ -14,17 +14,19 @@
         </defs>
       </svg>
       <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
-        <h2 class="text-3xl font-bold tracking-tight text-light-900 sm:text-4xl">{{ 'HOME_PAGE.OUR_COMMUNITY.TITLE' |
-          translate }} </h2>
-        <p class="mt-6 text-lg leading-8 text-light-600"> {{ 'HOME_PAGE.OUR_COMMUNITY.DESCRIPTION' | translate }}
+        <div class="text-center font-extrabold text-light-900 text-3xl md:text-4xl lg:text-5xl">{{
+          'HOME_PAGE.OUR_COMMUNITY.TITLE' |
+          translate }} </div>
+        <p class="mt-6 text-sm md:text-lg leading-8 text-light-600"> {{ 'HOME_PAGE.OUR_COMMUNITY.DESCRIPTION' |
+          translate }}
         </p>
         <div class="mt-10 flex flex-col md:flex-row items-center justify-center gap-6 lg:justify-start">
           <a [routerLink]="['instant-quote']"
-            class="rounded-md bg-light-900 px-3.5 py-2.5 text-sm font-semibold text-dark-900 shadow-sm hover:text-light-900 hover:bg-dark-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-light-900">{{
+            class="rounded-md bg-light-900  inline-flex items-center font-medium justify-center text-sm px-4 py-4 text-dark-900 shadow-sm hover:text-light-900 hover:bg-dark-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-light-900">{{
             'HOME_PAGE.OUR_COMMUNITY.BUTTON_1' | translate
             }}</a>
           <a (click)="bookACall()"
-            class="cursor-pointer rounded-md px-3.5 py-2.5 text-sm font-semibold text-light-900 shadow-sm hover:bg-dark-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-light-900">
+            class="cursor-pointer rounded-md inline-flex items-center font-medium justify-center text-sm px-4 py-4 text-light-900 shadow-sm hover:bg-dark-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-light-900">
             <span>{{
               'HOME_PAGE.OUR_COMMUNITY.BUTTON_2'
               |
@@ -32,9 +34,11 @@
           </a>
         </div>
       </div>
-      <div class="relative mt-16 h-80 lg:mt-8">
-        <img class="absolute top-0 w-[57rem] max-w-none rounded-md bg-light-100/5 ring-1 ring-light-900/10"
-          src="/assets/images/map-clutter-free-finds.svg" alt=" Home organizing kenya">
+      <div class="relative mt-4 h-80 lg:mt-8">
+        <div
+          class="absolute top-0 max-sm:bottom-0 w-screen lg:w-[57rem] max-w-none rounded-md bg-light-100/5 ring-1 ring-light-900/10">
+          <img class="" src="/assets/images/map-clutter-free-finds.svg" alt=" Home organizing kenya">
+        </div>
       </div>
     </div>
   </div>

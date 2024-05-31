@@ -10,10 +10,17 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { BannerComponent } from './banner/banner.component';
 @Component({
   selector: 'cff-header',
   standalone: true,
-  imports: [TranslateModule, LanguageComponent, NgFor, RouterLink],
+  imports: [
+    TranslateModule,
+    LanguageComponent,
+    NgFor,
+    RouterLink,
+    BannerComponent,
+  ],
   templateUrl: './header.component.html',
   animations: [
     trigger('openClose', [

@@ -3,6 +3,7 @@ import { fromInstantQuoteActions } from './quote.actions';
 import { InstantQuoteState } from '../../interface';
 
 const initialState: InstantQuoteState = {
+  service_date: '',
   min_price: 0,
   max_price: 0,
   is_loading: false,
@@ -13,14 +14,15 @@ const initialState: InstantQuoteState = {
 
 export const INSTANT_QUOTE_REDUCER = createReducer(
   initialState,
-  on(fromInstantQuoteActions.QuotePrice.min_price, (state, { min_price }) => ({
-    ...state,
-    min_price: min_price,
-  })),
-  on(fromInstantQuoteActions.QuotePrice.max_price, (state, { max_price }) => ({
-    ...state,
-    max_price: max_price,
-  })),
+  on(
+    fromInstantQuoteActions.QuotePrice.data,
+    (state, { min_price, max_price, service_date }) => ({
+      ...state,
+      min_price,
+      max_price,
+      service_date,
+    })
+  ),
   on(fromInstantQuoteActions.Quote.quoteAdd, (state) => ({
     ...state,
     is_loading: true,

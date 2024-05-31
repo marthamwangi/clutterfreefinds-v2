@@ -3,7 +3,7 @@
         [class.text-primary-900]="materialSelected?.name !== ''" class=" flex items-center justify-between w-full p-5 font-bold text-dark-600 border rounded-lg gap-3
         bg-primary-100" data-accordion-target="#accordion-collapse-body-material" aria-expanded="false"
         aria-controls="accordion-collapse-body-material">
-        <span>Step 3: Select Material</span>
+        <span class="text-xs lg:text-base">Step 3: Select Material</span>
         <svg *ngIf="materialSelected?.name !== ''" class=" w-6 h-6 text-secondary-900" aria-hidden="false"
             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
             <path fill-rule="evenodd"
@@ -28,7 +28,8 @@
 <ng-template #loadedRef>
     <div class="flex justify-between items-end gap-3">
         <div class="w-full">
-            <label for="materials" class="block mb-2 text-base font-semibold text-dark-900">Material</label>
+            <label for="materials"
+                class="block mb-2 text-base font-semibold text-dark-900 text-sm lg:text-base">Material</label>
             <select id="materials" (change)="fnSelectMaterial($event)"
                 class="bg-light-900 border border-dark-300 text-dark-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
                 <option [selected]="(_material_selected$ | async)?.id === material.id"
@@ -39,7 +40,7 @@
         </div>
 
         <a (click)="setDefaultMaterial()"
-            class="text-primary-900 border rounded-lg border-primary-900 px-3 py-2 cursor-pointer">Skip</a>
+            class="text-primary-900 border rounded-lg border-primary-900 px-3 py-2 cursor-pointer text-xs lg:text-base">Skip</a>
     </div>
     <material-tabs [tabs]="allTabs"></material-tabs>
 </ng-template>

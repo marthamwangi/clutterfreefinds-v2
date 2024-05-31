@@ -1,17 +1,17 @@
-<div class="mb-4 text-center text-3xl font-extrabold text-dark-900 lg:text-5xl">
+<div class="text-center font-extrabold text-dark-900 text-3xl md:text-4xl lg:text-5xl">
   <span class="d-inline-flex me-1">{{
     'HOME_PAGE.WHAT_WE_DO.TITLE' | translate
     }}</span><span class="text-transparent bg-clip-text bg-gradient-to-r to-secondary-900 from-primary-900">{{
     'HOME_PAGE.WHAT_WE_DO.GRADIENT' | translate
     }}</span>
 </div>
-<div class="text-dark-600 text-center md:w-4/5 mx-auto mb-4 md:mb-9 ">
+<div class="text-dark-600 md:text-center md:w-4/5 mx-auto mb-4 md:mb-9 ">
   {{ 'HOME_PAGE.WHAT_WE_DO.DESCRIPTION' | translate }}
 </div>
 <div class="grid grid-cols-1 gap-4 md:grid-cols-3 justify-center mb-8 rounded-lg ">
   <figure *ngFor="let servie of services"
     class="flex flex-col items-center justify-center p-2 md:p-4 text-center rounded-lg bg-secondary-100/5">
-    <img loading="lazy" alt="clutter free finds services" [src]="servie.image" class="h-auto w-3/4" />
+    <img loading="lazy" alt="clutter free finds services" [src]="servie.image" class="h-auto w-40 lg:w-60" />
     <figcaption class="flex items-center justify-center">
       <h3 class="text-lg font-semibold text-dark-900 md:text-2xl">{{ servie.title | translate }}</h3>
     </figcaption>

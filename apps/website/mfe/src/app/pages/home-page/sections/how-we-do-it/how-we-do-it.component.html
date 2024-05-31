@@ -1,16 +1,16 @@
-<div class="bg-[url('/assets/images/bg/cubes.png')] bg-no-repeat bg-center p-3 p-md-5">
-  <div class="flex">
-    <div class="w-full md:w-1/2 flex flex-col items-center lg:items-start">
-      <div class="text-2xl lg:text-4xl font-extrabold mb-2 text-dark-900">
+<div class="bg-[url('/assets/images/bg/cubes.png')] bg-no-repeat bg-center p-3 p-md-5 bg-light-900 bg-blend-multiply">
+  <div class="flex flex-col lg:flex-row">
+    <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start">
+      <div class="text-center font-extrabold text-dark-900 text-3xl md:text-4xl lg:text-5xl">
         {{ 'HOME_PAGE.HOW_WE_DO_IT.TITLE' | translate }}
       </div>
-      <div class="mb-4 text-sm lg:text-lg font-normal text-dark-600">
+      <div class="mb-4 text-sm md:text-lg font-normal text-dark-600  md:w-4/5 mx-auto">
         <span *ngFor="let description of description">
           <span [class.font-extrabold]="description.bold">
             {{ description.title | translate }}</span>
         </span>
       </div>
-      <ul class="max-w-md space-y-1 text-dark-600 list-inside">
+      <ul class="max-w-md space-y-1 text-dark-900 list-inside">
         <li class="flex items-center" *ngFor="let item of [1, 2, 3, 4, 5, 6]">
           <svg class="w-4 h-4 me-2  flex-shrink-0 fill-primary-100 stroke-primary-900" aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -21,13 +21,13 @@
         </li>
       </ul>
       <a [routerLink]="['/instant-quote']" type="button" data-dropdown-toggle="language-dropdown-menu"
-        class="my-6 inline-flex items-center font-medium justify-center px-4 py-2 text-sm bg-primary-900 text-light-900 rounded-lg cursor-pointer hover:bg-dark-900">
+        class="my-6 inline-flex items-center font-medium justify-center px-4 py-4 text-sm bg-primary-900 text-light-900 rounded-lg cursor-pointer hover:bg-dark-900">
         {{
         'HOME_PAGE.HOW_WE_DO_IT.BUTTON' | translate
         }}
       </a>
     </div>
-    <div #youtubeVideoRef class="w-full md:w-1/2 self-center flex justify-center">
+    <div #youtubeVideoRef class="w-full lg:w-1/2 self-center flex justify-center">
       <iframe *ngIf="isVideoVisible" loading="lazy" width="560" height="315" class="w-3/4 aspect-video rounded-lg"
         [src]="ytIframe | iframeUrl" title=" YouTube video player" frameborder="0"
         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

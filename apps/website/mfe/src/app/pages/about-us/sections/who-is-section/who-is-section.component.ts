@@ -1,7 +1,8 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { initCarousels } from 'flowbite';
 
 @Component({
   selector: 'about-who-is-section',
@@ -9,7 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [TranslateModule, NgFor, RouterLink],
   templateUrl: './who-is-section.component.html',
 })
-export class WhoIsSectionComponent {
+export class WhoIsSectionComponent implements OnInit {
   public carousel: Array<{
     active: boolean;
     images: Array<{
@@ -102,4 +103,8 @@ export class WhoIsSectionComponent {
       ],
     },
   ];
+
+  ngOnInit() {
+    initCarousels();
+  }
 }

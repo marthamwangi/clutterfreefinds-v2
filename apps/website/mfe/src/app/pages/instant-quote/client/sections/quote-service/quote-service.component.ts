@@ -28,6 +28,7 @@ import { ICffService } from './model/cffSservice.model';
 import { BASE_API, WEB_API_CFF_SERVICES } from '@clutterfreefinds-v2/globals';
 import { ToastrService } from 'ngx-toastr';
 import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
+import { initAccordions } from 'flowbite';
 @Component({
   selector: 'iq-quote-service',
   standalone: true,
@@ -76,6 +77,7 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
     this._renderServices();
     this._setSelectedService();
     this._listenForLoadingStatus();
+    initAccordions();
   }
   ngOnDestroy(): void {
     this._unsubscribe$.next(true);

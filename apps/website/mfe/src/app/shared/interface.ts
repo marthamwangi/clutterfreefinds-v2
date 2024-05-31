@@ -85,6 +85,7 @@ export interface IClientDetailsState {
 }
 
 export interface InstantQuoteState {
+  service_date: string;
   min_price: number;
   max_price: number;
   is_loading: boolean;

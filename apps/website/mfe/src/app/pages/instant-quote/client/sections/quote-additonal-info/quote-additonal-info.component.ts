@@ -1,18 +1,17 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { Store } from '@ngrx/store';
 import { AppState } from 'apps/website/mfe/src/app/shared/interface';
 import { fromAdditionalInfoActions } from './data/quote-additional-info.actions';
-import { AsyncPipe, NgFor } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { fromAdditionalInfoSelectors } from './data/quote-additional-info.selectors';
 import { Observable } from 'rxjs';
+import { initModals } from 'flowbite';
 @Component({
   selector: 'iq-quote-additonal-info',
   standalone: true,
-  imports: [MatTooltipModule, FormsModule, NgFor, AsyncPipe],
+  imports: [FormsModule, NgFor, AsyncPipe, NgIf],
   templateUrl: './quote-additonal-info.component.html',
-  styleUrls: ['./quote-additonal-info.component.scss'],
 })
 export class QuoteAdditonalInfoComponent {
   @Output() additionalInfoEmit$ = new EventEmitter();
@@ -35,6 +34,7 @@ export class QuoteAdditonalInfoComponent {
   }
   ngOnInit() {
     this._setSelected();
+    initModals();
   }
   private _setSelected() {
     this.filesArr$.subscribe((arr) => {

@@ -42,6 +42,7 @@ export class QuoteCalendarComponent implements OnInit {
     day: '2-digit',
     year: 'numeric',
   });
+
   constructor() {
     this.timePicker = [
       {
@@ -113,7 +114,6 @@ export class QuoteCalendarComponent implements OnInit {
   ngOnInit(): void {
     this.selectedDate = this.dateTime;
     this.dataDate = this.formatter.format(this.dateTime);
-    console.log('dataDate', this.dataDate);
     this._setTimeSelected(this.dateTime);
     this.initDatePicker();
   }
@@ -147,7 +147,6 @@ export class QuoteCalendarComponent implements OnInit {
 
   private _setTimeSelected(date: Date) {
     this.selectedTime = new Date(date).toTimeString().slice(0, 5);
-    console.log('selectedTime', this.selectedTime);
   }
 
   private _formatDate(time: string) {

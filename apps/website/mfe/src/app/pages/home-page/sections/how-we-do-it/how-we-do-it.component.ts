@@ -24,7 +24,7 @@ export class HowWeDoItComponent implements AfterViewInit, OnDestroy {
 
   public isVideoVisible: boolean = false;
   #videoObserverOptions = {
-    threshold: 0.5,
+    threshold: 0,
     rootMargin: '30%',
   };
   #ytIntersectionObserver!: IntersectionObserver;
