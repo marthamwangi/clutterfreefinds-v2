@@ -1,15 +1,16 @@
-<section>
-    <div class="cover row d-flex flex-column align-items-start align-items-md-center w-100 h-100">
-        <div class="wc-how-it-works-title">{{'HOW_IT_WORKS.TITLE' | translate}}</div>
-        <div class="wc-how-it-works-description">{{'HOW_IT_WORKS.DESCRIPTION' | translate}}</div>
-        <div class="d-flex flex-column flex-md-row align-items-start justify-content-md-center align-items-md-center"
-            style="column-gap: 32px; row-gap: 8px;">
-            <a class="btn primary-btn" type="button" [routerLink]="['/instant-quote']">{{
-                'HOW_IT_WORKS.BUTTON_1' | translate
-                }}</a>
-            <a class="btn secondary-btn link-btn border" type="button" [routerLink]="['/how-it-works']">{{
-                'HOW_IT_WORKS.BUTTON_2' | translate
-                }}</a>
-        </div>
+<div
+    class="text-light-900 flex flex-col my-8 gap-y-8 items-start lg:items-center bg-[url('assets/images/bg/how-clutter-works.jpg')] bg-no-repeat bg-center  bg-dark-900/55 bg-blend-multiply rounded-lg p-8">
+    <div class="font-semibold text-2xl lg:text-4xl">{{'HOW_IT_WORKS.TITLE' | translate}}</div>
+    <div class="lg:max-w-xl lg:text-center mx-auto text-md lg:text-lg">{{'HOW_IT_WORKS.DESCRIPTION' | translate}}</div>
+    <div class="flex flex-col md:flex-row items-start justify-start md:justify-center md:items-center gap-x-6 gap-y-8">
+        <a type="button"
+            class="inline-flex items-center font-medium justify-center px-4 py-4 text-sm bg-primary-900 text-light-900  rounded-lg cursor-pointer hover:bg-primary-600"
+            [routerLink]="'/instant-quote'">{{
+            'HOW_IT_WORKS.BUTTON_1' | translate
+            }}</a>
+        <a type="button" [routerLink]="['/how-it-works']"
+            class="inline-flex items-center font-medium justify-center px-4 py-4 text-sm border border-light-900 text-light-900 rounded-lg cursor-pointer hover:bg-primary-900  hover:text-light-900 hover:border-primary-900">
+            {{ 'HOW_IT_WORKS.BUTTON_2' |
+            translate }}</a>
     </div>
-</section>
+</div>

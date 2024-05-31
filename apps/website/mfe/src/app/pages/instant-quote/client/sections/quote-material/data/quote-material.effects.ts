@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { DeserializeMaterial } from '../mapper/material.mapper';
 import { fromMaterialActions } from './quote-material.action';
-import { exhaustMap, map } from 'rxjs';
+import { catchError, exhaustMap, map, of } from 'rxjs';
 import { MaterialResponse } from '../models/material.model';
 
 @Injectable({
@@ -17,11 +17,21 @@ export class MaterialEffects {
   load$ = createEffect(() =>
     this.#actions.pipe(
       ofType(fromMaterialActions.getMaterialsFromBE),
-      exhaustMap(({ url }) => this.#http.get<MaterialResponse>(url)),
-      map((response) =>
-        fromMaterialActions.setMaterialToStore({
-          cffMaterials: this.#deserializeMaterials.deserialize(response.data),
-        })
+      exhaustMap(({ url }) =>
+        this.#http.get<MaterialResponse>(url).pipe(
+          map((response) =>
+            fromMaterialActions.QuoteMaterialApi.quoteMaterialOnSuccess({
+              response: this.#deserializeMaterials.deserialize(response.data),
+            })
+          ),
+          catchError((error) =>
+            of(
+              fromMaterialActions.QuoteMaterialApi.quoteMaterialOnFailure({
+                response: error,
+              })
+            )
+          )
+        )
       )
     )
   );

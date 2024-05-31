@@ -1,13 +1,13 @@
-import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { NgFor, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { initAccordions } from 'flowbite';
 
 @Component({
   selector: 'cff-v2-faq-section',
   standalone: true,
   imports: [TranslateModule, NgFor],
   templateUrl: './faq-section.component.html',
-  styleUrls: ['./faq-section.component.scss'],
 })
 export class FaqSectionComponent {
   public questions: Array<{ question: string; answer: string }> = [
@@ -32,4 +32,11 @@ export class FaqSectionComponent {
       answer: 'FAQ.QUESTIONS.ITEM_5.ANSWER',
     },
   ];
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      initAccordions();
+    }
+  }
 }

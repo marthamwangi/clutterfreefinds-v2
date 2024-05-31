@@ -1,10 +1,9 @@
-import { NgFor, AsyncPipe, NgIf } from '@angular/common';
+import { NgFor, AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   EventEmitter,
-  Input,
   OnInit,
   Output,
   TemplateRef,
@@ -15,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 import { IMaterialModel } from './models/material.model';
 import { Observable, Subject, firstValueFrom, takeUntil } from 'rxjs';
 import { RouterOutlet } from '@angular/router';
-import { MatTabsModule } from '@angular/material/tabs';
 import { TabComponent } from './sections/tab/tab.component';
 import { Store } from '@ngrx/store';
 import { AppState } from 'apps/website/mfe/src/app/shared/interface';
@@ -24,6 +22,8 @@ import { fromMaterialActions } from './data/quote-material.action';
 import { BASE_API, WEB_API_CFF_MATERIAL } from '@clutterfreefinds-v2/globals';
 import { ISpaceModel } from '../quote-space/models/space.model';
 import { fromSpaceSelectors } from '../quote-space/data/quote-space.selectors';
+import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'iq-quote-material',
@@ -33,9 +33,9 @@ import { fromSpaceSelectors } from '../quote-space/data/quote-space.selectors';
     NgFor,
     AsyncPipe,
     FormsModule,
-    MatTabsModule,
     TabComponent,
     NgIf,
+    NgTemplateOutlet,
   ],
   templateUrl: './quote-material.component.html',
   styleUrls: ['./quote-material.component.scss'],
@@ -52,12 +52,6 @@ export class QuoteMaterialComponent implements OnInit {
   @ViewChild('loadedRef')
   private _loadedRef!: TemplateRef<any>;
 
-  @ViewChild('Pros', { static: true })
-  private Pros!: TemplateRef<any>;
-
-  @ViewChild('Cons', { static: true })
-  private Cons!: TemplateRef<any>;
-
   public materialSelected: IMaterialModel | undefined = undefined;
 
   allTabs: any;
@@ -70,8 +64,9 @@ export class QuoteMaterialComponent implements OnInit {
   private _unsubscribe$: Subject<boolean>;
   private _loadProgress$: Observable<boolean>;
   public loadStatus!: number;
+  private _response$: Observable<IResponseModel>;
 
-  constructor() {
+  constructor(private _toastrService: ToastrService) {
     this._unsubscribe$ = new Subject<boolean>();
 
     this._loadProgress$ = this.store.select(
@@ -87,6 +82,7 @@ export class QuoteMaterialComponent implements OnInit {
     this.space_selected$ = this.store.select(
       fromSpaceSelectors.selectedSpaceSelector
     );
+    this._response$ = this.store.select(fromMaterialSelectors.selectResponse);
   }
 
   ngOnInit() {
@@ -98,7 +94,7 @@ export class QuoteMaterialComponent implements OnInit {
     this._unsubscribe$.next(true);
     this._unsubscribe$.complete();
   }
-  public _commonChangeDetector(): void {
+  private _commonChangeDetector(): void {
     this._changeDetectorRef.detectChanges();
   }
 
@@ -129,14 +125,21 @@ export class QuoteMaterialComponent implements OnInit {
   }
 
   private _setTabs() {
-    this.allTabs = [
-      { name: 'Pros', template: this.Pros },
-      { name: 'Cons', template: this.Cons },
-    ];
-    this._commonChangeDetector();
+    (this.allTabs = {
+      pros: {
+        label: 'Pros',
+        items: this.materialSelected?.pros,
+      },
+      cons: {
+        label: 'Cons',
+        items: this.materialSelected?.cons,
+      },
+    }),
+      this._commonChangeDetector();
   }
   public async loadMaterials() {
     const existingSpaces = await firstValueFrom(this._cff_materials$);
+    const response = await firstValueFrom(this._response$);
     if (existingSpaces.length) {
       return;
     }
@@ -145,6 +148,15 @@ export class QuoteMaterialComponent implements OnInit {
         url: `${BASE_API}/${WEB_API_CFF_MATERIAL}`,
       })
     );
+    if (!response.success && response.message) {
+      this._toastrService.error(
+        response.message,
+        'Something happened, please try again',
+        {
+          positionClass: 'toast-top-right',
+        }
+      );
+    }
   }
 
   private _renderMAterials() {
@@ -188,6 +200,7 @@ export class QuoteMaterialComponent implements OnInit {
           selected_material: materialObj,
         })
       );
+      this._setTabs();
       this.selectedMaterialEmit$.emit(materialObj);
     }
   }

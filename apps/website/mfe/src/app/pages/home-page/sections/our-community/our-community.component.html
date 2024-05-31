@@ -1,31 +1,45 @@
-<section class="mx-4 mx-lg-0" style="margin-top: 16px">
-  <div class="container cff-v2-our-community-section p-3 p-lg-5">
-    <div class="row align-items-center">
-      <div class="col-12 col-lg-5 d-flex flex-column align-items-center align-items-lg-start" style="max-width: 673px">
-        <div class="cff-v2-our-community-section-title">
-          <div class="cff-v2-our-community-section-title-text">
-            {{ 'HOME_PAGE.OUR_COMMUNITY.TITLE' | translate }}
-          </div>
-        </div>
-        <div class="cff-v2-our-community-section-description">
-          {{ 'HOME_PAGE.OUR_COMMUNITY.DESCRIPTION' | translate }}
+<div class="bg-light-900">
+  <div class="max-w-screen-xl sm:px-6 lg:px-8">
+    <div
+      class="relative isolate overflow-hidden bg-primary-900 px-6 pt-8 shadow-2xl rounded-lg sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+      <svg viewBox="0 0 1024 1024"
+        class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0"
+        aria-hidden="true">
+        <circle cx="512" cy="512" r="512" fill="url(#7a23d3-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
+        <defs>
+          <radialGradient id="7a23d3-0410-454c-8f7c-9a820de03641">
+            <stop stop-color="#7a23d3" />
+            <stop offset="1" stop-color="#0e1c36" />
+          </radialGradient>
+        </defs>
+      </svg>
+      <div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
+        <div class="text-center font-extrabold text-light-900 text-3xl md:text-4xl lg:text-5xl">{{
+          'HOME_PAGE.OUR_COMMUNITY.TITLE' |
+          translate }} </div>
+        <p class="mt-6 text-sm md:text-lg leading-8 text-light-600"> {{ 'HOME_PAGE.OUR_COMMUNITY.DESCRIPTION' |
+          translate }}
+        </p>
+        <div class="mt-10 flex flex-col md:flex-row items-center justify-center gap-6 lg:justify-start">
+          <a [routerLink]="['instant-quote']"
+            class="rounded-md bg-light-900  inline-flex items-center font-medium justify-center text-sm px-4 py-4 text-dark-900 shadow-sm hover:text-light-900 hover:bg-dark-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-light-900">{{
+            'HOME_PAGE.OUR_COMMUNITY.BUTTON_1' | translate
+            }}</a>
+          <a (click)="bookACall()"
+            class="cursor-pointer rounded-md inline-flex items-center font-medium justify-center text-sm px-4 py-4 text-light-900 shadow-sm hover:bg-dark-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-light-900">
+            <span>{{
+              'HOME_PAGE.OUR_COMMUNITY.BUTTON_2'
+              |
+              translate }}</span>
+          </a>
         </div>
       </div>
-
-      <div class="col-12 col-lg-7 align-self-center" style="margin-bottom: 12px;">
-        <img loading="lazy" src="/assets/images/map-clutter-free-finds.svg" alt="" class="img-fluid" />
-      </div>
-    </div>
-    <div class="row">
-      <div class="d-flex flex-column flex-lg-row align-items-center" style="row-gap: 12px; column-gap:12px">
-        <a class="btn primary-btn" type="button" [routerLink]="['instant-quote']">{{
-          'HOME_PAGE.OUR_COMMUNITY.BUTTON_1' | translate
-          }}</a>
-        <a (click)="bookACall()" class="btn secondary-btn link-btn border" type="button">{{
-          'HOME_PAGE.OUR_COMMUNITY.BUTTON_2'
-          |
-          translate }}</a>
+      <div class="relative mt-4 h-80 lg:mt-8">
+        <div
+          class="absolute top-0 max-sm:bottom-0 w-screen lg:w-[57rem] max-w-none rounded-md bg-light-100/5 ring-1 ring-light-900/10">
+          <img class="" src="/assets/images/map-clutter-free-finds.svg" alt=" Home organizing kenya">
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>

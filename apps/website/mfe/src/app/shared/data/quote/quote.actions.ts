@@ -4,8 +4,11 @@ import { IResponseModel } from '../../response.model';
 const QuotePrice = createActionGroup({
   source: 'Instant Quote Component',
   events: {
-    min_price: props<{ min_price: number }>(),
-    max_price: props<{ max_price: number }>(),
+    data: props<{
+      min_price: number;
+      max_price: number;
+      service_date: string;
+    }>(),
   },
 });
 

@@ -26,12 +26,10 @@
           "apps/website/mfe/src/assets"
         ],
         "styles": [
-        "node_modules/bootstrap/dist/css/bootstrap.min.css",
         "apps/website/mfe/src/styles.scss"
       ],
       "scripts": [
-        "node_modules/@popperjs/core/dist/umd/popper.min.js",
-        "node_modules/bootstrap/dist/js/bootstrap.min.js"
+        "node_modules/flowbite-datepicker/dist/js/datepicker-full.min.js"
       ]
       },
       "configurations": {
@@ -54,7 +52,14 @@
               "with": "libs/shared/globals/src/lib/environments/env.prod.ts"
             }
           ],
-          "outputHashing": "all"
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "aot": true,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true
         },
         "development": {
           "optimization": false,

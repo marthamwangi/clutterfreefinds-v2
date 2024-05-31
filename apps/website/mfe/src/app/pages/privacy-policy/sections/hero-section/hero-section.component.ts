@@ -6,6 +6,5 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule],
   templateUrl: './hero-section.component.html',
-  styleUrls: ['./hero-section.component.scss'],
 })
 export class HeroSectionComponent {}

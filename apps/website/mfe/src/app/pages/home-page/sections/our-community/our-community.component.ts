@@ -7,7 +7,6 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, RouterLink],
   templateUrl: './our-community.component.html',
-  styleUrls: ['./our-community.component.scss'],
 })
 export class OurCommunityComponent {
   bookACall() {

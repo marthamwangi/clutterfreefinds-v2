@@ -1,34 +1,22 @@
-<section style="margin-top: 64px">
-  <div>
-    <div class="cff-v2-what-we-do-title">
-      <span class="d-inline-flex me-1">{{
-        'HOME_PAGE.WHAT_WE_DO.TITLE' | translate
-        }}</span><span class="title-gradient">{{
-        'HOME_PAGE.WHAT_WE_DO.GRADIENT' | translate
-        }}</span>
-    </div>
-    <div class="cff-v2-what-we-do-description mx-auto">
-      {{ 'HOME_PAGE.WHAT_WE_DO.DESCRIPTION' | translate }}
-    </div>
-  </div>
-  <div class="d-flex mx-auto row justify-content-center" style="gap: 40px">
-    <ng-container *ngFor="let servie of services">
-      <a
-        class="card col-12 col-lg-4 cff-v2-what-we-do-card border-0 d-flex flex-column align-items-center justify-content-between">
-        <img loading="lazy" alt="clutter free finds services" class="img-fluid" [src]="servie.image" />
-        <span class="cff-v2-what-we-do-card-header">
-          {{ servie.title | translate }}
-        </span>
-
-        <div class="cff-v2-what-we-do-card-description">
-          {{ servie.description | translate }}
-        </div>
-        <button class="btn link-btn d-flex" type="button">
-          <span> {{ 'HOME_PAGE.WHAT_WE_DO.LINK' | translate }}</span>
-          <img loading="lazy" alt="learn more about clutter free finds" src="./assets/icons/arrow-right.svg" width="24"
-            height="24" />
-        </button>
-      </a>
-    </ng-container>
-  </div>
-</section>
+<div class="text-center font-extrabold text-dark-900 text-3xl md:text-4xl lg:text-5xl">
+  <span class="d-inline-flex me-1">{{
+    'HOME_PAGE.WHAT_WE_DO.TITLE' | translate
+    }}</span><span class="text-transparent bg-clip-text bg-gradient-to-r to-secondary-900 from-primary-900">{{
+    'HOME_PAGE.WHAT_WE_DO.GRADIENT' | translate
+    }}</span>
+</div>
+<div class="text-dark-600 md:text-center md:w-4/5 mx-auto mb-4 md:mb-9 ">
+  {{ 'HOME_PAGE.WHAT_WE_DO.DESCRIPTION' | translate }}
+</div>
+<div class="grid grid-cols-1 gap-4 md:grid-cols-3 justify-center mb-8 rounded-lg ">
+  <figure *ngFor="let servie of services"
+    class="flex flex-col items-center justify-center p-2 md:p-4 text-center rounded-lg bg-secondary-100/5">
+    <img loading="lazy" alt="clutter free finds services" [src]="servie.image" class="h-auto w-40 lg:w-60" />
+    <figcaption class="flex items-center justify-center">
+      <h3 class="text-lg font-semibold text-dark-900 md:text-2xl">{{ servie.title | translate }}</h3>
+    </figcaption>
+    <blockquote class="max-w-2xl mx-auto text-dark-600 ">
+      <p class="">{{ servie.description | translate }}</p>
+    </blockquote>
+  </figure>
+</div>

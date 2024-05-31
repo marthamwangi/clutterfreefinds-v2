@@ -1,18 +1,12 @@
-import { createAction, props } from '@ngrx/store';
+import { createAction, createActionGroup, props } from '@ngrx/store';
 import { ICffService } from '../model/cffSservice.model';
 import { fromCffServiceActionNames } from './quote-service.actions-names';
+import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
 
 const getCffServicesFromBE = createAction(
   fromCffServiceActionNames.fetchCffServices,
   props<{
     url: string;
-  }>()
-);
-
-const setCffServiceToStore = createAction(
-  fromCffServiceActionNames.createStateCffServices,
-  props<{
-    cffServices: Array<ICffService>;
   }>()
 );
 
@@ -23,8 +17,15 @@ const mutateSelectedServiceSelection = createAction(
   }>()
 );
 
+const QuoteServiceApi = createActionGroup({
+  source: 'Quote Service API',
+  events: {
+    'Quote Services On Failure': props<{ response: IResponseModel }>(),
+    'Quote Services On Success': props<{ response: Array<ICffService> }>(),
+  },
+});
 export const fromCffServiceActions = {
   getCffServicesFromBE,
-  setCffServiceToStore,
   mutateSelectedServiceSelection,
+  QuoteServiceApi,
 };

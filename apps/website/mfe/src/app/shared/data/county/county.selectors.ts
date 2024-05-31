@@ -4,6 +4,7 @@ import { AppState } from '../../interface';
 const is_loading = (state: AppState) => state.cff_county.is_loading;
 const list_counties = (state: AppState) => state.cff_county.counties;
 const selected = (state: AppState) => state.cff_county;
+const response = (state: AppState) => state.cff_county.response;
 
 const ClientCountyDetails = createSelector(selected, (state) => state);
 const ListCounties = createSelector(list_counties, (state) => state);
@@ -17,6 +18,7 @@ const SelectedConstituency = createSelector(
   (state) => state.selected_constituency
 );
 const SelectedWard = createSelector(selected, (state) => state.selected_ward);
+const SelectResponse = createSelector(selected, (state) => state.response);
 
 export const fromCountySelector = {
   ListCounties,
@@ -25,4 +27,5 @@ export const fromCountySelector = {
   SelectedConstituency,
   SelectedWard,
   ClientCountyDetails,
+  SelectResponse,
 };

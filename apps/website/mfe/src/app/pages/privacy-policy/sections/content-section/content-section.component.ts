@@ -7,7 +7,6 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, NgFor],
   templateUrl: './content-section.component.html',
-  styleUrls: ['./content-section.component.scss'],
 })
 export class ContentSectionComponent {
   public contentArray: Array<any> = [

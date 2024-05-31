@@ -1,38 +1,44 @@
-<div class="accordion-item ">
-    <h2 class="accordion-header" id="headingSpace">
-        <button (click)="loadSpaces()" [disabled]="(_service_selected$ | async)?.id === ''"
-            [class.isSelected]="selectedCffSpace.id !== ''" class="accordion-button" type="button"
-            data-bs-toggle="collapse" data-bs-target="#collapseSpace" aria-expanded="true"
-            aria-controls="collapseSpace">
-            <div class="row  row-cols-2 steps w-100">
-                <div class="col-auto  step-text-number">Step 2:</div>
-                <div class="col step-text">Select Space </div>
-            </div>
-        </button>
-    </h2>
-    <div id="collapseSpace" class="accordion-collapse collapse " aria-labelledby="headingSpace"
-        data-bs-parent="#accordionQuote">
-        <div class="accordion-body">
-            <ng-container *ngTemplateOutlet="returnListTemplate()"></ng-container>
-            <ng-template #loadingRef>
-                <div class="d-flex flex-wrap gap-2">
-                    <div *ngFor="let i of [1,2,3,4]" class="loading">
-                        <div class="loading-content flex-grow-1"></div>
-                    </div>
-                </div>
-            </ng-template>
-            <ng-template #loadedRef>
-                <div class="cff-spaces">
-                    <div class="d-flex" *ngFor="let space of spacesArr; index as i;">
-                        <input type="radio" name="space" [id]="'radio-space-btn-'+i" [value]="space"
-                            [(ngModel)]="selectedCffSpace" [ngModelOptions]="{standalone: true}"
-                            (ngModelChange)="fnSelectSpace(space)" />
-                        <label [for]="'radio-space-btn-'+i" class="cff-space">
-                            {{space.name}}
-                        </label>
-                    </div>
-                </div>
-            </ng-template>
-        </div>
+<h2 id="accordion-collapse-heading-space">
+    <button [disabled]="(_service_selected$ | async)?.id === ''" type="button" (click)="loadSpaces()"
+        [class.text-primary-900]="selectedCffSpace.id !== ''"
+        class="flex items-center justify-between w-full p-5 font-bold text-dark-600 border rounded-lg gap-3 bg-primary-100"
+        data-accordion-target="#accordion-collapse-body-space" aria-expanded="false"
+        aria-controls="accordion-collapse-body-space">
+        <span class="text-xs lg:text-base">Step 2: Select Space</span>
+        <svg *ngIf="selectedCffSpace?.id !== ''" class="w-6 h-6 text-secondary-900" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd"
+                d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z"
+                clip-rule="evenodd" />
+        </svg>
+    </button>
+</h2>
+<div id="accordion-collapse-body-space" class="hidden" aria-labelledby="accordion-collapse-heading-service">
+    <div class="p-5">
+        <ng-container *ngTemplateOutlet="returnListTemplate()"></ng-container>
     </div>
 </div>
+<ng-template #loadingRef>
+    <div role="status" class="flex flex-wrap gap-2">
+        <div class="flex items-center justify-between rounded-lg rounded bg animate-pulse  w-1/4 gap-x-2"
+            *ngFor="let i of [1,2,3,4]">
+            <div class="h-10 bg-dark-100 rounded-full w-full p-2"></div>
+        </div>
+        <span class="sr-only">Loading...</span>
+    </div>
+</ng-template>
+<ng-template #loadedRef>
+    <div class=" flex flex-wrap items-center rounded-lg rounded w-full gap-2">
+        <div class="flex w-min" *ngFor="let space of spacesArr; index as i;">
+            <div class="w-full">
+                <label [for]="'radio-space-btn-'+i" [class.bg-primary-300]="selectedCffSpace?.id === space.id"
+                    class="bg-light-900 border border-dark-300 text-dark-900 text-md rounded-full block w-full p-2.5 text-xs lg:text-base">
+                    {{space.name}}
+                </label>
+                <input class="hidden" type="radio" name="space" [id]="'radio-space-btn-'+i" [value]="space"
+                    [(ngModel)]="selectedCffSpace" [ngModelOptions]="{standalone: true}"
+                    (ngModelChange)="fnSelectSpace(space)" />
+            </div>
+        </div>
+    </div>
+</ng-template>

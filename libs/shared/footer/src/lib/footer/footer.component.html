@@ -1,139 +1,128 @@
-<section class="container-fluid py-3 pt-lg-5 px-5">
-    <div class="px-lg-5 ">
-        <div class="row">
-            <div class="col-12 col-xl-5 col-lg-5 col-md-6">
-                <div class="d-flex flex-column mt-3 mb-3" style="max-width: 430px">
+<footer class=" text-light-900 m-0 bg-center bg-no-repeat bg-[url('/assets/images/bg/footer-bg.png')] bg-dark-900">
+    <div class="w-full px-4 py-8 lg:p-24 overflow-y-auto ">
+        <div class="grid  md:grid-cols-2 w-full mb-6 md:mb-12">
+            <div class="w-full mb-6 md:mb-12">
+                <a [routerLink]="'/'" class="mb-3 md:mb-6">
                     <img loading="lazy" src="assets/images/logo-white.svg" alt="clutter free finds logo" class="mb-4"
                         width="200" height="50" />
-                    <p class="lh-lg"><span class="footer-bold">Clutter Free Finds: </span>
-                        <span class="footer-description">{{'FOOTER.DESCRIPTION' | translate}}</span>
-                    </p>
-                    <div class="row mt-2">
-                        <div class="col-2">
-                            <a target="_blank" [href]="CFF_SOCIAL_ACCOUNTS.FACEBOOK"><img loading="lazy"
-                                    src="assets/icons/social/facebook.svg" alt="" width="24" height="24" /></a>
-                        </div>
-                        <div class="col-2">
-                            <a target="_blank" [href]="CFF_SOCIAL_ACCOUNTS.INSTAGRAM"><img loading="lazy"
-                                    src="assets/icons/social/instagram.svg" alt="" width="24" height="24" /></a>
-                        </div>
-                        <div class="col-2">
-                            <a target="_blank" [href]="CFF_SOCIAL_ACCOUNTS.TIKTOK"><img loading="lazy"
-                                    src="assets/icons/social/tiktok.svg" alt="" width="24" height="24" /></a>
-                        </div>
-                    </div>
+                </a>
+                <div class="mb-3 md:mb-6 w-9/12"><span class="font-extrabold">Clutter Free Finds: </span>
+                    <span class="text-light-600">{{'FOOTER.DESCRIPTION' | translate}}</span>
+                </div>
+                <div class="flex gap-10 mb-3 md:mb-6">
+                    <a target="_blank" [href]="CFF_SOCIAL_ACCOUNTS.FACEBOOK"><img loading="lazy"
+                            src="assets/icons/social/facebook.svg" alt="clutter free finds facebook" width="24"
+                            height="24" /></a>
+                    <a target="_blank" [href]="CFF_SOCIAL_ACCOUNTS.INSTAGRAM"><img loading="lazy"
+                            src="assets/icons/social/instagram.svg" alt="clutter free finds instagram" width="24"
+                            height="24" /></a>
+                    <a target="_blank" [href]="CFF_SOCIAL_ACCOUNTS.TIKTOK"><img loading="lazy"
+                            src="assets/icons/social/tiktok.svg" alt="clutter free finds tiktok" width="24"
+                            height="24" /></a>
                 </div>
             </div>
-            <div class="col-12 col-xl-7 col-lg-7 col-md-6">
-                <div class="row mt-3">
-                    <div class="col-12 col-xl-3 col-lg-3 col-md-6 mb-3"
-                        *ngFor="let link of footerLinks; let index = index">
-                        <div class="mb-3 link-title text-capitalize">{{
-                            link.title | translate
-                            }}</div>
-                        <div class="link-content" *ngFor="let item of link.list"><a [routerLink]="item.link"
-                                class="text-decoration-none">{{
+            <div class="w-auto grid  md:grid-cols-2 lg:grid-cols-4">
+                <div *ngFor="let link of footerLinks; let index = index">
+                    <div class="mb-6 text-sm font-semibold text-light-900">
+                        {{
+                        link.title | translate
+                        }}
+                    </div>
+                    <ul class="text-light-600">
+                        <li *ngFor="let item of link.list" class="mb-4">
+                            <a [routerLink]="item.link" class="nav-link py-2">{{
                                 item.text | translate
-                                }}</a></div>
-                    </div>
+                                }}</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="row mb-3">
-            <div class="col-12 col-xl-7 col-lg-7 d-flex">
-                <form [formGroup]="newsletterForm" (ngSubmit)="subscribeToNewsletter()"
-                    class="w-100 mt-3 align-self-end">
-                    <div class="link-title mb-3">
-                        {{ 'FOOTER.NEWSLETTER.TITLE' | translate }}
+        <div class="grid  md:grid-cols-2">
+            <form class="w-9/12 mb-6 md:mb-12" [formGroup]="newsletterForm" (ngSubmit)="subscribeToNewsletter()">
+                <div class="font-extrabold mb-6">
+                    {{ 'FOOTER.NEWSLETTER.TITLE' | translate }}
+                </div>
+                <div class="text-light-600 mb-6">
+                    {{ 'FOOTER.NEWSLETTER.DESCRIPTION' | translate }}
+                </div>
+                <div class="grid md:grid-cols-2 md:gap-6 items-center">
+                    <div class="relative  w-full mb-2">
+                        <input type="email"
+                            class="bg-light-100 border-transparent text-light-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                            [placeholder]="
+                            'FOOTER.NEWSLETTER.PLACEHOLDER' | translate
+                        " formControlName="email" />
                     </div>
-                    <div class="footer-description mb-3">
-                        {{ 'FOOTER.NEWSLETTER.DESCRIPTION' | translate }}
-                    </div>
-                    <div class="row w-100 m-0" style="column-gap: 25px">
-                        <div class="col-md-6 col-12 mb-2 px-0">
-                            <input type="email" class="form-control" [placeholder]="
-									'FOOTER.NEWSLETTER.PLACEHOLDER' | translate
-								" formControlName="email" />
-                        </div>
-                        <div class="col-md-2 col-6 px-0">
-                            <button [disabled]="email.invalid" type="submit"
-                                class="btn primary-btn d-flex align-items-center justify-content-center px-0 w-100">{{
-                                newsletterProgress
-                                ? ''
-                                : ('FOOTER.NEWSLETTER.BUTTON' | translate)
-                                }}
-                                <div *ngIf="newsletterProgress" class="spinner-border" style="width: 20px; height: 20px"
-                                    role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                            </button>
-                        </div>
-                        <div [class.d-flex]="email.invalid && (email.dirty || email.touched)"
-                            class="col-12 gap-1 align-items-center feedback">
-                            <img loading="lazy" src="/assets/icons/error.svg" alt="" width="16">
-                            <div> Please check your email</div>
-                        </div>
-                        <div [class.d-flex]="email.valid && (email.dirty || email.touched)"
-                            class="col-12 gap-1 align-items-center feedback">
-                            <img loading="lazy" src="/assets/icons/check-green.svg" alt="" width="16">
-                            <div> Looks good!</div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-12 col-xl-5 col-lg-5">
-                <div class="row mt-3">
-                    <ng-container *ngFor="let ctaLink of footerCTA; first as isFirst">
-                        <div *ngIf="isFirst; else notFirst" class="col-12 col-xl-6 col-lg-6 col-md-4 mb-3">
-                            <div (click)="copyToClipboard()"
-                                class="d-inline-flex contact-section align-items-center w-100 h-100  position-relative"
-                                #tooltipRef="matTooltip" [matTooltip]="(emailTooltip$ | async)| translate"
-                                matTooltipPosition="above" style="gap: 16px">
-                                <img loading="lazy" [src]="'assets/icons/' + ctaLink.image + '.svg'" alt="" width="45"
-                                    height="45" />
-                                <div class="d-flex flex-column" style="gap: 9px">
-                                    <p class="cta-title text-break">{{ ctaLink.title | translate }}</p>
-                                    <p class="cta-links text-break">{{ ctaLink.content | translate }} </p>
-                                </div>
+                    <div class="relative w-full mb-2">
+                        <button [class.cursor-not-allowed]="email.invalid" [disabled]="email.invalid" type="submit"
+                            class="focus:outline-none text-light-900 bg-primary-600 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5">{{
+                            newsletterProgress
+                            ? ''
+                            : ('FOOTER.NEWSLETTER.BUTTON' | translate)
+                            }}
+                            <div *ngIf="newsletterProgress" role="status">
+                                <svg aria-hidden="true"
+                                    class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                                    viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                        fill="currentColor" />
+                                    <path
+                                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                        fill="currentFill" />
+                                </svg>
+                                <span class="sr-only">Loading...</span>
                             </div>
+                        </button>
+                    </div>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="flex  items-center">
+                        <div class="mr-2"> <img loading="lazy" src="/assets/icons/error.svg" alt="" width="16"></div>
+                        <div class="text-sm text-danger-900 ">Please Check your Email again</div>
+                    </div>
+                    <div *ngIf="email.valid && (email.dirty || email.touched) " class="flex items-center">
+                        <div class="mr-2"> <img loading="lazy" src="/assets/icons/check-green.svg" alt="" width="16">
                         </div>
-                        <ng-template #notFirst>
-                            <div class="col-12 col-xl-6 col-lg-6 col-md-4 mb-3">
-                                <a *ngIf="!isFirst" class="d-inline-flex contact-section align-items-center h-100 w-100"
-                                    [href]="ctaLink.link" target="_blank" rel="noopener" style="gap: 16px">
-                                    <img loading="lazy" [src]="'assets/icons/' + ctaLink.image + '.svg'" alt=""
-                                        width="45" height="45" />
-                                    <div class="d-flex flex-column" style="gap: 9px">
-                                        <p class="cta-title text-break">{{ ctaLink.title | translate }}</p>
-                                        <p class="cta-links text-break">{{ ctaLink.content | translate }} </p>
-                                    </div>
-                                </a>
-                            </div>
-                        </ng-template>
-                    </ng-container>
+                        <div class="text-sm text-secondary-900">Looks Good!</div>
+                    </div>
+                </div>
+            </form>
+            <div class="w-full lg:w-9/12 grid md:grid-cols-2 gap-2.5 ml-auto">
+                <ng-container *ngFor="let ctaLink of footerCTA; first as isFirst">
+                    <a [attr.href]="ctaLink.link" [attr.target]="isFirst ? null : '_blank'" rel="noopener"
+                        (click)="isFirst ? copyToClipboard() : null"
+                        [attr.data-tooltip-target]="isFirst ? 'tooltip-animation' : null"
+                        class="flex items-center gap-2.5 bg-light-300 p-3 rounded-lg mb-3 md:mb-0">
+                        <img loading="lazy" [src]="'assets/icons/' + ctaLink.image + '.svg'" alt="" width="45"
+                            height="45" />
+                        <div class="flex flex-col gap-2.5 text-xs lg:text-sm text-ellipsis overflow-hidden">
+                            <div class="">{{ ctaLink.title | translate }}</div>
+                            <div>{{ ctaLink.content | translate }} </div>
+                        </div>
+                    </a>
+                </ng-container>
+                <div id="tooltip-animation" role="tooltip"
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    {{(emailTooltip$ | async)| translate}}
+                    <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
             </div>
         </div>
-        <div class="line"></div>
-        <div class="row mt-3">
-            <div class="col-12 col-xl-6 col-lg-6">
-                <div class="row mb-3 privacy-links">
-                    <span><a [routerLink]="'/service-agreement'">
-                            {{ 'FOOTER.SERVICE_AGREEMENT' | translate }}
-                        </a></span>
-                    <span><a [routerLink]="'/privacy-policy'">
-                            {{ 'FOOTER.PRIVACY_POLICY' | translate }}
-                        </a></span>
-                </div>
+        <hr class="my-6 border-light-100 sm:mx-auto" />
+        <div class="flex items-center justify-between">
+            <div class="flex gap-2 mb-3 text-light-600">
+                <span><a [routerLink]="'/service-agreement'" class="nav-link py-2">
+                        {{ 'FOOTER.SERVICE_AGREEMENT' | translate }}
+                    </a></span>
+                <span><a [routerLink]="'/privacy-policy'" class="nav-link py-2">
+                        {{ 'FOOTER.PRIVACY_POLICY' | translate }}
+                    </a></span>
             </div>
-
-            <div class="col-12 col-xl-6 col-lg-6 mb-4">
-                <div class="text-lg-end copyright">
-                    <span>
-                        {{ 'FOOTER.COPYRIGHT' | translate }}
-                    </span>
-                </div>
+            <div>
+                <span>
+                    {{ 'FOOTER.COPYRIGHT' | translate }}
+                </span>
             </div>
         </div>
     </div>
-</section>
+</footer>

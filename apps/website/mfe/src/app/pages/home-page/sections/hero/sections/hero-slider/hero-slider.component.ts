@@ -1,18 +1,12 @@
-import { NgFor, NgIf } from '@angular/common';
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { NgFor, NgIf, NgOptimizedImage } from '@angular/common';
+import { Component, ViewChild } from '@angular/core';
 import { APP_URL } from '@clutterfreefinds-v2/globals';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'wc-hero-slider',
   standalone: true,
-  imports: [TranslateModule, NgFor, NgIf],
+  imports: [TranslateModule, NgFor, NgIf, NgOptimizedImage],
   templateUrl: './hero-slider.component.html',
   styleUrls: ['./hero-slider.component.scss'],
 })

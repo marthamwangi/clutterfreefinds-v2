@@ -1,58 +1,30 @@
-<div class=" d-flex flex-wrap justify-content-center mx-auto">
-    <div class="row d-flex align-items-stretch justify-content-center w-100 mx-auto ">
-        <div class="col-12 col-lg-5">
-            <div class="date-time-header text-center">1. Pick a date</div>
-            <div class="calendar-container">
-                <div class="calendar-card">
-                    <div class="check-availability d-flex">
-                        <div class="me-2 ">
-                            Checking availability
-                        </div>
-                        <img loading="lazy" src="assets/icons/loading-loop.svg" alt="">
-                    </div>
-                    <mat-card class="inline-calendar-card">
-                        <mat-calendar [minDate]="minDate" (selectedChange)="onDatePicked($event)"
-                            [selected]="selectedDate" ngDefaultControl [(ngModel)]="selectedDate"
-                            [ngModelOptions]="{standalone: true}"></mat-calendar>
-                    </mat-card>
-                </div>
-            </div>
-            <div class="w-100 text-center quote-text my-3">Your home should be the antidote of stress, not the cause of
-                it. <span class="text-center quote-author">~Peter Walsh</span>
+<div class=" flex flex-wrap justify-center mx-auto">
+    <div class="w-full my-3 lg:my-5">
+        <blockquote class="text-sm text-center font-light text-gray-900 mt-2">
+            <p>"Your home should be the antidote of stress, not the cause of it"<span class="text-xs italic">~Peter
+                    Walsh</span></p>
+        </blockquote>
+    </div>
+    <div class="flex  flex-col sm:flex-row items-center justify-center gap-x-8 w-full mx-auto p-2 lg:py-4">
+        <div class=" flex flex-col items-start ">
+            <div id="dateField" #dateField inline-datepicker datepicker-buttons (changeDate)="onDatePicked($event)"
+                class="mx-auto sm:mx-0 ">
             </div>
         </div>
-        <div class="col-12 col-lg-5  d-flex flex-column align-items-start align-items-md-center"
-            [class]="selectedDate ? 'show-time-picker' : 'hide-time-picker'">
-            <div class="d-flex align-items-start justify-content-between w-100">
-                <div class="d-flex justify-content-center flex-grow-1 ">
-                    <div class="date-time-header">
-                        2. Pick a time
-                    </div>
-                </div>
-                <div [class.circle-check-green-30]="selectedTime" class="justify-self-end">
-                    <img loading="lazy" class="check" [class.d-flex]="selectedTime" alt="clutter free finds services"
-                        src="/assets/icons/check-green.svg" width="10" />
-                </div>
-            </div>
-            <div *ngIf="!selectedDate" class=" h-100 d-flex justify-content-center align-items-center  py-5">
-                <img loading="lazy" class="img-fluid" src="/assets/images/time-picker.png" alt="" width="600">
-            </div>
-            <div *ngIf="selectedDate">
-                <div class="date-time-frame mt-4">
-                    <div class="date-time-item " *ngFor="let time of timePicker; index as i">
-                        <input (ngModelChange)="onTimePicked(time.value)" type="radio" name="time"
-                            [id]="'radio-time-btn-'+i" [value]="time" [(ngModel)]="selectedTime"
-                            [ngModelOptions]="{standalone: true} " />
-                        <label [style.pointerEvents]=" !selectedDate ? 'none' : 'auto'" [for]="'radio-time-btn-' +i"
-                            class="date-time-item">
-
-                            <div class="text">
-                                {{time.label}}
-                            </div>
-                        </label>
-                    </div>
-                </div>
-            </div>
+        <div class="flex flex-col items-start justify-center">
+            <h3 class="text-primary-900  text-base font-medium my-3 text-center"> {{dataDate | date:
+                'mediumDate'}}</h3>
+            <ul id="timetable" class="grid w-full grid-cols-2 gap-x-8 gap-y-2 mx-auto ">
+                <li *ngFor="let time of timePicker; index as i" class="w-40">
+                    <input type="radio" [id]="'radio-time-btn-'+i" [value]="time.value" [(ngModel)]="selectedTime"
+                        (ngModelChange)="onTimePicked($event)" [ngModelOptions]=" {standalone: true} "
+                        class=" hidden peer" name="timetable">
+                    <label [for]="'radio-time-btn-' +i" [class.pointer-events-none]=" !selectedDate"
+                        class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-light-900 border rounded-lg cursor-pointer text-primary-900 border-primary-900 peer-checked:border-primary-900 peer-checked:bg-primary-900 hover:text-light-900 peer-checked:text-light-900 hover:bg-primary-900">
+                        {{time.label}}
+                    </label>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

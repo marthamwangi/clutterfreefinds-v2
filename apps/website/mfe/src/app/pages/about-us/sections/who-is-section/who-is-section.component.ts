@@ -1,16 +1,16 @@
-import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { NgFor, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { initCarousels } from 'flowbite';
 
 @Component({
   selector: 'about-who-is-section',
   standalone: true,
   imports: [TranslateModule, NgFor, RouterLink],
   templateUrl: './who-is-section.component.html',
-  styleUrls: ['./who-is-section.component.scss'],
 })
-export class WhoIsSectionComponent {
+export class WhoIsSectionComponent implements OnInit {
   public carousel: Array<{
     active: boolean;
     images: Array<{
@@ -103,4 +103,12 @@ export class WhoIsSectionComponent {
       ],
     },
   ];
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      initCarousels();
+    }
+  }
 }

@@ -1,22 +1,32 @@
 import { NgFor, NgTemplateOutlet } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { MatTabsModule } from '@angular/material/tabs';
-
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  SimpleChanges,
+  TemplateRef,
+  ViewChild,
+  inject,
+} from '@angular/core';
+import { initTabs } from 'flowbite';
 @Component({
   selector: 'material-tabs',
   standalone: true,
-  imports: [MatTabsModule, NgTemplateOutlet, NgFor],
-  template: `
-    <mat-tab-group fitInkBarToContent>
-      <ng-container *ngFor="let tab of tabsName">
-        <mat-tab label="{{ tab.name }}">
-          <ng-container [ngTemplateOutlet]="tab.template"></ng-container>
-        </mat-tab>
-      </ng-container>
-    </mat-tab-group>
-    <ng-content></ng-content>
-  `,
+  imports: [NgTemplateOutlet, NgFor],
+  templateUrl: 'tab.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabComponent {
-  @Input() tabsName: any;
+  @Input() tabs: any;
+  private _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.tabs = changes['tabs'].currentValue;
+    this._changeDetectorRef.detectChanges();
+  }
+
+  ngOnInit() {
+    initTabs();
+  }
 }
