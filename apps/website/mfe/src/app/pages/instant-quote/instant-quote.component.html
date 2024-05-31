@@ -2,7 +2,7 @@
     <ol class="flex items-center justify-center w-full text-sm font-medium text-center text-dark-600 sm:text-base mb-8">
         <li *ngFor="let step of renderedSteps; last as isLast" [class.text-primary-900]="step?.status === 'active'"
             [class.sm:after:hidden]="isLast"
-            class="flex md:w-full items-center sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-dark-300 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10">
+            class="flex md:w-max items-center sm:after:content-[''] after:w-16 after:h-1 after:border-b after:border-dark-300 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10">
             <span class="flex  items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-dark-300 ">
                 {{step.title}}
                 <svg [class.hidden]="step.status !== 'completed'"
