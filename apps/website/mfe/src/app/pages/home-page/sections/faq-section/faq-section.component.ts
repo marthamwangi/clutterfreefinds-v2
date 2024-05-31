@@ -1,5 +1,5 @@
-import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { NgFor, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { initAccordions } from 'flowbite';
 
@@ -32,8 +32,11 @@ export class FaqSectionComponent {
       answer: 'FAQ.QUESTIONS.ITEM_5.ANSWER',
     },
   ];
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  ngOnInit() {
-    initAccordions();
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      initAccordions();
+    }
   }
 }

@@ -4,13 +4,21 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Inject,
   Input,
   OnInit,
   Output,
+  PLATFORM_ID,
   ViewChild,
   inject,
 } from '@angular/core';
-import { AsyncPipe, DatePipe, NgFor, NgIf } from '@angular/common';
+import {
+  AsyncPipe,
+  DatePipe,
+  NgFor,
+  NgIf,
+  isPlatformBrowser,
+} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 declare var Datepicker: any;
 
@@ -43,7 +51,7 @@ export class QuoteCalendarComponent implements OnInit {
     year: 'numeric',
   });
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.timePicker = [
       {
         value: '09:00',
@@ -111,11 +119,14 @@ export class QuoteCalendarComponent implements OnInit {
       },
     ];
   }
+
   ngOnInit(): void {
     this.selectedDate = this.dateTime;
     this.dataDate = this.formatter.format(this.dateTime);
     this._setTimeSelected(this.dateTime);
-    this.initDatePicker();
+    if (isPlatformBrowser(this.platformId)) {
+      this.initDatePicker();
+    }
   }
 
   public _commonChangeDetector(): void {

@@ -1,5 +1,5 @@
-import { NgFor } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { NgFor, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { initCarousels } from 'flowbite';
@@ -104,7 +104,11 @@ export class WhoIsSectionComponent implements OnInit {
     },
   ];
 
-  ngOnInit() {
-    initCarousels();
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      initCarousels();
+    }
   }
 }
