@@ -25,6 +25,7 @@ export interface ICffServiceState {
   cffServices: Array<ICffService>;
   selected_service: ICffService;
   is_loading: boolean;
+  response: IResponseModel;
 }
 
 /**
@@ -35,6 +36,7 @@ export interface ISpaceState {
   cffSpaces: Array<ISpaceModel>;
   selected_space: ISpaceModel;
   is_loading: boolean;
+  response: IResponseModel;
 }
 
 /**
@@ -45,6 +47,7 @@ export interface IMaterialState {
   cffMaterials: Array<IMaterialModel>;
   selected_material: IMaterialModel;
   is_loading: boolean;
+  response: IResponseModel;
 }
 
 /**
@@ -65,6 +68,7 @@ export interface ICountyState {
   selected_constituency: IConstituencyModel;
   selected_ward: string;
   is_loading: boolean;
+  response: IResponseModel;
 }
 
 /**
@@ -81,6 +85,7 @@ export interface IClientDetailsState {
 }
 
 export interface InstantQuoteState {
+  service_date: string;
   min_price: number;
   max_price: number;
   is_loading: boolean;

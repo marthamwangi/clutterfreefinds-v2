@@ -1,47 +1,55 @@
-<div class="accordion-item ">
-    <h2 class="accordion-header" id="headingOne">
-        <button (click)="loadServices()" [class.isActive]="selectedCffService.id !== ''" class="accordion-button"
-            type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
-            aria-controls="collapseOne">
-            <div class="row row-cols-2 steps w-100">
-                <div class="col-auto step-text-number">Step 1:</div>
-                <div class="col step-text">Select Service</div>
-            </div>
-        </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-        data-bs-parent="#accordionQuote">
-        <div class="accordion-body">
-            <ng-container *ngTemplateOutlet="returnListTemplate()"></ng-container>
-            <ng-template #loadingRef>
-                <div class="d-flex flex-wrap gap-2">
-                    <div *ngFor="let i of [1,2,3,4]" class="loading">
-                        <div class="loading-image"></div>
-                        <div class="loading-content flex-grow-1"></div>
-                        <div class="loading-icon"></div>
-                    </div>
-                </div>
-            </ng-template>
-            <ng-template #loadedRef>
-                <div class="cff-services">
-                    <div class="d-flex" *ngFor="let service of cffServices; index as i;">
-                        <input type="radio" name="service" [id]="'radio-service-btn-'+i" [value]="service"
-                            [(ngModel)]="selectedCffService" [ngModelOptions]="{standalone: true}"
-                            (ngModelChange)="onSelectedService($event)" />
-                        <label [for]="'radio-service-btn-'+i" class="cff-service">
-                            <img loading="lazy" [src]="'/assets/icons/cff-services/' +service.label+'.svg'"
-                                [alt]="service.name">
-                            {{service.name}}
-                            <div (mouseenter)="showCffServiceDescriptionTooltip(service)" (mouseleave)="resetTooltip()"
-                                class="d-inline-flex align-items-center position-relative" #tooltipRef="matTooltip"
-                                [matTooltip]="(cffServiceTooltip$ | async)" matTooltipPosition="above">
-                                <img loading="lazy" src="/assets/icons/info.svg" alt="">
-                            </div>
-                        </label>
-                    </div>
-
-                </div>
-            </ng-template>
-        </div>
+<h2 id="accordion-collapse-heading-service">
+    <button type="button" (click)="loadServices()" [class.text-primary-900]="selectedCffService?.id !== ''"
+        class="flex items-center justify-between w-full p-5 font-bold text-dark-600 border rounded-lg gap-3 bg-primary-100"
+        data-accordion-target="#accordion-collapse-body-service" aria-expanded="false"
+        aria-controls="accordion-collapse-body-service">
+        <span class="text-xs lg:text-base">Step 1: Select Service</span>
+        <svg *ngIf="selectedCffService?.id !== ''" class="w-6 h-6 text-secondary-900" aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd"
+                d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z"
+                clip-rule="evenodd" />
+        </svg>
+    </button>
+</h2>
+<div id="accordion-collapse-body-service" class="hidden" aria-labelledby="accordion-collapse-heading-service">
+    <div class="p-5">
+        <ng-container *ngTemplateOutlet="returnListTemplate()"></ng-container>
     </div>
 </div>
+<ng-template #loadingRef>
+    <div role="status" class="flex flex-wrap gap-2">
+        <div class="flex items-center justify-between rounded-lg rounded bg animate-pulse  w-1/4 gap-x-2"
+            *ngFor="let i of [1,2,3,4]">
+            <div class="h-10 bg-dark-100 rounded-full w-full p-2"></div>
+        </div>
+        <span class="sr-only">Loading...</span>
+    </div>
+</ng-template>
+<ng-template #loadedRef>
+    <div class=" flex flex-wrap items-center rounded-lg rounded w-full gap-2">
+        <div class="flex w-max" *ngFor="let service of cffServices; index as i;">
+            <div class="relative w-full">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <img class="w-6 h-6" loading="lazy" [src]="'/assets/icons/cff-services/' +service.label+'.svg'" />
+                </div>
+                <label [for]="'radio-service-btn-'+i" [class.bg-primary-300]="selectedCffService?.id === service.id"
+                    class="bg-light-900 border border-dark-300 text-dark-900 text-md rounded-full block w-full px-12 p-2.5 text-xs lg:text-base">
+                    {{service.name}}
+                </label>
+                <input type="radio" name="service" [id]="'radio-service-btn-'+i" [value]="service" class="hidden"
+                    [(ngModel)]="selectedCffService" [ngModelOptions]="{standalone: true}"
+                    (ngModelChange)="onSelectedService($event)" />
+                <button type="button" [attr.data-tooltip-target]="'tooltip-'+service.label" data-tooltip-placement="top"
+                    class="absolute inset-y-0 end-0 flex items-center pe-3">
+                    <img class="w-5 h-5" loading="lazy" src="/assets/icons/info.svg" [alt]="service.name">
+                </button>
+                <div [id]="'tooltip-'+service.label" role="tooltip"
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-xs lg:text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    {{service.description}}
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

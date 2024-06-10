@@ -7,7 +7,6 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, RouterLink],
   templateUrl: './why-cff.component.html',
-  styleUrls: ['./why-cff.component.scss'],
 })
 export class WhyCffComponent {
   bookACall() {

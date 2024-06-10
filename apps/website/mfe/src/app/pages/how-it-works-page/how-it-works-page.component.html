@@ -1,25 +1,30 @@
-<main role="main" class="d-flex flex-column container position-relative mb-5 mx-auto" style="margin-top: 100px;">
-    <div class="how-it-works-title">{{'HOW_IT_WORKS_PAGE.TITLE' | translate}}</div>
-    <div class="row  d-flex align-items-stretch justify-content-center" *ngFor="let step of steps; index as i">
-        <div class="col-1 col-lg-2 how-it-works-rectangle p-0 position-relative">
-            <div class="how-it-works-step-number d-flex align-items-center justify-content-center">
-                <div class="text">{{i+1}}</div>
+<div class="flex flex-col max-w-2xl mx-auto  my-12 mx-auto px-3">
+    <div class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-center mb-12">{{'HOW_IT_WORKS_PAGE.TITLE' |
+        translate}}</div>
+    <div class="w-full  flex items-start" *ngFor="let step of steps; index as i">
+        <div class="bg-primary-900 w-1.5 h-60">
+            <div
+                class="flex items-center justify-center -ml-3 text-sm md:text-lg rounded-full bg-primary-900 w-8 h-8 font-semibold text-light-900">
+                {{i+1}}
             </div>
         </div>
-        <div class="col-7 col-lg-5 p-0 ps-4 ps-lg-5">
-            <div class="how-it-works-step-title">{{step.title | translate}}</div>
-            <div *ngFor="let text of step.steps" class=" d-flex align-items-start how-it-works-steps">
-                <div>
-                    <div class="circle-check-green"><img loading="lazy" alt="clutter free finds how it works"
-                            src="/assets/icons/check-light.svg">
-                    </div>
+        <div class="w-full">
+            <div class="pl-4 lg:pl-5">
+                <div class="font-semibold text-lg lg:text-2xl mb-5 ml-2 ">{{step.title | translate}}</div>
+                <div *ngFor="let text of step.steps" class=" flex items-start">
+                    <svg class="w-5 h-5 me-2 text-secondary-900 dark:text-secondary-300 flex-shrink-0"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                    </svg>
+                    <span class="text-sm md:mb-3 md:text-lg text-dark-600">
+                        {{text | translate}}
+                    </span>
                 </div>
-                <div class="how-it-works-step">{{text | translate}}</div>
             </div>
         </div>
-        <div class="col-3 col-lg-2 p-0">
-            <img loading="lazy" [src]="'/assets/images/how-it-works/step-'+(i+1)+'.png'" alt="" class="img-fluid mb-5"
-                width="150" height="200">
+        <div class="ml-auto">
+            <img loading="lazy" [src]="'/assets/images/how-it-works/step-'+(i+1)+'.png'" alt="" class="mb-5 h-32 w-36">
         </div>
     </div>
-</main>
+</div>

@@ -12,6 +12,9 @@ const initialState: IMaterialState = {
     cons: [],
   },
   is_loading: false,
+  response: {
+    success: false,
+  },
 };
 
 export const CFF_MATERIAL_REDUCER = createReducer(
@@ -20,11 +23,22 @@ export const CFF_MATERIAL_REDUCER = createReducer(
     ...state,
     is_loading: true,
   })),
-  on(fromMaterialActions.setMaterialToStore, (state, { cffMaterials }) => ({
-    ...state,
-    cffMaterials,
-    is_loading: false,
-  })),
+  on(
+    fromMaterialActions.QuoteMaterialApi.quoteMaterialOnSuccess,
+    (state, { response }) => ({
+      ...state,
+      cffMaterials: response,
+      is_loading: false,
+    })
+  ),
+  on(
+    fromMaterialActions.QuoteMaterialApi.quoteMaterialOnFailure,
+    (state, { response }) => ({
+      ...state,
+      is_loading: false,
+      response: { message: response.message, success: false },
+    })
+  ),
   on(
     fromMaterialActions.setSelectedMaterial,
     (state, { selected_material }) => ({

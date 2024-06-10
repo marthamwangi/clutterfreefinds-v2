@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule, NgFor } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeroSliderComponent } from './sections/hero-slider/hero-slider.component';
 import { RouterLink } from '@angular/router';
@@ -9,7 +9,6 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [TranslateModule, NgFor, HeroSliderComponent, RouterLink],
   templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.scss'],
 })
 export class HeroComponent {
   private vox = 1;

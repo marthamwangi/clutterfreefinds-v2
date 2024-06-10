@@ -17,7 +17,6 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, NgFor, NgIf, RouterLink, IframeUrlPipe],
   templateUrl: './how-we-do-it.component.html',
-  styleUrls: ['./how-we-do-it.component.scss'],
 })
 export class HowWeDoItComponent implements AfterViewInit, OnDestroy {
   @ViewChild('youtubeVideoRef', { static: true })
@@ -25,8 +24,8 @@ export class HowWeDoItComponent implements AfterViewInit, OnDestroy {
 
   public isVideoVisible: boolean = false;
   #videoObserverOptions = {
-    threshold: 0.5,
-    rootMargin: '0px',
+    threshold: 0,
+    rootMargin: '30%',
   };
   #ytIntersectionObserver!: IntersectionObserver;
   ytIframe: string =

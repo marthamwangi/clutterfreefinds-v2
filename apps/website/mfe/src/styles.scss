@@ -1,6 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* You can add global styles to this file, and also import other style files */
-@import 'node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import 'bootstrap/scss/bootstrap';
 @import 'ngx-toastr/toastr';
 
 @font-face {
@@ -9,9 +11,64 @@
   src: url('assets/fonts/poppins/poppins-regular-webfont.woff2') format('woff2');
   font-display: swap;
 }
+span.datepicker-cell.disabled.cursor-not-allowed {
+  text-decoration: line-through !important;
+  color: #191d231a !important;
+  border-radius: 50%;
+}
+span.datepicker-cell {
+  border-radius: 50%;
+}
+
+span.datepicker-cell.selected {
+  background-color: #7a23d3;
+  color: #ffffff;
+}
+@media (min-width: 480.98px) {
+  .nav-link {
+    position: relative;
+    line-height: 200% !important;
+    &::after {
+      content: '' !important;
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 3px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--purple-100);
+      transform-origin: bottom left;
+      transition: transform 400ms ease-out;
+    }
+    &:hover {
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.stroke-white {
+  margin: 0;
+  -webkit-text-stroke: 2px #ffffff;
+}
+.text-hollow {
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 4px transparent;
+  color: var(--light);
+  text-align: center;
+  font-weight: 700;
+  font-size: 150px;
+  line-height: 225px;
+  text-align: center;
+  opacity: 0.2;
+  @media (max-width: 768px) {
+    font-size: 75px;
+  }
+}
 :root {
   /**Colors
-  */
+*/
   --purple-100: rgb(122, 35, 211);
   --purple-100-rgb: 122, 35, 211;
   --purple-60: rgba(var(--purple-100-rgb), 0.6);
@@ -202,6 +259,7 @@ a.primary-btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 4px;
   img {
     width: 10px;
   }
@@ -238,12 +296,6 @@ a.primary-btn {
 .circle-check-red-30 {
   @extend .circle-round;
   background-color: var(--red-30);
-}
-main {
-  @media (max-width: 575px) {
-    margin-top: 20%;
-  }
-  margin-top: 100px;
 }
 
 span.mdc-tab__text-label {
@@ -327,4 +379,58 @@ span.mdc-tab-indicator {
 .input-group-text {
   background-color: transparent;
   border: none;
+}
+
+.accordion-item {
+  background: transparent;
+  border: none !important;
+  border-radius: 8px;
+  padding: 10px;
+  .accordion-button {
+    background: rgba(var(--purple-100-rgb), 0.07);
+    color: var(--black-100);
+    border-radius: 8px;
+
+    &::after {
+      margin-left: 0 !important;
+    }
+    &.isCompleted {
+      color: var(--purple-100);
+      --bs-accordion-btn-active-icon: url('/assets/icons/check-circle-completed.svg');
+      --bs-accordion-btn-icon: url('/assets/icons/check-circle-completed.svg');
+    }
+    .steps {
+      margin-right: auto;
+      font-size: 16px;
+      line-height: 24px;
+      .step-text-number {
+        font-weight: 600;
+      }
+      .step-text {
+        font-weight: 400;
+      }
+    }
+    --bs-accordion-btn-icon-width: 24px;
+    --bs-accordion-btn-icon: url('/assets/icons/check_circle_incomplete.svg');
+    --bs-accordion-btn-active-icon: url('/assets/icons/check_circle_incomplete.svg');
+    &.collapsed {
+      border-radius: 8px;
+    }
+    &:not(.collapsed) {
+      box-shadow: none;
+      &::after {
+        transform: rotate(0deg);
+      }
+    }
+    &:focus {
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+  .accordion-collapse.collapse.show {
+    .accordion-body {
+      color: var(--black-60);
+      padding: 24px 0px;
+    }
+  }
 }

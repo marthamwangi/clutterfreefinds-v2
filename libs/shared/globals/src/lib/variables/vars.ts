@@ -30,3 +30,4 @@ export const WEB_API_QUOTATION_REQUEST = 'QuotationRequest';
  * REGEX PATTERNS
  */
 export const REGEX_EMAIL = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+export const PHONE_REGEX = '^([0|+[0-9]{1,5})?([0-9]{10})$';

@@ -1,83 +1,110 @@
-<nav class="navbar navbar-expand-lg fixed-top">
-  <div class="container-fluid pt-2" style="max-width: 1440px; gap: 16px;">
-    <a class="navbar-brand me-5" [routerLink]="'/'">
-      <img loading="lazy" src="/assets/images/logo.svg" alt="Clutter Free Finds Logo" class="img-fluid" />
+<header class="sticky top-0 z-40 flex-none w-full mx-auto bg-light-900">
+  <div id="sticky-banner" tabindex="-1"
+    class="z-50 flex justify-center w-full p-4 border-b border-primary-300 bg-primary-900 px-4 py-3 lg:py-4">
+    <cff-app-banner></cff-app-banner>
+  </div>
+  <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 pt-6 lg:py-4">
+    <a [routerLink]="'/'" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img loading="lazy" src="/assets/images/logo.svg" class="h-10" alt="Clutter Free Finds Logo" />
     </a>
-    <div class="collapse navbar-collapse flex-col-md" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="gap: 16px;">
-        <li class="nav-item dropdown has-megamenu">
-          <a class="nav-link px-0 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <div class="header-link header-underline-animation">Company </div>
-            <img loading="lazy" src="/assets/icons/drop-down-dark.svg" alt="">
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <ul class="dropdown-list d-flex flex-column flex-sm-row">
-              <li class="header-item-container col-12 col-lg-6"><a class="dropdown-item h-100" [routerLink]="'/about'">
-                  <div class="d-flex align-items-center h-100" style="column-gap: 16px;">
-                    <div class="header-item-icon"><img loading="lazy" [src]="'assets/header/about.svg'"
-                        alt="about clutter free finds">
-                    </div>
-                    <div class="header-item-content">
-                      <div class="header-item-title">About Us</div>
-                      <div class="header-item-description">Who are we? What is our Vision? And Our
-                        Goals And
-                        everything you need to know about Clutter Free Finds
-                      </div>
-                    </div>
+    <div class="flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
+      <a [routerLink]="['/instant-quote']" type="button"
+        class="inline-flex items-center font-medium justify-center px-4 py-2 md:py-4 text-sm bg-primary-900 text-light-900 rounded-lg cursor-pointer hover:bg-dark-900">
+        Get started
+      </a>
+    </div>
+    <button data-collapse-toggle="mega-menu-full" type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-dark-600 rounded-lg md:hidden hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-dark-200"
+      aria-controls="mega-menu-full" aria-expanded="false">
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15" />
+      </svg>
+    </button>
+    <div id="mega-menu-full"
+      class="items-center justify-between font-medium hidden w-full md:flex md:w-auto md:order-1">
+      <ul
+        class="flex flex-col p-4 md:p-0 mt-4 border border-dark-100 rounded-lg bg-dark-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-light-900">
+        <li>
+          <a [routerLink]="'/'" data-collapse-toggle="mega-menu-full" type="button"
+            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 "
+            aria-current="page">Home</a>
+        </li>
+        <li class="relative">
+          <button type="button" (click)="toggleCustomerMegaMenu()"
+            class="nav-link font-semibold flex items-center justify-between w-full py-2 px-3 text-dark-900 rounded md:w-auto hover:bg-primary-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-900  md:p-0"
+            aria-expanded=" ">
+            <span>Company</span>
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd"
+                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                clip-rule="evenodd" />
+            </svg>
+          </button>
+
+          <div [@openClose]="openCloseCustomerMegaMenuTrigger"
+            class="md:absolute z-50  mt-3 flex w-full md:w-screen max-w-max md:-translate-x-1/2 md:-left-1/2 px-0 lg:px-4">
+            <div
+              class="w-screen max-w-md flex-auto overflow-hidden md:rounded-3xl bg-light-900 text-sm leading-6 shadow-lg ring-1 ring-dark-900/5">
+              <div class="p-1 lg:p-4">
+                <div class="group relative flex gap-x-2 lg:gap-x-6 rounded-lg p-2 lg:p-4 hover:bg-primary-100">
+                  <div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg ">
+                    <img loading="lazy" [src]="'assets/header/about.svg'" alt="about clutter free finds">
                   </div>
-                </a></li>
-              <li class="header-item-container col-12 col-lg-6"><a class="dropdown-item h-100"
-                  [routerLink]="'/how-it-works'">
-                  <div class="d-flex align-items-center h-100" style="column-gap: 16px;">
-                    <div class="header-item-icon"><img loading="lazy" [src]="'assets/header/how-it-works.svg'"
-                        alt="how-it-works clutter free finds">
-                    </div>
-                    <div class="header-item-content">
-                      <div class="header-item-title">How it Works</div>
-                      <div class="header-item-description">Explore the step-by-step breakdown of our
-                        Professional
-                        Organizing approach
-                      </div>
-                    </div>
+                  <div>
+                    <a [routerLink]="'/about'" (click)="toggleCustomerMegaMenu()" class=" font-semibold text-dark-900">
+                      About
+                      <span class="absolute inset-0"></span>
+                    </a>
+                    <p class="mt-1 text-gray-600">Who are we? What is our Vision? And Our
+                      Goals and everything you need to know about Clutter Free Finds</p>
                   </div>
-                </a></li>
-            </ul>
+                </div>
+                <div class="group relative flex gap-x-2 lg:gap-x-6 rounded-lg p-2 lg:p-4 hover:bg-primary-100">
+                  <div class="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg ">
+                    <img loading="lazy" [src]="'assets/header/how-it-works.svg'" alt="how-it-works clutter free finds">
+                  </div>
+                  <div>
+                    <a [routerLink]="'/how-it-works'" (click)="toggleCustomerMegaMenu()" class=" font-semibold
+                      text-dark-900">
+                      How it Works
+                      <span class="absolute inset-0"></span>
+                    </a>
+                    <p class="mt-1 text-gray-600">Explore the step-by-step breakdown of our
+                      Professional Organizing approach from Mess to Yess</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex divide-x divide-dark-100 bg-dark-100">
+                <a href="https://www.youtube.com/watch?v=eZClhYwU7Qc&t=245s" target="_blank"
+                  class="w-3/4 flex items-center justify-start p-2 font-semibold text-dark-900 hover:bg-dark-100 gap-x-2.5 text-xs lg:text-sm">
+                  <svg class="w-6 h-6 text-danger-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd"
+                      d="M21.7 8.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.839c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.839 4.225 4.225 0 0 0-.79 1.965 30.146 30.146 0 0 0-.2 3.206v1.5a30.12 30.12 0 0 0 .2 3.206c.094.712.364 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.151 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965 30.12 30.12 0 0 0 .2-3.206v-1.516a30.672 30.672 0 0 0-.202-3.206Zm-11.692 6.554v-5.62l5.4 2.819-5.4 2.801Z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  Watch our work on YouTube
+                </a>
+                <a (click)="toggleCustomerMegaMenu()"
+                  class="flex items-center justify-center p-2 font-semibold text-dark-900 cursor-pointer text-center">
+                  Close
+                </a>
+              </div>
+            </div>
           </div>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" [routerLink]="'/resources'" role="button" aria-expanded="false">
-            <div class="header-underline-animation">Resources</div>
-          </a>
+        <li>
+          <a [routerLink]="'/store'" data-collapse-toggle="mega-menu-full"
+            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 ">
+            Store</a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" [routerLink]="'/pricing'" role="button" aria-expanded="false">
-            <div class="header-underline-animation">Pricing</div>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" [routerLink]="'/blog'" role="button" aria-expanded="false">
-            <div class="header-underline-animation">Blog</div>
-          </a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" [routerLink]="'/store'" role="button" aria-expanded="false">
-            <div class="header-underline-animation">Store</div>
-          </a>
+        <li>
+          <a [routerLink]="'/blog'" data-collapse-toggle="mega-menu-full"
+            class="nav-link font-semibold block py-2 px-3 text-dark-900 rounded hover:bg-primary-100 md:hover:bg-transparent md:hover:text-primary-900  md:p-0 ">Blog</a>
         </li>
       </ul>
-      <cff-language></cff-language>
-    </div>
-    <div class="d-flex align-items-center">
-      <div>
-        <a [routerLink]="'/instant-quote'" class="btn primary-btn " type="button">
-          {{ 'HEADER.BUTTON_1'| translate }}
-        </a>
-      </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
     </div>
   </div>
-</nav>
+</header>

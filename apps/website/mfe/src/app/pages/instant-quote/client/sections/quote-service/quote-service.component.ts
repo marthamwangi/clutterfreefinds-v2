@@ -10,8 +10,7 @@ import {
   ViewChild,
   inject,
 } from '@angular/core';
-import { AsyncPipe, NgFor, NgTemplateOutlet } from '@angular/common';
-import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
+import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import {
   BehaviorSubject,
   Observable,
@@ -27,13 +26,15 @@ import { fromCffServiceActions } from './data/quote-service.actions';
 import { AppState } from 'apps/website/mfe/src/app/shared/interface';
 import { ICffService } from './model/cffSservice.model';
 import { BASE_API, WEB_API_CFF_SERVICES } from '@clutterfreefinds-v2/globals';
+import { ToastrService } from 'ngx-toastr';
+import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
+import { initAccordions } from 'flowbite';
 @Component({
   selector: 'iq-quote-service',
   standalone: true,
-  imports: [NgFor, MatTooltipModule, AsyncPipe, FormsModule, NgTemplateOutlet],
+  imports: [NgFor, AsyncPipe, FormsModule, NgTemplateOutlet, NgIf],
 
   templateUrl: './quote-service.component.html',
-  styleUrls: ['./quote-service.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuoteServiceComponent implements OnInit, OnDestroy {
@@ -41,8 +42,6 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
   private _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   @Output() selectedService$ = new EventEmitter<ICffService>();
-  @ViewChild('tooltipRef', { static: false })
-  private _tooltipRef!: MatTooltip;
   @ViewChild('loadingRef')
   private _loadingRef!: TemplateRef<any>;
   @ViewChild('loadedRef')
@@ -55,9 +54,11 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
   private _service_selected$: Observable<ICffService>;
   public selectedCffService!: ICffService;
   private _loadProgress$: Observable<boolean>;
+  private _response$: Observable<IResponseModel>;
+
   public loadStatus!: number;
 
-  constructor() {
+  constructor(private _toastrService: ToastrService) {
     this._unsubscribe$ = new Subject<boolean>();
     this._cff_services$ = this.store.select(
       fromCffServiceSelectors.selectServiceList
@@ -69,12 +70,14 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
       fromCffServiceSelectors.selectLoadingList
     );
 
+    this._response$ = this.store.select(fromCffServiceSelectors.selectResponse);
     this.cffServiceTooltip$ = new BehaviorSubject('');
   }
   ngOnInit() {
     this._renderServices();
     this._setSelectedService();
     this._listenForLoadingStatus();
+    initAccordions();
   }
   ngOnDestroy(): void {
     this._unsubscribe$.next(true);
@@ -103,12 +106,15 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
     return templateMap[this.loadStatus];
   }
   private _setSelectedService() {
-    this._service_selected$.subscribe((service) => {
-      this.selectedCffService = service;
+    this._service_selected$.subscribe({
+      next: (service) => {
+        this.selectedCffService = service;
+      },
     });
   }
   public async loadServices() {
     const existingServices = await firstValueFrom(this._cff_services$);
+    const response = await firstValueFrom(this._response$);
     if (existingServices.length) {
       return;
     }
@@ -117,30 +123,21 @@ export class QuoteServiceComponent implements OnInit, OnDestroy {
         url: `${BASE_API}/${WEB_API_CFF_SERVICES}`,
       })
     );
+    if (!response.success && response.message) {
+      this._toastrService.error(
+        response.message,
+        'Something happened, please try again',
+        {
+          positionClass: 'toast-top-right',
+        }
+      );
+    }
   }
 
   private _renderServices() {
     this._cff_services$.subscribe((data: Array<ICffService>) => {
       this.cffServices = data;
     });
-  }
-
-  public showCffServiceDescriptionTooltip(service: ICffService): void {
-    this._tooltipRef.show();
-    this.cffServiceTooltip$.next(service.description);
-    this._tooltipRef._tooltipInstance
-      ?.afterHidden()
-      .pipe(take(1))
-      .subscribe({
-        complete: () => {
-          this.resetTooltip();
-        },
-      });
-  }
-
-  public resetTooltip() {
-    this._tooltipRef.hide();
-    this.cffServiceTooltip$.next('');
   }
 
   public onSelectedService(service: ICffService) {

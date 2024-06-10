@@ -21,7 +21,6 @@
           "error",
           {
             "type": "element",
-            "prefix": "angular-monorepo",
             "style": "kebab-case"
           }
         ]

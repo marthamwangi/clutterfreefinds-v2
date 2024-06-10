@@ -66,7 +66,6 @@ interface Step {
     CurrencyPipe,
   ],
   templateUrl: './instant-quote.component.html',
-  styleUrls: ['./instant-quote.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InstantQuoteComponent implements AfterViewInit {
@@ -85,7 +84,7 @@ export class InstantQuoteComponent implements AfterViewInit {
   public serviceSelected!: ICffService;
   public spaceSelected!: ISpaceModel;
   public selectedMaterial!: IMaterialModel;
-  public _selectedQuoteDate!: any;
+  public _selectedQuoteDate!: Date;
   public additionalInfo!: any;
   public clientData!: any;
 
@@ -129,25 +128,25 @@ export class InstantQuoteComponent implements AfterViewInit {
       0: {
         key: 'date',
         label: 1,
-        title: 'Book a Date',
+        title: 'Booking',
         status: 'active',
       },
       1: {
         key: 'estimates',
         label: 2,
-        title: 'Set your preferences',
+        title: 'Preferences',
         status: 'disabled',
       },
       2: {
         key: 'clientDetails',
         label: 3,
-        title: 'Service address',
+        title: 'Address',
         status: 'disabled',
       },
       3: {
         key: 'quoteSummary',
         label: 4,
-        title: 'Quote Summary',
+        title: 'Finish',
         status: 'disabled',
       },
     };
@@ -181,7 +180,6 @@ export class InstantQuoteComponent implements AfterViewInit {
     this._selectedQuoteDate = $event;
     this._updateInstantQuoteForm({ date: $event });
     this._priceCalculator();
-    this.goToNext();
   }
   getService($event: ICffService): void {
     this.serviceSelected = $event;
@@ -259,10 +257,11 @@ export class InstantQuoteComponent implements AfterViewInit {
       }
     }
     this.#store.dispatch(
-      fromInstantQuoteActions.QuotePrice.min_price({ min_price })
-    );
-    this.#store.dispatch(
-      fromInstantQuoteActions.QuotePrice.max_price({ max_price })
+      fromInstantQuoteActions.QuotePrice.data({
+        min_price,
+        max_price,
+        service_date: this._selectedQuoteDate.toString(),
+      })
     );
     this._updateInstantQuoteForm(
       this.estimates.patchValue({
@@ -280,7 +279,10 @@ export class InstantQuoteComponent implements AfterViewInit {
       if (index === this.currentStepIndex) {
         step.status = 'active';
         this.currentStep = step;
-      } else if (index < this.currentStepIndex) {
+      } else if (
+        index < this.currentStepIndex &&
+        this.instantQuoteForm(this.steps[index].key)?.valid
+      ) {
         step.status = 'completed';
         this.currentStep = step;
       } else {
@@ -298,7 +300,10 @@ export class InstantQuoteComponent implements AfterViewInit {
       if (index === this.currentStepIndex) {
         step.status = 'active';
         this.currentStep = step;
-      } else if (index < this.currentStepIndex) {
+      } else if (
+        index < this.currentStepIndex &&
+        this.instantQuoteForm(this.steps[index].key)?.valid
+      ) {
         step.status = 'completed';
         this.currentStep = step;
       } else {

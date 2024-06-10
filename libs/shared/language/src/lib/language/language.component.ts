@@ -7,7 +7,6 @@ import { SUPPORTED_LANGUAGES } from '@clutterfreefinds-v2/globals';
   standalone: true,
   imports: [NgFor],
   templateUrl: './language.component.html',
-  styleUrls: ['./language.component.scss'],
 })
 export class LanguageComponent {
   constructor(public translate: TranslateService) {}

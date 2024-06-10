@@ -1,21 +1,24 @@
-<section>
-    <div class="row align-items-center">
-        <div class="col-12 col-lg-5" style="margin-bottom: 24px;">
-            <div class="about-hero-section-title">{{'ABOUT_US_PAGE.HERO_SECTION.TITLE' | translate}}</div>
-            <div class="about-hero-section-description">{{'ABOUT_US_PAGE.HERO_SECTION.DESCRIPTION'| translate}}</div>
-            <div
-                class="about-hero-section-btns justify-content-md-start justify-content-center d-flex align-items-center">
-                <a class="btn primary-btn" type="button" [routerLink]="['/instant-quote']">{{
-                    'ABOUT_US_PAGE.HERO_SECTION.BUTTON_1' | translate
-                    }}</a>
-                <a class="btn link-btn" type="button" (click)="bookACall()">{{ 'ABOUT_US_PAGE.HERO_SECTION.BUTTON_2' |
-                    translate }}</a>
-            </div>
+<div class="flex flex-col lg:flex-row items-center">
+    <div class="w-full lg:w-5/12">
+        <div class=" !leading-extra-loose text-3xl md:text-5xl lg:text-6xl font-extrabold text-primary-900">
+            {{'ABOUT_US_PAGE.HERO_SECTION.TITLE' |
+            translate}}</div>
+        <div class="mb-2 text-dark-600 text-sm md:text-lg">{{'ABOUT_US_PAGE.HERO_SECTION.DESCRIPTION'| translate}}
         </div>
-        <div class="col-lg-1"></div>
-        <div class="col-12 col-lg-6">
-            <img loading="lazy" src="/assets/images/bg/about-us.png" class="img-fluid"
-                [alt]="'ABOUT_US_PAGE.HERO_SECTION.TITLE' | translate" width="813" height="813">
+        <div class="flex  items-center gap-4">
+            <a type="button"
+                class="inline-flex items-center font-medium justify-center px-4 py-4 text-sm bg-primary-900 text-light-900 dark:text-light-900 rounded-lg cursor-pointer hover:bg-dark-900"
+                ng-reflect-router-link="instant-quote" href="/instant-quote">{{
+                'ABOUT_US_PAGE.HERO_SECTION.BUTTON_1' | translate
+                }}</a>
+            <a type="button"
+                class="inline-flex items-center font-medium justify-center px-4 py-4 text-md text-primary-900 hover:text-dark-900 cursor-pointer">
+                {{ 'ABOUT_US_PAGE.HERO_SECTION.BUTTON_2' |
+                translate }}</a>
         </div>
     </div>
-</section>
+    <div class="hidden lg:block lg:w-7/12">
+        <img loading="lazy" src="/assets/images/bg/about-us.png" [alt]="'ABOUT_US_PAGE.HERO_SECTION.TITLE' | translate"
+            class="object-cover">
+    </div>
+</div>

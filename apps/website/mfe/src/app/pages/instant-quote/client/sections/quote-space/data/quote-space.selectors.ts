@@ -4,6 +4,7 @@ import { AppState } from 'apps/website/mfe/src/app/shared/interface';
 const isLoading = (state: AppState) => state.cff_spaces.is_loading;
 const allSpaces = (state: AppState) => state.cff_spaces.cffSpaces;
 const selectedSpace = (state: AppState) => state.cff_spaces.selected_space;
+const response = (state: AppState) => state.cff_spaces.response;
 
 const selectSepacesList = createSelector(allSpaces, (statePiece) => statePiece);
 
@@ -13,9 +14,11 @@ const selectedSpaceSelector = createSelector(
 );
 
 const selectLoadingList = createSelector(isLoading, (statePiece) => statePiece);
+const selectResponse = createSelector(response, (statePiece) => statePiece);
 
 export const fromSpaceSelectors = {
   selectSepacesList,
   selectedSpaceSelector,
   selectLoadingList,
+  selectResponse,
 };

@@ -13,6 +13,7 @@ import {
   CurrencyPipe,
   NgIf,
   NgTemplateOutlet,
+  DatePipe,
 } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { AppState } from 'apps/website/mfe/src/app/shared/interface';
@@ -36,9 +37,8 @@ import {
 @Component({
   selector: 'iq-quote-summary',
   standalone: true,
-  imports: [AsyncPipe, CurrencyPipe, NgTemplateOutlet, NgIf],
+  imports: [AsyncPipe, CurrencyPipe, NgTemplateOutlet, NgIf, DatePipe],
   templateUrl: './quote-summary.component.html',
-  styleUrls: ['./quote-summary.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuoteSummaryComponent implements OnInit {
@@ -62,6 +62,7 @@ export class QuoteSummaryComponent implements OnInit {
   notes$: Observable<any>;
   client_details$: Observable<any>;
   county_details$: Observable<any>;
+  service_date$: Observable<string>;
   instant_quote$: Observable<any>;
 
   constructor() {
@@ -89,6 +90,9 @@ export class QuoteSummaryComponent implements OnInit {
     );
     this.instant_quote$ = this.#store.select(
       fromInstantQuoteSelector.InstantQuoteSelector
+    );
+    this.service_date$ = this.#store.select(
+      fromInstantQuoteSelector.ServiceDateSelector
     );
   }
   ngOnInit(): void {

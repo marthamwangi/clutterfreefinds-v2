@@ -11,6 +11,9 @@ const initialState: ISpaceState = {
     maxHours: 0,
   },
   is_loading: false,
+  response: {
+    success: false,
+  },
 };
 
 export const CFF_SPACE_REDUCER = createReducer(
@@ -19,11 +22,22 @@ export const CFF_SPACE_REDUCER = createReducer(
     ...state,
     is_loading: true,
   })),
-  on(fromCffSpacesActions.setCffSpacesToStore, (state, { cffSpaces }) => ({
-    ...state,
-    cffSpaces,
-    is_loading: false,
-  })),
+  on(
+    fromCffSpacesActions.QuoteSpaceApi.quoteSpaceOnSuccess,
+    (state, { response }) => ({
+      ...state,
+      cffSpaces: response,
+      is_loading: false,
+    })
+  ),
+  on(
+    fromCffSpacesActions.QuoteSpaceApi.quoteSpaceOnFailure,
+    (state, { response }) => ({
+      ...state,
+      response,
+      is_loading: false,
+    })
+  ),
   on(fromCffSpacesActions.setSelectedService, (state, { selected_space }) => ({
     ...state,
     selected_space,

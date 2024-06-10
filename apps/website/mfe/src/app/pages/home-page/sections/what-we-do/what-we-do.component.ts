@@ -8,7 +8,6 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [TranslateModule, NgFor, RouterLink],
   templateUrl: './what-we-do.component.html',
-  styleUrls: ['./what-we-do.component.scss'],
 })
 export class WhatWeDoComponent {
   APP_URL = 'clutterfreefinds.com';
@@ -19,15 +18,15 @@ export class WhatWeDoComponent {
     link: string;
   }> = [
     {
-      title: 'HOME_PAGE.WHAT_WE_DO.SERVICES.ITEM1.TITLE',
-      description: 'HOME_PAGE.WHAT_WE_DO.SERVICES.ITEM1.DESCRIPTION',
-      image: 'assets/images/decluttering.png',
-      link: '/#',
-    },
-    {
       title: 'HOME_PAGE.WHAT_WE_DO.SERVICES.ITEM2.TITLE',
       description: 'HOME_PAGE.WHAT_WE_DO.SERVICES.ITEM2.DESCRIPTION',
       image: 'assets/images/organizing.png',
+      link: '/#',
+    },
+    {
+      title: 'HOME_PAGE.WHAT_WE_DO.SERVICES.ITEM1.TITLE',
+      description: 'HOME_PAGE.WHAT_WE_DO.SERVICES.ITEM1.DESCRIPTION',
+      image: 'assets/images/decluttering.png',
       link: '/#',
     },
     {
