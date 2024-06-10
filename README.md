@@ -1,6 +1,6 @@
 # Clutter Free Finds
 
-    Clutter free finds is a professional organizing company that aims to serve individuals who feel overwhelmed by clutter and disarray. We provide a comprehensive suite of tools and features designed to streamline your life and bring order to the chaos.
+Clutter free finds is a professional organizing company that aims to serve individuals who feel overwhelmed by clutter and disarray. We provide a comprehensive suite of tools and features designed to streamline your life and bring order to the chaos.
 
 ## Features
 
@@ -10,7 +10,7 @@
 
 ## Motivation
 
-    By creating this web app, I hope to equip people with the tools and resources they need to cultivate a sense of calm and control in their lives, regardless of their location or lifestyle.
+By creating this web app, I hope to equip people with the tools and resources they need to cultivate a sense of calm and control in their lives, regardless of their location or lifestyle.
 
 ## Requirements
 
@@ -35,7 +35,7 @@ The API docs can be referenced on swagger as provided in apps/api/README.md **_o
 
 ## License
 
-A short snippet describing the license ([MIT](http://opensource.org/licenses/mit-license.php), [Apache](http://opensource.org/licenses/Apache-2.0), etc.)
+A short snippet describing the license ([CLA](http://opensource.org/licenses/mit-license.php), [Apache](http://opensource.org/licenses/Apache-2.0), etc.)
 
 ## Commits
 
