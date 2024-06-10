@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "start": "nx run-many --target=serve --projects=website-mfe,api --parallel=4",
     "start-website": "nx serve website-mfe --serve-path /",
     "gen-sitemap": "tools/generators/sitemap/script.sh",
     "prerender-website": "nx prerender website-mfe --prod && npm run postbuild",
     "postbuild": "node postbuild.js",
     "build": "nx build website-mfe --prod && npm run postbuild",
-    "serve-ssr": "nx serve-ssr website-mfe --prod && npm run postbuild"
+    "serve-ssr": "nx serve-ssr website-mfe --prod && npm run postbuild",
+    "prepare": "nx g @nx-dotnet/core:restore"
   },
   "private": true,
   "dependencies": {
@@ -53,6 +55,7 @@
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "@ngrx/schematics": "~16.0.0",
     "@nguniversal/builders": "~16.2.0",
+    "@nx-dotnet/core": "^2.2.0",
     "@nx/cypress": "18.0.4",
     "@nx/eslint": "18.0.4",
     "@nx/eslint-plugin": "18.0.4",
