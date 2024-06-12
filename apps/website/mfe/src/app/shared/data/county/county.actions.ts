@@ -1,6 +1,6 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { IConstituencyModel, ICountyModel } from '../../models/county.model';
-import { IResponseModel } from '../../response.model';
+import { IResponseModel } from '../../../../../../../../libs/shared/globals/src/lib/state/response.model';
 
 const CountyPicker = createActionGroup({
   source: 'Quote Client Details Component',

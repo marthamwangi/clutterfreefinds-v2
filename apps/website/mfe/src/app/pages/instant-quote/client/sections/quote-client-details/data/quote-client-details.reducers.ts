@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { IClientDetailsState } from 'apps/website/mfe/src/app/shared/interface';
 import { fromClientDetailsActions } from './quote-client-details.actions';
+import { IClientDetailsState } from '@clutterfreefinds-v2/globals';
 
 const initialState: IClientDetailsState = {
   email: '',

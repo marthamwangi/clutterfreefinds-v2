@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { IAdditionalInfoState } from 'apps/website/mfe/src/app/shared/interface';
 import { fromAdditionalInfoActions } from './quote-additional-info.actions';
+import { IAdditionalInfoState } from '@clutterfreefinds-v2/globals';
 
 const initialState: IAdditionalInfoState = {
   quote_additional_info: {

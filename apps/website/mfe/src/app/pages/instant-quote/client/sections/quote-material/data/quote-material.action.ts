@@ -1,8 +1,7 @@
 import { createAction, createActionGroup, props } from '@ngrx/store';
 import { fromMaterialActionNames } from './quote-material.action-names';
 import { IMaterialModel } from '../models/material.model';
-import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
-
+import { IResponseModel } from '@clutterfreefinds-v2/globals';
 const getMaterialsFromBE = createAction(
   fromMaterialActionNames.fetchMaterial,
   props<{

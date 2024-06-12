@@ -17,7 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { APP_EFFECTS, APP_STORE } from './shared/interface';
+import { APP_EFFECTS, APP_STORE } from '@clutterfreefinds-v2/globals';
 
 @NgModule({
   declarations: [AppComponent, ToastrComponent],

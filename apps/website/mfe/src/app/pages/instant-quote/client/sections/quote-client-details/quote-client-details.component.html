@@ -48,7 +48,7 @@
             <label for="clientPhoneNumber">Phone Number *</label>
             <input type="tel"
                 class="bg-light-900 border border-dark-300 text-dark-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                id="clientPhoneNumber" placeholder="+254 06 34 73 99" [value]="clientQuotePhoneNumber$ | async"
+                id="clientPhoneNumber" placeholder="Whatsapp Phone No." [value]="clientQuotePhoneNumber$ | async"
                 (change)="onInputEvent($event,'phone')" [ngModel]="clientQuotePhoneNumber$ | async" #phoneNo="ngModel"
                 required minlength="8" maxlength="25" [pattern]="PHONE_REGEX">
             <div [class.hidden]="!(phoneNo.invalid && (phoneNo.dirty || phoneNo.touched) && phoneNo.value)"

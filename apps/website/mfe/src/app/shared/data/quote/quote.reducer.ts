@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { fromInstantQuoteActions } from './quote.actions';
-import { InstantQuoteState } from '../../interface';
+import { InstantQuoteState } from '../../../../../../../../libs/shared/globals/src/lib/state/interface';
 
 const initialState: InstantQuoteState = {
   service_date: '',

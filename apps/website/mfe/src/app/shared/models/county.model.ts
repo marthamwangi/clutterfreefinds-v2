@@ -1,4 +1,4 @@
-import { IResponseModel } from '../response.model';
+import { IResponseModel } from '@clutterfreefinds-v2/globals';
 
 export interface ICountyModel {
   countyCode: number;

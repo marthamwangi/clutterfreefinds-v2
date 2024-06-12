@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { fromCffServiceActions } from './quote-service.actions';
-import { ICffServiceState } from 'apps/website/mfe/src/app/shared/interface';
+import { ICffServiceState } from '@clutterfreefinds-v2/globals';
 const initialState: ICffServiceState = {
   cffServices: [],
   selected_service: {

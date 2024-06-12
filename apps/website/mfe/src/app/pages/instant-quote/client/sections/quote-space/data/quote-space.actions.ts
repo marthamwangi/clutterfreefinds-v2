@@ -1,8 +1,7 @@
 import { createAction, createActionGroup, props } from '@ngrx/store';
 import { fromCffSpaceActionNames } from './quote-space.action-names';
 import { ISpaceModel } from '../models/space.model';
-import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
-
+import { IResponseModel } from '@clutterfreefinds-v2/globals';
 const getCffSpacesFromBE = createAction(
   fromCffSpaceActionNames.fetchCffSpaces,
   props<{

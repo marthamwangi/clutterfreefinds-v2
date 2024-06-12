@@ -1,4 +1,5 @@
-import { IResponseModel } from '../../../../../../shared/response.model';
+import { IResponseModel } from '@clutterfreefinds-v2/globals';
+
 export interface ICffService {
   id: string;
   name: string;

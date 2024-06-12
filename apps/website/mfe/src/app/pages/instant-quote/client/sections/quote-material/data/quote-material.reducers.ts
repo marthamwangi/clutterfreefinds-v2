@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { IMaterialState } from 'apps/website/mfe/src/app/shared/interface';
 import { fromMaterialActions } from './quote-material.action';
+import { IMaterialState } from '@clutterfreefinds-v2/globals';
 
 const initialState: IMaterialState = {
   cffMaterials: [],

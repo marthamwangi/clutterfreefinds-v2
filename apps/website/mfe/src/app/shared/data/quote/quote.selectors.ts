@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { AppState } from '../../interface';
+import { AppState } from '../../../../../../../../libs/shared/globals/src/lib/state/interface';
 const iq = (state: AppState) => state.instant_quote;
 const min = (state: AppState) => state.instant_quote.min_price;
 const max = (state: AppState) => state.instant_quote.max_price;

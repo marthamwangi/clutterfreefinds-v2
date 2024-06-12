@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { AppState } from 'apps/website/mfe/src/app/shared/interface';
+import { AppState } from '@clutterfreefinds-v2/globals';
 
 const isLoading = (state: AppState) => state.cff_spaces.is_loading;
 const allSpaces = (state: AppState) => state.cff_spaces.cffSpaces;

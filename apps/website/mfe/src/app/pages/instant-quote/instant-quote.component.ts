@@ -34,10 +34,9 @@ import { ICffService } from './client/sections/quote-service/model/cffSservice.m
 import { QuoteMaterialComponent } from './client/sections/quote-material/quote-material.component';
 import { QuoteSummaryComponent } from './client/sections/quote-summary-options/quote-summary.component';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../shared/interface';
 import { fromInstantQuoteActions } from '../../shared/data/quote/quote.actions';
 import { fromInstantQuoteSelector } from '../../shared/data/quote/quote.selectors';
-import { REGEX_EMAIL } from '@clutterfreefinds-v2/globals';
+import { AppState, REGEX_EMAIL } from '@clutterfreefinds-v2/globals';
 
 interface Step {
   label: number;

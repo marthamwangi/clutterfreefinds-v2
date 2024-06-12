@@ -16,7 +16,7 @@ import {
   DatePipe,
 } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { AppState } from 'apps/website/mfe/src/app/shared/interface';
+import { AppState } from '@clutterfreefinds-v2/globals';
 import { Observable, Subject, firstValueFrom, takeUntil } from 'rxjs';
 import { ICffService } from '../quote-service/model/cffSservice.model';
 import { fromCffServiceSelectors } from '../quote-service/data/quote-service.selectors';

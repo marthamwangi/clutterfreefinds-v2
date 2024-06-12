@@ -14,14 +14,14 @@ import {
 import { FormsModule } from '@angular/forms';
 import { ISpaceModel } from './models/space.model';
 import { Observable, Subject, firstValueFrom, takeUntil } from 'rxjs';
-import { AppState } from 'apps/website/mfe/src/app/shared/interface';
+import { AppState } from '@clutterfreefinds-v2/globals';
 import { Store } from '@ngrx/store';
 import { fromSpaceSelectors } from './data/quote-space.selectors';
 import { fromCffSpacesActions } from './data/quote-space.actions';
 import { BASE_API, WEB_API_CFF_SPACE } from '@clutterfreefinds-v2/globals';
 import { ICffService } from '../quote-service/model/cffSservice.model';
 import { fromCffServiceSelectors } from '../quote-service/data/quote-service.selectors';
-import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
+import { IResponseModel } from '@clutterfreefinds-v2/globals';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
