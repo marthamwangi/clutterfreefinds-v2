@@ -23,11 +23,11 @@ import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { fromCffServiceSelectors } from './data/quote-service.selectors';
 import { fromCffServiceActions } from './data/quote-service.actions';
-import { AppState } from 'apps/website/mfe/src/app/shared/interface';
+import { AppState } from '@clutterfreefinds-v2/globals';
 import { ICffService } from './model/cffSservice.model';
 import { BASE_API, WEB_API_CFF_SERVICES } from '@clutterfreefinds-v2/globals';
 import { ToastrService } from 'ngx-toastr';
-import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
+import { IResponseModel } from '@clutterfreefinds-v2/globals';
 import { initAccordions } from 'flowbite';
 @Component({
   selector: 'iq-quote-service',

@@ -7,7 +7,7 @@ import { DeserializeCffService } from '../mappers/cffService.mapper';
 import { fromCffServiceActions } from './quote-service.actions';
 import { Store } from '@ngrx/store';
 import {} from './quote-service.selectors';
-import { AppState } from 'apps/website/mfe/src/app/shared/interface';
+import { AppState } from '@clutterfreefinds-v2/globals';
 @Injectable({
   providedIn: 'root',
 })

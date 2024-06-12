@@ -1,10 +1,10 @@
-using static Microsoft.AspNetCore.Http.StatusCodes;
 using CFFService.service;
 using County.Service;
 using Material.Service;
 using Newsletter.Services;
 using Quotation.Request.Service;
 using Space.Service;
+using Inquiry.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
@@ -24,7 +24,10 @@ builder.Services.AddCors(options =>
              options.AddPolicy(name: "cff_web",
                              builder =>
                              {
-                                 builder.WithOrigins("http://localhost:4200",
+                                 builder.WithOrigins(
+                                    "http://localhost:4200",
+                                    "http://localhost:5291",
+                                  "https://localhost:7130",
                                                      "http://127.0.0.1:5000",
                                                      "https://cff-v2.web.app",
                                                      "https://clutterfreefinds.com").AllowAnyHeader().AllowAnyMethod();
@@ -36,14 +39,8 @@ builder.Services.AddScoped<ICFFService, CFFServices>();
 builder.Services.AddScoped<ISpaceServices, SpaceServices>();
 builder.Services.AddScoped<IMaterialServices, MaterialServices>();
 builder.Services.AddScoped<ICountyServices, CountyServices>();
-if (builder.Environment.IsDevelopment())
-{
-    builder.Services.AddHttpsRedirection(options =>
-    {
-        options.RedirectStatusCode = Status308PermanentRedirect;
-        options.HttpsPort = 443;
-    });
-}
+builder.Services.AddScoped<IInquiryService, InquiryRequestService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

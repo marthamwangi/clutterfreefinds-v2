@@ -1,5 +1,5 @@
+import { AppState } from '@clutterfreefinds-v2/globals';
 import { createSelector } from '@ngrx/store';
-import { AppState } from 'apps/website/mfe/src/app/shared/interface';
 
 const quote_images = (state: AppState) =>
   state.quote_additional_info.quote_additional_info.images;

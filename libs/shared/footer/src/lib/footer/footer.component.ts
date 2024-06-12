@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import {
   FormControl,
@@ -9,20 +15,26 @@ import {
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
   APP_URL,
+  AppState,
   BASE_API,
   CFF_SOCIAL_ACCOUNTS,
   CFF_WHATS_APP_CONTACT_US,
   CFF_WHATS_APP_LINK,
-  EMAIL,
   GOOGLE_BUSINESS_PROFILE,
+  IResponseModel,
   REGEX_EMAIL,
+  WEB_API_INQUIRY_REQUEST,
   WEB_APP_NEWSLETTER,
 } from '@clutterfreefinds-v2/globals';
 import { FooterService } from './footer.service';
-import { BehaviorSubject, take } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { RouterLink } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Modal } from 'flowbite';
+import { Store } from '@ngrx/store';
+import { fromFooterActions } from './data/footer.actions';
+import { fromInquirySelector } from './data/footer.selectors';
 
 @Component({
   selector: 'clutterfreefinds-v2-footer',
@@ -37,7 +49,13 @@ import { DomSanitizer } from '@angular/platform-browser';
   ],
   templateUrl: './footer.component.html',
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit {
+  #store: Store<AppState> = inject(Store);
+
+  @ViewChild('emailPopupRef')
+  private emailPopupRef!: ElementRef<HTMLDivElement>;
+  private _sendEmailModal!: Modal;
+
   APP_URL = APP_URL;
   BASE_API = BASE_API;
   newsletterProgress = false;
@@ -130,12 +148,34 @@ export class FooterComponent {
       Validators.pattern(REGEX_EMAIL),
     ]),
   });
+  inquiryForm = new FormGroup({
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.pattern(REGEX_EMAIL),
+    ]),
+    name: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required]),
+    message: new FormControl('', [Validators.required]),
+  });
+  public inquiryProgress$: Observable<boolean>;
+  public inquiryResponse$: Observable<IResponseModel>;
   constructor(
     private _toastrService: ToastrService,
     private _newsLetterService: FooterService,
     private readonly _translateService: TranslateService,
     private _sanitizer: DomSanitizer
-  ) {}
+  ) {
+    this.inquiryProgress$ = this.#store.select(
+      fromInquirySelector.LoadingSelector
+    );
+    this.inquiryResponse$ = this.#store.select(
+      fromInquirySelector.ResponseSelector
+    );
+  }
+  ngOnInit(): void {
+    this._listenForInquiryResponse();
+  }
 
   public subscribeToNewsletter() {
     if (!this.newsletterForm.valid) return;
@@ -199,16 +239,53 @@ export class FooterComponent {
     }, 5000);
   }
 
-  copyToClipboard(): void {
-    navigator.clipboard.writeText(EMAIL).then(() => {
-      this.emailTooltip$.next('FOOTER.EMAIL_TOOLTIP_COPIED');
-      this._resetCopyToClipboard();
+  public sendUsAnEmailPopUp(): void {
+    const modalEl = this.emailPopupRef.nativeElement;
+    this._sendEmailModal = new Modal(modalEl, {
+      placement: 'center',
+    });
+    this._sendEmailModal.show();
+  }
+  public closeEmailPopup() {
+    this._sendEmailModal.hide();
+  }
+  public sendInquiryRequest() {
+    const inquiry = this.inquiryForm.value;
+    this.#store.dispatch(
+      fromFooterActions.InquiryRequest.inquiry({
+        url: `${BASE_API}/${WEB_API_INQUIRY_REQUEST}`,
+        inquiry,
+      })
+    );
+  }
+  private _listenForInquiryResponse() {
+    this.inquiryResponse$.subscribe({
+      next: (response: any) => {
+        if (response.success) {
+          this.inquiryRequestOnSuccess(response.message);
+        }
+      },
+      error: (error: any) => {
+        this.subscribeFailed(error.message);
+      },
     });
   }
-  private _resetCopyToClipboard() {
-    setTimeout(() => {
-      this.emailTooltip$.next('FOOTER.EMAIL_TOOLTIP');
-    }, 5000);
+  inquiryRequestOnSuccess(success: any) {
+    this.inquiryForm.reset();
+    this._sendEmailModal.hide();
+    const msgSuccessTitle = 'Well Received';
+    const msgSuccessDesc = success;
+    this._toastrService.success(msgSuccessDesc, msgSuccessTitle, {
+      positionClass: 'toast-top-right',
+    });
+  }
+
+  inquiryRequestOnError(error: any) {
+    const msgSuccessTitle = 'Oh no!';
+    const msgSuccessDesc = error;
+    this._toastrService.success(msgSuccessDesc, msgSuccessTitle, {
+      positionClass: 'toast-top-right',
+    });
   }
 
   get email(): any {

@@ -1,8 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Client.Details.Model;
-using clutterfreefinds.Service.Model;
 using Google.Cloud.Firestore;
-using Space.Model;
 
 namespace QuotationRequest.Model
 {

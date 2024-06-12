@@ -1,6 +1,6 @@
-import { ISpaceState } from 'apps/website/mfe/src/app/shared/interface';
 import { createReducer, on } from '@ngrx/store';
 import { fromCffSpacesActions } from './quote-space.actions';
+import { ISpaceState } from '@clutterfreefinds-v2/globals';
 
 const initialState: ISpaceState = {
   cffSpaces: [],

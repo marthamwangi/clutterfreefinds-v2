@@ -1,5 +1,3 @@
-using Google.Cloud.Firestore;
-
 namespace Newsletter.Model;
 public class NewsletterItem
 {

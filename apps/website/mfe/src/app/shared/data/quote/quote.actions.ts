@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { IResponseModel } from '../../response.model';
+import { IResponseModel } from '../../../../../../../../libs/shared/globals/src/lib/state/response.model';
 
 const QuotePrice = createActionGroup({
   source: 'Instant Quote Component',

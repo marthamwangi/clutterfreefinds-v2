@@ -1,8 +1,7 @@
 import { createAction, createActionGroup, props } from '@ngrx/store';
 import { ICffService } from '../model/cffSservice.model';
 import { fromCffServiceActionNames } from './quote-service.actions-names';
-import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
-
+import { IResponseModel } from '@clutterfreefinds-v2/globals';
 const getCffServicesFromBE = createAction(
   fromCffServiceActionNames.fetchCffServices,
   props<{

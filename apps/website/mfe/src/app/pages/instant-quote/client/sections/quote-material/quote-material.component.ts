@@ -16,13 +16,13 @@ import { Observable, Subject, firstValueFrom, takeUntil } from 'rxjs';
 import { RouterOutlet } from '@angular/router';
 import { TabComponent } from './sections/tab/tab.component';
 import { Store } from '@ngrx/store';
-import { AppState } from 'apps/website/mfe/src/app/shared/interface';
+import { AppState } from '@clutterfreefinds-v2/globals';
 import { fromMaterialSelectors } from './data/quote-material.selectors';
 import { fromMaterialActions } from './data/quote-material.action';
 import { BASE_API, WEB_API_CFF_MATERIAL } from '@clutterfreefinds-v2/globals';
 import { ISpaceModel } from '../quote-space/models/space.model';
 import { fromSpaceSelectors } from '../quote-space/data/quote-space.selectors';
-import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
+import { IResponseModel } from '@clutterfreefinds-v2/globals';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

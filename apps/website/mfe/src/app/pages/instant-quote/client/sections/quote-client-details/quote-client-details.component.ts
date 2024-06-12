@@ -12,14 +12,14 @@ import {
 import { FormsModule } from '@angular/forms';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Observable, firstValueFrom } from 'rxjs';
-import { AppState } from 'apps/website/mfe/src/app/shared/interface';
+import { AppState } from '@clutterfreefinds-v2/globals';
 import { Store } from '@ngrx/store';
 import { fromCountyActions } from 'apps/website/mfe/src/app/shared/data/county/county.actions';
 import { fromCountySelector } from 'apps/website/mfe/src/app/shared/data/county/county.selectors';
 import { SortPipe } from '@clutterfreefinds/sort_pipe';
 import { fromClientDetailsSelector } from './data/quote-client-details.selector';
 import { fromClientDetailsActions } from './data/quote-client-details.actions';
-import { IResponseModel } from 'apps/website/mfe/src/app/shared/response.model';
+import { IResponseModel } from '@clutterfreefinds-v2/globals';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

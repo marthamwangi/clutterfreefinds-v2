@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { ICountyState } from '../../interface';
+import { ICountyState } from '../../../../../../../../libs/shared/globals/src/lib/state/interface';
 import { fromCountyActions } from './county.actions';
 
 const initialState: ICountyState = {

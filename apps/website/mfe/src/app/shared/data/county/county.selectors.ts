@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { AppState } from '../../interface';
+import { AppState } from '../../../../../../../../libs/shared/globals/src/lib/state/interface';
 
 const is_loading = (state: AppState) => state.cff_county.is_loading;
 const list_counties = (state: AppState) => state.cff_county.counties;

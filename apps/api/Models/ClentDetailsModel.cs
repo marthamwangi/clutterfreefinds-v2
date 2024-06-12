@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using County.Model;
 using Google.Cloud.Firestore;
 
 namespace Client.Details.Model
