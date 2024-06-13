@@ -32,11 +32,11 @@ import { QuoteMaterialComponent } from '../client/sections/quote-material/quote-
 import { QuoteSummaryComponent } from '../client/sections/quote-summary-options/quote-summary.component';
 import { Store } from '@ngrx/store';
 import { AppState, REGEX_EMAIL } from '@clutterfreefinds-v2/globals';
-import { ICffService } from '../client/sections/quote-service/data';
-import { ISpaceModel } from '../client/sections/quote-space/data';
-import { IMaterialModel } from '../client/sections/quote-material/data';
 import { fromInstantQuoteSelector } from './data/quote.selectors';
 import { fromInstantQuoteActions } from './data/quote.actions';
+import { ICffService } from '../client/sections/quote-service/data/cffSservice.model';
+import { ISpaceModel } from '../client/sections/quote-space/data/space.model';
+import { IMaterialModel } from '../client/sections/quote-material/data/material.model';
 
 interface Step {
   label: number;

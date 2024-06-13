@@ -22,8 +22,8 @@ import { BASE_API, WEB_API_CFF_MATERIAL } from '@clutterfreefinds-v2/globals';
 import { fromSpaceSelectors } from '../quote-space/data/quote-space.selectors';
 import { IResponseModel } from '@clutterfreefinds-v2/globals';
 import { ToastrService } from 'ngx-toastr';
-import { IMaterialModel } from './data';
-import { ISpaceModel } from '../quote-space/data';
+import { IMaterialModel } from './data/material.model';
+import { ISpaceModel } from '../quote-space/data/space.model';
 
 @Component({
   selector: 'iq-quote-material',

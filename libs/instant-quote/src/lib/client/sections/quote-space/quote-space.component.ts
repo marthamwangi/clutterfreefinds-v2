@@ -21,8 +21,8 @@ import { BASE_API, WEB_API_CFF_SPACE } from '@clutterfreefinds-v2/globals';
 import { fromCffServiceSelectors } from '../quote-service/data/quote-service.selectors';
 import { IResponseModel } from '@clutterfreefinds-v2/globals';
 import { ToastrService } from 'ngx-toastr';
-import { ISpaceModel } from './data';
-import { ICffService } from '../quote-service/data';
+import { ISpaceModel } from './data/space.model';
+import { ICffService } from '../quote-service/data/cffSservice.model';
 
 @Component({
   selector: 'iq-quote-space',

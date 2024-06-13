@@ -28,7 +28,7 @@ import { BASE_API, WEB_API_CFF_SERVICES } from '@clutterfreefinds-v2/globals';
 import { ToastrService } from 'ngx-toastr';
 import { IResponseModel } from '@clutterfreefinds-v2/globals';
 import { initAccordions } from 'flowbite';
-import { ICffService } from './data';
+import { ICffService } from './data/cffSservice.model';
 @Component({
   selector: 'iq-quote-service',
   standalone: true,

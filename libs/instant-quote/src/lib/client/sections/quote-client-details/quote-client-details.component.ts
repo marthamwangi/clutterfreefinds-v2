@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import {
+  AppState,
   BASE_API,
   KENYA_COUNTIES,
   PHONE_REGEX,
@@ -8,14 +9,13 @@ import {
 import { FormsModule } from '@angular/forms';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Observable, firstValueFrom } from 'rxjs';
-import { AppState } from '@clutterfreefinds-v2/globals';
 import { Store } from '@ngrx/store';
-import { SortPipe } from '@clutterfreefinds/sort_pipe';
+import { SortPipe } from '@clutterfreefinds-v2/shared-pipes';
 import { fromClientDetailsSelector } from './data/quote-client-details.selector';
 import { fromClientDetailsActions } from './data/quote-client-details.actions';
 import { IResponseModel } from '@clutterfreefinds-v2/globals';
 import { ToastrService } from 'ngx-toastr';
-import { IConstituencyModel, ICountyModel } from './data';
+import { IConstituencyModel, ICountyModel } from './data/county/county.model';
 import { fromCountySelector } from './data/county/county.selectors';
 import { fromCountyActions } from './data/county/county.actions';
 

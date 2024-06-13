@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { fromAdditionalInfoActions } from './data/quote-additional-info.actions';
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
-import { fromAdditionalInfoSelectors } from './data/quote-additional-info.selectors';
 import { Observable } from 'rxjs';
 import { initModals } from 'flowbite';
 import { AppState } from '@clutterfreefinds-v2/globals';
+import { fromAdditionalInfoSelectors } from './data/quote-additional-info.selectors';
+import { fromAdditionalInfoActions } from './data/quote-additional-info.actions';
 @Component({
   selector: 'iq-quote-additonal-info',
   standalone: true,

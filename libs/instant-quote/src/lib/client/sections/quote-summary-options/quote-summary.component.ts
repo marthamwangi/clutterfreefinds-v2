@@ -27,12 +27,12 @@ import {
   BASE_API,
   WEB_API_QUOTATION_REQUEST,
 } from '@clutterfreefinds-v2/globals';
-import { ICffService } from '../quote-service/data';
-import { ISpaceModel } from '../quote-space/data';
-import { IMaterialModel } from '../quote-material/data';
 import { fromCountySelector } from '../quote-client-details/data/county/county.selectors';
 import { fromInstantQuoteSelector } from '../../../instant-quote/data/quote.selectors';
 import { fromInstantQuoteActions } from '../../../instant-quote/data/quote.actions';
+import { ICffService } from '../quote-service/data/cffSservice.model';
+import { ISpaceModel } from '../quote-space/data/space.model';
+import { IMaterialModel } from '../quote-material/data/material.model';
 
 @Component({
   selector: 'iq-quote-summary',
