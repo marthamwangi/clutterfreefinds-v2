@@ -33,8 +33,7 @@ import { RouterLink } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Modal } from 'flowbite';
 import { Store } from '@ngrx/store';
-import { fromFooterActions } from './data/footer.actions';
-import { fromInquirySelector } from './data/footer.selectors';
+import { fromFooterActions, fromInquirySelector } from './data';
 
 @Component({
   selector: 'clutterfreefinds-v2-footer',

@@ -26,8 +26,7 @@ builder.Services.AddCors(options =>
                              {
                                  builder.WithOrigins(
                                     "http://localhost:4200",
-                                    "http://localhost:5291",
-                                  "https://localhost:7130",
+
                                                      "http://127.0.0.1:5000",
                                                      "https://cff-v2.web.app",
                                                      "https://clutterfreefinds.com").AllowAnyHeader().AllowAnyMethod();
