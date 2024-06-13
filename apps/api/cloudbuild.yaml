@@ -1,0 +1,32 @@
+steps:
+  # Build the container image
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "gcr.io/cff-v1-api/africa-south1-docker.pkg.dev/cff-v1-api/cffapi-docker-repo/cffapi-image",
+        ".",
+      ]
+  # Push the container image to Container Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "gcr.io/cff-v1-api/africa-south1-docker.pkg.dev/cff-v1-api/cffapi-docker-repo/cffapi-image",
+      ]
+  # Deploy container image to Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      [
+        "run",
+        "deploy",
+        "cffapi-service",
+        "--image",
+        "gcr.io/cff-v1-api/africa-south1-docker.pkg.dev/cff-v1-api/cffapi-docker-repo/cffapi-image",
+        "--region",
+        "SERVICE_REGION",
+      ]
+images:
+  - gcr.io/cff-v1-api/africa-south1-docker.pkg.dev/cff-v1-api/cffapi-docker-repo/cffapi-image

@@ -2,7 +2,7 @@
   "name": "instant-quote",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/instant-quote/src",
-  "prefix": "clutterfreefinds-v2",
+  "prefix": "cff-instant-quote",
   "tags": [],
   "projectType": "library",
   "targets": {}
