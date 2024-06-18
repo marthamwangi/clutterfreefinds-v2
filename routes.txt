@@ -11,3 +11,5 @@
 /store
 /instant-quote
 /resources
+/store/fRlKutr6rsGLMRtqTebD
+/store/JHGweAIEkH7fK6QSqG7Y
