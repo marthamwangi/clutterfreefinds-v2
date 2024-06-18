@@ -26,6 +26,8 @@ export const WEB_API_CFF_MATERIAL = 'Material';
 export const KENYA_COUNTIES = 'County';
 export const WEB_API_QUOTATION_REQUEST = 'QuotationRequest';
 export const WEB_API_INQUIRY_REQUEST = 'Inquiry';
+export const WEB_API_STORE_PRODUCTS = 'Store';
+export const WEB_API_PRODUCT = 'Store/Product';
 
 /**
  * REGEX PATTERNS
