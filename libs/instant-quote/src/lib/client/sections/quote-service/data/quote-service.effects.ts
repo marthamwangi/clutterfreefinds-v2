@@ -5,16 +5,13 @@ import { HttpClient } from '@angular/common/http';
 import { ICffServiceResponse } from './cffSservice.model';
 import { DeserializeCffService } from './cffService.mapper';
 import { fromCffServiceActions } from './quote-service.actions';
-import { Store } from '@ngrx/store';
 import {} from './quote-service.selectors';
-import { AppState } from '@clutterfreefinds-v2/globals';
 @Injectable({
   providedIn: 'root',
 })
 export class CFFServiceEffects {
   #actions: Actions = inject(Actions);
   #http: HttpClient = inject(HttpClient);
-  #store: Store<AppState> = inject(Store);
   #deserializeCffServices: DeserializeCffService = new DeserializeCffService();
 
   load$ = createEffect(() =>
