@@ -1,6 +1,11 @@
 # Clutter Free Finds
 
-Clutter free finds is a professional organizing company that aims to serve individuals who feel overwhelmed by clutter and disarray. We provide a comprehensive suite of tools and features designed to streamline your life and bring order to the chaos.
+This project fosters to build a community of individuals seeking a life balanced
+by fulfillment and organization. By collaborating with local and remote
+participants, I will identify common tidying challenges and develop
+technological solutions to empower them. This is a continuous learning journey
+which will help me understand building modern products for modern problems
+while ensuring relevance and impact.
 
 ## Features
 
