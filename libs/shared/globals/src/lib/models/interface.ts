@@ -23,6 +23,14 @@ import {
   INQUIRY_REQUEST_REDUCER,
   FooterEffects,
 } from '@clutterfreefinds-v2/footer';
+import {
+  IProduct,
+  ProductCategory,
+  ProductEffects,
+  SINGLE_PRODUCT_REDUCER,
+  STORE_PRODUCT_REDUCER,
+  StoreEffects,
+} from '@clutterfreefinds-v2/store';
 /**
  * @ICffServiceState
  * contains the state of the Cff Service
@@ -106,6 +114,33 @@ export interface IInquiryRequestState {
   is_loading: boolean;
   response: IResponseModel;
 }
+
+export interface IStorProductsState {
+  store_products: Array<IProduct>;
+  is_loading: boolean;
+  response: IResponseModel;
+}
+
+export interface ISelectedProduct {
+  product: {
+    id: string;
+    colors: Array<string>;
+    images: Array<string>;
+    title: string;
+    image: string;
+    price: number;
+    description: string;
+    postedDate: Date;
+    category: ProductCategory;
+    size: string;
+    material: {
+      name: string;
+    };
+  };
+  is_loading: boolean;
+  response: IResponseModel;
+}
+
 export interface AppState {
   cff_services: ICffServiceState;
   cff_spaces: ISpaceState;
@@ -115,6 +150,8 @@ export interface AppState {
   client_details: IClientDetailsState;
   instant_quote: InstantQuoteState;
   inquiry_request: IInquiryRequestState;
+  store_products: IStorProductsState;
+  selected_product: ISelectedProduct;
 }
 
 const reducers: ActionReducerMap<AppState> = {
@@ -126,6 +163,8 @@ const reducers: ActionReducerMap<AppState> = {
   client_details: CLIENT_DETAILS_REDUCER,
   instant_quote: INSTANT_QUOTE_REDUCER,
   inquiry_request: INQUIRY_REQUEST_REDUCER,
+  store_products: STORE_PRODUCT_REDUCER,
+  selected_product: SINGLE_PRODUCT_REDUCER,
 };
 
 export const APP_STORE = {
@@ -139,4 +178,6 @@ export const APP_EFFECTS = [
   CountyEffects,
   QuoteEffects,
   FooterEffects,
+  StoreEffects,
+  ProductEffects,
 ];
