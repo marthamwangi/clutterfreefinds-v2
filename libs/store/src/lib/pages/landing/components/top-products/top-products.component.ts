@@ -11,29 +11,34 @@ import {
 import {
   AppState,
   BASE_API,
+  CART_STORAGE_KEY,
   IResponseModel,
   WEB_API_STORE_PRODUCTS,
 } from '@clutterfreefinds-v2/globals';
 import { Store } from '@ngrx/store';
-import { Observable, Subject, firstValueFrom, takeUntil } from 'rxjs';
+import { Observable, Subject, firstValueFrom, of, takeUntil } from 'rxjs';
 import { IProduct } from '../../../../data/products.model';
 import { ToastrService } from 'ngx-toastr';
 import { fromStoreProductsSelector } from '../../../../data/products.selector';
 import { fromStoreActions } from '../../../../data/products.actions';
-import { CurrencyPipe, NgFor, NgTemplateOutlet } from '@angular/common';
+import { CurrencyPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { fromSingleProductActions } from '../../../product-detail/data/product.actions';
+import { ClientStorageService } from 'libs/store/src/lib/services/localstorage.service';
+import { fromCartActions } from '../../../cart/data/cart.actions';
+import { fromCartSelector } from '../../../cart/data/cart.selectors';
 
 @Component({
   selector: 'cff-store-top-products',
   standalone: true,
   templateUrl: './top-products.component.html',
-  imports: [NgTemplateOutlet, NgFor, CurrencyPipe, RouterLink],
+  imports: [NgTemplateOutlet, NgFor, CurrencyPipe, RouterLink, NgIf],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopProductsComponent implements OnInit, OnDestroy {
   #store: Store<AppState> = inject(Store);
   #changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+
   @ViewChild('loadingRef')
   private _loadingRef!: TemplateRef<any>;
   @ViewChild('loadedRef')
@@ -43,6 +48,8 @@ export class TopProductsComponent implements OnInit, OnDestroy {
   #store_products$: Observable<Array<IProduct>>;
   #loadProgress$: Observable<boolean>;
   #response$: Observable<IResponseModel>;
+
+  #cartProducts$: Observable<Array<IProduct>>;
 
   renderedProducts: Array<IProduct> = [];
   loadStatus!: number;
@@ -58,6 +65,10 @@ export class TopProductsComponent implements OnInit, OnDestroy {
 
     this.#response$ = this.#store.select(
       fromStoreProductsSelector.selectResponse
+    );
+
+    this.#cartProducts$ = this.#store.select(
+      fromCartSelector.selectCartProductsList
     );
   }
   private _commonChangeDetector(): void {
@@ -126,6 +137,54 @@ export class TopProductsComponent implements OnInit, OnDestroy {
       );
     }
   }
+  onAddToCart($clickEvent: MouseEvent, product: IProduct) {
+    $clickEvent.stopImmediatePropagation();
+    $clickEvent.preventDefault();
+
+    let allCartProducts: Array<IProduct> = [];
+
+    if (localStorage.getItem(CART_STORAGE_KEY)) {
+      this.#cartProducts$.subscribe({
+        next: (products: Array<IProduct>) => {
+          allCartProducts = [...products];
+        },
+      });
+      console.log('all', allCartProducts);
+      const productIsInCart = allCartProducts.find(
+        (cartProduct) => cartProduct.id == product.id
+      );
+      if (productIsInCart) {
+        allCartProducts = allCartProducts.filter(
+          (cartProduct) => cartProduct.id !== product.id
+        );
+        this.#store.dispatch(
+          fromCartActions.CartLandingComponentAcions.update({
+            payload: allCartProducts,
+          })
+        );
+        alert('removed from cart');
+      } else {
+        this.#store.dispatch(
+          fromCartActions.CartButtonAction.add({
+            payload: product,
+          })
+        );
+        alert('added to cart');
+      }
+    } else {
+      allCartProducts.push(product);
+      allCartProducts.forEach((p) =>
+        // this.#storageService.StorageAPI('create', CART_STORAGE_KEY, p)
+        this.#store.dispatch(
+          fromCartActions.CartButtonAction.add({
+            payload: p,
+          })
+        )
+      );
+      alert('added to cart');
+    }
+  }
+
   ngOnDestroy(): void {
     this.#unsubscribe$.next(true);
     this.#unsubscribe$.complete();
