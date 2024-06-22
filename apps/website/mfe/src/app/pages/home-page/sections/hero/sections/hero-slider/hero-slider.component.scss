@@ -1,26 +1,3 @@
-@supports (animation-name: adjust-position) {
-  .columns {
-    overflow-y: hidden;
-  }
-  .column.flex-column {
-    transform: translate3d(0, 0, 0);
-    animation: move 80s linear normal infinite;
-    backface-visibility: hidden;
-  }
-
-  .column.flex-column-reverse {
-    transform: translate3d(0, 0, 0);
-    animation: move 80s linear reverse infinite;
-    backface-visibility: hidden;
-  }
-
-  @keyframes move {
-    100% {
-      transform: translateY(-50%);
-    }
-  }
-}
-
 .feature-container {
   border-radius: 0.5rem;
   background: var(--light);
