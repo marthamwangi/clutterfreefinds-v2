@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Location } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'cs-coming-soon',
@@ -7,4 +8,9 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   templateUrl: './coming-soon.component.html',
 })
-export class ComingSoonComponent {}
+export class ComingSoonComponent {
+  #location: Location = inject(Location);
+  goBack() {
+    this.#location.back();
+  }
+}
