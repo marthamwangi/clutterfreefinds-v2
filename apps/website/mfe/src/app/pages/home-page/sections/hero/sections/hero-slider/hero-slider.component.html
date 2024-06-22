@@ -1,8 +1,7 @@
-<!-- <a [href]="APP_URL + '/services'"> -->
 <a>
-    <div class="columns feature-container position-relative">
-        <div class="column d-flex flex-column">
-            <div class="card border-0 mb-3" *ngFor="
+    <div class="columns feature-container relative  ">
+        <ul #listElementRef class="column flex flex-col animate-infinite-scroll-y hover:paused">
+            <li class="card border-0 mb-3" *ngFor="
                     let imgName of organizingImages;
                     let index = index
                 ">
@@ -28,37 +27,7 @@
                     | translate" class="card-img-bottom" width="1080" height="1080" loading="lazy" decoding="async" />
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="column d-flex flex-column-reverse">
-            <div class="card border-0 mb-3" *ngFor="
-            let imgName of organizingImages;
-            let index = index
-        ">
-                <div class="card-body">
-                    <div class="card-text-title mb-2">
-                        {{
-                        'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
-                        | translate
-                        }}
-                    </div>
-                    <div class="card-text-emphasis">
-                        {{
-                        'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.EMPHASIS'
-                        | translate
-                        }}
-                    </div>
-                    <div class="card-text-description">{{
-                        'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.DESCRIPTION'
-                        | translate
-                        }} </div>
-                    <div>
-                        <img [ngSrc]="'/assets/images/organizing/slides/slide-' + (imgName+1) + '.jpg'" [alt]=" 'HOME_PAGE.HERO_SECTION.SLIDES.SLIDE_' + (index + 1) + '.TITLE'
-                        | translate" class="card-img-bottom" width="1080" height="1080" loading="lazy"
-                            decoding="async" />
-                    </div>
-                </div>
-            </div>
-        </div>
+            </li>
+        </ul>
     </div>
 </a>

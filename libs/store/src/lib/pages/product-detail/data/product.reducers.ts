@@ -4,6 +4,7 @@ import { fromSingleProductActions } from './product.actions';
 
 const initialState: ISelectedProduct = {
   product: {
+    isInCart: false,
     id: '',
     colors: [],
     images: [],

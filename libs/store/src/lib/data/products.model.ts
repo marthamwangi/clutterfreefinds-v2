@@ -30,6 +30,7 @@ export interface IProduct {
   material: {
     name: string;
   };
+  isInCart?: boolean;
 }
 
 export interface ProductCategory {

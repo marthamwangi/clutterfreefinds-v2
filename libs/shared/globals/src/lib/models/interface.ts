@@ -24,6 +24,8 @@ import {
   FooterEffects,
 } from '@clutterfreefinds-v2/footer';
 import {
+  CART_REDUCER,
+  CartEffects,
   IProduct,
   ProductCategory,
   ProductEffects,
@@ -136,7 +138,14 @@ export interface ISelectedProduct {
     material: {
       name: string;
     };
+    isInCart?: boolean;
   };
+  is_loading: boolean;
+  response: IResponseModel;
+}
+
+export interface ICartState {
+  products: Array<IProduct>;
   is_loading: boolean;
   response: IResponseModel;
 }
@@ -152,6 +161,7 @@ export interface AppState {
   inquiry_request: IInquiryRequestState;
   store_products: IStorProductsState;
   selected_product: ISelectedProduct;
+  cart: ICartState;
 }
 
 const reducers: ActionReducerMap<AppState> = {
@@ -165,6 +175,7 @@ const reducers: ActionReducerMap<AppState> = {
   inquiry_request: INQUIRY_REQUEST_REDUCER,
   store_products: STORE_PRODUCT_REDUCER,
   selected_product: SINGLE_PRODUCT_REDUCER,
+  cart: CART_REDUCER,
 };
 
 export const APP_STORE = {
@@ -180,4 +191,5 @@ export const APP_EFFECTS = [
   FooterEffects,
   StoreEffects,
   ProductEffects,
+  CartEffects,
 ];

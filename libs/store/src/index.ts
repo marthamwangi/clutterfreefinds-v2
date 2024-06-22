@@ -5,3 +5,5 @@ export * from './lib/data/products.effects';
 export * from './lib/data/products.model';
 export * from './lib/pages/product-detail/data/product.effect';
 export * from './lib/pages/product-detail/data/product.reducers';
+export * from './lib/pages/cart/data/cart.reducer';
+export * from './lib/pages/cart/data/cart.effects';

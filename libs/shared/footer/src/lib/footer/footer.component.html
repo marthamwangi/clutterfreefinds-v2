@@ -189,7 +189,7 @@
                 <div class="items-center justify-between space-y-4 sm:flex sm:space-y-0">
                     <button type="button" (click)="sendInquiryRequest()" [class.bg-primary-600]="inquiryForm.invalid"
                         [class.bg-primary-900]="inquiryForm.valid" [class.cursor-not-allowed]="inquiryForm.invalid"
-                        [disabled]="inquiryForm.invalid" type="submit"
+                        [disabled]="inquiryForm.invalid" [disabled]="inquiryProgress$ | async" type="submit"
                         class="flex gap-2 items-center focus:outline-none text-light-900   focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5">
                         Send
                         <div *ngIf="inquiryProgress$ | async" role="status">

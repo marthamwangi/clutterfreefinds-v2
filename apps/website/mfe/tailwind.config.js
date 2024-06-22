@@ -76,7 +76,26 @@ module.exports = {
        width:{
         '128': '32rem',
         '44-p':'44%'
-       }
+       },
+       animation: {
+        'infinite-scroll': 'infinite-scroll 50s linear infinite',
+        'infinite-scroll-y': 'infinite-scroll-y 80s linear infinite',
+        'infinite-scroll-y-reverse': 'infinite-scroll-y-reverse 80s linear infinite',
+      },
+      keyframes: {
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
+        },
+        'infinite-scroll-y': {
+          from: { transform: 'translateY(0%)' },
+          to: { transform: 'translateY(-70%)' },
+        },
+        'infinite-scroll-y-reverse': {
+          from: { transform: 'translateY(-70%)' },
+          to: { transform: 'translateY(0)' },
+        },
+      },   
     }
   },
   plugins: [
