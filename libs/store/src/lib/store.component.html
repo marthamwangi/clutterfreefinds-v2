@@ -1,0 +1,15 @@
+<div class="relative">
+    <div class="group fixed top-1/2 right-0 p-2  flex items-end justify-end w-24 h-24 z-50">
+        <a type="button" routerLink="cart"
+            class="relative shadow-xl flex items-center justify-center p-2.5 rounded-full bg-primary-900  hover:bg-dark-900">
+            <img class="w-8 h-8  group-hover:animate-bounce transition  transition-all duration-[0.6s] "
+                src="assets/icons/cart-add-white.svg" alt="" />
+            <span class="sr-only">Cart Items</span>
+            <div
+                class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-danger-900 border-2 border-white rounded-full -top-2 -end-2">
+                {{cartCount$ | async}}
+            </div>
+        </a>
+    </div>
+    <router-outlet></router-outlet>
+</div>
