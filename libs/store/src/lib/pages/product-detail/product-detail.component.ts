@@ -18,7 +18,7 @@ import {
 } from '@clutterfreefinds-v2/globals';
 import { Store } from '@ngrx/store';
 import { Subject, Observable, firstValueFrom, takeUntil } from 'rxjs';
-import { IProduct } from '../../data/products.model';
+import { IProduct } from '../../data/store.model';
 import { ToastrService } from 'ngx-toastr';
 import { fromProductSelector } from './data/product.selector';
 import { fromSingleProductActions } from './data/product.actions';
