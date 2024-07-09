@@ -7,9 +7,9 @@ technological solutions to empower them.
 
 ## Features
 
-- [Instant quote](https://clutterfreefinds.com/instant-quote/)
-- [Store](https://clutterfreefinds.com/store/)
-- [Blog](https://clutterfreefinds.com/blog/)
+- [Instant quote](https://cff-v2.web.app/instant-quote/)
+- [Store](https://cff-v2.web.app/store/)
+- [Blog](https://cff-v2.web.app/blog/)
 
 ## Motivation
 
