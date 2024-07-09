@@ -1,6 +1,6 @@
 import { createActionGroup, props } from '@ngrx/store';
 import { IResponseModel } from '@clutterfreefinds-v2/globals';
-import { IProduct } from '../../../data/products.model';
+import { IProduct } from '../../../data/store.model';
 
 const SingleProduct = createActionGroup({
   source: 'Product Details Component',
