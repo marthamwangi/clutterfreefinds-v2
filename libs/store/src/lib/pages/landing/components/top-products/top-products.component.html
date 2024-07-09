@@ -1,13 +1,24 @@
-<div class="bg-white">
-    <div class="mx-auto p-4 sm:px-6 sm:py-8 lg:px-8">
-        <h2 class="text-2xl font-bold tracking-tight text-dark-900 underline underline-offset-8  max-w-fit">
-            Top Products Today
-            <div class="p-2  translate-x-24 -translate-y-2 bg-light-900 w-10 h-10">
-                <img class="h-8 w-8" src="/assets/store/icons/shop-box.svg" alt="professional organizing boxes">
-            </div>
-        </h2>
-        <ng-container *ngTemplateOutlet="returnListTemplate()"></ng-container>
+<div class="mx-auto p-4 sm:px-6 sm:py-8 lg:px-8">
+    <div class="flex items-start justify-between flex-col lg:flex-row gap-y-2 lg:gap-y-0">
+        <div>
+            <h2 class="text-2xl font-bold tracking-tight text-dark-900 underline underline-offset-8  max-w-fit">
+                Top Products Today
+                <div class="p-2  translate-x-24 -translate-y-2 bg-light-900 w-10 h-10">
+                    <img class="h-8 w-8" src="/assets/store/icons/shop-box.svg" alt="professional organizing boxes">
+                </div>
+            </h2>
+            <div class="text-lg  tracking-tight text-dark-600 max-w-fit">Don't miss this opportunity at a to get
+                these
+                products.</div>
+        </div>
+        <div
+            class="bg-danger-900 px-4 py-2 rounded-lg text-light-900 flex items-center max-w-fit order-first lg:order-last">
+            <img src="assets/icons/time.svg" alt="" class="me-2">
+            Expires in : <span #daysRef>14</span>: <span #hoursRef>14</span> : <span #minutesRef>14</span> : <span
+                #secondsRef>14</span>
+        </div>
     </div>
+    <ng-container *ngTemplateOutlet="returnListTemplate()"></ng-container>
 </div>
 
 <ng-template #loadingRef>

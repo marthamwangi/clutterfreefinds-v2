@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   OnDestroy,
   OnInit,
   TemplateRef,
@@ -17,10 +18,10 @@ import {
 } from '@clutterfreefinds-v2/globals';
 import { Store } from '@ngrx/store';
 import { Observable, Subject, firstValueFrom, of, takeUntil } from 'rxjs';
-import { IProduct } from '../../../../data/products.model';
+import { IProduct } from '../../../../data/store.model';
 import { ToastrService } from 'ngx-toastr';
-import { fromStoreProductsSelector } from '../../../../data/products.selector';
-import { fromStoreActions } from '../../../../data/products.actions';
+import { fromStoreProductsSelector } from '../../../../data/store.selector';
+import { fromStoreActions } from '../../../../data/store.actions';
 import { CurrencyPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { fromSingleProductActions } from '../../../product-detail/data/product.actions';
@@ -43,6 +44,15 @@ export class TopProductsComponent implements OnInit, OnDestroy {
   private _loadingRef!: TemplateRef<any>;
   @ViewChild('loadedRef')
   private _loadedRef!: TemplateRef<any>;
+
+  @ViewChild('daysRef')
+  private _daysRef!: ElementRef<any>;
+  @ViewChild('hoursRef')
+  private _hoursRef!: ElementRef<any>;
+  @ViewChild('minutesRef')
+  private _minutesRef!: ElementRef<any>;
+  @ViewChild('secondsRef')
+  private _secondsRef!: ElementRef<any>;
 
   #unsubscribe$: Subject<boolean>;
   #store_products$: Observable<Array<IProduct>>;
@@ -79,6 +89,7 @@ export class TopProductsComponent implements OnInit, OnDestroy {
     this._loadProducts();
     this._renderStoreProducts();
     this._listenForLoadingStatus();
+    this._countdown();
   }
 
   private _listenForLoadingStatus() {
@@ -188,5 +199,36 @@ export class TopProductsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.#unsubscribe$.next(true);
     this.#unsubscribe$.complete();
+  }
+
+  private _countdown() {
+    const second = 1000,
+      minute = second * 60,
+      hour = minute * 60,
+      day = hour * 24;
+
+    let today = new Date(),
+      dd = String(today.getDate() + 1).padStart(2, '0'),
+      mm = String(today.getMonth() + 1).padStart(2, '0'),
+      yyyy = today.getFullYear(),
+      dateString = mm + '/' + dd + '/' + yyyy;
+
+    const countDown = new Date(dateString).getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countDown - now;
+
+      (this._daysRef.nativeElement.innerText = Math.floor(distance / day)),
+        (this._hoursRef.nativeElement.innerText = Math.floor(
+          (distance % day) / hour
+        )),
+        (this._minutesRef.nativeElement.innerText = Math.floor(
+          (distance % hour) / minute
+        )),
+        (this._secondsRef.nativeElement.innerText = Math.floor(
+          (distance % minute) / second
+        ));
+    }, 0);
   }
 }

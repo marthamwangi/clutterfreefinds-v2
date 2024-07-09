@@ -1,4 +1,4 @@
-import { IProduct, ProductData } from '../../../data/products.model';
+import { IProduct, ProductData } from '../../../data/store.model';
 
 export class SingleProductMapper {
   mapTo(entity: ProductData): IProduct {

@@ -53,6 +53,7 @@ export class ShopFeaturesComponent implements AfterViewInit {
     if (ul) {
       ul.insertAdjacentHTML('afterend', ul.outerHTML);
       this.#renderer2.setAttribute(ul.nextSibling, 'aria-hidden', 'true');
+      this.#renderer2.addClass(ul.nextSibling, 'animate-infinite-scroll');
     }
   }
 }

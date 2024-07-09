@@ -1,68 +1,65 @@
-import { NgTemplateOutlet, NgFor, CurrencyPipe, NgIf } from '@angular/common';
 import {
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  OnDestroy,
-  OnInit,
   TemplateRef,
   ViewChild,
   inject,
 } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { NgFor } from '@angular/common';
 import {
   AppState,
   BASE_API,
   IResponseModel,
-  WEB_API_PRODUCT,
+  WEB_API_CATEGORIES,
 } from '@clutterfreefinds-v2/globals';
 import { Store } from '@ngrx/store';
-import { Subject, Observable, firstValueFrom, takeUntil } from 'rxjs';
-import { IProduct } from '../../data/store.model';
+import { IProduct, ProductCategory } from 'libs/store/src/lib/data/store.model';
+import { Subject, Observable, takeUntil, firstValueFrom } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { fromProductSelector } from './data/product.selector';
-import { fromSingleProductActions } from './data/product.actions';
+import { fromStoreProductsSelector } from 'libs/store/src/lib/data/store.selector';
+import { fromStoreActions } from 'libs/store/src/lib/data/store.actions';
 
 @Component({
-  selector: 'cff-store-product-detail',
+  selector: 'cff-store-filters',
   standalone: true,
-  imports: [NgTemplateOutlet, NgFor, CurrencyPipe, RouterLink, NgIf],
-  templateUrl: './product-detail.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgFor],
+  templateUrl: './filters.component.html',
 })
-export class ProductDetailComponent implements OnInit, OnDestroy {
+export class FiltersComponent {
   #store: Store<AppState> = inject(Store);
   #changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
-  #activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   @ViewChild('loadingRef')
   private _loadingRef!: TemplateRef<any>;
   @ViewChild('loadedRef')
   private _loadedRef!: TemplateRef<any>;
-
   #unsubscribe$: Subject<boolean>;
-  #product$: Observable<IProduct>;
+  #store_categories$: Observable<Array<ProductCategory>>;
   #loadProgress$: Observable<boolean>;
   #response$: Observable<IResponseModel>;
 
-  renderedProduct!: IProduct;
+  renderedCategories: Array<ProductCategory> = [];
   loadStatus!: number;
 
   constructor(private _toastrService: ToastrService) {
     this.#unsubscribe$ = new Subject<boolean>();
-    this.#product$ = this.#store.select(fromProductSelector.selectProduct);
-    this.#loadProgress$ = this.#store.select(
-      fromProductSelector.selectLoadingList
+    this.#store_categories$ = this.#store.select(
+      fromStoreProductsSelector.selectStoreCategoriesList
     );
-    this.#response$ = this.#store.select(fromProductSelector.selectResponse);
-  }
+    this.#loadProgress$ = this.#store.select(
+      fromStoreProductsSelector.selectLoadingList
+    );
 
+    this.#response$ = this.#store.select(
+      fromStoreProductsSelector.selectResponse
+    );
+  }
   private _commonChangeDetector(): void {
     this.#changeDetectorRef.detectChanges();
   }
 
   ngOnInit(): void {
-    this._loadProduct();
-    this._renderStoreProduct();
+    this._loadCategories();
+    this._renderStoreCategories();
     this._listenForLoadingStatus();
   }
 
@@ -77,9 +74,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  private _renderStoreProduct() {
-    this.#product$.subscribe((data: IProduct) => {
-      this.renderedProduct = data;
+  private _renderStoreCategories() {
+    this.#store_categories$.subscribe((data: Array<ProductCategory>) => {
+      this.renderedCategories = data;
     });
   }
 
@@ -91,22 +88,21 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     return templateMap[this.loadStatus];
   }
 
-  private async _loadProduct() {
-    const existingProduct = await firstValueFrom(this.#product$);
+  private async _loadCategories() {
+    const existingStoreCategories = await firstValueFrom(
+      this.#store_categories$
+    );
     const response = await firstValueFrom(this.#response$);
-    if (existingProduct.id !== '') {
-      this.renderedProduct = existingProduct;
+    if (existingStoreCategories.length) {
+      this.renderedCategories = existingStoreCategories;
       this._commonChangeDetector();
       return;
-    } else {
-      const param = this.#activatedRoute.snapshot.params['id'];
-      this.#store.dispatch(
-        fromSingleProductActions.SingleProduct.get({
-          url: `${BASE_API}/${WEB_API_PRODUCT}`,
-          param,
-        })
-      );
     }
+    this.#store.dispatch(
+      fromStoreActions.StoreCategories.list({
+        url: `${BASE_API}/${WEB_API_CATEGORIES}`,
+      })
+    );
     if (!response.success && response.message) {
       this._toastrService.error(
         response.message,
@@ -117,6 +113,14 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       );
     }
   }
+  // setSelectedProduct(id: string) {
+  //   const category = this.renderedCategories.find((element) => element.id === id);
+  //   if (category) {
+  //     this.#store.dispatch(
+  //       fromSingleProductActions.TopProduct.select({ product })
+  //     );
+  //   }
+  // }
 
   ngOnDestroy(): void {
     this.#unsubscribe$.next(true);

@@ -41,3 +41,7 @@ export interface ProductCategory {
 export interface IStoreProductsResponse extends IResponseModel {
   data: Array<IProduct>;
 }
+
+export interface IStoreCategoriesResponse extends IResponseModel {
+  data: Array<ProductCategory>;
+}

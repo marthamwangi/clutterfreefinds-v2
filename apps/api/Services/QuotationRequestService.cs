@@ -1,4 +1,6 @@
 using Google.Cloud.Firestore;
+using Inquiry.Model;
+using Inquiry.Service;
 using QuotationRequest.Model;
 using Response;
 using Response.Model;
@@ -16,6 +18,8 @@ public class QuotationRequestService : IQuotationRequestService
 {
     private static readonly FirestoreDb _firestoreDb = FirestoreDb.Create("cff-v2");
     private static readonly CollectionReference _collectionRef = _firestoreDb.Collection("quotation");
+
+    private readonly InquiryRequestService _inquiryRequestService = new();
 
     public async Task<IResponseModel> CreateQuotationRequest(QuotationRequestModel quotationItem)
     {
@@ -50,11 +54,19 @@ public class QuotationRequestService : IQuotationRequestService
             DocumentReference _docRef = _collectionRef.Document();
             quotation.Add("clientDetails", clientObject);
             await _docRef.SetAsync(quotation);
-
-            // return string.IsNullOrEmpty(_docRef.Id) ? new ResponseModel { Success = false, Message = "Made Quotation entry" }
-            //                     : new ResponseModel { Success = true, Message = "Failed to make a quotation entry" };
-            return string.IsNullOrEmpty(_docRef.Id) ? new ResponseModel { Success = false, Message = "FOOTER.NEWSLETTER.TOASTS.ERROR.TITLE" }
-                                 : new ResponseModel { Success = true, Message = "FOOTER.NEWSLETTER.TOASTS.SUCCESS.TITLE" };
+            if (!string.IsNullOrEmpty(_docRef.Id))
+            {
+                var sendEmail = new InquiryModel
+                {
+                    Name = quotationItem.ClientDetails.FirstName,
+                    Email = quotationItem.ClientDetails.Email,
+                    Phone = quotationItem.ClientDetails.Phone,
+                    Subject = "CFF Quotation Request"
+                };
+                await _inquiryRequestService.CreateInquiryRequest(sendEmail);
+            }
+            return string.IsNullOrEmpty(_docRef.Id) ? new ResponseModel { Success = false }
+                                 : new ResponseModel { Success = true };
         }
         catch (Exception)
         {

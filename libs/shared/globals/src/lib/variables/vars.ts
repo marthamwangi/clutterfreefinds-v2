@@ -28,6 +28,7 @@ export const WEB_API_QUOTATION_REQUEST = 'QuotationRequest';
 export const WEB_API_INQUIRY_REQUEST = 'Inquiry';
 export const WEB_API_STORE_PRODUCTS = 'Store';
 export const WEB_API_PRODUCT = 'Store/Product';
+export const WEB_API_CATEGORIES = 'Store/Categories';
 
 /**
  * REGEX PATTERNS

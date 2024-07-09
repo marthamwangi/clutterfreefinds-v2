@@ -23,7 +23,7 @@ import {
 } from '@clutterfreefinds-v2/globals';
 import { Observable, firstValueFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { IProduct } from '../../data/products.model';
+import { IProduct } from '../../data/store.model';
 import { fromCartSelector } from '../cart/data/cart.selectors';
 
 interface Step {

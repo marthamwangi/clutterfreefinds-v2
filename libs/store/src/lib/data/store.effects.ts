@@ -1,10 +1,10 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { HttpClient } from '@angular/common/http';
-import { ProducsMapper } from './products.mapper';
-import { fromStoreActions } from './products.actions';
+import { ProducsMapper } from './store.mapper';
+import { fromStoreActions } from './store.actions';
 import { catchError, map, mergeMap, of } from 'rxjs';
-import { IStoreProductsResponse } from './products.model';
+import { IStoreProductsResponse } from './store.model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +27,28 @@ export class StoreEffects {
           catchError((error) =>
             of(
               fromStoreActions.StoreApi.storeListOnFailure({
+                response: error,
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+
+  $loadCategories = createEffect(() =>
+    this.#actions.pipe(
+      ofType(fromStoreActions.StoreCategories.list),
+      mergeMap((action) =>
+        this.#http.get<IStoreProductsResponse>(action.url).pipe(
+          map((res) =>
+            fromStoreActions.StoreApi.categoriesListOnSuccess({
+              response: res.data,
+            })
+          ),
+          catchError((error) =>
+            of(
+              fromStoreActions.StoreApi.categoriesListOnFailure({
                 response: error,
               })
             )
