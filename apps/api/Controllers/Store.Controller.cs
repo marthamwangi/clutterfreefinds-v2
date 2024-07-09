@@ -53,5 +53,25 @@ namespace clutterfreefinds.Store.Controllers
                 throw;
             }
         }
+
+        [HttpGet("Categories")]
+        public async Task<IResponseDataModel<IEnumerable<CategoryModel>>> GetAllCategories()
+        {
+            try
+            {
+                var result = await _storeService.GetCategories();
+                return result.Success.Equals(true) ? new ResponseDataModel<IEnumerable<CategoryModel>>
+                {
+                    Success = true,
+                    Data = result.Data
+                } : new ResponseDataModel<IEnumerable<CategoryModel>> { Success = false };
+
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

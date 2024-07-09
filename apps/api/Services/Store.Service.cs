@@ -12,12 +12,14 @@ namespace ClutterfreefindsV2.Api.Services.Store
         //CRUD
         Task<IResponseDataModel<IEnumerable<ProductModel>>> GetAllStoreProducts();
         Task<IResponseDataModel<ProductModel>> GetProductDetails(string doc);
+        Task<IResponseDataModel<IEnumerable<CategoryModel>>> GetCategories();
     }
 
     public class StoreServices : IStoreService
     {
         private static readonly FirestoreDb _firestoreDb = FirestoreDb.Create("cff-v2");
         private static readonly CollectionReference collectionRef = _firestoreDb.Collection("store-products");
+        private static readonly CollectionReference catCollectionReference = _firestoreDb.Collection("shop-category");
 
         public async Task<IResponseDataModel<IEnumerable<ProductModel>>> GetAllStoreProducts()
         {
@@ -135,6 +137,30 @@ namespace ClutterfreefindsV2.Api.Services.Store
                 throw;
             }
         }
+        public async Task<IResponseDataModel<IEnumerable<CategoryModel>>> GetCategories()
+        {
+            try
+            {
+                var querySnapshot = await catCollectionReference.GetSnapshotAsync();
+                var categories = new List<CategoryModel>();
+                foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
+                {
+                    var category = new CategoryModel
+                    {
+                        ID = documentSnapshot.Id,
+                        Title = documentSnapshot.GetValue<string>("title")
+                    };
+                    categories.Add(category);
+                }
+                var response = new ResponseDataModel<IEnumerable<CategoryModel>> { Success = true, Data = categories };
+                return categories != null ? response : new ResponseDataModel<IEnumerable<CategoryModel>> { Success = true };
+            }
+            catch (System.Exception)
+            {
 
+                throw;
+            }
+        }
     }
+
 }

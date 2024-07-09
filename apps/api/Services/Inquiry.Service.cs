@@ -38,7 +38,7 @@ public class InquiryRequestService : IInquiryService
             mailBody.AppendFormat($"<div>{inquiryItem.Message}</div>");
             MailMessage message = new(from, to)
             {
-                Subject = "CFF Inquiry",
+                Subject = inquiryItem.Subject,
                 Body = mailBody.ToString(),
                 BodyEncoding = Encoding.UTF8,
                 IsBodyHtml = true
