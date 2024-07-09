@@ -119,6 +119,7 @@ export interface IInquiryRequestState {
 
 export interface IStorProductsState {
   store_products: Array<IProduct>;
+  store_categories: Array<ProductCategory>;
   is_loading: boolean;
   response: IResponseModel;
 }
@@ -159,7 +160,7 @@ export interface AppState {
   client_details: IClientDetailsState;
   instant_quote: InstantQuoteState;
   inquiry_request: IInquiryRequestState;
-  store_products: IStorProductsState;
+  store: IStorProductsState;
   selected_product: ISelectedProduct;
   cart: ICartState;
 }
@@ -173,7 +174,7 @@ const reducers: ActionReducerMap<AppState> = {
   client_details: CLIENT_DETAILS_REDUCER,
   instant_quote: INSTANT_QUOTE_REDUCER,
   inquiry_request: INQUIRY_REQUEST_REDUCER,
-  store_products: STORE_PRODUCT_REDUCER,
+  store: STORE_PRODUCT_REDUCER,
   selected_product: SINGLE_PRODUCT_REDUCER,
   cart: CART_REDUCER,
 };
