@@ -1,10 +1,17 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import {
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+  inject,
+} from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AppState, CART_STORAGE_KEY } from '@clutterfreefinds-v2/globals';
 import { Store } from '@ngrx/store';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { fromCartSelector } from './pages/cart/data/cart.selectors';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, isPlatformBrowser } from '@angular/common';
 import { fromCartActions } from './pages/cart/data/cart.actions';
 
 @Component({
@@ -18,7 +25,7 @@ export class StoreComponent implements OnInit, OnDestroy {
   #unsubscribe$: Subject<boolean>;
   cartCount$: Observable<number>;
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.#unsubscribe$ = new Subject<boolean>();
     this.cartCount$ = this.#store.select(fromCartSelector.selectCartCount);
   }
@@ -26,12 +33,14 @@ export class StoreComponent implements OnInit, OnDestroy {
     this._readLocalStorageCart();
   }
   private _readLocalStorageCart() {
-    if (localStorage.getItem(CART_STORAGE_KEY)) {
-      this.#store.dispatch(
-        fromCartActions.CartLandingComponentAcions.load({
-          payload: { read: 'many' },
-        })
-      );
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.getItem(CART_STORAGE_KEY)) {
+        this.#store.dispatch(
+          fromCartActions.CartLandingComponentAcions.load({
+            payload: { read: 'many' },
+          })
+        );
+      }
     }
   }
 
