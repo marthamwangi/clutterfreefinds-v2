@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { StorageAction } from '../types.interface';
 import { BehaviorSubject } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ClientStorageService {
   #items$: BehaviorSubject<any>;
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.#items$ = new BehaviorSubject<any>('');
   }
 
@@ -51,7 +52,9 @@ export class ClientStorageService {
   }
 
   private _updateStorage(key: string, arg1: any) {
-    localStorage.setItem(key, JSON.stringify(arg1));
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem(key, JSON.stringify(arg1));
+    }
   }
   private _getAllFromStorage(key: string): Array<any> {
     const item = localStorage.getItem(key);

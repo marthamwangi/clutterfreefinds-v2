@@ -2,8 +2,10 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  Inject,
   Input,
   OnInit,
+  PLATFORM_ID,
   TemplateRef,
   ViewChild,
   inject,
@@ -14,6 +16,7 @@ import {
   NgIf,
   NgTemplateOutlet,
   DatePipe,
+  isPlatformBrowser,
 } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { AppState } from '@clutterfreefinds-v2/globals';
@@ -65,7 +68,7 @@ export class QuoteSummaryComponent implements OnInit {
   service_date$: Observable<string>;
   instant_quote$: Observable<any>;
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.#unsubscribe$ = new Subject<boolean>();
     this.service_selected$ = this.#store.select(
       fromCffServiceSelectors.selectActiveService
@@ -138,11 +141,13 @@ export class QuoteSummaryComponent implements OnInit {
       return fetch(url).then((res) => res.blob());
     };
 
-    let exportFile = function (file: Blob | MediaSource) {
-      let a = document.createElement('a');
-      a.href = URL.createObjectURL(file);
-      a.setAttribute('download', '');
-      a.click();
+    let exportFile = (file: Blob | MediaSource) => {
+      if (isPlatformBrowser(this.platformId)) {
+        let a = document.createElement('a');
+        a.href = URL.createObjectURL(file);
+        a.setAttribute('download', '');
+        a.click();
+      }
     };
 
     for (const url of urls) {

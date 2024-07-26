@@ -3,8 +3,10 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Inject,
   OnDestroy,
   OnInit,
+  PLATFORM_ID,
   TemplateRef,
   ViewChild,
   inject,
@@ -22,7 +24,13 @@ import { IProduct } from '../../../../data/store.model';
 import { ToastrService } from 'ngx-toastr';
 import { fromStoreProductsSelector } from '../../../../data/store.selector';
 import { fromStoreActions } from '../../../../data/store.actions';
-import { CurrencyPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import {
+  CurrencyPipe,
+  NgFor,
+  NgIf,
+  NgTemplateOutlet,
+  isPlatformBrowser,
+} from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { fromSingleProductActions } from '../../../product-detail/data/product.actions';
 import { ClientStorageService } from 'libs/store/src/lib/services/localstorage.service';
@@ -64,7 +72,10 @@ export class TopProductsComponent implements OnInit, OnDestroy {
   renderedProducts: Array<IProduct> = [];
   loadStatus!: number;
 
-  constructor(private _toastrService: ToastrService) {
+  constructor(
+    private _toastrService: ToastrService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     this.#unsubscribe$ = new Subject<boolean>();
     this.#store_products$ = this.#store.select(
       fromStoreProductsSelector.selectStoreProductsList
@@ -153,46 +164,47 @@ export class TopProductsComponent implements OnInit, OnDestroy {
     $clickEvent.preventDefault();
 
     let allCartProducts: Array<IProduct> = [];
-
-    if (localStorage.getItem(CART_STORAGE_KEY)) {
-      this.#cartProducts$.subscribe({
-        next: (products: Array<IProduct>) => {
-          allCartProducts = [...products];
-        },
-      });
-      console.log('all', allCartProducts);
-      const productIsInCart = allCartProducts.find(
-        (cartProduct) => cartProduct.id == product.id
-      );
-      if (productIsInCart) {
-        allCartProducts = allCartProducts.filter(
-          (cartProduct) => cartProduct.id !== product.id
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.getItem(CART_STORAGE_KEY)) {
+        this.#cartProducts$.subscribe({
+          next: (products: Array<IProduct>) => {
+            allCartProducts = [...products];
+          },
+        });
+        console.log('all', allCartProducts);
+        const productIsInCart = allCartProducts.find(
+          (cartProduct) => cartProduct.id == product.id
         );
-        this.#store.dispatch(
-          fromCartActions.CartLandingComponentAcions.update({
-            payload: allCartProducts,
-          })
-        );
-        alert('removed from cart');
+        if (productIsInCart) {
+          allCartProducts = allCartProducts.filter(
+            (cartProduct) => cartProduct.id !== product.id
+          );
+          this.#store.dispatch(
+            fromCartActions.CartLandingComponentAcions.update({
+              payload: allCartProducts,
+            })
+          );
+          alert('removed from cart');
+        } else {
+          this.#store.dispatch(
+            fromCartActions.CartButtonAction.add({
+              payload: product,
+            })
+          );
+          alert('added to cart');
+        }
       } else {
-        this.#store.dispatch(
-          fromCartActions.CartButtonAction.add({
-            payload: product,
-          })
+        allCartProducts.push(product);
+        allCartProducts.forEach((p) =>
+          // this.#storageService.StorageAPI('create', CART_STORAGE_KEY, p)
+          this.#store.dispatch(
+            fromCartActions.CartButtonAction.add({
+              payload: p,
+            })
+          )
         );
         alert('added to cart');
       }
-    } else {
-      allCartProducts.push(product);
-      allCartProducts.forEach((p) =>
-        // this.#storageService.StorageAPI('create', CART_STORAGE_KEY, p)
-        this.#store.dispatch(
-          fromCartActions.CartButtonAction.add({
-            payload: p,
-          })
-        )
-      );
-      alert('added to cart');
     }
   }
 
