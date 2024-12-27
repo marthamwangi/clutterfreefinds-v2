@@ -20,7 +20,11 @@ import {
   isPlatformBrowser,
 } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-declare var Datepicker: any;
+import { initDatepickers } from 'flowbite';
+import { Observable } from 'rxjs';
+import { fromCalendarSelector } from './data/calendar.selector';
+import { Store } from '@ngrx/store';
+import { AppState } from '@clutterfreefinds-v2/globals';
 
 interface ITime {
   value: string;
@@ -37,13 +41,14 @@ interface ITime {
 export class QuoteCalendarComponent implements OnInit {
   @Output() selectedDateTime$ = new EventEmitter<any>();
   @Input() dateTime!: Date;
-  @ViewChild('dateField', { static: true }) dateField!: ElementRef;
+  private store: Store<AppState> = inject(Store);
   private _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private _serviceSelectedDateTime$!: Observable<string>;
 
-  public dataDate!: string;
   public selectedDate!: Date;
   public selectedTime: any;
   public timePicker: Array<ITime>;
+  public minDate!: string;
 
   private formatter = new Intl.DateTimeFormat('en-US', {
     month: '2-digit',
@@ -52,6 +57,9 @@ export class QuoteCalendarComponent implements OnInit {
   });
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this._serviceSelectedDateTime$ = this.store.select(
+      fromCalendarSelector.selectedServiceDate
+    );
     this.timePicker = [
       {
         value: '09:00',
@@ -121,11 +129,17 @@ export class QuoteCalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectedDate = this.dateTime;
-    this.dataDate = this.formatter.format(this.dateTime);
-    this._setTimeSelected(this.dateTime);
+    this._serviceSelectedDateTime$.pipe().subscribe((d) => {
+      console.log('date', d);
+      if (d) {
+        this.selectedDate = new Date(d);
+        this._setTimeSelected(new Date(d));
+      }
+    });
+    console.log('selected date', this.selectedDate);
+    this.minDate = this.formatter.format(new Date());
     if (isPlatformBrowser(this.platformId)) {
-      this.initDatePicker();
+      initDatepickers();
     }
   }
 
@@ -133,26 +147,14 @@ export class QuoteCalendarComponent implements OnInit {
     this._changeDetectorRef.detectChanges();
   }
 
-  initDatePicker(): void {
-    new Datepicker(this.dateField.nativeElement, {
-      minDate: new Date(),
-      todayHighlight: true,
-      daysOfWeekDisabled: [0],
-      title: 'Pick a Date',
-      //if time is picked from the db strikethrough it
-      // datesDisabled:[] booked dates
-    });
-  }
-
   onDatePicked(e: any) {
     this.selectedDate = new Date(e.detail.date);
-    this.dataDate = this.formatter.format(new Date(this.selectedDate));
+    console.log('selected', this.selectedDate);
     this._commonChangeDetector();
   }
   onTimePicked($event: string) {
     const time = $event;
     this.selectedTime = time;
-    //if time is picked from the db strikethrough it
     this._formatDate(time);
   }
 
@@ -161,7 +163,6 @@ export class QuoteCalendarComponent implements OnInit {
   }
 
   private _formatDate(time: string) {
-    console.log('time', time);
     var timeParts = time
       .split(':')
       .map((timePartString) => parseInt(timePartString));

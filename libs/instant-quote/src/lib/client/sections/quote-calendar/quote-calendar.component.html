@@ -7,12 +7,12 @@
     </div>
     <div class="flex  flex-col sm:flex-row items-center justify-center gap-x-8 w-full mx-auto p-2 lg:py-4">
         <div class=" flex flex-col items-start ">
-            <div id="dateField" #dateField inline-datepicker datepicker-buttons (changeDate)="onDatePicked($event)"
-                class="mx-auto sm:mx-0 ">
+            <div id="dateField" inline-datepicker data-date="selectedDate" datepicker-title="Pick a Date"
+                datepicker-min-date="minDate" (changeDate)="onDatePicked($event)" class="mx-auto sm:mx-0 ">
             </div>
         </div>
         <div class="flex flex-col items-start justify-center">
-            <h3 class="text-primary-900  text-base font-medium my-3 text-center"> {{dataDate | date:
+            <h3 class="text-primary-900  text-base font-medium my-3 text-center"> {{selectedDate | date:
                 'mediumDate'}}</h3>
             <ul id="timetable" class="grid w-full grid-cols-2 gap-x-8 gap-y-2 mx-auto ">
                 <li *ngFor="let time of timePicker; index as i" class="w-40">

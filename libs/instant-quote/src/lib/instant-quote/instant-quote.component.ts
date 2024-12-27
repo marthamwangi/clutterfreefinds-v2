@@ -178,7 +178,7 @@ export class InstantQuoteComponent implements AfterViewInit {
   getQuoteDate($event: any): void {
     this._selectedQuoteDate = $event;
     this._updateInstantQuoteForm({ date: $event });
-    this._priceCalculator();
+    this._priceCalculator(); //why is this called here?
   }
   getService($event: ICffService): void {
     this.serviceSelected = $event;
