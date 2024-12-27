@@ -1,6 +1,7 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { BasePage } from '../../../base.page';
 
 @Component({
   selector: 'cff-v2-the-process',
@@ -8,7 +9,11 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [TranslateModule, NgFor],
   templateUrl: './the-process.component.html',
 })
-export class TheProcessComponent {
+export class TheProcessComponent extends BasePage {
+  constructor(injector: Injector) {
+    super(injector);
+  }
+
   public processes: Array<{
     number: string;
     title: string;
@@ -40,7 +45,4 @@ export class TheProcessComponent {
       image: 'transform.svg',
     },
   ];
-  bookACall() {
-    window.open('https://koalendar.com/e/have-us-call-you', '_blank');
-  }
 }

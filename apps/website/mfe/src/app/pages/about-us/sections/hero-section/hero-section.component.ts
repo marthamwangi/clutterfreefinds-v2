@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { BasePage } from '../../../base.page';
 
 @Component({
   selector: 'about-hero-section',
@@ -8,8 +9,8 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [TranslateModule, RouterLink],
   templateUrl: './hero-section.component.html',
 })
-export class HeroSectionComponent {
-  bookACall() {
-    window.open('https://koalendar.com/e/have-us-call-you', '_blank');
+export class HeroSectionComponent extends BasePage {
+  constructor(injector: Injector) {
+    super(injector);
   }
 }

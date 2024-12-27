@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeroSliderComponent } from './sections/hero-slider/hero-slider.component';
 import { RouterLink } from '@angular/router';
+import { BasePage } from '../../../base.page';
 
 @Component({
   selector: 'cff-v2-hero',
@@ -10,8 +11,12 @@ import { RouterLink } from '@angular/router';
   imports: [TranslateModule, NgFor, HeroSliderComponent, RouterLink],
   templateUrl: './hero.component.html',
 })
-export class HeroComponent {
+export class HeroComponent extends BasePage {
   private vox = 1;
+
+  constructor(injector: Injector) {
+    super(injector);
+  }
 
   greaterThan() {
     if (this.vox > 2) {
@@ -40,8 +45,4 @@ export class HeroComponent {
       value: 'HOME_PAGE.HERO_SECTION.STATISTICS.STAT5.VALUE',
     },
   ];
-
-  bookACall() {
-    window.open('https://koalendar.com/e/have-us-call-you', '_blank');
-  }
 }
