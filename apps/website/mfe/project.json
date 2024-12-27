@@ -3,17 +3,22 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "wc",
-  "sourceRoot": "apps/website/mfe/src",
+  "sourceRoot": "src",
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "apps/website/public/browser",
+        "outputPath": "apps/website/functions/public",
         "index": "apps/website/mfe/src/index.html",
-        "main": "apps/website/mfe/src/main.ts",
+        "browser": "apps/website/mfe/src/main.ts",
         "polyfills": ["zone.js"],
+        "server": "apps/website/mfe/src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+          "entry": "apps/website/mfe/server.ts"
+        },
         "tsConfig": "apps/website/mfe/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -22,15 +27,16 @@
 						"input": "libs/assets/",
 						"output": "./assets/"
           },
-          "apps/website/mfe/src/favicon.ico",
-          "apps/website/mfe/src/assets"
+        {
+          "glob": "**/*",
+          "input": "apps/website/mfe/src/assets",
+          "output": "./assets"
+        }
         ],
         "styles": [
         "apps/website/mfe/src/styles.scss"
       ],
-      "scripts": [
-        "node_modules/flowbite-datepicker/dist/js/datepicker-full.min.js"
-      ]
+      "scripts": [  ]
       },
       "configurations": {
         "production": {
@@ -57,9 +63,7 @@
           "sourceMap": false,
           "namedChunks": false,
           "aot": true,
-          "extractLicenses": true,
-          "vendorChunk": false,
-          "buildOptimizer": true
+          "extractLicenses": true
         },
         "development": {
           "optimization": false,
@@ -73,10 +77,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "website-mfe:build:production"
+          "buildTarget": "website-mfe:build:production"
         },
         "development": {
-          "browserTarget": "website-mfe:build:development"
+          "buildTarget": "website-mfe:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -86,58 +90,6 @@
       "options": {
         "buildTarget": "website-mfe:build"
       }
-    },
-    "server": {
-      "dependsOn": ["build"],
-      "executor": "@angular-devkit/build-angular:server",
-      "options": {
-        "outputPath": "apps/website/public/server",
-        "main": "apps/website/mfe/server.ts",
-        "tsConfig": "apps/website/mfe/tsconfig.server.json",
-        "inlineStyleLanguage": "scss"
-      },
-      "configurations": {
-        "production": {
-          "outputHashing": "media"
-        },
-        "development": {
-          "optimization": false,
-          "sourceMap": true,
-          "extractLicenses": false
-        }
-      },
-      "defaultConfiguration": "production"
-    },
-    "serve-ssr": {
-      "executor": "@nguniversal/builders:ssr-dev-server",
-      "configurations": {
-        "development": {
-          "browserTarget": "website-mfe:build:development",
-          "serverTarget": "website-mfe:server:development"
-        },
-        "production": {
-          "browserTarget": "website-mfe:build:production",
-          "serverTarget": "website-mfe:server:production"
-        }
-      },
-      "defaultConfiguration": "development"
-    },
-    "prerender": {
-      "executor": "@nguniversal/builders:prerender",
-      "options": {
-        "routesFile": "routes.txt"
-      },
-      "configurations": {
-        "development": {
-          "browserTarget": "website-mfe:build:development",
-          "serverTarget": "website-mfe:server:development"
-        },
-        "production": {
-          "browserTarget": "website-mfe:build:production",
-          "serverTarget": "website-mfe:server:production"
-        }
-      },
-      "defaultConfiguration": "production"
     }
-  }
+    }
 }

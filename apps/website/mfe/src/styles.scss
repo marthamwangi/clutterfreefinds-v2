@@ -1,7 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@layer utilities {
+  .paused {
+    animation-play-state: paused;
+  }
+}
 /* You can add global styles to this file, and also import other style files */
 @import 'ngx-toastr/toastr';
 
@@ -48,24 +52,19 @@ span.datepicker-cell.selected {
   }
 }
 
-.stroke-white {
-  margin: 0;
-  -webkit-text-stroke: 2px #ffffff;
-}
 .text-hollow {
   -webkit-background-clip: text;
-  -webkit-text-stroke: 4px transparent;
-  color: var(--light);
-  text-align: center;
-  font-weight: 700;
-  font-size: 150px;
-  line-height: 225px;
-  text-align: center;
-  opacity: 0.2;
-  @media (max-width: 768px) {
-    font-size: 75px;
-  }
+  -webkit-text-stroke: 1px #ffffff;
 }
+
+.text-hollow-primary {
+  -webkit-background-clip: text;
+  -webkit-text-stroke: 4px transparent;
+  opacity: 0.2;
+  line-height: 225px;
+}
+
+/**delete from here if not used*/
 :root {
   /**Colors
 */

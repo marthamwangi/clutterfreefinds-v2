@@ -9,7 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { IframeUrlPipe } from '@clutterfreefinds-v2/shared/pipes';
+import { IframeUrlPipe } from '@clutterfreefinds-v2/shared-pipes';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({

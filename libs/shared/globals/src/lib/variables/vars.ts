@@ -26,9 +26,17 @@ export const WEB_API_CFF_MATERIAL = 'Material';
 export const KENYA_COUNTIES = 'County';
 export const WEB_API_QUOTATION_REQUEST = 'QuotationRequest';
 export const WEB_API_INQUIRY_REQUEST = 'Inquiry';
+export const WEB_API_STORE_PRODUCTS = 'Store';
+export const WEB_API_PRODUCT = 'Store/Product';
+export const WEB_API_CATEGORIES = 'Store/Categories';
 
 /**
  * REGEX PATTERNS
  */
 export const REGEX_EMAIL = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
 export const PHONE_REGEX = '^([0|+[0-9]{1,5})?([0-9]{10})$';
+
+/**
+ * KEYS
+ */
+export const CART_STORAGE_KEY = 'clutterfreefinds.my.cart';

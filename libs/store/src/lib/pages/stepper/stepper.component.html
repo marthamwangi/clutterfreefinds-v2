@@ -1,0 +1,88 @@
+<section class="bg-white py-8 md:py-16">
+    <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+        <ng-container *ngTemplateOutlet="returnViewTemplate()"> </ng-container>
+    </div>
+</section>
+
+<ng-template #cartEmptyTemplate>
+    <div class="w-full flex items-center flex-wrap justify-center gap-10">
+        <div class="grid gap-4 w-60">
+            <img src="assets/icons/cart-add.svg" alt="empty cart" class="mx-auto" width="128">
+            <div>
+                <h2 class="text-center text-black text-xl font-semibold leading-relaxed pb-1">Your Cart is
+                    empty :(</h2>
+                <p class="text-center text-black text-md font-normal leading-snug pb-4">Try going back to the
+                    store <br />and get some products</p>
+                <div class="flex gap-3">
+                    <a routerLink="../"
+                        class="text-center w-full px-3 py-3.5 bg-primary-900 hover:bg-dark-900 transition-all duration-500 rounded-lg text-white text-base font-medium leading-4">
+                        Go Shopping </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #cartNotEmptyTemplate>
+    <div class=" md:gap-6 lg:flex lg:items-start xl:gap-8">
+        <form action="#" class="px-4 2xl:px-0">
+            <ol
+                class="mb-6 items-center justify-around flex w-full max-w-2xl text-center text-sm font-medium text-gray-500  sm:text-base">
+                <li *ngFor="let step of renderedSteps; last as isLast"
+                    [class.text-primary-900]="step?.status === 'active'" [class.sm:after:hidden]="isLast"
+                    class="after:border-1 flex items-center text-primary-700 after:mx-6 after:hidden after:h-1 after:w-full after:border-b after:border-gray-200 sm:after:inline-block sm:after:content-[''] md:w-full xl:after:mx-10">
+                    <span class="flex items-center after:mx-2 after:text-gray-200 after:content-['/']  sm:after:hidden">
+                        <svg class="me-2 h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        {{step.title}}
+                    </span>
+                </li>
+            </ol>
+            <ng-container *ngTemplateOutlet="returnStepsTemplate()"> </ng-container>
+        </form>
+        <div class=" flex-1  lg:w-full mt-12">
+            <div
+                class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
+                <cff-store-order></cff-store-order>
+                <div class="grid grid-cols-2 gap-y-4 gap-x-6   items-center">
+                    <button (click)="goBack()" *ngIf="currentStepIndex !== renderedSteps.length-3"
+                        class="flex w-full items-center justify-center rounded-lg bg-primary-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Back
+                        to {{steps[currentStepIndex].title}}</button>
+
+                    <button (click)="goNext()" *ngIf="currentStepIndex !== renderedSteps.length-1"
+                        class="flex w-full items-center justify-center rounded-lg bg-primary-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed
+                        to {{steps[currentStepIndex++1].title}}</button>
+
+                    <button (click)="processOrder()" *ngIf="currentStepIndex === 2"
+                        class="flex w-full items-center justify-center rounded-lg bg-primary-900 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send
+                        Order</button>
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
+                        <a routerLink="../" title="shop"
+                            class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
+                            Continue Shopping
+                            <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #cartTemplate>
+    <cff-store-cart></cff-store-cart>
+</ng-template>
+<ng-template #checkoutTemplate>
+    <cff-store-checkout></cff-store-checkout>
+</ng-template>
+<ng-template #paymentTemplate>
+    <cff-store-payment></cff-store-payment>
+</ng-template>

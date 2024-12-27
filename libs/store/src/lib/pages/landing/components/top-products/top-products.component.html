@@ -1,0 +1,94 @@
+<div class="mx-auto p-4 sm:px-6 sm:py-8 lg:px-8">
+    <div class="flex items-start justify-between flex-col lg:flex-row gap-y-2 lg:gap-y-0">
+        <div>
+            <h2 class="text-2xl font-bold tracking-tight text-dark-900 underline underline-offset-8  max-w-fit">
+                Top Products Today
+                <div class="p-2  translate-x-24 -translate-y-2 bg-light-900 w-10 h-10">
+                    <img class="h-8 w-8" src="/assets/store/icons/shop-box.svg" alt="professional organizing boxes">
+                </div>
+            </h2>
+            <div class="text-lg  tracking-tight text-dark-600 max-w-fit">Don't miss this opportunity at a to get
+                these
+                products.</div>
+        </div>
+        <div
+            class="bg-danger-900 px-4 py-2 rounded-lg text-light-900 flex items-center max-w-fit order-first lg:order-last">
+            <img src="assets/icons/time.svg" alt="" class="me-2">
+            Expires in : <span #daysRef>14</span>: <span #hoursRef>14</span> : <span #minutesRef>14</span> : <span
+                #secondsRef>14</span>
+        </div>
+    </div>
+    <ng-container *ngTemplateOutlet="returnListTemplate()"></ng-container>
+</div>
+
+<ng-template #loadingRef>
+    <div class="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
+        <div *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" role="status" class="w-full rounded  animate-pulse">
+            <div class="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded ">
+                <svg class="w-10 h-10 text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 16 20">
+                    <path
+                        d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
+                    <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                </svg>
+            </div>
+            <div class="h-2.5 bg-gray-200 rounded-full  w-48 mb-4"></div>
+            <div class="h-2 bg-gray-200 rounded-full  mb-2.5"></div>
+            <div class="h-2 bg-gray-200 rounded-full  mb-2.5"></div>
+            <div class="h-2 bg-gray-200 rounded-full  mb-2.5 "></div>
+            <div class="h-2.5 bg-gray-200 rounded-full  w-48 mb-4"></div>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #loadedRef>
+    <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
+        <div class="group relative" *ngFor="let product of renderedProducts;">
+            <div class="relative aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 
+                group-hover:opacity-75 lg:h-80">
+                <img [src]="product.image" [alt]="product.title" loading="lazy"
+                    class="z-10 h-full w-full object-cover object-center lg:h-full lg:w-full">
+                <div class="absolute z-20 top-1/3 w-full h-10">
+                    <div class="flex flex-col space-y-2 p-4  items-end ">
+                        <div *ngFor="let color of product.colors"
+                            class="h-3.5 w-3.5 lg:h-4 lg:w-4  shadow-xl ring-2  ring-light-900  rounded-full"
+                            [style.backgroundColor]="color">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 flex flex-col space-y-2">
+                <div class="text-lg font-bold text-primary-900">{{product.price | currency:'KES'}}</div>
+                <div>
+                    <h3 class="text-xl text-gray-700 line-clamp-2 text-clip">
+                        <a [routerLink]="'product/'+product.id" (click)="setSelectedProduct(product.id)">
+                            <span aria-hidden="true" class="absolute inset-0  bottom-10"></span>
+                            {{product.title}}
+                        </a>
+                    </h3>
+                    <p class="mt-1 text-sm text-gray-500 uppercase">{{product.size}}</p>
+                </div>
+                <div>
+                    <!-- if product is in cart ? btn primary else ? btn light -->
+                    <ng-container *ngIf="product.isInCart; else notInCart">
+                        <button type="button" (click)="onAddToCart($event,product)"
+                            class="text-dark-900 border border-dark-300 bg-dark-900 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ">
+                            Add to Cart
+                            <img class="ms-2 w-4 h-4" src="assets/icons/cart-add-white.svg" />
+                        </button>
+                    </ng-container>
+                    <ng-template #notInCart>
+                        <button type="button" (click)="onAddToCart($event,product)"
+                            class="text-dark-900 border border-dark-300 bg-light-900 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center ">
+                            Add to Cart
+                            <img class="ms-2 w-4 h-4" src="assets/icons/cart-add.svg" />
+                        </button>
+                    </ng-template>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>

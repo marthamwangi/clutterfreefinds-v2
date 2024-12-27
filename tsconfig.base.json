@@ -18,12 +18,11 @@
       "@clutterfreefinds-v2/footer": ["libs/shared/footer/src/index.ts"],
       "@clutterfreefinds-v2/globals": ["libs/shared/globals/src/index.ts"],
       "@clutterfreefinds-v2/header": ["libs/shared/header/src/index.ts"],
+      "@clutterfreefinds-v2/instant-quote": ["libs/instant-quote/src/index.ts"],
       "@clutterfreefinds-v2/language": ["libs/shared/language/src/index.ts"],
-      "@clutterfreefinds-v2/shared/pipes": ["libs/shared/pipes/src/index.ts"],
+      "@clutterfreefinds-v2/shared-pipes": ["libs/shared/pipes/src/index.ts"],
       "@clutterfreefinds-v2/store": ["libs/store/src/index.ts"],
-      "@clutterfreefinds-v2/toastr": ["libs/shared/toastr/src/index.ts"],
-      "@clutterfreefinds/iframe_url": ["libs/shared/pipes/src/index.ts"],
-      "@clutterfreefinds/sort_pipe": ["libs/shared/pipes/src/index.ts"]
+      "@clutterfreefinds-v2/toastr": ["libs/shared/toastr/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

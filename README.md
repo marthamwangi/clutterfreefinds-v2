@@ -1,22 +1,27 @@
 # Clutter Free Finds
 
-Clutter free finds is a professional organizing company that aims to serve individuals who feel overwhelmed by clutter and disarray. We provide a comprehensive suite of tools and features designed to streamline your life and bring order to the chaos.
+This project fosters to build a community of individuals seeking a life balanced
+by fulfillment and organization. By collaborating with local and remote
+participants, I will identify common tidying challenges and develop
+technological solutions to empower them.
 
 ## Features
 
-- [Instant quote](https://clutterfreefinds.com/instant-quote/)
-- [Store](https://clutterfreefinds.com/store/)
-- [Blog](https://clutterfreefinds.com/blog/)
+- [Instant quote](https://cff-v2.web.app/instant-quote/)
+- [Store](https://cff-v2.web.app/store/)
+- [Blog](https://cff-v2.web.app/blog/)
 
 ## Motivation
 
-By creating this web app, I hope to equip people with the tools and resources they need to cultivate a sense of calm and control in their lives, regardless of their location or lifestyle.
+By creating this web app, I will build a continuous learning journey
+which will help me understand building modern products for modern problems
+while ensuring relevance and impact.
 
 ## Requirements
 
-- [Node.js](https://nodejs.dev/)
-- [Angular](https://angular.dev/)
-- [.NET](https://dotnet.microsoft.com/en-us/)
+- [Node.js 18.7.0](https://nodejs.dev/)
+- [Angular 16.1.8](https://angular.dev/)
+- [.NET 8.0.105](https://dotnet.microsoft.com/en-us/)
 
 ## Installation
 
@@ -35,7 +40,7 @@ The API docs can be referenced on swagger as provided in apps/api/README.md **_o
 
 ## License
 
-A short snippet describing the license ([CLA](http://opensource.org/licenses/mit-license.php), [Apache](http://opensource.org/licenses/Apache-2.0), etc.)
+[Apache](http://opensource.org/licenses/Apache-2.0)
 
 ## Commits
 

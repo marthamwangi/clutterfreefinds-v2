@@ -1,3 +1,9 @@
 export * from './lib/lib.routes';
-
-export * from './lib/landing/landing.component';
+export * from './lib/pages/landing/landing.component';
+export * from './lib/data/store.reducers';
+export * from './lib/data/store.effects';
+export * from './lib/data/store.model';
+export * from './lib/pages/product-detail/data/product.effect';
+export * from './lib/pages/product-detail/data/product.reducers';
+export * from './lib/pages/cart/data/cart.reducer';
+export * from './lib/pages/cart/data/cart.effects';

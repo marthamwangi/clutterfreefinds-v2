@@ -5,6 +5,7 @@ using Newsletter.Services;
 using Quotation.Request.Service;
 using Space.Service;
 using Inquiry.Service;
+using ClutterfreefindsV2.Api.Services.Store;
 
 var builder = WebApplication.CreateBuilder(args);
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
@@ -26,8 +27,7 @@ builder.Services.AddCors(options =>
                              {
                                  builder.WithOrigins(
                                     "http://localhost:4200",
-                                    "http://localhost:5291",
-                                  "https://localhost:7130",
+
                                                      "http://127.0.0.1:5000",
                                                      "https://cff-v2.web.app",
                                                      "https://clutterfreefinds.com").AllowAnyHeader().AllowAnyMethod();
@@ -40,6 +40,7 @@ builder.Services.AddScoped<ISpaceServices, SpaceServices>();
 builder.Services.AddScoped<IMaterialServices, MaterialServices>();
 builder.Services.AddScoped<ICountyServices, CountyServices>();
 builder.Services.AddScoped<IInquiryService, InquiryRequestService>();
+builder.Services.AddScoped<IStoreService, StoreServices>();
 
 var app = builder.Build();
 

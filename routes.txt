@@ -7,7 +7,10 @@
 /pricing
 /mess-vs-yess
 /the-organizers
-/blog
-/store
 /instant-quote
 /resources
+/blog
+/store
+/store/cart
+/store/product/fRlKutr6rsGLMRtqTebD
+/store/product/JHGweAIEkH7fK6QSqG7Y
